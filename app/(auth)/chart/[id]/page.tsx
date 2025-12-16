@@ -77,24 +77,28 @@ export default function ChartDetailPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 flex-1">
-      <Button variant="outline" onClick={() => router.push("/")} className="mb-6">
+    <div className="container max-w-7xl mx-auto px-4 py-8 flex-1">
+      <Button 
+        variant="ghost" 
+        onClick={() => router.push("/")} 
+        className="mb-6 hover:bg-accent"
+      >
         <ArrowLeft className="h-4 w-4 mr-2" />
         Back to Dashboard
       </Button>
 
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold">{chart.name}</h1>
-        <p className="text-muted-foreground mt-1">Birth Chart Details</p>
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">{chart.name}</h1>
+        <p className="text-muted-foreground">Birth Chart Details</p>
       </div>
 
       {/* Chart SVG */}
       {chartSvg && (
         <div className="mb-8">
           <h2 className="text-xl font-semibold mb-4">Chart Visualization</h2>
-          <Card className="p-4 overflow-auto">
+          <Card className="p-6 overflow-auto bg-gradient-to-br from-card to-muted/30 border-2">
             <div
-              className="w-full"
+              className="w-full flex items-center justify-center"
               dangerouslySetInnerHTML={{ __html: chartSvg }}
               style={{ maxWidth: "100%", height: "auto" }}
             />
@@ -110,49 +114,51 @@ export default function ChartDetailPage() {
       {/* Active Points */}
       {points.length > 0 && (
         <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Active Points</h2>
+          <h2 className="text-xl font-semibold mb-6">Active Points</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {points.map((point) => (
-              <Card key={point.name}>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <span>{point.emoji}</span>
+              <Card key={point.name} className="hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <span className="text-2xl">{point.emoji}</span>
                     <span>{point.name}</span>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline">{point.sign}</Badge>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Badge variant="outline" className="font-medium">{point.sign}</Badge>
                     <Badge variant="secondary">{formatDegrees(point.position)}</Badge>
                   </div>
-                  <div className="text-sm space-y-1">
-                    <div>
-                      <span className="font-medium">House:</span>{" "}
-                      <span className="text-muted-foreground">{point.house || "N/A"}</span>
+                  <div className="text-sm space-y-2 pt-2 border-t">
+                    <div className="flex justify-between">
+                      <span className="font-medium text-muted-foreground">House:</span>
+                      <span className="text-foreground">{point.house || "N/A"}</span>
                     </div>
-                    <div>
-                      <span className="font-medium">Element:</span>{" "}
-                      <span className="text-muted-foreground">{point.element}</span>
+                    <div className="flex justify-between">
+                      <span className="font-medium text-muted-foreground">Element:</span>
+                      <span className="text-foreground">{point.element}</span>
                     </div>
-                    <div>
-                      <span className="font-medium">Quality:</span>{" "}
-                      <span className="text-muted-foreground">{point.quality}</span>
+                    <div className="flex justify-between">
+                      <span className="font-medium text-muted-foreground">Quality:</span>
+                      <span className="text-foreground">{point.quality}</span>
                     </div>
                     {point.speed !== null && (
-                      <div>
-                        <span className="font-medium">Speed:</span>{" "}
-                        <span className="text-muted-foreground">{point.speed.toFixed(4)}°/day</span>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-muted-foreground">Speed:</span>
+                        <span className="text-foreground">{point.speed.toFixed(4)}°/day</span>
                       </div>
                     )}
                     {point.retrograde !== null && point.retrograde && (
-                      <Badge variant="destructive" className="mt-1">
-                        Retrograde
-                      </Badge>
+                      <div className="pt-1">
+                        <Badge variant="destructive" className="w-full justify-center">
+                          Retrograde
+                        </Badge>
+                      </div>
                     )}
                     {point.declination !== null && (
-                      <div>
-                        <span className="font-medium">Declination:</span>{" "}
-                        <span className="text-muted-foreground">{point.declination.toFixed(2)}°</span>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-muted-foreground">Declination:</span>
+                        <span className="text-foreground">{point.declination.toFixed(2)}°</span>
                       </div>
                     )}
                   </div>
@@ -166,33 +172,33 @@ export default function ChartDetailPage() {
       {/* Houses */}
       {houses.length > 0 && (
         <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Houses</h2>
+          <h2 className="text-xl font-semibold mb-6">Houses</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {houses.map((house) => (
-              <Card key={house.name}>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <span>{house.emoji}</span>
+              <Card key={house.name} className="hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    <span className="text-2xl">{house.emoji}</span>
                     <span>{house.name.replace(/_/g, " ")}</span>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline">{house.sign}</Badge>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Badge variant="outline" className="font-medium">{house.sign}</Badge>
                     <Badge variant="secondary">{formatDegrees(house.position)}</Badge>
                   </div>
-                  <div className="text-sm space-y-1">
-                    <div>
-                      <span className="font-medium">Element:</span>{" "}
-                      <span className="text-muted-foreground">{house.element}</span>
+                  <div className="text-sm space-y-2 pt-2 border-t">
+                    <div className="flex justify-between">
+                      <span className="font-medium text-muted-foreground">Element:</span>
+                      <span className="text-foreground">{house.element}</span>
                     </div>
-                    <div>
-                      <span className="font-medium">Quality:</span>{" "}
-                      <span className="text-muted-foreground">{house.quality}</span>
+                    <div className="flex justify-between">
+                      <span className="font-medium text-muted-foreground">Quality:</span>
+                      <span className="text-foreground">{house.quality}</span>
                     </div>
-                    <div>
-                      <span className="font-medium">Absolute Position:</span>{" "}
-                      <span className="text-muted-foreground">{house.abs_pos.toFixed(2)}°</span>
+                    <div className="flex justify-between">
+                      <span className="font-medium text-muted-foreground">Absolute Position:</span>
+                      <span className="text-foreground">{house.abs_pos.toFixed(2)}°</span>
                     </div>
                   </div>
                 </CardContent>

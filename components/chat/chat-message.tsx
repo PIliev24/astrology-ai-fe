@@ -3,8 +3,12 @@
 import { ChatMessage as ChatMessageType } from "@/hooks/chat/useWebSocketChat";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { User, Bot } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { User, Bot, Copy, Bookmark, Share2, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { toast } from "sonner";
 
 interface ChatMessageProps {
   message: ChatMessageType;
@@ -12,48 +16,71 @@ interface ChatMessageProps {
 
 export function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === "user";
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(message.content);
+    setCopied(true);
+    toast.success("Copied to clipboard");
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <div className={cn("flex gap-3", isUser ? "justify-end" : "justify-start")}>
-      <div className={cn("flex gap-3 max-w-[80%] md:max-w-[70%]", isUser && "flex-row-reverse")}>
-        <div className="flex-shrink-0">
-          <div
-            className={cn(
-              "flex h-8 w-8 items-center justify-center rounded-full",
-              isUser ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-            )}
-          >
-            {isUser ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
-          </div>
-        </div>
-        <Card className="p-4">
-          <div className="space-y-2">
-            <p className="text-sm whitespace-pre-wrap">{message.content}</p>
-            {message.chart_references && message.chart_references.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2">
-                {message.chart_references.map((chartId) => (
-                  <Badge key={chartId} variant="secondary" className="text-xs">
-                    Chart: {chartId.slice(0, 8)}...
-                  </Badge>
-                ))}
-              </div>
-            )}
-            {message.tool_calls && message.tool_calls.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-2">
-                {message.tool_calls.map((tool, idx) => (
-                  <Badge key={idx} variant="outline" className="text-xs">
-                    {tool.tool_name}
-                  </Badge>
-                ))}
-              </div>
-            )}
-            <p className="text-xs text-muted-foreground">
-              {message.timestamp.toLocaleTimeString()}
+    <div className={cn("flex gap-4 group animate-fade-in", isUser ? "justify-end" : "justify-start")}>
+      {!isUser && (
+        <Avatar className="h-8 w-8 border-2 border-primary/20 shrink-0">
+          <AvatarFallback className="bg-primary/10 text-primary">
+            <Bot className="h-4 w-4" />
+          </AvatarFallback>
+        </Avatar>
+      )}
+
+      <div className={cn("flex flex-col gap-2 max-w-[80%] md:max-w-[70%] group/message", isUser && "items-end")}>
+        <div
+          className={cn(
+            "rounded-2xl px-4 py-3",
+            isUser ? "bg-primary text-primary-foreground" : "bg-muted border border-border"
+          )}
+        >
+          <div className="prose prose-slate dark:prose-invert max-w-none">
+            <p
+              className={cn(
+                "text-sm leading-relaxed whitespace-pre-wrap",
+                isUser ? "text-primary-foreground" : "text-foreground"
+              )}
+            >
+              {message.content}
             </p>
           </div>
-        </Card>
+        </div>
+
+        {/* Action Buttons */}
+        {!isUser && (
+          <div className="flex items-center gap-1 px-1 opacity-0 group-hover/message:opacity-100 transition-opacity duration-200">
+            <Button variant="ghost" size="sm" className="h-7 px-2 text-xs" onClick={handleCopy}>
+              {copied ? (
+                <>
+                  <Check className="h-3 w-3 mr-1" />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <Copy className="h-3 w-3 mr-1" />
+                  Copy
+                </>
+              )}
+            </Button>
+          </div>
+        )}
+
+        {isUser && (
+          <Avatar className="h-8 w-8 border-2 border-primary/20 shrink-0">
+            <AvatarFallback className="bg-primary text-primary-foreground">
+              <User className="h-4 w-4" />
+            </AvatarFallback>
+          </Avatar>
+        )}
       </div>
     </div>
   );
 }
-

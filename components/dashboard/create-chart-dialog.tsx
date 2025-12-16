@@ -58,7 +58,7 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
     try {
       // Convert Date to the required format: "dd-mmm-yyyy hh:mm"
       const formattedDate = format(values.birth_datetime, "dd-MMM-yyyy HH:mm");
-      
+
       await createChart({
         ...values,
         birth_datetime: formattedDate,
@@ -83,11 +83,11 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Create Birth Chart</DialogTitle>
-          <DialogDescription>Enter the birth information to generate a new chart.</DialogDescription>
+          <DialogTitle className="text-2xl">Create Birth Chart</DialogTitle>
+          <DialogDescription>Enter the birth information to generate a new astrological chart.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
             <FormField
               control={form.control}
               name="name"
@@ -109,10 +109,7 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
                 <FormItem>
                   <FormLabel>Birth Date & Time</FormLabel>
                   <FormControl>
-                    <DateTimePicker
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
+                    <DateTimePicker value={field.value} onChange={field.onChange} />
                   </FormControl>
                   <FormDescription>Select the date and time of birth</FormDescription>
                   <FormMessage />
@@ -147,7 +144,7 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {SORTED_COUNTRIES.map((country) => (
+                      {SORTED_COUNTRIES.map(country => (
                         <SelectItem key={country.code} value={country.code}>
                           {country.name}
                         </SelectItem>
@@ -159,18 +156,18 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
               )}
             />
 
-            <DialogFooter>
+            <DialogFooter className="gap-2">
               <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={isCreating}>
+              <Button type="submit" disabled={isCreating} className="min-w-[100px]">
                 {isCreating ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Creating...
                   </>
                 ) : (
-                  "Create"
+                  "Create Chart"
                 )}
               </Button>
             </DialogFooter>
@@ -180,4 +177,3 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
     </Dialog>
   );
 }
-

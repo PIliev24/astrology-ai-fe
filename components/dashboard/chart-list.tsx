@@ -2,7 +2,10 @@
 
 import { BirthChartResponse } from "@/types";
 import { ChartCard } from "./chart-card";
-import { Loader2 } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { CreateChartDialog } from "./create-chart-dialog";
+import { Button } from "@/components/ui/button";
+import { Plus, Sparkles } from "lucide-react";
 
 interface ChartListProps {
   charts: BirthChartResponse[];
@@ -12,17 +15,38 @@ interface ChartListProps {
 export function ChartList({ charts, isLoading }: ChartListProps) {
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="rounded-xl border p-6 space-y-4">
+            <Skeleton className="h-6 w-3/4" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-2/3" />
+            <div className="flex gap-2 pt-2">
+              <Skeleton className="h-9 flex-1" />
+              <Skeleton className="h-9 w-9" />
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
 
   if (charts.length === 0) {
     return (
-      <div className="text-center py-12 text-muted-foreground">
-        <p className="text-lg font-medium mb-2">No birth charts yet</p>
-        <p className="text-sm">Create your first birth chart to get started</p>
+      <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
+        <div className="rounded-full bg-primary/10 p-4 mb-4">
+          <Sparkles className="h-8 w-8 text-primary" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2">No birth charts yet</h3>
+        <p className="text-muted-foreground mb-6 max-w-md">
+          Create your first birth chart to start exploring your astrological insights
+        </p>
+        <CreateChartDialog>
+          <Button>
+            <Plus className="h-4 w-4 mr-2" />
+            Create Your First Chart
+          </Button>
+        </CreateChartDialog>
       </div>
     );
   }

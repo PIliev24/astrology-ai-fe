@@ -27,6 +27,7 @@ export function useWebSocketChat() {
   const [status, setStatus] = useState<WebSocketStatus>("disconnected");
   const [selectedCharts, setSelectedCharts] = useState<string[]>([]);
   const [conversationId, setConversationId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const reconnectAttemptsRef = useRef(0);
@@ -101,6 +102,11 @@ export function useWebSocketChat() {
                 chart_references: chatMessage.chart_references,
               },
             ]);
+
+            // Stop loading when assistant responds
+            if (chatMessage.role === "assistant") {
+              setIsLoading(false);
+            }
 
             // Update conversation ID if provided
             if (chatMessage.conversation_id) {
@@ -233,6 +239,9 @@ export function useWebSocketChat() {
         },
       ]);
 
+      // Set loading state while waiting for AI response
+      setIsLoading(true);
+
       // Send message via WebSocket
       const message: ChatMessageRequest = {
         type: "message",
@@ -246,6 +255,7 @@ export function useWebSocketChat() {
       } catch (error) {
         console.error("Failed to send message:", error);
         toast.error("Failed to send message");
+        setIsLoading(false);
       }
     },
     [selectedCharts, conversationId, status]
@@ -264,12 +274,18 @@ export function useWebSocketChat() {
     setSelectedCharts([]);
   }, []);
 
+  const cancelLoading = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   return {
     messages,
     status,
     selectedCharts,
+    isLoading,
     sendMessage,
     toggleChartSelection,
     clearSelectedCharts,
+    cancelLoading,
   };
 }

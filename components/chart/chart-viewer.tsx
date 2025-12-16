@@ -2,6 +2,7 @@
 
 import { BirthChartResponse } from "@/types";
 import { Card } from "@/components/ui/card";
+import { AlertCircle } from "lucide-react";
 
 interface ChartViewerProps {
   chart: BirthChartResponse;
@@ -13,16 +14,26 @@ export function ChartViewer({ chart }: ChartViewerProps) {
 
   if (!svgContent) {
     return (
-      <Card className="p-8 text-center text-muted-foreground">
-        <p>Chart SVG not available</p>
+      <Card className="p-12 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="rounded-full bg-destructive/10 p-4">
+            <AlertCircle className="h-8 w-8 text-destructive" />
+          </div>
+          <div>
+            <p className="font-medium text-foreground mb-1">Chart SVG not available</p>
+            <p className="text-sm text-muted-foreground">
+              The chart visualization could not be loaded
+            </p>
+          </div>
+        </div>
       </Card>
     );
   }
 
   return (
-    <Card className="p-4">
+    <Card className="p-6 overflow-auto bg-gradient-to-br from-card to-muted/30 border-2">
       <div
-        className="w-full"
+        className="w-full flex items-center justify-center"
         dangerouslySetInnerHTML={{ __html: svgContent }}
         style={{ maxWidth: "100%", height: "auto" }}
       />

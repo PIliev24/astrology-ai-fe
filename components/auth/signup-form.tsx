@@ -13,15 +13,17 @@ const SignupForm = () => {
   const { form, error, isSubmitting, handleSignup } = useSignup();
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Sign up</CardTitle>
-          <CardDescription>Create a new account to get started</CardDescription>
+    <div className="flex min-h-screen items-center justify-center p-4 bg-gradient-to-br from-background to-muted/20">
+      <Card className="w-full max-w-md shadow-lg border-2">
+        <CardHeader className="space-y-2 text-center">
+          <CardTitle className="text-3xl font-bold">Create account</CardTitle>
+          <CardDescription className="text-base">
+            Create a new account to get started with astrology insights
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSignup)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(handleSignup)} className="space-y-5">
               <FormField
                 control={form.control}
                 name="name"
@@ -82,22 +84,33 @@ const SignupForm = () => {
                 )}
               />
 
-              {error && <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
+              {error && (
+                <div className="rounded-lg bg-destructive/10 border border-destructive/20 p-3 text-sm text-destructive animate-fade-in">
+                  {error}
+                </div>
+              )}
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              <Button 
+                type="submit" 
+                className="w-full h-11 text-base font-medium" 
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Signing up...
                   </>
                 ) : (
-                  "Sign up"
+                  "Create account"
                 )}
               </Button>
 
-              <div className="text-center text-sm">
-                Already have an account?{" "}
-                <Link href="/login" className="text-primary hover:underline">
+              <div className="text-center text-sm pt-2">
+                <span className="text-muted-foreground">Already have an account? </span>
+                <Link 
+                  href="/login" 
+                  className="text-primary hover:underline font-medium transition-colors"
+                >
                   Sign in
                 </Link>
               </div>
