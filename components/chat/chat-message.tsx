@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { ChatMessage as ChatMessageType } from "@/hooks/chat/useWebSocketChat";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,11 +18,12 @@ interface ChatMessageProps {
 export function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === "user";
   const [copied, setCopied] = useState(false);
+  const t = useTranslations("chat.message");
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(message.content);
     setCopied(true);
-    toast.success("Copied to clipboard");
+    toast.success(t("copied"));
     setTimeout(() => setCopied(false), 2000);
   };
 

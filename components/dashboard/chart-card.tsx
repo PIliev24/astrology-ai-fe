@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,8 @@ export function ChartCard({ chart }: ChartCardProps) {
   const router = useRouter();
   const { deleteChart, isDeleting } = useDeleteBirthChart();
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const t = useTranslations("dashboard.chartCard");
+  const tCommon = useTranslations("common.buttons");
 
   const handleDelete = async () => {
     await deleteChart(chart.id);
@@ -76,7 +79,7 @@ export function ChartCard({ chart }: ChartCardProps) {
               aria-label={`View chart for ${chart.name}`}
             >
               <Eye className="h-4 w-4 mr-2" />
-              View
+              {t("view")}
             </Button>
             <Button
               variant="ghost"
@@ -95,17 +98,17 @@ export function ChartCard({ chart }: ChartCardProps) {
       <Dialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Delete Chart</DialogTitle>
+            <DialogTitle>{t("deleteTitle")}</DialogTitle>
             <DialogDescription>
-              Are you sure you want to delete "{chart.name}"? This action cannot be undone.
+              {t("deleteDescription", { name: chart.name })}
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowDeleteDialog(false)}>
-              Cancel
+              {tCommon("cancel")}
             </Button>
             <Button variant="destructive" onClick={handleDelete} disabled={isDeleting}>
-              {isDeleting ? "Deleting..." : "Delete"}
+              {isDeleting ? t("deleting") : t("delete")}
             </Button>
           </DialogFooter>
         </DialogContent>

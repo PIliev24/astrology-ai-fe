@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +16,8 @@ interface ChartSelectorProps {
 }
 
 export function ChartSelector({ charts, selectedChartIds, onToggleChart }: ChartSelectorProps) {
+  const t = useTranslations("chat.selector");
+  
   if (charts.length === 0) {
     return null;
   }
@@ -25,10 +28,10 @@ export function ChartSelector({ charts, selectedChartIds, onToggleChart }: Chart
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <Label className="text-sm font-medium">
-          Select charts to include in context
+          {t("label")}
           {selectedCount > 0 && (
             <Badge variant="secondary" className="ml-2">
-              {selectedCount} selected
+              {t("selected", { count: selectedCount })}
             </Badge>
           )}
         </Label>

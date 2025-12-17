@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { BirthChartResponse } from "@/types";
 import { Card } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
@@ -9,6 +10,8 @@ interface ChartViewerProps {
 }
 
 export function ChartViewer({ chart }: ChartViewerProps) {
+  const t = useTranslations("chart.viewer");
+  
   // Try new chart path first, then fallback to legacy paths
   const svgContent = chart.chart_data?.chart || chart.chart_data?.chart_wheel;
 
@@ -20,9 +23,9 @@ export function ChartViewer({ chart }: ChartViewerProps) {
             <AlertCircle className="h-8 w-8 text-destructive" />
           </div>
           <div>
-            <p className="font-medium text-foreground mb-1">Chart SVG not available</p>
+            <p className="font-medium text-foreground mb-1">{t("notAvailable")}</p>
             <p className="text-sm text-muted-foreground">
-              The chart visualization could not be loaded
+              {t("notAvailableDescription")}
             </p>
           </div>
         </div>

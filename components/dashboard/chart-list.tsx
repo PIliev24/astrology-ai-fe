@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { BirthChartResponse } from "@/types";
 import { ChartCard } from "./chart-card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -13,6 +14,8 @@ interface ChartListProps {
 }
 
 export function ChartList({ charts, isLoading }: ChartListProps) {
+  const t = useTranslations("dashboard.charts");
+  
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -37,14 +40,14 @@ export function ChartList({ charts, isLoading }: ChartListProps) {
         <div className="rounded-full bg-primary/10 p-4 mb-4">
           <Sparkles className="h-8 w-8 text-primary" />
         </div>
-        <h3 className="text-xl font-semibold mb-2">No birth charts yet</h3>
+        <h3 className="text-xl font-semibold mb-2">{t("noCharts")}</h3>
         <p className="text-muted-foreground mb-6 max-w-md">
-          Create your first birth chart to start exploring your astrological insights
+          {t("noChartsDescription")}
         </p>
         <CreateChartDialog>
           <Button>
             <Plus className="h-4 w-4 mr-2" />
-            Create Your First Chart
+            {t("createFirst")}
           </Button>
         </CreateChartDialog>
       </div>

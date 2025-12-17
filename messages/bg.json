@@ -1,0 +1,138 @@
+{
+  "auth": {
+    "login": {
+      "title": "Добре дошли отново",
+      "description": "Въведете вашия имейл и парола, за да получите достъп до акаунта си",
+      "email": "Имейл",
+      "emailPlaceholder": "вие@example.com",
+      "password": "Парола",
+      "signingIn": "Влизане...",
+      "signIn": "Влез",
+      "noAccount": "Нямате акаунт?",
+      "signUp": "Регистрирай се"
+    },
+    "signup": {
+      "title": "Създаване на акаунт",
+      "description": "Създайте нов акаунт, за да започнете с астрологически прозрения",
+      "name": "Име (по избор)",
+      "namePlaceholder": "Вашето име",
+      "email": "Имейл",
+      "emailPlaceholder": "вие@example.com",
+      "password": "Парола",
+      "signingUp": "Регистриране...",
+      "createAccount": "Създай акаунт",
+      "hasAccount": "Вече имате акаунт?",
+      "signIn": "Влез"
+    }
+  },
+  "dashboard": {
+    "charts": {
+      "noCharts": "Все още няма натални карти",
+      "noChartsDescription": "Създайте първата си натална карта, за да започнете да изследвате астрологическите си прозрения",
+      "createFirst": "Създай първата си карта",
+      "noChartsYet": "Все още няма карти",
+      "createChart": "Създай карта"
+    },
+    "create": {
+      "title": "Създаване на натална карта",
+      "description": "Въведете информацията за раждането, за да генерирате нова астрологическа карта.",
+      "name": "Име",
+      "namePlaceholder": "Иван Иванов",
+      "nameRequired": "Името е задължително",
+      "birthDateTime": "Дата и час на раждане",
+      "birthDateTimeDescription": "Изберете датата и часа на раждане",
+      "birthDateTimeRequired": "Датата и часът на раждане са задължителни",
+      "city": "Град",
+      "cityPlaceholder": "София",
+      "cityRequired": "Градът е задължителен",
+      "country": "Държава",
+      "countryPlaceholder": "Изберете държава",
+      "countryRequired": "Държавата е задължителна",
+      "cancel": "Отказ",
+      "creating": "Създаване...",
+      "createChart": "Създай карта"
+    },
+    "chartCard": {
+      "view": "Преглед",
+      "delete": "Изтрий",
+      "deleteTitle": "Изтриване на карта",
+      "deleteDescription": "Сигурни ли сте, че искате да изтриете \"{name}\"? Това действие не може да бъде отменено.",
+      "deleting": "Изтриване..."
+    }
+  },
+  "chat": {
+    "welcome": {
+      "title": "Добре дошли в Astrology AI",
+      "description": "Задавайте въпроси за вашите натални карти или астрологията като цяло. Изберете карти, за да ги включите в контекста.",
+      "prompts": {
+        "sunSign": "Разкажи ми за моя Слънчев знак",
+        "moonSign": "Какво означава моят Лунен знак?",
+        "analyze": "Анализирай моята натална карта",
+        "risingSign": "Обясни моя Възходящ знак"
+      }
+    },
+    "input": {
+      "placeholder": "Попитай за астрологическите си прозрения...",
+      "connecting": "Свързване...",
+      "sendMessage": "Изпрати съобщение",
+      "helperText": "Натисни Enter за изпращане, Shift+Enter за нов ред"
+    },
+    "status": {
+      "thinking": "ИИ мисли...",
+      "reconnecting": "Повторно свързване..."
+    },
+    "message": {
+      "copied": "Копирано в клипборда"
+    },
+    "selector": {
+      "label": "Избери карти за включване в контекста",
+      "selected": "{count} избрани"
+    }
+  },
+  "chart": {
+    "viewer": {
+      "notAvailable": "SVG на картата не е налично",
+      "notAvailableDescription": "Визуализацията на картата не може да бъде заредена"
+    },
+    "details": {
+      "title": "Информация за раждане",
+      "dateTime": "Дата и час",
+      "location": "Местоположение",
+      "timezone": "Часова зона"
+    }
+  },
+  "common": {
+    "buttons": {
+      "cancel": "Отказ",
+      "delete": "Изтрий",
+      "save": "Запази",
+      "create": "Създай",
+      "edit": "Редактирай",
+      "view": "Преглед",
+      "close": "Затвори"
+    },
+    "labels": {
+      "loading": "Зареждане...",
+      "error": "Грешка",
+      "success": "Успех"
+    }
+  },
+  "sidebar": {
+    "appTitle": "Astrology AI",
+    "newReading": "Ново четене",
+    "yourCharts": "Вашите карти",
+    "noChartsYet": "Все още няма карти",
+    "createChart": "Създай карта",
+    "theme": "Тема",
+    "light": "Светла",
+    "dark": "Тъмна",
+    "signOut": "Излез",
+    "logOut": "Излез",
+    "user": "Потребител",
+    "language": "Език"
+  },
+  "metadata": {
+    "title": "Астрологическо приложение",
+    "description": "ИИ-асистиран астрологически асистент с анализ на натални карти"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "description": "Enter your email and password to access your account",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "signingIn": "Signing in...",
+      "signIn": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signup": {
+      "title": "Create account",
+      "description": "Create a new account to get started with astrology insights",
+      "name": "Name (optional)",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "signingUp": "Signing up...",
+      "createAccount": "Create account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    }
+  },
+  "dashboard": {
+    "charts": {
+      "noCharts": "No birth charts yet",
+      "noChartsDescription": "Create your first birth chart to start exploring your astrological insights",
+      "createFirst": "Create Your First Chart",
+      "noChartsYet": "No charts yet",
+      "createChart": "Create Chart"
+    },
+    "create": {
+      "title": "Create Birth Chart",
+      "description": "Enter the birth information to generate a new astrological chart.",
+      "name": "Name",
+      "namePlaceholder": "John Doe",
+      "nameRequired": "Name is required",
+      "birthDateTime": "Birth Date & Time",
+      "birthDateTimeDescription": "Select the date and time of birth",
+      "birthDateTimeRequired": "Birth date and time is required",
+      "city": "City",
+      "cityPlaceholder": "London",
+      "cityRequired": "City is required",
+      "country": "Country",
+      "countryPlaceholder": "Select a country",
+      "countryRequired": "Country is required",
+      "cancel": "Cancel",
+      "creating": "Creating...",
+      "createChart": "Create Chart"
+    },
+    "chartCard": {
+      "view": "View",
+      "delete": "Delete",
+      "deleteTitle": "Delete Chart",
+      "deleteDescription": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
+      "deleting": "Deleting..."
+    }
+  },
+  "chat": {
+    "welcome": {
+      "title": "Welcome to Astrology AI",
+      "description": "Ask questions about your birth charts or astrology in general. Select charts to include them in the context.",
+      "prompts": {
+        "sunSign": "Tell me about my Sun sign",
+        "moonSign": "What does my Moon sign mean?",
+        "analyze": "Analyze my birth chart",
+        "risingSign": "Explain my rising sign"
+      }
+    },
+    "input": {
+      "placeholder": "Ask about your astrological insights...",
+      "connecting": "Connecting...",
+      "sendMessage": "Send message",
+      "helperText": "Press Enter to send, Shift+Enter for new line"
+    },
+    "status": {
+      "thinking": "AI is thinking...",
+      "reconnecting": "Reconnecting..."
+    },
+    "message": {
+      "copied": "Copied to clipboard"
+    },
+    "selector": {
+      "label": "Select charts to include in context",
+      "selected": "{count} selected"
+    }
+  },
+  "chart": {
+    "viewer": {
+      "notAvailable": "Chart SVG not available",
+      "notAvailableDescription": "The chart visualization could not be loaded"
+    },
+    "details": {
+      "title": "Birth Information",
+      "dateTime": "Date & Time",
+      "location": "Location",
+      "timezone": "Timezone"
+    }
+  },
+  "common": {
+    "buttons": {
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "save": "Save",
+      "create": "Create",
+      "edit": "Edit",
+      "view": "View",
+      "close": "Close"
+    },
+    "labels": {
+      "loading": "Loading...",
+      "error": "Error",
+      "success": "Success"
+    }
+  },
+  "sidebar": {
+    "appTitle": "Astrology AI",
+    "newReading": "New Reading",
+    "yourCharts": "Your Charts",
+    "noChartsYet": "No charts yet",
+    "createChart": "Create Chart",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "signOut": "Sign out",
+    "logOut": "Log out",
+    "user": "User",
+    "language": "Language"
+  },
+  "metadata": {
+    "title": "Astrology App",
+    "description": "AI-powered astrology assistant with birth chart analysis"
+  }
+}

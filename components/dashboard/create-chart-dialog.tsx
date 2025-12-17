@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { format } from "date-fns";
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -25,16 +26,12 @@ import { mutate } from "swr";
 import { HOOK_KEYS } from "@/constants";
 import { SORTED_COUNTRIES } from "@/constants/countries";
 
-const createChartSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  birth_datetime: z.date({
-    message: "Birth date and time is required",
-  }),
-  city: z.string().min(1, "City is required"),
-  country: z.string().min(1, "Country is required"),
-});
-
-type CreateChartFormValues = z.infer<typeof createChartSchema>;
+type CreateChartFormValues = {
+  name: string;
+  birth_datetime: Date | undefined;
+  city: string;
+  country: string;
+};
 
 interface CreateChartDialogProps {
   children?: React.ReactNode;
@@ -43,6 +40,17 @@ interface CreateChartDialogProps {
 export function CreateChartDialog({ children }: CreateChartDialogProps) {
   const [open, setOpen] = useState(false);
   const { createChart, isCreating } = useCreateBirthChart();
+  const t = useTranslations("dashboard.create");
+  const tCommon = useTranslations("common.buttons");
+
+  const createChartSchema = z.object({
+    name: z.string().min(1, t("nameRequired")),
+    birth_datetime: z.date({
+      message: t("birthDateTimeRequired"),
+    }),
+    city: z.string().min(1, t("cityRequired")),
+    country: z.string().min(1, t("countryRequired")),
+  });
 
   const form = useForm<CreateChartFormValues>({
     resolver: zodResolver(createChartSchema),
@@ -77,14 +85,14 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
         {children || (
           <Button>
             <Plus className="h-4 w-4 mr-2" />
-            Create Chart
+            {t("createChart")}
           </Button>
         )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl">Create Birth Chart</DialogTitle>
-          <DialogDescription>Enter the birth information to generate a new astrological chart.</DialogDescription>
+          <DialogTitle className="text-2xl">{t("title")}</DialogTitle>
+          <DialogDescription>{t("description")}</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -93,9 +101,9 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{t("name")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder={t("namePlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -107,11 +115,11 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
               name="birth_datetime"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Birth Date & Time</FormLabel>
+                  <FormLabel>{t("birthDateTime")}</FormLabel>
                   <FormControl>
                     <DateTimePicker value={field.value} onChange={field.onChange} />
                   </FormControl>
-                  <FormDescription>Select the date and time of birth</FormDescription>
+                  <FormDescription>{t("birthDateTimeDescription")}</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -122,9 +130,9 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
               name="city"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>City</FormLabel>
+                  <FormLabel>{t("city")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="London" {...field} />
+                    <Input placeholder={t("cityPlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -136,11 +144,11 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
               name="country"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Country</FormLabel>
+                  <FormLabel>{t("country")}</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a country" />
+                        <SelectValue placeholder={t("countryPlaceholder")} />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -158,16 +166,16 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
 
             <DialogFooter className="gap-2">
               <Button type="button" variant="outline" onClick={() => setOpen(false)}>
-                Cancel
+                {tCommon("cancel")}
               </Button>
               <Button type="submit" disabled={isCreating} className="min-w-[100px]">
                 {isCreating ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating...
+                    {t("creating")}
                   </>
                 ) : (
-                  "Create Chart"
+                  t("createChart")
                 )}
               </Button>
             </DialogFooter>

@@ -1,9 +1,11 @@
 import type { AuthTokens } from "@/types/auth";
+import type { Locale } from "@/lib/i18n";
 
 const STORAGE_KEYS = {
   ACCESS_TOKEN: "accessToken",
   REFRESH_TOKEN: "refreshToken",
   EXPIRES_AT: "expiresAt",
+  LOCALE: "locale",
 } as const;
 
 export function getAuthTokens(): AuthTokens | null {
@@ -35,7 +37,7 @@ export function setAuthTokens(tokens: AuthTokens): void {
   try {
     localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, tokens.accessToken);
     localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, tokens.refreshToken);
-    
+
     // Handle expiresAt - if undefined, calculate default (1 hour from now)
     const expiresAt = tokens.expiresAt ?? Math.floor(Date.now() / 1000) + 3600;
     localStorage.setItem(STORAGE_KEYS.EXPIRES_AT, expiresAt.toString());
@@ -62,3 +64,26 @@ export function isTokenExpired(expiresAt: number): boolean {
   return expiresAt - nowInSeconds < bufferTime;
 }
 
+export function getLocale(): Locale {
+  if (typeof window === "undefined") return "en";
+
+  try {
+    const locale = localStorage.getItem(STORAGE_KEYS.LOCALE) as Locale;
+    return locale || "en";
+  } catch (error) {
+    console.error("Error reading locale:", error);
+    return "en";
+  }
+}
+
+export function setLocale(locale: Locale): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    localStorage.setItem(STORAGE_KEYS.LOCALE, locale);
+    // Also set cookie for server-side access
+    document.cookie = `locale=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+  } catch (error) {
+    console.error("Error saving locale:", error);
+  }
+}

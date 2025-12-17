@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { useWebSocketChat } from "@/hooks/chat/useWebSocketChat";
 import { ChatMessage as ChatMessageComponent } from "./chat-message";
 import { ChatInput } from "./chat-input";
@@ -13,16 +14,11 @@ interface ChatContainerProps {
   charts: BirthChartResponse[];
 }
 
-const SUGGESTED_PROMPTS = [
-  "Tell me about my Sun sign",
-  "What does my Moon sign mean?",
-  "Analyze my birth chart",
-  "Explain my rising sign",
-];
-
 export function ChatContainer({ charts }: ChatContainerProps) {
   const { messages, status, selectedCharts, isLoading, sendMessage, toggleChartSelection } = useWebSocketChat();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("chat.welcome");
+  const tStatus = useTranslations("chat.status");
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,13 +36,17 @@ export function ChatContainer({ charts }: ChatContainerProps) {
               <div className="rounded-full bg-primary/10 p-6 mb-6 animate-fade-in">
                 <Sparkles className="h-12 w-12 text-primary" />
               </div>
-              <h3 className="text-2xl font-semibold mb-2 animate-slide-in-bottom">Welcome to Astrology AI</h3>
+              <h3 className="text-2xl font-semibold mb-2 animate-slide-in-bottom">{t("title")}</h3>
               <p className="text-muted-foreground mb-8 max-w-md animate-slide-in-bottom">
-                Ask questions about your birth charts or astrology in general. Select charts to include them in the
-                context.
+                {t("description")}
               </p>
               <div className="flex flex-wrap gap-2 justify-center max-w-lg animate-slide-in-bottom">
-                {SUGGESTED_PROMPTS.map((prompt, idx) => (
+                {[
+                  t("prompts.sunSign"),
+                  t("prompts.moonSign"),
+                  t("prompts.analyze"),
+                  t("prompts.risingSign"),
+                ].map((prompt, idx) => (
                   <button
                     key={idx}
                     onClick={() => sendMessage(prompt)}
@@ -77,13 +77,13 @@ export function ChatContainer({ charts }: ChatContainerProps) {
                     <div className="rounded-2xl px-4 py-3 bg-muted border border-border">
                       <div className="flex items-center gap-2">
                         <Loader2 className="h-4 w-4 text-muted-foreground animate-spin" />
-                        <span className="text-sm text-muted-foreground">AI is thinking...</span>
+                        <span className="text-sm text-muted-foreground">{tStatus("thinking")}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               )}
-              {!isConnected && <div className="text-center text-sm text-muted-foreground py-4">Reconnecting...</div>}
+              {!isConnected && <div className="text-center text-sm text-muted-foreground py-4">{tStatus("reconnecting")}</div>}
               <div ref={messagesEndRef} />
             </div>
           )}

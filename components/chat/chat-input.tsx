@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, KeyboardEvent, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Loader2 } from "lucide-react";
@@ -29,6 +30,7 @@ export function ChatInput({
 }: ChatInputProps) {
   const [input, setInput] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const t = useTranslations("chat.input");
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -76,7 +78,7 @@ export function ChatInput({
             }
           }}
           onKeyDown={handleKeyDown}
-          placeholder={isConnected ? "Ask about your astrological insights..." : "Connecting..."}
+          placeholder={isConnected ? t("placeholder") : t("connecting")}
           disabled={!isConnected || isLoading}
           className={cn(
             "min-h-[60px] w-full resize-none rounded-xl border-2 px-4 py-3 pr-16",
@@ -96,7 +98,7 @@ export function ChatInput({
             canSend && "hover:scale-105 active:scale-95",
             "focus-visible:ring-2 focus-visible:ring-primary"
           )}
-          aria-label="Send message"
+          aria-label={t("sendMessage")}
         >
           {isLoading ? (
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -107,7 +109,7 @@ export function ChatInput({
       </div>
 
       <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
-        <span>Press Enter to send, Shift+Enter for new line</span>
+        <span>{t("helperText")}</span>
         <span className={cn(
           input.length > MAX_LENGTH * 0.9 && "text-destructive"
         )}>

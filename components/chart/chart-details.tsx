@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { BirthChartResponse } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, MapPin, Globe, Clock } from "lucide-react";
@@ -9,6 +10,7 @@ interface ChartDetailsProps {
 }
 
 export function ChartDetails({ chart }: ChartDetailsProps) {
+  const t = useTranslations("chart.details");
   const birthData = chart.birth_data;
   const birthDate = `${birthData.day}/${birthData.month}/${birthData.year}`;
   const birthTime = `${birthData.hour}:${birthData.minute.toString().padStart(2, "0")}`;
@@ -16,7 +18,7 @@ export function ChartDetails({ chart }: ChartDetailsProps) {
   return (
     <Card className="bg-gradient-to-br from-card to-muted/30">
       <CardHeader>
-        <CardTitle className="text-xl">Birth Information</CardTitle>
+        <CardTitle className="text-xl">{t("title")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -25,7 +27,7 @@ export function ChartDetails({ chart }: ChartDetailsProps) {
               <Calendar className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Date & Time</p>
+              <p className="text-sm font-medium text-muted-foreground mb-1">{t("dateTime")}</p>
               <p className="text-base font-semibold">{birthDate}</p>
               <p className="text-sm text-muted-foreground">{birthTime}</p>
             </div>
@@ -36,7 +38,7 @@ export function ChartDetails({ chart }: ChartDetailsProps) {
               <MapPin className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Location</p>
+              <p className="text-sm font-medium text-muted-foreground mb-1">{t("location")}</p>
               <p className="text-base font-semibold">
                 {birthData.city}, {birthData.country}
               </p>
@@ -51,7 +53,7 @@ export function ChartDetails({ chart }: ChartDetailsProps) {
               <Globe className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Timezone</p>
+              <p className="text-sm font-medium text-muted-foreground mb-1">{t("timezone")}</p>
               <p className="text-base font-semibold">{birthData.timezone}</p>
             </div>
           </div>

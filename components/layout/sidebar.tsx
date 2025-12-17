@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useBirthCharts, useAuth } from "@/hooks";
@@ -18,6 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useTheme } from "next-themes";
+import { LanguageSwitcher } from "./language-switcher";
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -29,6 +31,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   const { charts, isLoading } = useBirthCharts();
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
+  const t = useTranslations("sidebar");
 
   const handleLogout = async () => {
     await logoutAction();
@@ -99,7 +102,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           {!isCollapsed && (
             <div className="flex items-center gap-2 min-w-0">
               <Sparkles className="h-5 w-5 text-primary shrink-0" />
-              <h2 className="text-lg font-semibold text-sidebar-foreground truncate">Astrology AI</h2>
+              <h2 className="text-lg font-semibold text-sidebar-foreground truncate">{t("appTitle")}</h2>
             </div>
           )}
           {/* Desktop: collapse button when expanded, expand button when collapsed */}
@@ -132,7 +135,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
             <CreateChartDialog>
               <Button className="w-full" size="sm" aria-label="Create new birth chart">
                 <Plus className="h-4 w-4 mr-2" />
-                New Reading
+                {t("newReading")}
               </Button>
             </CreateChartDialog>
           </div>
@@ -142,7 +145,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {!isCollapsed && (
           <div className="lg:hidden flex flex-1 flex-col min-h-0">
             <div className="px-4 py-3 border-b border-sidebar-border">
-              <h3 className="text-sm font-medium text-sidebar-foreground">Your Charts</h3>
+              <h3 className="text-sm font-medium text-sidebar-foreground">{t("yourCharts")}</h3>
             </div>
             <ScrollArea className="flex-1">
               {isLoading ? (
@@ -151,11 +154,11 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                 </div>
               ) : charts.length === 0 ? (
                 <div className="py-8 text-center px-3">
-                  <p className="text-sm text-muted-foreground mb-2">No charts yet</p>
+                  <p className="text-sm text-muted-foreground mb-2">{t("noChartsYet")}</p>
                   <CreateChartDialog>
                     <Button variant="outline" size="sm">
                       <Plus className="h-4 w-4 mr-2" />
-                      Create Chart
+                      {t("createChart")}
                     </Button>
                   </CreateChartDialog>
                 </div>
@@ -202,7 +205,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
             <CreateChartDialog>
               <Button className="w-full" size="sm" aria-label="Create new birth chart">
                 <Plus className="h-4 w-4 mr-2" />
-                New Reading
+                {t("newReading")}
               </Button>
             </CreateChartDialog>
           )}
@@ -212,7 +215,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         <div className="hidden lg:flex flex-1 flex-col min-h-0">
           {!isCollapsed && (
             <div className="px-4 lg:px-6 py-3 border-b border-sidebar-border">
-              <h3 className="text-sm font-medium text-sidebar-foreground">Your Charts</h3>
+              <h3 className="text-sm font-medium text-sidebar-foreground">{t("yourCharts")}</h3>
             </div>
           )}
           <ScrollArea className="flex-1">
@@ -224,11 +227,11 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               <div className={cn("py-8 text-center", isCollapsed ? "px-2" : "px-3")}>
                 {!isCollapsed && (
                   <>
-                    <p className="text-sm text-muted-foreground mb-2">No charts yet</p>
+                    <p className="text-sm text-muted-foreground mb-2">{t("noChartsYet")}</p>
                     <CreateChartDialog>
                       <Button variant="outline" size="sm">
                         <Plus className="h-4 w-4 mr-2" />
-                        Create Chart
+                        {t("createChart")}
                       </Button>
                     </CreateChartDialog>
                   </>
@@ -278,7 +281,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               onClick={handleLogout}
             >
               <LogOut className="h-4 w-4 mr-2" />
-              <span className="text-base font-medium">Sign out</span>
+              <span className="text-base font-medium">{t("signOut")}</span>
             </Button>
           </div>
         )}
@@ -287,7 +290,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         <div className="hidden lg:block border-t border-sidebar-border p-3 space-y-2">
           {/* Theme Toggle */}
           <div className={cn("flex items-center", isCollapsed ? "justify-center" : "justify-between")}>
-            {!isCollapsed && <span className="text-sm text-sidebar-foreground">Theme</span>}
+            {!isCollapsed && <span className="text-sm text-sidebar-foreground">{t("theme")}</span>}
             <Button
               variant="ghost"
               size={isCollapsed ? "icon" : "sm"}
@@ -296,9 +299,12 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
             >
               {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              {!isCollapsed && <span className="ml-2">{theme === "dark" ? "Light" : "Dark"}</span>}
+              {!isCollapsed && <span className="ml-2">{theme === "dark" ? t("light") : t("dark")}</span>}
             </Button>
           </div>
+
+          {/* Language Switcher */}
+          <LanguageSwitcher isCollapsed={isCollapsed} />
 
           {/* User Menu */}
           {user && (
@@ -315,7 +321,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                   </Avatar>
                   {!isCollapsed && (
                     <div className="flex-1 min-w-0 ml-3 text-left">
-                      <p className="text-sm font-medium truncate text-sidebar-foreground">{user.name || "User"}</p>
+                      <p className="text-sm font-medium truncate text-sidebar-foreground">{user.name || t("user")}</p>
                       <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                     </div>
                   )}
@@ -324,14 +330,14 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">{user.name || "User"}</p>
+                    <p className="text-sm font-medium leading-none">{user.name || t("user")}</p>
                     <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
                   </div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                   <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
+                  <span>{t("logOut")}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
