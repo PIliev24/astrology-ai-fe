@@ -1,16 +1,11 @@
-import { api, apiFetch } from "./api-client";
-import {
-  AuthResponse,
-  LoginRequest,
-  SignupRequest,
-  User,
-} from "@/types";
+import { api } from "./api-client";
+import { AuthResponse, LoginRequest, SignupRequest, User } from "@/types";
 import { setAuthTokens, clearAuthTokens, getAuthTokens } from "@/lib/client-storage";
 import { getTokenExpiration } from "@/lib/jwt";
 import { ENDPOINTS } from "@/constants";
 
 export async function login(credentials: LoginRequest): Promise<AuthResponse> {
-  const response = await apiFetch<AuthResponse>(ENDPOINTS.AUTH.LOGIN, {
+  const response = await api.post<AuthResponse>(ENDPOINTS.AUTH.LOGIN, {
     method: "POST",
     body: JSON.stringify(credentials),
     requiresAuth: false,
@@ -29,7 +24,7 @@ export async function login(credentials: LoginRequest): Promise<AuthResponse> {
 }
 
 export async function signup(credentials: SignupRequest): Promise<AuthResponse> {
-  const response = await apiFetch<AuthResponse>(ENDPOINTS.AUTH.SIGNUP, {
+  const response = await api.post<AuthResponse>(ENDPOINTS.AUTH.SIGNUP, {
     method: "POST",
     body: JSON.stringify(credentials),
     requiresAuth: false,
@@ -62,7 +57,7 @@ export async function refreshTokens(): Promise<AuthResponse> {
     throw new Error("No refresh token found");
   }
 
-  const response = await apiFetch<AuthResponse>(ENDPOINTS.AUTH.REFRESH, {
+  const response = await api.post<AuthResponse>(ENDPOINTS.AUTH.REFRESH, {
     method: "POST",
     body: JSON.stringify({ refresh_token: tokens.refreshToken }),
     requiresAuth: false,
@@ -85,4 +80,3 @@ export function isAuthenticated(): boolean {
   const tokens = getAuthTokens();
   return tokens !== null;
 }
-
