@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -38,11 +38,21 @@ type CreateChartFormValues = z.infer<typeof createChartSchema>;
 
 interface CreateChartDialogProps {
   children?: React.ReactNode;
+  forceOpen?: boolean;
 }
 
-export function CreateChartDialog({ children }: CreateChartDialogProps) {
-  const [open, setOpen] = useState(false);
+export function CreateChartDialog({ children, forceOpen = false }: CreateChartDialogProps) {
+  const [open, setOpen] = useState(forceOpen);
   const { createChart, isCreating } = useCreateBirthChart();
+
+  // Update open state when forceOpen changes
+  useEffect(() => {
+    if (forceOpen) {
+      setTimeout(() => {
+        setOpen(true);
+      }, 0);
+    }
+  }, [forceOpen]);
 
   const form = useForm<CreateChartFormValues>({
     resolver: zodResolver(createChartSchema),
@@ -65,26 +75,43 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
       });
       mutate(HOOK_KEYS.BIRTH_CHARTS);
       form.reset();
-      setOpen(false);
+      // Only close if not forced open
+      if (!forceOpen) {
+        setOpen(false);
+      }
     } catch (error) {
       console.error("Failed to create chart:", error);
     }
   };
 
+  const handleOpenChange = (newOpen: boolean) => {
+    // Prevent closing if forceOpen is true
+    if (forceOpen && !newOpen) {
+      return;
+    }
+    setOpen(newOpen);
+  };
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {children || (
-          <Button>
-            <Plus className="h-4 w-4 mr-2" />
-            Create Chart
-          </Button>
-        )}
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      {!forceOpen && (
+        <DialogTrigger asChild>
+          {children || (
+            <Button>
+              <Plus className="h-4 w-4 mr-2" />
+              Create Chart
+            </Button>
+          )}
+        </DialogTrigger>
+      )}
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle className="text-2xl">Create Birth Chart</DialogTitle>
-          <DialogDescription>Enter the birth information to generate a new astrological chart.</DialogDescription>
+          <DialogDescription>
+            {forceOpen
+              ? "Create your first birth chart to get started"
+              : "Enter the birth information to generate a new astrological chart."}
+          </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -157,9 +184,11 @@ export function CreateChartDialog({ children }: CreateChartDialogProps) {
             />
 
             <DialogFooter className="gap-2">
-              <Button type="button" variant="outline" onClick={() => setOpen(false)}>
-                Cancel
-              </Button>
+              {!forceOpen && (
+                <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+              )}
               <Button type="submit" disabled={isCreating} className="min-w-[100px]">
                 {isCreating ? (
                   <>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { useWebSocketChat } from "@/hooks/chat/useWebSocketChat";
+import { useWebSocketChat, ChatMessage } from "@/hooks/chat/useWebSocketChat";
 import { ChatMessage as ChatMessageComponent } from "./chat-message";
 import { ChatInput } from "./chat-input";
 import { BirthChartResponse } from "@/types";
@@ -11,25 +11,65 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ChatContainerProps {
   charts: BirthChartResponse[];
+  initialMessages?: ChatMessage[];
+  conversationId?: string | null;
 }
 
 const SUGGESTED_PROMPTS = [
+  "Tell me my daily horoscope",
+  "Tell me my weekly horoscope",
+  "Tell me my monthly horoscope",
+  "Tell me my yearly horoscope",
+  "Tell me my life path number",
+  "Tell me my destiny number",
+  "Tell me my soulmate number",
+  "Tell me my lucky number",
+  "Tell me my lucky color",
   "Tell me about my Sun sign",
   "What does my Moon sign mean?",
   "Analyze my birth chart",
   "Explain my rising sign",
+  "What are my dominant elements?",
+  "Describe my planetary aspects",
+  "What does my Venus placement mean?",
+  "How does Mars influence my chart?",
+  "Explain my house placements",
+  "What are my strongest planetary aspects?",
+  "Tell me about my chart's element balance",
+  "What does my Mercury sign reveal?",
 ];
 
-export function ChatContainer({ charts }: ChatContainerProps) {
-  const { messages, status, selectedCharts, isLoading, sendMessage, toggleChartSelection } = useWebSocketChat();
+export function ChatContainer({ charts, initialMessages, conversationId }: ChatContainerProps) {
+  const {
+    messages,
+    status,
+    selectedCharts,
+    isLoading,
+    sendMessage,
+    toggleChartSelection,
+    loadMessages,
+    setConversationId,
+  } = useWebSocketChat({
+    initialMessages,
+    initialConversationId: conversationId,
+  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
+  // Update messages and conversationId when props change
+  useEffect(() => {
+    if (initialMessages) {
+      loadMessages(initialMessages);
+    }
+    if (conversationId !== undefined) {
+      setConversationId(conversationId);
+    }
+  }, [initialMessages, conversationId, loadMessages, setConversationId]);
+
   const isConnected = status === "connected";
-  const isConnecting = status === "connecting";
 
   return (
     <div className="flex flex-col h-full min-h-0 bg-background">
@@ -50,7 +90,7 @@ export function ChatContainer({ charts }: ChatContainerProps) {
                   <button
                     key={idx}
                     onClick={() => sendMessage(prompt)}
-                    disabled={!isConnected}
+                    disabled={!isConnected || isLoading}
                     className={cn(
                       "px-4 py-2 rounded-lg text-sm border bg-card hover:bg-accent",
                       "transition-all disabled:opacity-50 disabled:cursor-not-allowed",
@@ -99,7 +139,7 @@ export function ChatContainer({ charts }: ChatContainerProps) {
             selectedChartIds={selectedCharts}
             onToggleChart={toggleChartSelection}
             isConnected={isConnected}
-            isLoading={isConnecting}
+            isLoading={isLoading}
           />
         </div>
       </div>

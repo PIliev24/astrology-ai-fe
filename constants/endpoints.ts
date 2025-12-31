@@ -13,5 +13,10 @@ export const ENDPOINTS = {
   WEBSOCKET: {
     CHAT: "/ws/chat",
   },
+  CONVERSATIONS: {
+    BASE: "/conversations",
+    BY_ID: (id: string) => `/conversations/${id}`,
+    BY_CHART: (chartId: string) => `/conversations/by-chart/${chartId}`,
+  },
 } as const;
 

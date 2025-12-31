@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { getWebSocketUrl } from "@/lib/env";
 import { getAuthTokens } from "@/lib/client-storage";
 import { ENDPOINTS } from "@/constants";
-import { ChatMessageRequest, ChatMessageResponse, ConnectionResponse, ErrorResponse } from "@/types";
+import { ChatMessageRequest, ChatMessageResponse, ConnectionResponse, ErrorResponse, ConversationMessage } from "@/types";
 import { useAuth } from "@/hooks";
 import { isAuthenticated } from "@/services/auth.service";
 import { toast } from "sonner";
@@ -22,11 +22,16 @@ export interface ChatMessage {
 
 export type WebSocketStatus = "connecting" | "connected" | "disconnected" | "error";
 
-export function useWebSocketChat() {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+interface UseWebSocketChatOptions {
+  initialMessages?: ChatMessage[];
+  initialConversationId?: string | null;
+}
+
+export function useWebSocketChat(options?: UseWebSocketChatOptions) {
+  const [messages, setMessages] = useState<ChatMessage[]>(options?.initialMessages || []);
   const [status, setStatus] = useState<WebSocketStatus>("disconnected");
   const [selectedCharts, setSelectedCharts] = useState<string[]>([]);
-  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [conversationId, setConversationId] = useState<string | null>(options?.initialConversationId || null);
   const [isLoading, setIsLoading] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -278,14 +283,43 @@ export function useWebSocketChat() {
     setIsLoading(false);
   }, []);
 
+  const loadMessages = useCallback((newMessages: ChatMessage[]) => {
+    setMessages(newMessages);
+  }, []);
+
+  const setConversationIdState = useCallback((id: string | null) => {
+    setConversationId(id);
+  }, []);
+
+  const reset = useCallback(() => {
+    setMessages([]);
+    setConversationId(null);
+    setSelectedCharts([]);
+    setIsLoading(false);
+  }, []);
+
+  // Update messages and conversationId when options change
+  useEffect(() => {
+    if (options?.initialMessages) {
+      setMessages(options.initialMessages);
+    }
+    if (options?.initialConversationId !== undefined) {
+      setConversationId(options.initialConversationId);
+    }
+  }, [options?.initialMessages, options?.initialConversationId]);
+
   return {
     messages,
     status,
     selectedCharts,
+    conversationId,
     isLoading,
     sendMessage,
     toggleChartSelection,
     clearSelectedCharts,
     cancelLoading,
+    loadMessages,
+    setConversationId: setConversationIdState,
+    reset,
   };
 }

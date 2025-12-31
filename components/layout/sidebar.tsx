@@ -1,12 +1,25 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useBirthCharts, useAuth } from "@/hooks";
+import { useBirthCharts, useAuth, useConversationsByChart, useDeleteConversation, useDeleteBirthChart } from "@/hooks";
 import { logoutAction } from "@/actions";
 import { CreateChartDialog } from "@/components/dashboard/create-chart-dialog";
-import { ChevronLeft, MessageSquare, Plus, Sparkles, Loader2, LogOut, Moon, Sun, X } from "lucide-react";
+import {
+  ChevronLeft,
+  MessageSquare,
+  Plus,
+  Sparkles,
+  Loader2,
+  LogOut,
+  Moon,
+  Sun,
+  X,
+  ChevronDown,
+  Trash2,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -18,10 +31,216 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useTheme } from "next-themes";
+import { formatDistanceToNow } from "date-fns";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { BirthChartResponse } from "@/types";
 
 interface SidebarProps {
   isCollapsed: boolean;
   onToggleCollapse: () => void;
+}
+
+interface ChartItemProps {
+  chart: BirthChartResponse;
+  isExpanded: boolean;
+  onToggle: () => void;
+  isCollapsed: boolean;
+  onCloseSidebar?: () => void;
+}
+
+function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }: ChartItemProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { conversations, isLoading: isLoadingConversations } = useConversationsByChart(chart.id);
+  const { deleteConversation, isDeleting } = useDeleteConversation();
+  const { deleteChart, isDeleting: isDeletingChart } = useDeleteBirthChart();
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [conversationToDelete, setConversationToDelete] = useState<string | null>(null);
+  const [chartDeleteDialogOpen, setChartDeleteDialogOpen] = useState(false);
+
+  const birthDate = `${chart.birth_data.day}/${chart.birth_data.month}/${chart.birth_data.year}`;
+
+  const handleDeleteClick = (e: React.MouseEvent, conversationId: string) => {
+    e.stopPropagation();
+    setConversationToDelete(conversationId);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (conversationToDelete) {
+      await deleteConversation(conversationToDelete);
+      setDeleteDialogOpen(false);
+
+      if (pathname === `/conversations/${conversationToDelete}`) {
+        router.push("/");
+      }
+
+      setConversationToDelete(null);
+    }
+  };
+
+  const handleConversationClick = (conversationId: string) => {
+    router.push(`/conversations/${conversationId}`);
+    onCloseSidebar?.();
+  };
+
+  const handleChartDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setChartDeleteDialogOpen(true);
+  };
+
+  const handleChartDeleteConfirm = async () => {
+    await deleteChart(chart.id);
+    setChartDeleteDialogOpen(false);
+
+    if (pathname === `/chart/${chart.id}`) {
+      router.push("/");
+    }
+  };
+
+  if (isCollapsed) {
+    return (
+      <Button
+        variant="ghost"
+        className="w-full justify-center h-10 px-2"
+        onClick={() => router.push(`/chart/${chart.id}`)}
+        aria-label={`View ${chart.name}`}
+        title={`${chart.name} - ${birthDate}`}
+      >
+        <MessageSquare className="h-4 w-4 text-muted-foreground" />
+      </Button>
+    );
+  }
+
+  return (
+    <>
+      <div className="space-y-1">
+        <div className="group relative">
+          <Button
+            variant="ghost"
+            className="w-full hover:bg-sidebar-accent transition-colors justify-start text-left h-auto py-2 px-3"
+            onClick={onToggle}
+            aria-label={`Toggle ${chart.name} conversations`}
+          >
+            <div className="flex items-center gap-3 w-full min-w-0">
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 shrink-0 text-muted-foreground transition-transform",
+                  isExpanded && "rotate-180"
+                )}
+              />
+              <MessageSquare className="h-4 w-4 shrink-0 text-muted-foreground" />
+              <div
+                className="flex-1 min-w-0"
+                onClick={e => {
+                  e.stopPropagation();
+                  router.push(`/chart/${chart.id}`);
+                }}
+              >
+                <p className="text-sm font-medium truncate text-sidebar-foreground">{chart.name}</p>
+                <p className="text-xs text-muted-foreground truncate">{birthDate}</p>
+              </div>
+            </div>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+            onClick={handleChartDeleteClick}
+            aria-label={`Delete chart ${chart.name}`}
+          >
+            <Trash2 className="h-3 w-3 text-destructive" />
+          </Button>
+        </div>
+        {isExpanded && (
+          <div className="ml-7 space-y-1">
+            {isLoadingConversations ? (
+              <div className="flex items-center justify-center py-2">
+                <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+              </div>
+            ) : conversations.length === 0 ? (
+              <div className="py-2 px-3 text-xs text-muted-foreground">No conversations yet</div>
+            ) : (
+              conversations.map(conversation => {
+                const relativeTime = formatDistanceToNow(new Date(conversation.updated_at), { addSuffix: true });
+                return (
+                  <div
+                    key={conversation.id}
+                    className="group flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-sidebar-accent transition-colors"
+                  >
+                    <button
+                      className="flex-1 min-w-0 text-left"
+                      onClick={() => handleConversationClick(conversation.id)}
+                    >
+                      <p className="text-xs font-medium truncate text-sidebar-foreground">
+                        {conversation.title || "Untitled"}
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">{relativeTime}</p>
+                    </button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+                      onClick={e => handleDeleteClick(e, conversation.id)}
+                      aria-label={`Delete conversation ${conversation.title || "Untitled"}`}
+                    >
+                      <Trash2 className="h-3 w-3 text-destructive" />
+                    </Button>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        )}
+      </div>
+
+      <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete Conversation</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete this conversation? This action cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleDeleteConfirm} disabled={isDeleting}>
+              {isDeleting ? "Deleting..." : "Delete"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={chartDeleteDialogOpen} onOpenChange={setChartDeleteDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete Chart</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete this chart? This will also delete all conversations associated with this
+              chart. This action cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setChartDeleteDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleChartDeleteConfirm} disabled={isDeletingChart}>
+              {isDeletingChart ? "Deleting..." : "Delete"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
 }
 
 export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
@@ -29,6 +248,19 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   const { charts, isLoading } = useBirthCharts();
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
+  const [expandedCharts, setExpandedCharts] = useState<Set<string>>(new Set());
+
+  const toggleChartExpansion = (chartId: string) => {
+    setExpandedCharts(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(chartId)) {
+        newSet.delete(chartId);
+      } else {
+        newSet.add(chartId);
+      }
+      return newSet;
+    });
+  };
 
   const handleLogout = async () => {
     await logoutAction();
@@ -151,39 +383,22 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                 </div>
               ) : charts.length === 0 ? (
                 <div className="py-8 text-center px-3">
-                  <p className="text-sm text-muted-foreground mb-2">No charts yet</p>
-                  <CreateChartDialog>
-                    <Button variant="outline" size="sm">
-                      <Plus className="h-4 w-4 mr-2" />
-                      Create Chart
-                    </Button>
+                  <CreateChartDialog forceOpen={true}>
+                    <div />
                   </CreateChartDialog>
                 </div>
               ) : (
                 <div className="space-y-1 py-2 px-3">
-                  {charts.map(chart => {
-                    const birthDate = `${chart.birth_data.day}/${chart.birth_data.month}/${chart.birth_data.year}`;
-                    return (
-                      <Button
-                        key={chart.id}
-                        variant="ghost"
-                        className="w-full hover:bg-sidebar-accent transition-colors justify-start text-left h-auto py-2 px-3"
-                        onClick={() => {
-                          router.push(`/chart/${chart.id}`);
-                          onToggleCollapse(); // Close sidebar on mobile after navigation
-                        }}
-                        aria-label={`View chart for ${chart.name}`}
-                      >
-                        <div className="flex items-center gap-3 w-full min-w-0">
-                          <MessageSquare className="h-4 w-4 shrink-0 text-muted-foreground" />
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium truncate text-sidebar-foreground">{chart.name}</p>
-                            <p className="text-xs text-muted-foreground truncate">{birthDate}</p>
-                          </div>
-                        </div>
-                      </Button>
-                    );
-                  })}
+                  {charts.map(chart => (
+                    <ChartItem
+                      key={chart.id}
+                      chart={chart}
+                      isExpanded={expandedCharts.has(chart.id)}
+                      onToggle={() => toggleChartExpansion(chart.id)}
+                      isCollapsed={false}
+                      onCloseSidebar={onToggleCollapse}
+                    />
+                  ))}
                 </div>
               )}
             </ScrollArea>
@@ -223,47 +438,22 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
             ) : charts.length === 0 ? (
               <div className={cn("py-8 text-center", isCollapsed ? "px-2" : "px-3")}>
                 {!isCollapsed && (
-                  <>
-                    <p className="text-sm text-muted-foreground mb-2">No charts yet</p>
-                    <CreateChartDialog>
-                      <Button variant="outline" size="sm">
-                        <Plus className="h-4 w-4 mr-2" />
-                        Create Chart
-                      </Button>
-                    </CreateChartDialog>
-                  </>
+                  <CreateChartDialog forceOpen={true}>
+                    <div />
+                  </CreateChartDialog>
                 )}
               </div>
             ) : (
               <div className={cn("space-y-1 py-2", isCollapsed ? "px-2" : "px-3")}>
-                {charts.map(chart => {
-                  const birthDate = `${chart.birth_data.day}/${chart.birth_data.month}/${chart.birth_data.year}`;
-                  return (
-                    <Button
-                      key={chart.id}
-                      variant="ghost"
-                      className={cn(
-                        "w-full hover:bg-sidebar-accent transition-colors",
-                        isCollapsed ? "justify-center h-10 px-2" : "justify-start text-left h-auto py-2 px-3"
-                      )}
-                      onClick={() => router.push(`/chart/${chart.id}`)}
-                      aria-label={isCollapsed ? `View ${chart.name}` : `View chart for ${chart.name}`}
-                      title={isCollapsed ? `${chart.name} - ${birthDate}` : undefined}
-                    >
-                      {isCollapsed ? (
-                        <MessageSquare className="h-4 w-4 text-muted-foreground" />
-                      ) : (
-                        <div className="flex items-center gap-3 w-full min-w-0">
-                          <MessageSquare className="h-4 w-4 shrink-0 text-muted-foreground" />
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium truncate text-sidebar-foreground">{chart.name}</p>
-                            <p className="text-xs text-muted-foreground truncate">{birthDate}</p>
-                          </div>
-                        </div>
-                      )}
-                    </Button>
-                  );
-                })}
+                {charts.map(chart => (
+                  <ChartItem
+                    key={chart.id}
+                    chart={chart}
+                    isExpanded={expandedCharts.has(chart.id)}
+                    onToggle={() => toggleChartExpansion(chart.id)}
+                    isCollapsed={isCollapsed}
+                  />
+                ))}
               </div>
             )}
           </ScrollArea>

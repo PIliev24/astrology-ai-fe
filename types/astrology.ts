@@ -186,3 +186,31 @@ export interface ErrorResponse {
   code?: string;
 }
 
+export interface ChatConversation {
+  id: string;
+  user_id: string;
+  title: string | null;
+  created_at: string;
+  updated_at: string;
+  birth_chart_ids?: string[];
+}
+
+export interface ConversationMessage {
+  id: string;
+  conversation_id: string;
+  role: "user" | "assistant";
+  content: string;
+  metadata: Record<string, unknown> | null;
+  created_at: string;
+}
+
+export interface ConversationWithMessages {
+  conversation: ChatConversation;
+  messages: ConversationMessage[];
+}
+
+export interface ChartWithConversations {
+  chart: BirthChartResponse;
+  conversations: ChatConversation[];
+}
+
