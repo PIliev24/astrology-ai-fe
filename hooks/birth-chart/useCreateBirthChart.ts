@@ -19,18 +19,14 @@ async function createChartMutation(
 }
 
 export function useCreateBirthChart() {
-  const { trigger, isMutating, error, reset } = useSWRMutation(
-    "create-birth-chart",
-    createChartMutation,
-    {
-      onSuccess: () => {
-        toast.success("Birth chart created successfully");
-      },
-      onError: (err: Error) => {
-        toast.error(err.message || "Failed to create birth chart");
-      },
-    }
-  );
+  const { trigger, isMutating, error, reset } = useSWRMutation("create-birth-chart", createChartMutation, {
+    onSuccess: () => {
+      toast.success("Birth chart created successfully");
+    },
+    onError: (err: Error) => {
+      toast.error(err.message || "Failed to create birth chart");
+    },
+  });
 
   return {
     createChart: trigger,
@@ -39,4 +35,3 @@ export function useCreateBirthChart() {
     reset,
   };
 }
-

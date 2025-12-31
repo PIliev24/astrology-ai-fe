@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Trash2, Eye, Calendar, MapPin } from "lucide-react";
 import { BirthChartResponse } from "@/types";
 import { useRouter } from "next/navigation";
@@ -41,11 +40,13 @@ export function ChartCard({ chart }: ChartCardProps) {
 
   return (
     <>
-      <Card className={cn(
-        "group hover:shadow-lg transition-all duration-300 animate-fade-in",
-        "hover:border-primary/20 hover:-translate-y-1",
-        "cursor-pointer"
-      )}>
+      <Card
+        className={cn(
+          "group hover:shadow-lg transition-all duration-300 animate-fade-in",
+          "hover:border-primary/20 hover:-translate-y-1",
+          "cursor-pointer"
+        )}
+      >
         <CardHeader className="pb-3">
           <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">
             {chart.name}
@@ -68,10 +69,10 @@ export function ChartCard({ chart }: ChartCardProps) {
             </div>
           </div>
           <div className="flex gap-2 pt-2 border-t">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={handleView} 
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleView}
               className="flex-1 group-hover:border-primary/50 group-hover:text-primary transition-colors"
               aria-label={`View chart for ${chart.name}`}
             >
@@ -97,7 +98,7 @@ export function ChartCard({ chart }: ChartCardProps) {
           <DialogHeader>
             <DialogTitle>Delete Chart</DialogTitle>
             <DialogDescription>
-              Are you sure you want to delete "{chart.name}"? This action cannot be undone.
+              Are you sure you want to delete &quot;{chart.name}&quot;? This action cannot be undone.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -113,4 +114,3 @@ export function ChartCard({ chart }: ChartCardProps) {
     </>
   );
 }
-

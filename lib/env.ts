@@ -21,4 +21,3 @@ export function getWebSocketUrl(endpoint: string): string {
   const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
   return `${wsBaseUrl}${cleanEndpoint}`;
 }
-

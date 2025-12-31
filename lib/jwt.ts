@@ -30,4 +30,3 @@ export function getTokenExpiration(token: string): number | null {
   // exp is already in seconds, return as-is
   return decoded.exp as number;
 }
-

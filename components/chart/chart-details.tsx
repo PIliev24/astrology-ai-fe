@@ -2,7 +2,7 @@
 
 import { BirthChartResponse } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, MapPin, Globe, Clock } from "lucide-react";
+import { Calendar, MapPin, Globe } from "lucide-react";
 
 interface ChartDetailsProps {
   chart: BirthChartResponse;
@@ -14,7 +14,7 @@ export function ChartDetails({ chart }: ChartDetailsProps) {
   const birthTime = `${birthData.hour}:${birthData.minute.toString().padStart(2, "0")}`;
 
   return (
-    <Card className="bg-gradient-to-br from-card to-muted/30">
+    <Card className="bg-linear-to-br from-card to-muted/30">
       <CardHeader>
         <CardTitle className="text-xl">Birth Information</CardTitle>
       </CardHeader>
@@ -60,4 +60,3 @@ export function ChartDetails({ chart }: ChartDetailsProps) {
     </Card>
   );
 }
-

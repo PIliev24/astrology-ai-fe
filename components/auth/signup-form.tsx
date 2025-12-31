@@ -90,11 +90,7 @@ const SignupForm = () => {
                 </div>
               )}
 
-              <Button 
-                type="submit" 
-                className="w-full h-11 text-base font-medium" 
-                disabled={isSubmitting}
-              >
+              <Button type="submit" className="w-full h-11 text-base font-medium" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -107,10 +103,7 @@ const SignupForm = () => {
 
               <div className="text-center text-sm pt-2">
                 <span className="text-muted-foreground">Already have an account? </span>
-                <Link 
-                  href="/login" 
-                  className="text-primary hover:underline font-medium transition-colors"
-                >
+                <Link href="/login" className="text-primary hover:underline font-medium transition-colors">
                   Sign in
                 </Link>
               </div>
@@ -123,4 +116,3 @@ const SignupForm = () => {
 };
 
 export default SignupForm;
-

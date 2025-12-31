@@ -15,19 +15,15 @@ async function deleteChartMutation(_key: string, { arg }: { arg: string }): Prom
 }
 
 export function useDeleteBirthChart() {
-  const { trigger, isMutating, error, reset } = useSWRMutation(
-    "delete-birth-chart",
-    deleteChartMutation,
-    {
-      onSuccess: () => {
-        toast.success("Birth chart deleted successfully");
-        mutate(HOOK_KEYS.BIRTH_CHARTS);
-      },
-      onError: (err: Error) => {
-        toast.error(err.message || "Failed to delete birth chart");
-      },
-    }
-  );
+  const { trigger, isMutating, error, reset } = useSWRMutation("delete-birth-chart", deleteChartMutation, {
+    onSuccess: () => {
+      toast.success("Birth chart deleted successfully");
+      mutate(HOOK_KEYS.BIRTH_CHARTS);
+    },
+    onError: (err: Error) => {
+      toast.error(err.message || "Failed to delete birth chart");
+    },
+  });
 
   return {
     deleteChart: trigger,
@@ -36,4 +32,3 @@ export function useDeleteBirthChart() {
     reset,
   };
 }
-

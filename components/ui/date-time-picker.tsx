@@ -13,11 +13,7 @@ interface DateTimePickerProps {
   disabled?: boolean;
 }
 
-export function DateTimePicker({
-  value,
-  onChange,
-  disabled,
-}: DateTimePickerProps) {
+export function DateTimePicker({ value, onChange, disabled }: DateTimePickerProps) {
   const [open, setOpen] = useState(false);
 
   // Derive time value from the value prop
@@ -71,11 +67,7 @@ export function DateTimePicker({
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={value}
-              onSelect={handleDateSelect}
-            />
+            <Calendar mode="single" selected={value} onSelect={handleDateSelect} />
           </PopoverContent>
         </Popover>
       </div>
@@ -85,7 +77,7 @@ export function DateTimePicker({
           id="time-picker"
           step="1"
           value={timeValue}
-          onChange={(e) => handleTimeChange(e.target.value)}
+          onChange={e => handleTimeChange(e.target.value)}
           className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
           disabled={disabled}
         />

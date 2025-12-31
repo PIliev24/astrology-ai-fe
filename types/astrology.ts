@@ -1,4 +1,3 @@
-
 export interface BirthChartCreateRequest {
   name: string;
   birth_datetime: string; // Format: "dd-mmm-yyyy hh:mm" (e.g., "15-Jun-1990 14:30")
@@ -116,12 +115,20 @@ export interface BirthChartResponse {
           moon_phase_name?: string;
           degrees_between_s_m?: number;
         };
-        [key: string]: AstrologicalPoint | House | string | number | null | {
-          moon_emoji?: string;
-          moon_phase?: number;
-          moon_phase_name?: string;
-          degrees_between_s_m?: number;
-        } | string[] | undefined;
+        [key: string]:
+          | AstrologicalPoint
+          | House
+          | string
+          | number
+          | null
+          | {
+              moon_emoji?: string;
+              moon_phase?: number;
+              moon_phase_name?: string;
+              degrees_between_s_m?: number;
+            }
+          | string[]
+          | undefined;
       };
       active_points?: string[];
       active_aspects?: Array<{ orb: number; name: string }>;
@@ -213,4 +220,3 @@ export interface ChartWithConversations {
   chart: BirthChartResponse;
   conversations: ChatConversation[];
 }
-

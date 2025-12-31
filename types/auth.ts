@@ -35,4 +35,3 @@ export interface SignupRequest {
 export interface RefreshTokenRequest {
   refreshToken: string;
 }
-

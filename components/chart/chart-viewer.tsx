@@ -21,9 +21,7 @@ export function ChartViewer({ chart }: ChartViewerProps) {
           </div>
           <div>
             <p className="font-medium text-foreground mb-1">Chart SVG not available</p>
-            <p className="text-sm text-muted-foreground">
-              The chart visualization could not be loaded
-            </p>
+            <p className="text-sm text-muted-foreground">The chart visualization could not be loaded</p>
           </div>
         </div>
       </Card>
@@ -40,4 +38,3 @@ export function ChartViewer({ chart }: ChartViewerProps) {
     </Card>
   );
 }
-

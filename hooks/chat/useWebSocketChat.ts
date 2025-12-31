@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { getWebSocketUrl } from "@/lib/env";
 import { getAuthTokens } from "@/lib/client-storage";
 import { ENDPOINTS } from "@/constants";
-import { ChatMessageRequest, ChatMessageResponse, ConnectionResponse, ErrorResponse, ConversationMessage } from "@/types";
+import { ChatMessageRequest, ChatMessageResponse, ConnectionResponse, ErrorResponse } from "@/types";
 import { useAuth } from "@/hooks";
 import { isAuthenticated } from "@/services/auth.service";
 import { toast } from "sonner";
@@ -301,10 +301,10 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
   // Update messages and conversationId when options change
   useEffect(() => {
     if (options?.initialMessages) {
-      setMessages(options.initialMessages);
+      setTimeout(() => setMessages(options.initialMessages || []), 0);
     }
     if (options?.initialConversationId !== undefined) {
-      setConversationId(options.initialConversationId);
+      setTimeout(() => setConversationId(options.initialConversationId || null), 0);
     }
   }, [options?.initialMessages, options?.initialConversationId]);
 

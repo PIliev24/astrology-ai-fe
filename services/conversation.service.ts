@@ -21,21 +21,27 @@ export async function getConversationById(id: string, messageLimit?: number): Pr
     params.append("message_limit", messageLimit.toString());
   }
   const queryString = params.toString();
-  const endpoint = queryString ? `${ENDPOINTS.CONVERSATIONS.BY_ID(id)}?${queryString}` : ENDPOINTS.CONVERSATIONS.BY_ID(id);
+  const endpoint = queryString
+    ? `${ENDPOINTS.CONVERSATIONS.BY_ID(id)}?${queryString}`
+    : ENDPOINTS.CONVERSATIONS.BY_ID(id);
   return api.get<ConversationWithMessages>(endpoint);
 }
 
-export async function getConversationsByChart(chartId: string, conversationLimit?: number): Promise<ChartWithConversations> {
+export async function getConversationsByChart(
+  chartId: string,
+  conversationLimit?: number
+): Promise<ChartWithConversations> {
   const params = new URLSearchParams();
   if (conversationLimit !== undefined) {
     params.append("conversation_limit", conversationLimit.toString());
   }
   const queryString = params.toString();
-  const endpoint = queryString ? `${ENDPOINTS.CONVERSATIONS.BY_CHART(chartId)}?${queryString}` : ENDPOINTS.CONVERSATIONS.BY_CHART(chartId);
+  const endpoint = queryString
+    ? `${ENDPOINTS.CONVERSATIONS.BY_CHART(chartId)}?${queryString}`
+    : ENDPOINTS.CONVERSATIONS.BY_CHART(chartId);
   return api.get<ChartWithConversations>(endpoint);
 }
 
 export async function deleteConversation(id: string): Promise<void> {
   return api.delete<void>(ENDPOINTS.CONVERSATIONS.BY_ID(id));
 }
-

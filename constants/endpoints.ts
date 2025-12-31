@@ -19,4 +19,3 @@ export const ENDPOINTS = {
     BY_CHART: (chartId: string) => `/conversations/by-chart/${chartId}`,
   },
 } as const;
-

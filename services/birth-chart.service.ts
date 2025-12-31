@@ -17,4 +17,3 @@ export async function getBirthChartById(id: string): Promise<BirthChartResponse>
 export async function deleteBirthChart(id: string): Promise<void> {
   return api.delete<void>(ENDPOINTS.BIRTH_CHART.BY_ID(id));
 }
-

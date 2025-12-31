@@ -10,7 +10,12 @@ async function fetchBirthChart(_key: string, id: string): Promise<BirthChartResp
 }
 
 export function useBirthChart(id: string | null) {
-  const { data: chart, error, isLoading, mutate } = useSWR(
+  const {
+    data: chart,
+    error,
+    isLoading,
+    mutate,
+  } = useSWR(
     id ? [HOOK_KEYS.BIRTH_CHART, id] : null,
     ([, chartId]: [string, string]) => fetchBirthChart(HOOK_KEYS.BIRTH_CHART, chartId),
     {
@@ -26,4 +31,3 @@ export function useBirthChart(id: string | null) {
     mutate,
   };
 }
-

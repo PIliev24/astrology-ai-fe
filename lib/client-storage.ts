@@ -35,7 +35,7 @@ export function setAuthTokens(tokens: AuthTokens): void {
   try {
     localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, tokens.accessToken);
     localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, tokens.refreshToken);
-    
+
     // Handle expiresAt - if undefined, calculate default (1 hour from now)
     const expiresAt = tokens.expiresAt ?? Math.floor(Date.now() / 1000) + 3600;
     localStorage.setItem(STORAGE_KEYS.EXPIRES_AT, expiresAt.toString());
@@ -61,4 +61,3 @@ export function isTokenExpired(expiresAt: number): boolean {
   const bufferTime = 5 * 60; // 5 minutes buffer
   return expiresAt - nowInSeconds < bufferTime;
 }
-

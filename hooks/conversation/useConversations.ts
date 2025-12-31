@@ -11,14 +11,15 @@ async function fetchConversations(includeCharts?: boolean, limit?: number): Prom
 
 export function useConversations(includeCharts?: boolean, limit?: number) {
   const key = `${HOOK_KEYS.CONVERSATIONS}-${includeCharts}-${limit}`;
-  const { data: conversations, error, isLoading, mutate } = useSWR(
-    key,
-    () => fetchConversations(includeCharts, limit),
-    {
-      revalidateOnFocus: true,
-      revalidateOnReconnect: true,
-    }
-  );
+  const {
+    data: conversations,
+    error,
+    isLoading,
+    mutate,
+  } = useSWR(key, () => fetchConversations(includeCharts, limit), {
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
+  });
 
   return {
     conversations: conversations || [],
@@ -27,4 +28,3 @@ export function useConversations(includeCharts?: boolean, limit?: number) {
     mutate,
   };
 }
-

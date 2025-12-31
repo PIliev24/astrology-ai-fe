@@ -53,10 +53,9 @@ export function ChartList({ charts, isLoading }: ChartListProps) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {charts.map((chart) => (
+      {charts.map(chart => (
         <ChartCard key={chart.id} chart={chart} />
       ))}
     </div>
   );
 }
-

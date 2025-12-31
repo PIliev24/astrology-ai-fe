@@ -15,14 +15,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ThemeToggle } from "@/components/theme";
-import { cn } from "@/lib/utils";
 
 interface NavbarProps {
   onSidebarToggle?: () => void;
   sidebarCollapsed?: boolean;
 }
 
-export function Navbar({ onSidebarToggle, sidebarCollapsed = false }: NavbarProps) {
+export function Navbar({ onSidebarToggle }: NavbarProps) {
   const { user } = useAuth();
   const router = useRouter();
 
@@ -36,7 +35,7 @@ export function Navbar({ onSidebarToggle, sidebarCollapsed = false }: NavbarProp
     if (name) {
       return name
         .split(" ")
-        .map((n) => n[0])
+        .map(n => n[0])
         .join("")
         .toUpperCase()
         .slice(0, 2);
@@ -48,7 +47,7 @@ export function Navbar({ onSidebarToggle, sidebarCollapsed = false }: NavbarProp
   };
 
   return (
-    <nav 
+    <nav
       className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur-nav supports-[backdrop-filter]:bg-background/60"
       role="navigation"
       aria-label="Main navigation"
@@ -106,4 +105,3 @@ export function Navbar({ onSidebarToggle, sidebarCollapsed = false }: NavbarProp
     </nav>
   );
 }
-

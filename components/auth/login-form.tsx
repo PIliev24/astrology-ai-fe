@@ -17,9 +17,7 @@ const LoginForm = () => {
       <Card className="w-full max-w-md shadow-lg border-2">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-3xl font-bold">Welcome back</CardTitle>
-          <CardDescription className="text-base">
-            Enter your email and password to access your account
-          </CardDescription>
+          <CardDescription className="text-base">Enter your email and password to access your account</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -72,11 +70,7 @@ const LoginForm = () => {
                 </div>
               )}
 
-              <Button 
-                type="submit" 
-                className="w-full h-11 text-base font-medium" 
-                disabled={isSubmitting}
-              >
+              <Button type="submit" className="w-full h-11 text-base font-medium" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -89,10 +83,7 @@ const LoginForm = () => {
 
               <div className="text-center text-sm pt-2">
                 <span className="text-muted-foreground">Don&apos;t have an account? </span>
-                <Link 
-                  href="/signup" 
-                  className="text-primary hover:underline font-medium transition-colors"
-                >
+                <Link href="/signup" className="text-primary hover:underline font-medium transition-colors">
                   Sign up
                 </Link>
               </div>
@@ -105,4 +96,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-

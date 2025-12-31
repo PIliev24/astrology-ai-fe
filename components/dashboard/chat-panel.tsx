@@ -14,4 +14,3 @@ export function ChatPanel({ charts }: ChatPanelProps) {
     </div>
   );
 }
-

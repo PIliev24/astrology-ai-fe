@@ -235,7 +235,7 @@ const COUNTRIES_DATA = [
 
 // Remove duplicates by country code
 const uniqueCountries = new Map<string, { code: string; name: string }>();
-COUNTRIES_DATA.forEach((country) => {
+COUNTRIES_DATA.forEach(country => {
   if (!uniqueCountries.has(country.code)) {
     uniqueCountries.set(country.code, country);
   }
@@ -244,6 +244,4 @@ COUNTRIES_DATA.forEach((country) => {
 export const COUNTRIES = Array.from(uniqueCountries.values());
 
 // Sort countries alphabetically by name
-export const SORTED_COUNTRIES = [...COUNTRIES].sort((a, b) =>
-  a.name.localeCompare(b.name)
-);
+export const SORTED_COUNTRIES = [...COUNTRIES].sort((a, b) => a.name.localeCompare(b.name));

@@ -1,11 +1,9 @@
 "use client";
 
 import { ChatMessage as ChatMessageType } from "@/hooks/chat/useWebSocketChat";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { User, Bot, Copy, Bookmark, Share2, Check } from "lucide-react";
+import { User, Bot, Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { toast } from "sonner";

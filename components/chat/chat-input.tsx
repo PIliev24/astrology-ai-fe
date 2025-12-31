@@ -59,18 +59,14 @@ export function ChatInput({
   return (
     <div className="space-y-3">
       {charts.length > 0 && (
-        <ChartSelector
-          charts={charts}
-          selectedChartIds={selectedChartIds}
-          onToggleChart={onToggleChart}
-        />
+        <ChartSelector charts={charts} selectedChartIds={selectedChartIds} onToggleChart={onToggleChart} />
       )}
-      
+
       <div className="relative">
         <Textarea
           ref={textareaRef}
           value={input}
-          onChange={(e) => {
+          onChange={e => {
             if (e.target.value.length <= MAX_LENGTH) {
               setInput(e.target.value);
             }
@@ -98,23 +94,16 @@ export function ChatInput({
           )}
           aria-label="Send message"
         >
-          {isLoading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Send className="h-4 w-4" />
-          )}
+          {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
         </Button>
       </div>
 
       <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
         <span>Press Enter to send, Shift+Enter for new line</span>
-        <span className={cn(
-          input.length > MAX_LENGTH * 0.9 && "text-destructive"
-        )}>
+        <span className={cn(input.length > MAX_LENGTH * 0.9 && "text-destructive")}>
           {input.length} / {MAX_LENGTH}
         </span>
       </div>
     </div>
   );
 }
-

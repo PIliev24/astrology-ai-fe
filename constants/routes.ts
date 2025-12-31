@@ -4,4 +4,3 @@ export const ROUTES = {
   SIGNUP: "/signup",
   CHART: (id: string) => `/chart/${id}`,
 } as const;
-

@@ -14,17 +14,9 @@ ScrollArea.displayName = "ScrollArea";
 
 const ScrollBar = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        "flex touch-none select-none transition-colors",
-        className
-      )}
-      {...props}
-    />
+    <div ref={ref} className={cn("flex touch-none select-none transition-colors", className)} {...props} />
   )
 );
 ScrollBar.displayName = "ScrollBar";
 
 export { ScrollArea, ScrollBar };
-

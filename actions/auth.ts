@@ -1,10 +1,5 @@
 import { ApiError, ActionResponse } from "@/types";
-import {
-  login,
-  logout,
-  getCurrentUser,
-  signup,
-} from "@/services";
+import { login, logout, getCurrentUser, signup } from "@/services";
 
 export async function loginAction(email: string, password: string): Promise<ActionResponse> {
   if (!email || !password) {
@@ -33,11 +28,7 @@ export async function loginAction(email: string, password: string): Promise<Acti
   }
 }
 
-export async function signupAction(
-  email: string,
-  password: string,
-  name?: string
-): Promise<ActionResponse> {
+export async function signupAction(email: string, password: string, name?: string): Promise<ActionResponse> {
   if (!email || !password) {
     return {
       success: false,
@@ -101,4 +92,3 @@ export async function getCurrentUserAction(): Promise<
     };
   }
 }
-

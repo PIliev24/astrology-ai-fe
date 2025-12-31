@@ -11,24 +11,22 @@ async function deleteConversationMutation(_key: string, { arg }: { arg: string }
 }
 
 export function useDeleteConversation() {
-  const { trigger, isMutating, error, reset } = useSWRMutation(
-    "delete-conversation",
-    deleteConversationMutation,
-    {
-      onSuccess: () => {
-        toast.success("Conversation deleted successfully");
-        // Invalidate all conversation-related caches
-        mutate(key => typeof key === "string" && (
-          key.startsWith(HOOK_KEYS.CONVERSATIONS) ||
-          key.startsWith(HOOK_KEYS.CONVERSATION) ||
-          key.startsWith(HOOK_KEYS.CONVERSATIONS_BY_CHART)
-        ));
-      },
-      onError: (err: Error) => {
-        toast.error(err.message || "Failed to delete conversation");
-      },
-    }
-  );
+  const { trigger, isMutating, error, reset } = useSWRMutation("delete-conversation", deleteConversationMutation, {
+    onSuccess: () => {
+      toast.success("Conversation deleted successfully");
+      // Invalidate all conversation-related caches
+      mutate(
+        key =>
+          typeof key === "string" &&
+          (key.startsWith(HOOK_KEYS.CONVERSATIONS) ||
+            key.startsWith(HOOK_KEYS.CONVERSATION) ||
+            key.startsWith(HOOK_KEYS.CONVERSATIONS_BY_CHART))
+      );
+    },
+    onError: (err: Error) => {
+      toast.error(err.message || "Failed to delete conversation");
+    },
+  });
 
   return {
     deleteConversation: trigger,
@@ -37,4 +35,3 @@ export function useDeleteConversation() {
     reset,
   };
 }
-

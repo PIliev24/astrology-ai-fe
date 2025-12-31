@@ -29,14 +29,15 @@ export function useAuth() {
     }, 0);
   }, []);
 
-  const { data: user, error, isLoading, mutate } = useSWR(
-    mounted && isAuthenticated() ? HOOK_KEYS.CURRENT_USER : null,
-    fetchCurrentUser,
-    {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: true,
-    }
-  );
+  const {
+    data: user,
+    error,
+    isLoading,
+    mutate,
+  } = useSWR(mounted && isAuthenticated() ? HOOK_KEYS.CURRENT_USER : null, fetchCurrentUser, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: true,
+  });
 
   return {
     user,
@@ -46,4 +47,3 @@ export function useAuth() {
     mutate,
   };
 }
-

@@ -123,7 +123,11 @@ export async function apiFetch<T = unknown>(endpoint: string, options: FetchOpti
 
     try {
       errorData = await response.json();
-      errorMessage = (errorData as { message?: string; reason?: string }).message || (errorData as { message?: string; reason?: string }).reason || response.statusText || errorMessage;
+      errorMessage =
+        (errorData as { message?: string; reason?: string }).message ||
+        (errorData as { message?: string; reason?: string }).reason ||
+        response.statusText ||
+        errorMessage;
     } catch {
       errorMessage = response.statusText || errorMessage;
     }
@@ -175,4 +179,3 @@ export const api = {
     });
   },
 };
-

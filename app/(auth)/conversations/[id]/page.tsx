@@ -93,13 +93,8 @@ export default function ConversationDetailPage() {
 
       {/* Chat Container */}
       <div className="flex-1 min-h-0">
-        <ChatContainer
-          charts={charts}
-          initialMessages={initialMessages}
-          conversationId={conversationId}
-        />
+        <ChatContainer charts={charts} initialMessages={initialMessages} conversationId={conversationId} />
       </div>
     </div>
   );
 }
-
