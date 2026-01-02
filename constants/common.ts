@@ -7,4 +7,7 @@ export const HOOK_KEYS = {
   CONVERSATIONS: "conversations",
   CONVERSATION: "conversation",
   CONVERSATIONS_BY_CHART: "conversationsByChart",
+  SUBSCRIPTION: "subscription",
+  USAGE: "usage",
+  PLANS: "plans",
 } as const;

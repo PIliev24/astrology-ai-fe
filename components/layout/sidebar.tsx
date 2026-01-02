@@ -19,6 +19,7 @@ import {
   X,
   ChevronDown,
   Trash2,
+  Settings,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -459,9 +460,20 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           </ScrollArea>
         </div>
 
-        {/* Mobile: Sign Out Button */}
+        {/* Mobile: Settings and Sign Out Buttons */}
         {!isCollapsed && (
-          <div className="lg:hidden border-t border-sidebar-border p-4">
+          <div className="lg:hidden border-t border-sidebar-border p-4 space-y-2">
+            <Button
+              variant="outline"
+              className="w-full h-12 rounded-lg bg-muted/50 hover:bg-muted"
+              onClick={() => {
+                router.push("/settings");
+                onToggleCollapse();
+              }}
+            >
+              <Settings className="h-4 w-4 mr-2" />
+              <span className="text-base font-medium">Settings</span>
+            </Button>
             <Button
               variant="outline"
               className="w-full h-12 rounded-lg bg-muted/50 hover:bg-muted"
@@ -518,6 +530,17 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                     <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
                   </div>
                 </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => {
+                    router.push("/settings");
+                    onToggleCollapse();
+                  }}
+                  className="cursor-pointer"
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                   <LogOut className="mr-2 h-4 w-4" />

@@ -18,4 +18,14 @@ export const ENDPOINTS = {
     BY_ID: (id: string) => `/conversations/${id}`,
     BY_CHART: (chartId: string) => `/conversations/by-chart/${chartId}`,
   },
+  SUBSCRIPTIONS: {
+    ME: "/subscriptions/me",
+    CHECKOUT: "/subscriptions/checkout",
+    CANCEL: "/subscriptions/cancel",
+    USAGE: "/subscriptions/usage",
+    PLANS: "/subscriptions/plans",
+  },
+  WEBHOOKS: {
+    STRIPE: "/webhooks/stripe",
+  },
 } as const;
