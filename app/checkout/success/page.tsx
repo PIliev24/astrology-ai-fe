@@ -24,13 +24,13 @@ export default function CheckoutSuccessPage() {
 
   // Check if subscription has been activated (webhook processed)
   useEffect(() => {
-    if (subscription?.stripe_subscription_id && isVerifying) {
+    if (subscription?.stripeSubscriptionId && isVerifying) {
       setIsVerifying(false);
       if (pollingRef.current) {
         clearTimeout(pollingRef.current);
       }
     }
-  }, [subscription?.stripe_subscription_id, isVerifying]);
+  }, [subscription?.stripeSubscriptionId, isVerifying]);
 
   useEffect(() => {
     // Redirect to login if not authenticated

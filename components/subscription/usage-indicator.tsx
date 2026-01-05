@@ -3,12 +3,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Usage, PlanType } from "@/types";
+import { UsageResponse, PlanType } from "@/types";
 import { MessageCircle, Clock, AlertCircle, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface UsageIndicatorProps {
-  usage: Usage;
+  usage: UsageResponse;
   plan: PlanType;
   onUpgradeClick?: () => void;
 }
@@ -20,13 +20,15 @@ const planLimits = {
 };
 
 export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorProps) {
-  const limit = planLimits[plan];
-  const remaining = usage.messagesRemaining ?? 0;
-  const resetAt = usage.resetAt ? new Date(usage.resetAt) : null;
+  // Use API limit if provided, otherwise fall back to plan defaults
+  // null from API means unlimited
+  const limit = usage.message_limit === null ? Infinity : usage.message_limit ?? planLimits[plan];
+  const remaining = usage.messages_remaining ?? 0;
+  const resetAt = usage.reset_at ? new Date(usage.reset_at) : null;
 
   const isLimitReached = remaining <= 0 && limit !== Infinity;
   const isWarning = remaining > 0 && remaining <= Math.ceil(limit * 0.25) && limit !== Infinity;
-  const usagePercentage = limit === Infinity ? 0 : Math.min((usage.messageCount / limit) * 100, 100);
+  const usagePercentage = limit === Infinity ? 0 : Math.min((usage.message_count / limit) * 100, 100);
 
   // Calculate time until reset
   const getTimeUntilReset = () => {
@@ -62,9 +64,7 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
             </div>
           </div>
           {limit === Infinity ? (
-            <Badge className="bg-linear-to-r from-purple-500 to-pink-500 text-white">
-              Unlimited
-            </Badge>
+            <Badge className="bg-linear-to-r from-purple-500 to-pink-500 text-white">Unlimited</Badge>
           ) : (
             <Badge
               variant="outline"
@@ -73,8 +73,8 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
                 isLimitReached
                   ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                   : isWarning
-                    ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-                    : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                  ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                  : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
               )}
             >
               {remaining} left
@@ -89,7 +89,7 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
           <div className="space-y-3 pt-2">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-foreground">
-                {usage.messageCount} / {limit} used
+                {usage.message_count} / {limit} used
               </span>
               <span className="text-xs text-muted-foreground">{Math.round(usagePercentage)}%</span>
             </div>
@@ -105,8 +105,8 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
                 isLimitReached
                   ? "bg-linear-to-r from-red-500 to-red-600"
                   : isWarning
-                    ? "bg-linear-to-r from-yellow-500 to-orange-500"
-                    : "bg-linear-to-r from-blue-500 to-cyan-500"
+                  ? "bg-linear-to-r from-yellow-500 to-orange-500"
+                  : "bg-linear-to-r from-blue-500 to-cyan-500"
               )}
             />
           </div>
@@ -117,12 +117,8 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
           <div className="flex items-center gap-3 py-4 px-3 rounded-lg bg-linear-to-r from-purple-500/10 to-pink-500/10 border border-purple-200 dark:border-purple-800">
             <CheckCircle className="h-5 w-5 text-purple-500 shrink-0" />
             <div>
-              <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                Unlimited Messages
-              </p>
-              <p className="text-xs text-purple-600/70 dark:text-purple-400/70">
-                No daily limits on your account
-              </p>
+              <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">Unlimited Messages</p>
+              <p className="text-xs text-purple-600/70 dark:text-purple-400/70">No daily limits on your account</p>
             </div>
           </div>
         )}
@@ -146,9 +142,7 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
               <div className="flex items-start gap-3 py-3 px-3 rounded-lg bg-red-500/10 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                 <AlertCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-red-800 dark:text-red-300">
-                    Daily limit reached
-                  </p>
+                  <p className="text-sm font-semibold text-red-800 dark:text-red-300">Daily limit reached</p>
                   <p className="text-xs text-red-700 dark:text-red-400 mt-1">
                     You&apos;ve used all your messages for today. Come back {getTimeUntilReset()}.
                   </p>
@@ -161,9 +155,7 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
               <div className="flex items-start gap-3 py-3 px-3 rounded-lg bg-yellow-500/10 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800">
                 <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 shrink-0" />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-yellow-800 dark:text-yellow-300">
-                    Running low on messages
-                  </p>
+                  <p className="text-sm font-semibold text-yellow-800 dark:text-yellow-300">Running low on messages</p>
                   <p className="text-xs text-yellow-700 dark:text-yellow-400 mt-1">
                     Only {remaining} message{remaining !== 1 ? "s" : ""} remaining today.
                   </p>
@@ -193,4 +185,3 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
     </Card>
   );
 }
-

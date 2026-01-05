@@ -22,6 +22,7 @@ export const ENDPOINTS = {
     ME: "/subscriptions/me",
     CHECKOUT: "/subscriptions/checkout",
     CANCEL: "/subscriptions/cancel",
+    REACTIVATE: "/subscriptions/reactivate",
     USAGE: "/subscriptions/usage",
     PLANS: "/subscriptions/plans",
   },

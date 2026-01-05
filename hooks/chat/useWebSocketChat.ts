@@ -56,8 +56,8 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
   // Memoized values
   const canSendMessage = useMemo(() => {
     if (!usage || !subscription) return true;
-    const limit = usage.limit;
-    const remaining = usage.remaining;
+    const limit = usage.message_limit;
+    const remaining = usage.messages_remaining;
     return limit === null || limit === Infinity || (remaining !== null && remaining > 0);
   }, [usage, subscription]);
 
@@ -195,10 +195,7 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
       // and we haven't exceeded max attempts
       if (event.code !== 1000 && reconnectAttemptsRef.current < MAX_RECONNECT_ATTEMPTS) {
         reconnectAttemptsRef.current++;
-        const delay = Math.min(
-          RECONNECT_DELAY * Math.pow(2, reconnectAttemptsRef.current - 1),
-          30000
-        ); // Exponential backoff, max 30s
+        const delay = Math.min(RECONNECT_DELAY * Math.pow(2, reconnectAttemptsRef.current - 1), 30000); // Exponential backoff, max 30s
 
         reconnectTimeoutRef.current = setTimeout(() => {
           if (wsRef.current === null && userAuthenticated && connectRef.current) {
@@ -212,13 +209,6 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
     },
     [userAuthenticated]
   );
-
-  // Handle WebSocket error
-  const handleError = useCallback((error: Event) => {
-    console.error("WebSocket connection error:", error);
-    // Don't set status here - let onclose handle it
-    // This prevents infinite loops when connection is actually working
-  }, []);
 
   // Connection handler function
   const handleConnect = useCallback(() => {
@@ -255,7 +245,6 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
 
       socket.onmessage = handleMessage;
       socket.onclose = handleClose;
-      socket.onerror = handleError;
 
       wsRef.current = socket;
     } catch (error) {
@@ -263,13 +252,12 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
       setStatus("error");
       toast.error("Failed to connect to chat service");
     }
-  }, [userAuthenticated, handleMessage, handleClose, handleError]);
+  }, [userAuthenticated, handleMessage, handleClose]);
 
   // Update connect ref when handleConnect changes
   useEffect(() => {
     connectRef.current = handleConnect;
   }, [handleConnect]);
-
 
   // Auto-connect when authenticated
   useEffect(() => {
@@ -303,7 +291,7 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
     // Cleanup on unmount or when dependencies change
     return () => {
       clearTimeout(timeoutId);
-      
+
       // Clear any pending reconnection attempts
       if (reconnectTimeoutRef.current) {
         clearTimeout(reconnectTimeoutRef.current);
@@ -389,7 +377,16 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
         setMessages(prev => prev.filter(msg => msg.id !== userMessageId));
       }
     },
-    [status, userAuthenticated, handleConnect, canSendMessage, handleUpgrade, selectedCharts, conversationId, mutateUsage]
+    [
+      status,
+      userAuthenticated,
+      handleConnect,
+      canSendMessage,
+      handleUpgrade,
+      selectedCharts,
+      conversationId,
+      mutateUsage,
+    ]
   );
 
   // Chart selection handlers
@@ -429,10 +426,15 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
   // Initialize messages and conversationId from options
   // This should only run once when options are first provided
   const optionsRef = useRef(options);
+  const hasInitializedRef = useRef(false);
+  
   useEffect(() => {
-    // Only update if options actually changed
-    if (optionsRef.current !== options) {
+    // Only initialize once on mount, not when options change
+    // This prevents overwriting messages when user sends new messages
+    if (!hasInitializedRef.current && options) {
+      hasInitializedRef.current = true;
       optionsRef.current = options;
+      
       if (options?.initialMessages) {
         // Use setTimeout to defer state update
         setTimeout(() => setMessages(options.initialMessages || []), 0);

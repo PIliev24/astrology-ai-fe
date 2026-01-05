@@ -4,25 +4,25 @@ import { useState } from "react";
 import { useSubscription, useUsage, usePlans } from "@/hooks";
 import { SubscriptionCard } from "@/components/subscription/subscription-card";
 import { UsageIndicator } from "@/components/subscription/usage-indicator";
-import { createCheckoutSessionAction, cancelSubscriptionAction } from "@/actions";
+import { CancelSubscriptionDialog } from "@/components/subscription/cancel-subscription-dialog";
+import { createCheckoutSessionAction, cancelSubscriptionAction, reactivateSubscriptionAction } from "@/actions";
 import { PlanType } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2, Settings, AlertCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export default function SettingsPage() {
-  const router = useRouter();
   const { subscription, isLoading: isLoadingSubscription, mutate: mutateSubscription } = useSubscription();
   const { usage, isLoading: isLoadingUsage, mutate: mutateUsage } = useUsage();
   const { plans, isLoading: isLoadingPlans } = usePlans();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showCancelDialog, setShowCancelDialog] = useState(false);
 
   // Get current plan details
-  const currentPlanDetails = plans.find((plan) => plan.type === subscription?.plan);
+  const currentPlanDetails = plans.find(plan => plan.type === subscription?.plan);
 
   // Handle upgrade/downgrade
   const handleUpgrade = async (plan: PlanType) => {
@@ -52,10 +52,6 @@ export default function SettingsPage() {
 
   // Handle cancel subscription
   const handleCancel = async () => {
-    if (!confirm("Are you sure you want to cancel your subscription? You'll be downgraded to the free tier at the end of your billing period.")) {
-      return;
-    }
-
     setIsProcessing(true);
     setError(null);
 
@@ -65,8 +61,71 @@ export default function SettingsPage() {
       if (result.success) {
         await mutateSubscription();
         await mutateUsage();
+        setShowCancelDialog(false);
       } else {
         setError(result.error || "Failed to cancel subscription");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // Handle reactivate/restore subscription
+  const handleReactivate = async () => {
+    if (!subscription) {
+      setError("No subscription found");
+      return;
+    }
+
+    setIsProcessing(true);
+    setError(null);
+
+    try {
+      // Check if subscription period has ended
+      if (subscription.currentPeriodEnd) {
+        const periodEnd = new Date(subscription.currentPeriodEnd);
+        const now = new Date();
+        
+        if (periodEnd < now) {
+          // Period has ended - redirect to checkout for new subscription
+          const result = await createCheckoutSessionAction(subscription.plan);
+          
+          if (result.success && result.data) {
+            // Redirect to Stripe checkout
+            window.location.href = result.data.checkoutUrl;
+            return;
+          } else {
+            setError(result.error || "Failed to create checkout session");
+            setIsProcessing(false);
+            return;
+          }
+        }
+      }
+
+      // Period hasn't ended or no period end - restore/reactivate normally
+      // This will clear current_period_end and keep isActive = true
+      const result = await reactivateSubscriptionAction();
+
+      if (result.success) {
+        await mutateSubscription();
+        await mutateUsage();
+      } else {
+        // Check if error indicates payment is required
+        if (result.error?.includes("period has ended") || result.error?.includes("create a new subscription")) {
+          // Redirect to checkout
+          const checkoutResult = await createCheckoutSessionAction(subscription.plan);
+          
+          if (checkoutResult.success && checkoutResult.data) {
+            window.location.href = checkoutResult.data.checkoutUrl;
+            return;
+          } else {
+            setError(checkoutResult.error || "Failed to create checkout session");
+          }
+        } else {
+          setError(result.error || "Failed to restore subscription");
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "An unexpected error occurred");
@@ -128,7 +187,8 @@ export default function SettingsPage() {
               subscription={subscription}
               planDetails={currentPlanDetails}
               onUpgrade={handleUpgrade}
-              onCancel={handleCancel}
+              onCancel={() => setShowCancelDialog(true)}
+              onReactivate={handleReactivate}
               isLoading={isProcessing}
             />
           </div>
@@ -141,7 +201,7 @@ export default function SettingsPage() {
               plan={subscription.plan}
               onUpgradeClick={() => {
                 // Find next tier to upgrade to
-                const currentIndex = plans.findIndex((p) => p.type === subscription.plan);
+                const currentIndex = plans.findIndex(p => p.type === subscription.plan);
                 const nextPlan = plans[currentIndex + 1];
                 if (nextPlan) {
                   handleUpgrade(nextPlan.type);
@@ -155,22 +215,19 @@ export default function SettingsPage() {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Available Plans</h2>
           <div className="space-y-4">
-            {plans.map((plan) => {
+            {plans.map(plan => {
               const isCurrentPlan = plan.type === subscription.plan;
-              const isUpgrade = 
-                subscription.plan === PlanType.FREE && plan.type === PlanType.BASIC ||
-                subscription.plan === PlanType.BASIC && plan.type === PlanType.PRO;
-              const isDowngrade = 
-                subscription.plan === PlanType.PRO && plan.type === PlanType.BASIC ||
-                subscription.plan === PlanType.BASIC && plan.type === PlanType.FREE;
+              const isUpgrade =
+                (subscription.plan === PlanType.FREE && plan.type === PlanType.BASIC) ||
+                (subscription.plan === PlanType.BASIC && plan.type === PlanType.PRO);
+              const isDowngrade =
+                (subscription.plan === PlanType.PRO && plan.type === PlanType.BASIC) ||
+                (subscription.plan === PlanType.BASIC && plan.type === PlanType.FREE);
 
               return (
                 <Card
                   key={plan.type}
-                  className={cn(
-                    "transition-all duration-300",
-                    isCurrentPlan && "ring-2 ring-primary"
-                  )}
+                  className={cn("transition-all duration-300", isCurrentPlan && "ring-2 ring-primary")}
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between">
@@ -187,15 +244,9 @@ export default function SettingsPage() {
                     {/* Price */}
                     <div className="flex items-baseline gap-2">
                       <span className="text-3xl font-bold">
-                        {plan.price === 0
-                          ? "Free"
-                          : `€${(plan.price / 100).toFixed(2)}`}
+                        {plan.price === 0 ? "Free" : `€${(plan.price / 100).toFixed(2)}`}
                       </span>
-                      {plan.price > 0 && (
-                        <span className="text-sm text-muted-foreground">
-                          /{plan.interval}
-                        </span>
-                      )}
+                      {plan.price > 0 && <span className="text-sm text-muted-foreground">/{plan.interval}</span>}
                     </div>
 
                     {/* Features */}
@@ -215,8 +266,8 @@ export default function SettingsPage() {
                         variant={isUpgrade ? "default" : "outline"}
                         onClick={() => {
                           if (plan.type === PlanType.FREE) {
-                            // For downgrade to free, cancel subscription
-                            handleCancel();
+                            // For downgrade to free, show cancel dialog
+                            setShowCancelDialog(true);
                           } else {
                             handleUpgrade(plan.type);
                           }
@@ -244,7 +295,17 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
+
+      {/* Cancel Subscription Dialog */}
+      {subscription && (
+        <CancelSubscriptionDialog
+          open={showCancelDialog}
+          onOpenChange={setShowCancelDialog}
+          subscription={subscription}
+          onConfirm={handleCancel}
+          isLoading={isProcessing}
+        />
+      )}
     </div>
   );
 }
-

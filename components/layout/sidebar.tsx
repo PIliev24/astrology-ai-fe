@@ -269,6 +269,11 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     router.refresh();
   };
 
+  const handleNewChat = () => {
+    router.push("/");
+    router.refresh();
+  };
+
   const getInitials = (name?: string, email?: string) => {
     if (name) {
       return name
@@ -365,9 +370,27 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
             <CreateChartDialog>
               <Button className="w-full" size="sm" aria-label="Create new birth chart">
                 <Plus className="h-4 w-4 mr-2" />
-                New Reading
+                New Natal Chart
               </Button>
             </CreateChartDialog>
+          </div>
+        )}
+
+        {/* Mobile: New Chat Button */}
+        {!isCollapsed && (
+          <div className="lg:hidden border-b border-sidebar-border p-4">
+            <Button
+              className="w-full"
+              size="sm"
+              aria-label="New chat"
+              onClick={() => {
+                handleNewChat();
+                onToggleCollapse();
+              }}
+            >
+              <MessageSquare className="h-4 w-4 mr-2" />
+              New Chat
+            </Button>
           </div>
         )}
 
@@ -384,9 +407,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                 </div>
               ) : charts.length === 0 ? (
                 <div className="py-8 text-center px-3">
-                  <CreateChartDialog forceOpen={true}>
-                    <div />
-                  </CreateChartDialog>
+                  <p className="text-sm text-muted-foreground">No charts yet</p>
                 </div>
               ) : (
                 <div className="space-y-1 py-2 px-3">
@@ -418,9 +439,23 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
             <CreateChartDialog>
               <Button className="w-full" size="sm" aria-label="Create new birth chart">
                 <Plus className="h-4 w-4 mr-2" />
-                New Reading
+                New Natal Chart
               </Button>
             </CreateChartDialog>
+          )}
+        </div>
+
+        {/* Desktop: New Chat Button */}
+        <div className={cn("hidden lg:block border-b border-sidebar-border", isCollapsed ? "p-2" : "p-3 lg:p-4")}>
+          {isCollapsed ? (
+            <Button className="w-full" size="icon" aria-label="New chat" onClick={handleNewChat}>
+              <MessageSquare className="h-4 w-4" />
+            </Button>
+          ) : (
+            <Button className="w-full" size="sm" aria-label="New chat" onClick={handleNewChat}>
+              <MessageSquare className="h-4 w-4 mr-2" />
+              New Chat
+            </Button>
           )}
         </div>
 
@@ -438,11 +473,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               </div>
             ) : charts.length === 0 ? (
               <div className={cn("py-8 text-center", isCollapsed ? "px-2" : "px-3")}>
-                {!isCollapsed && (
-                  <CreateChartDialog forceOpen={true}>
-                    <div />
-                  </CreateChartDialog>
-                )}
+                {!isCollapsed && <p className="text-sm text-muted-foreground">No charts yet</p>}
               </div>
             ) : (
               <div className={cn("space-y-1 py-2", isCollapsed ? "px-2" : "px-3")}>

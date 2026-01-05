@@ -85,7 +85,7 @@ export function CreateChartDialog({ children, forceOpen = false }: CreateChartDi
   };
 
   const handleOpenChange = (newOpen: boolean) => {
-    // Prevent closing if forceOpen is true
+    // Prevent closing if forceOpen is true (user has no charts)
     if (forceOpen && !newOpen) {
       return;
     }

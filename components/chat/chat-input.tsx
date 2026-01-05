@@ -52,14 +52,19 @@ export function ChatInput({
     }
   }, [input]);
 
-  // Calculate usage stats
+  // Calculate usage stats  
   const plan = subscription?.plan || PlanType.FREE;
-  const limit = usage?.limit ?? PLAN_LIMITS[plan];
-  const remaining = usage?.remaining ?? (limit === null || limit === Infinity ? null : limit);
+  const limit = usage?.message_limit ?? PLAN_LIMITS[plan];
+  const remaining = usage?.messages_remaining ?? (limit === null || limit === Infinity ? null : limit);
   const messageCount = usage?.message_count ?? 0;
   const isLimitReached = limit !== null && limit !== Infinity && (remaining === null || remaining <= 0);
   const isWarning = limit !== null && limit !== Infinity && remaining !== null && remaining > 0 && remaining <= Math.ceil(limit * 0.25);
   const canSendMessage = limit === null || limit === Infinity || (remaining !== null && remaining > 0);
+  
+  // Calculate hours until reset
+  const hoursUntilReset = usage?.reset_at 
+    ? Math.ceil((new Date(usage.reset_at).getTime() - Date.now()) / 3600000)
+    : 0;
 
   const handleUpgrade = async () => {
     setIsUpgrading(true);
@@ -120,10 +125,9 @@ export function ChatInput({
           <AlertDescription className="flex items-center justify-between gap-4">
             <span>
               Daily message limit reached ({messageCount}/{limit}). Reset in{" "}
-              {usage?.time_until_reset ? Math.ceil(usage.time_until_reset / 3600) : 0} hour
-              {usage?.time_until_reset && Math.ceil(usage.time_until_reset / 3600) !== 1 ? "s" : ""}.
+              {hoursUntilReset} hour{hoursUntilReset !== 1 ? "s" : ""}.
             </span>
-            <Button
+            <Button 
               size="sm"
               onClick={handleUpgrade}
               disabled={isUpgrading}

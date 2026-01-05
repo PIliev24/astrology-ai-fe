@@ -46,13 +46,11 @@ export default function ChartDetailPage() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">{chart.name}</h1>
-        <p className="text-muted-foreground">Birth Chart Details</p>
       </div>
 
       {/* Chart SVG */}
       {chartSvg && (
         <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Chart Visualization</h2>
           <Card className="py-0 overflow-auto bg-linear-to-br from-card to-muted/30 border-2">
             <div
               className="w-full flex items-center justify-center"

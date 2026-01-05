@@ -24,6 +24,10 @@ export async function cancelSubscription(): Promise<SubscriptionResponse> {
   return api.post<SubscriptionResponse>(ENDPOINTS.SUBSCRIPTIONS.CANCEL, {});
 }
 
+export async function reactivateSubscription(): Promise<SubscriptionResponse> {
+  return api.post<SubscriptionResponse>(ENDPOINTS.SUBSCRIPTIONS.REACTIVATE, {});
+}
+
 export async function getPlans(): Promise<PlansListResponse> {
   return api.get<PlansListResponse>(ENDPOINTS.SUBSCRIPTIONS.PLANS);
 }

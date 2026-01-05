@@ -15,7 +15,7 @@ export function useUsage() {
     error,
     isLoading,
     mutate,
-  } = useSWR(HOOK_KEYS.USAGE, fetchUsage, {
+  } = useSWR<UsageResponse>(HOOK_KEYS.USAGE, fetchUsage, {
     revalidateOnFocus: true,
     revalidateOnReconnect: true,
   });
@@ -27,4 +27,3 @@ export function useUsage() {
     mutate,
   };
 }
-

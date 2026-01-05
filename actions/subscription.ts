@@ -5,6 +5,7 @@ import {
   getUsage,
   createCheckoutSession,
   cancelSubscription,
+  reactivateSubscription,
   getPlans,
 } from "@/services";
 
@@ -18,14 +19,13 @@ export async function getSubscriptionAction(): Promise<
     const response = await getSubscription();
     const subscription: Subscription = {
       id: response.id,
-      userId: response.user_id,
+      userId: undefined, // Not provided in API response
       plan: response.plan,
+      isActive: response.is_active ?? false,
       stripeCustomerId: response.stripe_customer_id,
-      stripeSubscriptionId: response.stripe_subscription_id,
-      stripePriceId: response.stripe_price_id,
-      currentPeriodStart: response.current_period_start,
-      currentPeriodEnd: response.current_period_end,
-      cancelAt: response.cancel_at,
+      stripeSubscriptionId: response.stripe_subscription_id ?? null,
+      stripePriceId: null, // Not provided in API response
+      currentPeriodEnd: response.current_period_end ?? null,
       createdAt: response.created_at,
       updatedAt: response.updated_at,
     };
@@ -57,14 +57,14 @@ export async function getUsageAction(): Promise<ActionResponse<{ usage: Usage }>
   try {
     const response = await getUsage();
     const usage: Usage = {
-      id: response.id,
-      userId: response.user_id,
+      id: "", // Not provided in API response
+      userId: "", // Not provided in API response
       messageCount: response.message_count,
-      messagesRemaining: response.messages_remaining,
-      messagesUntilReset: response.messages_until_reset,
+      messagesRemaining: response.messages_remaining ?? 0,
+      messagesUntilReset: 0, // Not provided in API response
       resetAt: response.reset_at,
-      createdAt: response.created_at,
-      updatedAt: response.updated_at,
+      createdAt: response.last_reset_at, // Use last_reset_at as fallback
+      updatedAt: response.reset_at, // Use reset_at as fallback
     };
 
     return {
@@ -143,14 +143,13 @@ export async function cancelSubscriptionAction(): Promise<
     const response = await cancelSubscription();
     const subscription: Subscription = {
       id: response.id,
-      userId: response.user_id,
+      userId: undefined, // Not provided in API response
       plan: response.plan,
+      isActive: response.is_active ?? false,
       stripeCustomerId: response.stripe_customer_id,
-      stripeSubscriptionId: response.stripe_subscription_id,
-      stripePriceId: response.stripe_price_id,
-      currentPeriodStart: response.current_period_start,
-      currentPeriodEnd: response.current_period_end,
-      cancelAt: response.cancel_at,
+      stripeSubscriptionId: response.stripe_subscription_id ?? null,
+      stripePriceId: null, // Not provided in API response
+      currentPeriodEnd: response.current_period_end ?? null,
       createdAt: response.created_at,
       updatedAt: response.updated_at,
     };
@@ -171,6 +170,47 @@ export async function cancelSubscriptionAction(): Promise<
     return {
       success: false,
       error: "Failed to cancel subscription",
+    };
+  }
+}
+
+/**
+ * Reactivate a cancelled subscription
+ */
+export async function reactivateSubscriptionAction(): Promise<
+  ActionResponse<{ subscription: Subscription }>
+> {
+  try {
+    const response = await reactivateSubscription();
+    const subscription: Subscription = {
+      id: response.id,
+      userId: undefined, // Not provided in API response
+      plan: response.plan,
+      isActive: response.is_active ?? false,
+      stripeCustomerId: response.stripe_customer_id,
+      stripeSubscriptionId: response.stripe_subscription_id ?? null,
+      stripePriceId: null, // Not provided in API response
+      currentPeriodEnd: response.current_period_end ?? null,
+      createdAt: response.created_at,
+      updatedAt: response.updated_at,
+    };
+
+    return {
+      success: true,
+      data: { subscription },
+    };
+  } catch (error) {
+    if (error instanceof ApiError) {
+      return {
+        success: false,
+        error: error.message,
+        status: error.status,
+      };
+    }
+
+    return {
+      success: false,
+      error: "Failed to reactivate subscription",
     };
   }
 }

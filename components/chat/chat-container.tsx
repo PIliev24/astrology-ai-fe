@@ -59,15 +59,30 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
-  // Update messages and conversationId when props change
+  // Track the conversationId we last loaded messages for
+  const loadedConversationIdRef = useRef<string | null | undefined>(undefined);
+
+  // Update conversationId when prop changes
   useEffect(() => {
-    if (initialMessages) {
-      loadMessages(initialMessages);
-    }
     if (conversationId !== undefined) {
       setConversationId(conversationId);
     }
-  }, [initialMessages, conversationId, loadMessages, setConversationId]);
+  }, [conversationId, setConversationId]);
+
+  // Only load initial messages when conversationId changes (new conversation loaded)
+  // This prevents overwriting new messages when user sends a message
+  useEffect(() => {
+    const conversationChanged = loadedConversationIdRef.current !== conversationId;
+    
+    // Only load messages if:
+    // 1. Conversation changed (user switched conversations), OR
+    // 2. First mount (loadedConversationIdRef is undefined) and initialMessages exist
+    if (conversationChanged && initialMessages) {
+      loadedConversationIdRef.current = conversationId;
+      loadMessages(initialMessages);
+    }
+    // Don't reload if conversationId hasn't changed - this prevents overwriting new messages
+  }, [conversationId, initialMessages, loadMessages]);
 
   const isConnected = status === "connected";
 
