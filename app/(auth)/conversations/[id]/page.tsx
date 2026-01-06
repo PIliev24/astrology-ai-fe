@@ -42,7 +42,7 @@ export default function ConversationDetailPage() {
       <div className="container mx-auto px-4 py-8 flex-1">
         <div className="text-center">
           <p className="text-destructive">Failed to load conversation</p>
-          <Button variant="outline" onClick={() => router.push("/")} className="mt-4">
+          <Button variant="outline" onClick={() => router.push("/dashboard")} className="mt-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Dashboard
           </Button>
@@ -60,7 +60,7 @@ export default function ConversationDetailPage() {
       <div className="border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={() => router.push("/")}>
+            <Button variant="ghost" size="icon" onClick={() => router.push("/dashboard")}>
               <ArrowLeft className="h-4 w-4" />
             </Button>
             <div className="flex-1 min-w-0">

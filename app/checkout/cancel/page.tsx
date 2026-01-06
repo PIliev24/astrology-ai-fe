@@ -31,7 +31,7 @@ export default function CheckoutCancelPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="rounded-lg bg-muted p-4">
-            <p className="text-sm text-muted-foreground text-center">
+            <p className="text-sm text-foreground/70 text-center">
               You can return to settings to try again or explore our plans.
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function CheckoutCancelPage() {
             <Button className="w-full" onClick={() => router.push("/settings")}>
               Return to Settings
             </Button>
-            <Button variant="outline" className="w-full" onClick={() => router.push("/")}>
+            <Button variant="outline" className="w-full" onClick={() => router.push("/dashboard")}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Dashboard
             </Button>

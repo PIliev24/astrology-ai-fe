@@ -161,7 +161,7 @@ export default function CheckoutSuccessPage() {
           ) : !isVerifying ? (
             <>
               <div className="rounded-lg bg-muted p-4 text-center">
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   Redirecting to settings in {redirectCountdown} seconds...
                 </p>
               </div>

@@ -38,7 +38,7 @@ export function useLogin() {
 
   const { trigger, isMutating, error, reset } = useSWRMutation(HOOK_KEYS.LOGIN, loginMutation, {
     onSuccess: () => {
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
     },
     onError: (err: Error) => {
