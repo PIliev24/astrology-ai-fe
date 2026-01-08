@@ -198,7 +198,7 @@ const SignupForm = () => {
               <div className="text-center">
                 <Link
                   href="/login"
-                  className="inline-flex items-center gap-2 text-[var(--celestial-gold)] hover:text-[var(--celestial-gold)]/80 font-medium transition-colors group"
+                  className="inline-flex items-center gap-2 text-(--celestial-gold) hover:text-(--celestial-gold)/80 font-medium transition-colors group"
                 >
                   <span className="group-hover:-translate-x-0.5 transition-transform">←</span>
                   Sign in to your account

@@ -18,7 +18,7 @@ import type { Metadata } from "next";
 import { CosmicBackground, ZodiacWheel } from "@/components/celestial";
 
 export const metadata: Metadata = {
-  title: "Celestial Insights - AI-Powered Astrology | Discover Your Cosmic Blueprint",
+  title: "Aistrology - AI-Powered Astrology | Discover Your Cosmic Blueprint",
   description:
     "Get personalized birth chart readings powered by AI. Discover your cosmic destiny through detailed zodiac analysis, house interpretations, and planetary insights. Start your celestial journey today.",
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "personalized reading",
   ],
   openGraph: {
-    title: "Celestial Insights - AI-Powered Astrology",
+    title: "Aistrology - AI-Powered Astrology",
     description: "Get personalized birth chart readings powered by AI. Discover your cosmic destiny.",
     type: "website",
   },
@@ -113,25 +113,10 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-8">
-            {/* Floating celestial icons */}
-            <div className="flex justify-center gap-8 mb-8">
-              <Moon
-                className="h-8 w-8 text-[var(--celestial-violet)] animate-float opacity-80"
-                style={{ animationDelay: "0s" }}
-              />
-              <Stars
-                className="h-10 w-10 text-[var(--celestial-gold)] animate-float animate-glow-pulse"
-                style={{ animationDelay: "0.5s" }}
-              />
-              <Sun
-                className="h-8 w-8 text-[var(--celestial-gold)] animate-float opacity-80"
-                style={{ animationDelay: "1s" }}
-              />
-            </div>
 
             {/* Main heading */}
             <div className="space-y-4 animate-fade-in">
-              <p className="text-mystical text-sm tracking-[0.3em] text-[var(--celestial-gold)] opacity-80">
+              <p className="text-mystical text-sm tracking-[0.3em] text-(--celestial-gold) opacity-80">
                 Welcome to
               </p>
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
@@ -181,16 +166,9 @@ export default function LandingPage() {
               className="text-sm text-muted-foreground pt-4 animate-fade-in"
               style={{ animationDelay: "0.6s" }}
             >
-              <Sparkles className="inline-block h-4 w-4 mr-1 text-[var(--celestial-gold)]" />
+              <Sparkles className="inline-block h-4 w-4 mr-1 text-(--celestial-gold)" />
               Join thousands of seekers discovering their cosmic path
             </p>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-          <div className="w-6 h-10 rounded-full border-2 border-[var(--celestial-gold)]/30 flex justify-center pt-2">
-            <div className="w-1 h-2 bg-[var(--celestial-gold)] rounded-full animate-pulse" />
           </div>
         </div>
       </section>
@@ -205,7 +183,7 @@ export default function LandingPage() {
             {/* Text Content */}
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-mystical text-xs tracking-[0.3em] text-[var(--celestial-violet)]">
+                <p className="text-mystical text-xs tracking-[0.3em] text-(--celestial-violet)">
                   Ancient Wisdom, Modern Technology
                 </p>
                 <h2 className="font-display text-4xl md:text-5xl font-bold">
@@ -264,11 +242,11 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 space-y-4">
-            <p className="text-mystical text-xs tracking-[0.3em] text-[var(--celestial-gold)]">
+            <p className="text-mystical text-xs tracking-[0.3em] text-(--celestial-gold)">
               What We Offer
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold">
-              Why Choose <span className="text-gradient-gold">Celestial Insights</span>?
+              Why Choose <span className="text-gradient-gold">Aistrology</span>?
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
               Our AI-powered platform combines ancient astrological wisdom with modern technology to deliver
@@ -342,9 +320,9 @@ export default function LandingPage() {
                   <CardHeader>
                     <div className="flex items-center gap-3">
                       <div className="p-2 rounded-lg bg-[var(--celestial-gold)]/10 group-hover:bg-[var(--celestial-gold)]/20 transition-colors">
-                        <card.icon className="h-5 w-5 text-[var(--celestial-gold)]" />
+                        <card.icon className="h-5 w-5 text-(--celestial-gold)" />
                       </div>
-                      <CardTitle className="font-display text-lg group-hover:text-[var(--celestial-gold)] transition-colors">
+                      <CardTitle className="font-display text-lg group-hover:text-(--celestial-gold) transition-colors">
                         {card.title}
                       </CardTitle>
                     </div>
@@ -354,7 +332,7 @@ export default function LandingPage() {
                   </CardContent>
                   {/* Arrow indicator */}
                   <div className="px-6 pb-6">
-                    <span className="text-sm text-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                    <span className="text-sm text-(--celestial-gold) opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                       Learn more <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>
@@ -376,14 +354,7 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            {/* Decorative element */}
-            <div className="flex justify-center">
-              <div className="relative">
-                <Sparkles className="h-16 w-16 text-[var(--celestial-gold)] animate-pulse-glow" />
-                <div className="absolute inset-0 bg-[var(--celestial-gold)]/30 blur-2xl rounded-full" />
-              </div>
-            </div>
-
+          
             <h2 className="font-display text-4xl md:text-6xl font-bold">
               Ready to Unlock Your{" "}
               <span className="text-gradient-gold">Celestial Secrets</span>?
@@ -404,17 +375,6 @@ export default function LandingPage() {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-            </div>
-
-            {/* Decorative stars */}
-            <div className="flex justify-center gap-2 pt-8 opacity-60">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-4 w-4 text-[var(--celestial-gold)] fill-current"
-                  style={{ animationDelay: `${i * 0.2}s` }}
-                />
-              ))}
             </div>
           </div>
         </div>

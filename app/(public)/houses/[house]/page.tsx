@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${house.name} in Astrology - Meaning & Interpretation | Celestial Insights`,
+    title: `${house.name} in Astrology - Meaning & Interpretation | Aistrology`,
     description: `Learn about the ${house.name} in your birth chart. Discover how this house influences ${house.lifeAreas.slice(0, 3).join(", ")} and more. Ruled by ${house.rulingSign} and ${house.rulingPlanet}.`,
     keywords: [
       house.name.toLowerCase(),

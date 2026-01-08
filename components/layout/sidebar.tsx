@@ -32,7 +32,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useTheme } from "next-themes";
 import { formatDistanceToNow } from "date-fns";
 import {
   Dialog,
@@ -167,7 +166,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
           <div className="ml-8 space-y-0.5 border-l border-[var(--celestial-gold)]/20 pl-3">
             {isLoadingConversations ? (
               <div className="flex items-center justify-center py-3">
-                <Loader2 className="h-4 w-4 animate-spin text-[var(--celestial-gold)]" />
+                <Loader2 className="h-4 w-4 animate-spin text-(--celestial-gold)" />
               </div>
             ) : conversations.length === 0 ? (
               <div className="py-2 px-2 text-xs text-muted-foreground italic">No conversations yet</div>
@@ -253,7 +252,6 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   const router = useRouter();
   const { charts, isLoading } = useBirthCharts();
   const { user } = useAuth();
-  const { theme, setTheme } = useTheme();
   const [expandedCharts, setExpandedCharts] = useState<Set<string>>(new Set());
 
   const toggleChartExpansion = (chartId: string) => {
@@ -342,7 +340,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center zodiac-glow">
                 <Stars className="h-4 w-4 text-primary-foreground" />
               </div>
-              <h2 className="font-display text-lg font-semibold text-gradient-gold truncate">Celestial AI</h2>
+              <h2 className="font-display text-lg font-semibold text-gradient-gold truncate">Aistrology</h2>
             </div>
           )}
           {!isCollapsed ? (
@@ -403,16 +401,16 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {!isCollapsed && (
           <div className="lg:hidden flex flex-1 flex-col min-h-0">
             <div className="px-4 py-3 border-b border-border/50">
-              <h3 className="text-xs font-medium text-[var(--celestial-gold)] uppercase tracking-wider">Your Charts</h3>
+              <h3 className="text-xs font-medium text-(--celestial-gold) uppercase tracking-wider">Your Charts</h3>
             </div>
             <ScrollArea className="flex-1 scrollbar-cosmic">
               {isLoading ? (
                 <div className="flex items-center justify-center py-8">
-                  <Loader2 className="h-5 w-5 animate-spin text-[var(--celestial-gold)]" />
+                  <Loader2 className="h-5 w-5 animate-spin text-(--celestial-gold)" />
                 </div>
               ) : charts.length === 0 ? (
                 <div className="py-8 text-center px-3">
-                  <Sparkles className="h-8 w-8 mx-auto text-[var(--celestial-gold)]/40 mb-2" />
+                  <Sparkles className="h-8 w-8 mx-auto text-(--celestial-gold)/40 mb-2" />
                   <p className="text-sm text-muted-foreground">No charts yet</p>
                   <p className="text-xs text-muted-foreground/60 mt-1">Create your first natal chart</p>
                 </div>
@@ -482,19 +480,19 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         <div className="hidden lg:flex flex-1 flex-col min-h-0">
           {!isCollapsed && (
             <div className="px-4 lg:px-5 py-3 border-b border-border/50">
-              <h3 className="text-xs font-medium text-[var(--celestial-gold)] uppercase tracking-wider">Your Charts</h3>
+              <h3 className="text-xs font-medium text-(--celestial-gold) uppercase tracking-wider">Your Charts</h3>
             </div>
           )}
           <ScrollArea className="flex-1 scrollbar-cosmic">
             {isLoading ? (
               <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-5 w-5 animate-spin text-[var(--celestial-gold)]" />
+                <Loader2 className="h-5 w-5 animate-spin text-(--celestial-gold)" />
               </div>
             ) : charts.length === 0 ? (
               <div className={cn("py-8 text-center", isCollapsed ? "px-2" : "px-3")}>
                 {!isCollapsed && (
                   <>
-                    <Sparkles className="h-8 w-8 mx-auto text-[var(--celestial-gold)]/40 mb-2" />
+                    <Sparkles className="h-8 w-8 mx-auto text-(--celestial-gold)/40 mb-2" />
                     <p className="text-sm text-muted-foreground">No charts yet</p>
                     <p className="text-xs text-muted-foreground/60 mt-1">Create your first natal chart</p>
                   </>
@@ -541,27 +539,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           </div>
         )}
 
-        {/* Desktop: User Menu and Theme Toggle */}
+        {/* Desktop: User Menu */}
         <div className="hidden lg:block border-t border-border/50 p-3 space-y-3">
-          {/* Theme Toggle */}
-          <div className={cn("flex items-center", isCollapsed ? "justify-center" : "justify-between")}>
-            {!isCollapsed && <span className="text-xs text-muted-foreground uppercase tracking-wider">Theme</span>}
-            <Button
-              variant="ghost"
-              size={isCollapsed ? "icon" : "sm"}
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={cn("hover:bg-[var(--celestial-gold)]/10", isCollapsed && "w-full")}
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4 text-[var(--celestial-gold)]" />
-              ) : (
-                <Moon className="h-4 w-4 text-[var(--celestial-violet)]" />
-              )}
-              {!isCollapsed && <span className="ml-2">{theme === "dark" ? "Light" : "Dark"}</span>}
-            </Button>
-          </div>
-
           {/* User Menu */}
           {user && (
             <DropdownMenu>

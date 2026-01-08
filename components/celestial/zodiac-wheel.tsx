@@ -157,8 +157,8 @@ export function ZodiacWheel({
                 "absolute font-display transition-all duration-300",
                 symbolSizes[size],
                 isHighlighted
-                  ? "text-[var(--celestial-gold)] scale-125 drop-shadow-[0_0_8px_var(--celestial-gold)]"
-                  : "text-foreground/80 hover:text-[var(--celestial-gold)] hover:scale-110",
+                  ? "text-(--celestial-gold) scale-125 drop-shadow-[0_0_8px_var(--celestial-gold)]"
+                  : "text-foreground/80 hover:text-(--celestial-gold) hover:scale-110",
                 animated && "animate-none" // Counter-rotate to keep symbols upright
               )}
               style={{

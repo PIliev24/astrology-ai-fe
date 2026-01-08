@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { PlanetIcon, PlanetKey } from "@/components/icons";
 import { PLANETS, getPlanetsByType } from "@/data/planets";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Planets in Astrology - Complete Guide to Celestial Bodies | Celestial Insights",
+  title: "Planets in Astrology - Complete Guide to Celestial Bodies | Aistrology",
   description: "Learn about the planets in astrology and how they influence your birth chart. Discover the meaning of the Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto.",
   keywords: ["planets astrology", "celestial bodies", "sun astrology", "moon astrology", "mercury retrograde", "venus love", "mars energy", "jupiter luck", "saturn lessons"],
 };
@@ -65,7 +66,9 @@ export default function PlanetsPage() {
                 <Link key={planet.slug} href={`/planets/${planet.slug}`}>
                   <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
                     <CardHeader className="text-center">
-                      <span className="text-5xl mb-2 block">{planet.emoji}</span>
+                      <div className="flex justify-center mb-2">
+                        <PlanetIcon planet={planet.slug as PlanetKey} size={48} className="text-primary" />
+                      </div>
                       <CardTitle className="font-display text-2xl flex items-center justify-center gap-2">
                         {planet.name}
                         <span className="text-foreground/70 text-lg">{planet.symbol}</span>

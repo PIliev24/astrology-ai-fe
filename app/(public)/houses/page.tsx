@@ -5,7 +5,7 @@ import { HOUSES } from "@/data/houses";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The 12 Astrological Houses - Complete Guide | Celestial Insights",
+  title: "The 12 Astrological Houses - Complete Guide | Aistrology",
   description: "Learn about all 12 astrological houses and how they influence different areas of your life. Discover the meaning of each house in your birth chart.",
   keywords: ["astrological houses", "12 houses astrology", "birth chart houses", "first house", "ascendant", "midheaven", "natal chart houses"],
 };

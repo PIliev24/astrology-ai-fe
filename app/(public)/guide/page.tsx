@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Star, Home, Sun, ArrowRight, Sparkles } from "lucide-react";
+import { Star, Home, Sun, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Birth Chart Guide - How to Read Your Natal Chart | Celestial Insights",
+  title: "Birth Chart Guide - How to Read Your Natal Chart | Aistrology",
   description: "Learn how to read and interpret your birth chart. This comprehensive guide covers the basics of natal chart interpretation including signs, houses, planets, and aspects.",
   keywords: ["birth chart guide", "how to read birth chart", "natal chart interpretation", "astrology basics", "chart reading guide"],
 };
@@ -16,7 +16,6 @@ export default function GuidePage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-16">
-          <BookOpen className="h-16 w-16 text-primary mx-auto mb-6 animate-float" />
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
             Birth Chart <span className="text-gradient-gold">Interpretation Guide</span>
           </h1>
@@ -34,7 +33,6 @@ export default function GuidePage() {
             <Card className="bg-card/50">
               <CardHeader>
                 <CardTitle className="font-display text-2xl flex items-center gap-2">
-                  <Sparkles className="h-6 w-6 text-primary" />
                   What is a Birth Chart?
                 </CardTitle>
               </CardHeader>
@@ -261,7 +259,6 @@ export default function GuidePage() {
           <section>
             <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
               <CardContent className="text-center py-10">
-                <Sparkles className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse-glow" />
                 <h3 className="font-display text-2xl font-bold mb-3">
                   Ready to Explore Your Birth Chart?
                 </h3>

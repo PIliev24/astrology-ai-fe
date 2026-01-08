@@ -23,12 +23,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Celestial Insights - AI Astrology",
+  title: "Aistrology - AI-Powered Astrology",
   description: "Discover your cosmic destiny with AI-powered astrology. Get personalized birth chart readings, daily horoscopes, and celestial guidance.",
-  keywords: ["astrology", "birth chart", "horoscope", "zodiac", "AI astrology", "natal chart"],
-  authors: [{ name: "Celestial Insights" }],
+  keywords: ["astrology", "birth chart", "horoscope", "zodiac", "AI astrology", "natal chart", "aistrology"],
+  authors: [{ name: "Aistrology" }],
   openGraph: {
-    title: "Celestial Insights - AI Astrology",
+    title: "Aistrology - AI-Powered Astrology",
     description: "Discover your cosmic destiny with AI-powered astrology readings",
     type: "website",
   },
@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${cinzel.variable} ${cormorantGaramond.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
           <RouteGuard>{children}</RouteGuard>
           <Toaster />
         </ThemeProvider>

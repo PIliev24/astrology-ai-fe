@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ZodiacIcon, ZodiacSignKey } from "@/components/icons";
 import { ZODIAC_SIGNS } from "@/data/zodiac";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Zodiac Signs - Complete Guide to All 12 Signs | Celestial Insights",
+  title: "Zodiac Signs - Complete Guide to All 12 Signs | Aistrology",
   description: "Explore all 12 zodiac signs with detailed descriptions of their traits, elements, ruling planets, and compatibility. Discover the unique characteristics of each astrological sign.",
   keywords: ["zodiac signs", "astrology signs", "horoscope signs", "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"],
 };
@@ -51,7 +52,9 @@ export default function ZodiacPage() {
           <Link key={sign.slug} href={`/zodiac/${sign.slug}`}>
             <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
               <CardHeader className="text-center">
-                <span className="text-5xl mb-2 block">{sign.emoji}</span>
+                <div className="flex justify-center mb-2">
+                  <ZodiacIcon sign={sign.slug as ZodiacSignKey} size={48} className="text-primary" />
+                </div>
                 <CardTitle className="font-display text-2xl">{sign.name}</CardTitle>
                 <CardDescription className="text-sm">{sign.dateRange}</CardDescription>
               </CardHeader>

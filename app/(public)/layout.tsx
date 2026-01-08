@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme";
 import { Button } from "@/components/ui/button";
-import { Stars, Menu, Star, Sparkles } from "lucide-react";
+import { Stars, Menu, Star } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
@@ -18,11 +17,11 @@ function PublicNav() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="relative">
-            <Stars className="h-6 w-6 text-[var(--celestial-gold)] group-hover:animate-pulse-glow transition-all" />
+            <Stars className="h-6 w-6 text-(--celestial-gold) group-hover:animate-pulse-glow transition-all" />
             <div className="absolute inset-0 bg-[var(--celestial-gold)]/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <span className="font-display text-xl font-semibold text-gradient-gold tracking-wide">
-            Celestial Insights
+            Aistrology
           </span>
         </Link>
 
@@ -42,9 +41,8 @@ function PublicNav() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
-          <ThemeToggle />
           <Link href="/login">
-            <Button variant="ghost" className="hover:text-[var(--celestial-gold)] hover:bg-[var(--celestial-gold)]/10">
+            <Button variant="ghost" className="hover:text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10">
               Sign In
             </Button>
           </Link>
@@ -57,7 +55,6 @@ function PublicNav() {
 
         {/* Mobile Navigation */}
         <div className="flex md:hidden items-center gap-2">
-          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="hover:bg-[var(--celestial-gold)]/10">
@@ -70,9 +67,9 @@ function PublicNav() {
             >
               {/* Mobile menu header */}
               <div className="flex items-center gap-2 pb-6 border-b border-border">
-                <Stars className="h-5 w-5 text-[var(--celestial-gold)]" />
+                <Stars className="h-5 w-5 text-(--celestial-gold)" />
                 <span className="font-display text-lg font-semibold text-gradient-gold">
-                  Celestial Insights
+                  Aistrology
                 </span>
               </div>
 
@@ -84,7 +81,7 @@ function PublicNav() {
                     href={link.href}
                     className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-[var(--celestial-gold)]/10 group"
                   >
-                    <Star className="h-4 w-4 text-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Star className="h-4 w-4 text-(--celestial-gold) opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
                   </Link>
                 ))}
@@ -122,28 +119,19 @@ function PublicFooter() {
           {/* Brand section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Stars className="h-6 w-6 text-[var(--celestial-gold)]" />
               <span className="font-display text-xl font-semibold text-gradient-gold">
-                Celestial Insights
+                Aistrology
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Discover your cosmic destiny with AI-powered astrology readings. Unlock the secrets written
               in the stars.
             </p>
-            <div className="flex gap-1 pt-2">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-3 w-3 text-[var(--celestial-gold)] fill-current"
-                />
-              ))}
-            </div>
           </div>
 
           {/* Learn section */}
           <div>
-            <h4 className="font-display font-semibold mb-5 text-[var(--celestial-gold)]">Learn</h4>
+            <h4 className="font-display font-semibold mb-5 text-(--celestial-gold)">Learn</h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
@@ -186,7 +174,7 @@ function PublicFooter() {
 
           {/* Product section */}
           <div>
-            <h4 className="font-display font-semibold mb-5 text-[var(--celestial-gold)]">Product</h4>
+            <h4 className="font-display font-semibold mb-5 text-(--celestial-gold)">Product</h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
@@ -211,7 +199,7 @@ function PublicFooter() {
 
           {/* Legal section */}
           <div>
-            <h4 className="font-display font-semibold mb-5 text-[var(--celestial-gold)]">Legal</h4>
+            <h4 className="font-display font-semibold mb-5 text-(--celestial-gold)">Legal</h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
@@ -238,8 +226,7 @@ function PublicFooter() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-[var(--celestial-gold)]" />
-            &copy; {new Date().getFullYear()} Celestial Insights. All rights reserved.
+            &copy; {new Date().getFullYear()} Aistrology. All rights reserved.
           </p>
           <p className="text-xs">
             Made with cosmic energy

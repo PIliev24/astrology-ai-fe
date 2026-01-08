@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ZodiacIcon, ZodiacSignKey } from "@/components/icons";
 import { ZODIAC_SIGNS, getZodiacBySlug, getAllZodiacSlugs } from "@/data/zodiac";
 import { ArrowLeft, ArrowRight, Heart, Star, Zap, AlertTriangle } from "lucide-react";
 import type { Metadata } from "next";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${sign.name} Zodiac Sign - Traits, Compatibility & More | Celestial Insights`,
+    title: `${sign.name} Zodiac Sign - Traits, Compatibility & More | Aistrology`,
     description: `Discover everything about ${sign.name} (${sign.dateRange}). Learn about ${sign.name}'s personality traits, strengths, weaknesses, compatibility, and ruling planet ${sign.rulingPlanet}.`,
     keywords: [
       sign.name.toLowerCase(),
@@ -75,7 +76,9 @@ export default async function ZodiacSignPage({ params }: Props) {
 
       {/* Header */}
       <header className="text-center mb-16">
-        <span className="text-8xl mb-6 block animate-float">{sign.emoji}</span>
+        <div className="flex justify-center mb-6">
+          <ZodiacIcon sign={sign.slug as ZodiacSignKey} size={96} className="text-primary animate-float" />
+        </div>
         <h1 className="font-display text-4xl md:text-6xl font-bold mb-4">
           {sign.name}
         </h1>
@@ -175,9 +178,10 @@ export default async function ZodiacSignPage({ params }: Props) {
                   <Link key={compatSign} href={`/zodiac/${compatSign.toLowerCase()}`}>
                     <Badge
                       variant="outline"
-                      className="text-base py-2 px-4 hover:zodiac-glow transition-all cursor-pointer"
+                      className="text-base py-2 px-4 hover:zodiac-glow transition-all cursor-pointer flex items-center gap-2"
                     >
-                      {compatData?.emoji} {compatSign}
+                      {compatData && <ZodiacIcon sign={compatData.slug as ZodiacSignKey} size={16} />}
+                      {compatSign}
                     </Badge>
                   </Link>
                 );
@@ -244,12 +248,14 @@ export default async function ZodiacSignPage({ params }: Props) {
           <Link href={`/zodiac/${prevSign.slug}`}>
             <Button variant="ghost" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
-              <span className="hidden sm:inline">{prevSign.emoji}</span> {prevSign.name}
+              <ZodiacIcon sign={prevSign.slug as ZodiacSignKey} size={16} className="hidden sm:inline-block" />
+              {prevSign.name}
             </Button>
           </Link>
           <Link href={`/zodiac/${nextSign.slug}`}>
             <Button variant="ghost" className="flex items-center gap-2">
-              {nextSign.name} <span className="hidden sm:inline">{nextSign.emoji}</span>
+              {nextSign.name}
+              <ZodiacIcon sign={nextSign.slug as ZodiacSignKey} size={16} className="hidden sm:inline-block" />
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

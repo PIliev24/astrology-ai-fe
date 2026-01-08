@@ -43,7 +43,7 @@ export function CosmicBackground({
       />
 
       {/* Nebula layer */}
-      {showNebula && (
+      {/* {showNebula && (
         <>
           <div
             className={cn(
@@ -67,7 +67,7 @@ export function CosmicBackground({
             style={{ animationDelay: "-14s" }}
           />
         </>
-      )}
+      )} */}
 
       {/* Aurora layer */}
       {showAurora && (
@@ -75,7 +75,7 @@ export function CosmicBackground({
           <div
             className={cn(
               "absolute -inset-x-1/2 top-0 h-1/2 opacity-30 animate-aurora",
-              "bg-gradient-to-b from-[var(--celestial-teal)] via-[var(--celestial-violet)] to-transparent",
+              "bg-linear-to-b from-(--celestial-teal) via-(--celestial-violet) to-transparent",
               "blur-3xl"
             )}
           />

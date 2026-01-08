@@ -6,9 +6,10 @@
 export const APP_CONFIG = {
   // Application info
   app: {
-    name: "Celestial Insights",
+    name: "Aistrology",
     tagline: "AI-Powered Astrology",
     description: "Discover your cosmic destiny with AI-powered astrology readings",
+    domain: "aistrology.eu",
   },
 
   // Timing constants (in milliseconds)

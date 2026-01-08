@@ -59,7 +59,7 @@ const LoginForm = () => {
           </div>
 
           <div className="space-y-2">
-            <CardTitle className="font-display text-3xl text-[var(--celestial-gold)]">
+            <CardTitle className="font-display text-3xl text-(--celestial-gold)">
               Welcome Back
             </CardTitle>
             <CardDescription className="text-base text-foreground/70">
@@ -154,7 +154,7 @@ const LoginForm = () => {
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
                   <span className="bg-card px-2 text-foreground/70">
-                    New to Celestial Insights?
+                    New to Aistrology?
                   </span>
                 </div>
               </div>
@@ -162,7 +162,7 @@ const LoginForm = () => {
               <div className="text-center">
                 <Link
                   href="/signup"
-                  className="inline-flex items-center gap-2 text-[var(--celestial-gold)] hover:text-[var(--celestial-gold)]/80 font-medium transition-colors group"
+                  className="inline-flex items-center gap-2 text-(--celestial-gold) hover:text-(--celestial-gold)/80 font-medium transition-colors group"
                 >
                   Create your account
                   <span className="group-hover:translate-x-0.5 transition-transform">→</span>

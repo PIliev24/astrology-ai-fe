@@ -89,7 +89,7 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
                   <Moon className="h-5 w-5 text-[var(--celestial-violet)]" />
                 </div>
                 <div className="absolute inset-0 animate-orbit-reverse" style={{ "--orbit-radius": "50px" } as React.CSSProperties}>
-                  <Sparkles className="h-4 w-4 text-[var(--celestial-gold)]" />
+                  <Sparkles className="h-4 w-4 text-(--celestial-gold)" />
                 </div>
               </div>
 
@@ -134,7 +134,7 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
 
                 {/* More prompts toggle */}
                 <details className="mt-4">
-                  <summary className="text-sm text-[var(--celestial-gold)] cursor-pointer hover:text-[var(--celestial-gold)]/80 transition-colors">
+                  <summary className="text-sm text-(--celestial-gold) cursor-pointer hover:text-(--celestial-gold)/80 transition-colors">
                     Show more suggestions
                   </summary>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3">
@@ -179,7 +179,7 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
                     </div>
                     <div className="oracle-glass rounded-2xl px-5 py-4 max-w-md">
                       <div className="flex items-center gap-3">
-                        <Loader2 className="h-5 w-5 text-[var(--celestial-gold)] animate-spin" />
+                        <Loader2 className="h-5 w-5 text-(--celestial-gold) animate-spin" />
                         <span className="text-sm text-muted-foreground italic">
                           Consulting the cosmos...
                         </span>

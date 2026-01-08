@@ -145,9 +145,9 @@ export function ChatInput({
       {/* Warning alert (low remaining) */}
       {isWarning && !isLimitReached && (
         <Alert className="border-[var(--celestial-gold)]/30 bg-[var(--celestial-gold)]/5">
-          <Sparkles className="h-4 w-4 text-[var(--celestial-gold)]" />
+          <Sparkles className="h-4 w-4 text-(--celestial-gold)" />
           <AlertDescription className="flex items-center justify-between gap-4">
-            <span className="text-[var(--celestial-gold)]">
+            <span className="text-(--celestial-gold)">
               {remaining} message{remaining !== 1 ? "s" : ""} remaining today.
             </span>
             <Button
@@ -155,7 +155,7 @@ export function ChatInput({
               variant="outline"
               onClick={handleUpgrade}
               disabled={isUpgrading}
-              className="shrink-0 border-[var(--celestial-gold)]/30 text-[var(--celestial-gold)] hover:bg-[var(--celestial-gold)]/10"
+              className="shrink-0 border-[var(--celestial-gold)]/30 text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10"
             >
               {isUpgrading ? "Processing..." : "Upgrade"}
             </Button>
@@ -246,7 +246,7 @@ export function ChatInput({
           <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono">Shift+Enter</kbd>
           <span>for new line</span>
         </span>
-        <span className={cn(input.length > MAX_LENGTH * 0.9 && "text-[var(--celestial-gold)]")}>
+        <span className={cn(input.length > MAX_LENGTH * 0.9 && "text-(--celestial-gold)")}>
           {input.length} / {MAX_LENGTH}
         </span>
       </div>

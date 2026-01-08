@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PlanetIcon, PlanetKey } from "@/components/icons";
 import { PLANETS, getPlanetBySlug, getAllPlanetSlugs } from "@/data/planets";
 import { ArrowLeft, ArrowRight, Orbit, Clock, Repeat } from "lucide-react";
 import type { Metadata } from "next";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${planet.name} in Astrology - Meaning, Signs & Transits | Celestial Insights`,
+    title: `${planet.name} in Astrology - Meaning, Signs & Transits | Aistrology`,
     description: `Discover the astrological meaning of ${planet.name}. Learn how ${planet.name} influences ${planet.keywords.slice(0, 3).join(", ")} in your birth chart. Rules ${planet.rulership.join(" and ")}.`,
     keywords: [
       `${planet.name.toLowerCase()} astrology`,
@@ -68,7 +69,9 @@ export default async function PlanetPage({ params }: Props) {
 
       {/* Header */}
       <header className="text-center mb-16">
-        <span className="text-8xl mb-6 block animate-float">{planet.emoji}</span>
+        <div className="flex justify-center mb-6">
+          <PlanetIcon planet={planet.slug as PlanetKey} size={96} className="text-primary animate-float" />
+        </div>
         <h1 className="font-display text-4xl md:text-6xl font-bold mb-2">
           {planet.name}
         </h1>
@@ -190,7 +193,8 @@ export default async function PlanetPage({ params }: Props) {
             <Link href={`/planets/${prevPlanet.slug}`}>
               <Button variant="ghost" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                {prevPlanet.emoji} {prevPlanet.name}
+                <PlanetIcon planet={prevPlanet.slug as PlanetKey} size={16} />
+                {prevPlanet.name}
               </Button>
             </Link>
           ) : (
@@ -199,7 +203,8 @@ export default async function PlanetPage({ params }: Props) {
           {nextPlanet && (
             <Link href={`/planets/${nextPlanet.slug}`}>
               <Button variant="ghost" className="flex items-center gap-2">
-                {nextPlanet.name} {nextPlanet.emoji}
+                {nextPlanet.name}
+                <PlanetIcon planet={nextPlanet.slug as PlanetKey} size={16} />
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>

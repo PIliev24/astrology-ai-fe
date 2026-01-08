@@ -2,83 +2,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* Celestial Observatory Light Theme */
-  /* Soft parchment and celestial gold for light mode */
-  --background: oklch(0.97 0.008 80);
-  --foreground: oklch(0.18 0.03 280);
-  --card: oklch(0.98 0.005 75);
-  --card-foreground: oklch(0.18 0.03 280);
-  --popover: oklch(0.98 0.005 75);
-  --popover-foreground: oklch(0.18 0.03 280);
-  --primary: oklch(0.68 0.18 70);
-  --primary-foreground: oklch(0.12 0.02 280);
-  --secondary: oklch(0.25 0.06 275);
-  --secondary-foreground: oklch(0.95 0.01 85);
-  --muted: oklch(0.94 0.01 80);
-  --muted-foreground: oklch(0.38 0.03 280);
-  --accent: oklch(0.50 0.20 300);
-  --accent-foreground: oklch(0.98 0.01 300);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.98 0.005 270);
-  --border: oklch(0.88 0.03 80);
-  --input: oklch(0.94 0.01 80);
-  --ring: oklch(0.68 0.18 70);
-
-  /* Celestial chart colors */
-  --chart-1: oklch(0.68 0.18 70);
-  --chart-2: oklch(0.55 0.18 200);
-  --chart-3: oklch(0.62 0.15 50);
-  --chart-4: oklch(0.55 0.22 300);
-  --chart-5: oklch(0.35 0.08 280);
-
-  /* Sidebar - parchment style */
-  --sidebar: oklch(0.96 0.01 75);
-  --sidebar-foreground: oklch(0.18 0.03 280);
-  --sidebar-primary: oklch(0.68 0.18 70);
-  --sidebar-primary-foreground: oklch(0.12 0.02 280);
-  --sidebar-accent: oklch(0.50 0.20 300);
-  --sidebar-accent-foreground: oklch(0.98 0.01 300);
-  --sidebar-border: oklch(0.88 0.03 80);
-  --sidebar-ring: oklch(0.68 0.18 70);
-
-  /* Celestial special colors */
-  --celestial-gold: oklch(0.75 0.18 70);
-  --celestial-copper: oklch(0.60 0.14 55);
-  --celestial-indigo: oklch(0.35 0.12 280);
-  --celestial-violet: oklch(0.50 0.22 300);
-  --celestial-teal: oklch(0.55 0.12 200);
-  --celestial-rose: oklch(0.65 0.15 350);
-  --star-glow: oklch(0.95 0.05 85);
-  --nebula-pink: oklch(0.65 0.18 350);
-  --nebula-purple: oklch(0.45 0.20 290);
-  --nebula-blue: oklch(0.50 0.15 250);
-
-  /* Font families */
-  --font-sans: "Cormorant Garamond", Georgia, serif;
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-display: "Cinzel", "Times New Roman", serif;
-  --font-mono: "Geist Mono", ui-monospace, monospace;
-
-  /* Border radius - elegant curves */
-  --radius: 0.625rem;
-
-  /* Shadows - soft golden glows */
-  --shadow-2xs: 0 1px 2px oklch(0.68 0.18 70 / 0.05);
-  --shadow-xs: 0 1px 3px oklch(0.68 0.18 70 / 0.08);
-  --shadow-sm: 0 2px 4px oklch(0.68 0.18 70 / 0.1), 0 1px 2px oklch(0.18 0.03 280 / 0.05);
-  --shadow: 0 4px 6px oklch(0.68 0.18 70 / 0.1), 0 2px 4px oklch(0.18 0.03 280 / 0.05);
-  --shadow-md: 0 6px 12px oklch(0.68 0.18 70 / 0.12), 0 3px 6px oklch(0.18 0.03 280 / 0.06);
-  --shadow-lg: 0 12px 24px oklch(0.68 0.18 70 / 0.15), 0 6px 12px oklch(0.18 0.03 280 / 0.08);
-  --shadow-xl: 0 20px 40px oklch(0.68 0.18 70 / 0.18), 0 10px 20px oklch(0.18 0.03 280 / 0.1);
-  --shadow-2xl: 0 32px 64px oklch(0.68 0.18 70 / 0.25);
-
-  --tracking-normal: 0em;
-  --spacing: 0.25rem;
-}
-
-.dark {
-  /* Celestial Observatory Dark Theme - Deep cosmic void */
+:root, .dark {
+  /* Aistrology Dark Theme - Deep cosmic void */
   --background: oklch(0.08 0.025 280);
   --foreground: oklch(0.92 0.03 75);
   --card: oklch(0.12 0.03 280);
@@ -91,7 +16,7 @@
   --secondary-foreground: oklch(0.92 0.03 75);
   --muted: oklch(0.16 0.03 280);
   --muted-foreground: oklch(0.70 0.03 75);
-  --accent: oklch(0.58 0.22 300);
+  --accent: oklch(0.82 0.18 70);
   --accent-foreground: oklch(0.95 0.02 300);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.95 0.01 85);
@@ -99,7 +24,7 @@
   --input: oklch(0.16 0.03 280);
   --ring: oklch(0.78 0.16 70);
 
-  /* Celestial chart colors (dark mode - more vibrant) */
+  /* Celestial chart colors */
   --chart-1: oklch(0.78 0.16 70);
   --chart-2: oklch(0.62 0.18 200);
   --chart-3: oklch(0.68 0.15 50);
@@ -116,7 +41,7 @@
   --sidebar-border: oklch(0.22 0.04 280);
   --sidebar-ring: oklch(0.78 0.16 70);
 
-  /* Celestial special colors (dark) */
+  /* Celestial special colors */
   --celestial-gold: oklch(0.82 0.18 70);
   --celestial-copper: oklch(0.68 0.15 55);
   --celestial-indigo: oklch(0.45 0.15 280);
@@ -128,7 +53,13 @@
   --nebula-purple: oklch(0.40 0.22 290);
   --nebula-blue: oklch(0.45 0.18 250);
 
-  /* Border radius - slightly larger for dark mode depth */
+  /* Font families */
+  --font-sans: "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  /* Border radius */
   --radius: 0.75rem;
 
   /* Shadows - cosmic glows */
@@ -140,6 +71,9 @@
   --shadow-lg: 0 0 40px oklch(0.78 0.16 70 / 0.2), 0 12px 24px oklch(0 0 0 / 0.5);
   --shadow-xl: 0 0 56px oklch(0.78 0.16 70 / 0.25), 0 20px 40px oklch(0 0 0 / 0.6);
   --shadow-2xl: 0 0 80px oklch(0.78 0.16 70 / 0.35);
+
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
 }
 
 /* ========================================
@@ -831,13 +765,9 @@
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  opacity: 0.05;
   pointer-events: none;
   mix-blend-mode: overlay;
-}
-
-.dark .noise-overlay::before {
-  opacity: 0.05;
 }
 
 /* ========================================
@@ -845,12 +775,8 @@
    ======================================== */
 
 ::selection {
-  background: oklch(from var(--celestial-gold) l c h / 0.3);
-  color: var(--foreground);
-}
-
-.dark ::selection {
   background: oklch(from var(--celestial-gold) l c h / 0.4);
+  color: var(--foreground);
 }
 
 /* ========================================
@@ -971,12 +897,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  :root {
-    --border: oklch(0.5 0 0);
-    --ring: oklch(0.5 0.2 70);
-  }
-
-  .dark {
+  :root, .dark {
     --border: oklch(0.6 0 0);
     --ring: oklch(0.8 0.2 70);
   }

@@ -211,7 +211,7 @@ export default function SettingsPage() {
           <div className="lg:col-span-2 space-y-6">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-[var(--celestial-gold)]" />
+                <Star className="h-4 w-4 text-(--celestial-gold)" />
                 <h2 className="font-display text-xl font-semibold text-gradient-gold">Current Subscription</h2>
               </div>
               <SubscriptionCard
@@ -226,7 +226,7 @@ export default function SettingsPage() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-[var(--celestial-gold)]" />
+                <Sparkles className="h-4 w-4 text-(--celestial-gold)" />
                 <h2 className="font-display text-xl font-semibold text-gradient-gold">Usage Statistics</h2>
               </div>
               <UsageIndicator
@@ -244,7 +244,7 @@ export default function SettingsPage() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <User className="h-4 w-4 text-[var(--celestial-gold)]" />
+                <User className="h-4 w-4 text-(--celestial-gold)" />
                 <h2 className="font-display text-xl font-semibold text-gradient-gold">Account</h2>
               </div>
               <Card className="celestial-card">
@@ -285,7 +285,7 @@ export default function SettingsPage() {
 
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Crown className="h-4 w-4 text-[var(--celestial-gold)]" />
+              <Crown className="h-4 w-4 text-(--celestial-gold)" />
               <h2 className="font-display text-xl font-semibold text-gradient-gold">Available Plans</h2>
             </div>
             <div className="space-y-4">
@@ -346,7 +346,7 @@ export default function SettingsPage() {
                       <ul className="space-y-2">
                         {plan.features.slice(0, 3).map((feature, index) => (
                           <li key={index} className="flex items-start gap-2 text-sm">
-                            <Check className="h-4 w-4 text-[var(--celestial-gold)] shrink-0 mt-0.5" />
+                            <Check className="h-4 w-4 text-(--celestial-gold) shrink-0 mt-0.5" />
                             <span className="text-muted-foreground">{feature.name}</span>
                           </li>
                         ))}
