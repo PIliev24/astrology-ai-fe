@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity */
 "use client";
 
 import { useEffect, useRef, useMemo } from "react";
@@ -38,7 +39,7 @@ export function StarField({
 }: StarFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const starsRef = useRef<Star[]>([]);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
 
   const stars = useMemo(() => {
@@ -79,7 +80,7 @@ export function StarField({
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    let startTime = performance.now();
+    const startTime = performance.now();
 
     const draw = (time: number) => {
       const elapsed = (time - startTime) / 1000;
