@@ -26,7 +26,7 @@ export default function ChartDetailPage() {
       <div className="container mx-auto px-4 py-8 flex-1">
         <div className="text-center">
           <p className="text-destructive">Failed to load chart</p>
-          <Button variant="outline" onClick={() => router.push("/")} className="mt-4">
+          <Button variant="outline" onClick={() => router.push("/dashboard")} className="mt-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Dashboard
           </Button>
@@ -39,20 +39,18 @@ export default function ChartDetailPage() {
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-8 flex-1">
-      <Button variant="ghost" onClick={() => router.push("/")} className="mb-6 hover:bg-accent">
+      <Button variant="ghost" onClick={() => router.push("/dashboard")} className="mb-6 hover:bg-accent">
         <ArrowLeft className="h-4 w-4 mr-2" />
         Back to Dashboard
       </Button>
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">{chart.name}</h1>
-        <p className="text-muted-foreground">Birth Chart Details</p>
       </div>
 
       {/* Chart SVG */}
       {chartSvg && (
         <div className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">Chart Visualization</h2>
           <Card className="py-0 overflow-auto bg-linear-to-br from-card to-muted/30 border-2">
             <div
               className="w-full flex items-center justify-center"

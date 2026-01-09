@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { RouteGuard } from "@/components/auth/route-guard";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -16,8 +23,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Astrology App",
-  description: "AI-powered astrology assistant with birth chart analysis",
+  title: "Aistrology - AI-Powered Astrology",
+  description: "Discover your cosmic destiny with AI-powered astrology. Get personalized birth chart readings, daily horoscopes, and celestial guidance.",
+  keywords: ["astrology", "birth chart", "horoscope", "zodiac", "AI astrology", "natal chart", "aistrology"],
+  authors: [{ name: "Aistrology" }],
+  openGraph: {
+    title: "Aistrology - AI-Powered Astrology",
+    description: "Discover your cosmic destiny with AI-powered astrology readings",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -27,8 +41,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <body className={`${cinzel.variable} ${cormorantGaramond.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
           <RouteGuard>{children}</RouteGuard>
           <Toaster />
         </ThemeProvider>

@@ -40,7 +40,7 @@ export function useSignup() {
 
   const { trigger, isMutating, error, reset } = useSWRMutation(HOOK_KEYS.SIGNUP, signupMutation, {
     onSuccess: () => {
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
     },
     onError: (err: Error) => {

@@ -14,7 +14,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { ThemeToggle } from "@/components/theme";
 
 interface NavbarProps {
   onSidebarToggle?: () => void;
@@ -67,12 +66,11 @@ export function Navbar({ onSidebarToggle }: NavbarProps) {
                 <Menu className="h-5 w-5" />
               </Button>
             )}
-            <h1 className="text-xl font-semibold tracking-tight">Astrology AI</h1>
+            <h1 className="text-xl font-semibold tracking-tight text-gradient-gold">Aistrology</h1>
           </div>
 
-          {/* Right side - Theme toggle and user menu */}
+          {/* Right side - User menu */}
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             {user && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>

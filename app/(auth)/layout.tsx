@@ -6,9 +6,12 @@ import { useAuth } from "@/hooks";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { ChartProvider, useChartContext } from "@/contexts/chart-context";
+import { CreateChartDialog } from "@/components/dashboard/create-chart-dialog";
 
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+function AuthLayoutContent({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
+  const { isNoChartsDialogOpen, hasNoCharts } = useChartContext();
   // On mobile: true = hidden, false = shown
   // On desktop: true = collapsed to icon-only, false = full width
   // Start with true so mobile is hidden by default (floating button shows)
@@ -70,6 +73,21 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
       </div>
+
+      {/* Global Create Chart Dialog - always visible when user has no charts */}
+      {hasNoCharts && (
+        <CreateChartDialog forceOpen={isNoChartsDialogOpen}>
+          <div />
+        </CreateChartDialog>
+      )}
     </div>
+  );
+}
+
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <ChartProvider>
+      <AuthLayoutContent>{children}</AuthLayoutContent>
+    </ChartProvider>
   );
 }

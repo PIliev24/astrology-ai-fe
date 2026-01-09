@@ -21,3 +21,14 @@ export function getWebSocketUrl(endpoint: string): string {
   const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
   return `${wsBaseUrl}${cleanEndpoint}`;
 }
+
+export function getStripePublishableKey(): string {
+  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+  if (!publishableKey) {
+    console.warn("NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY environment variable is not set");
+    return "";
+  }
+
+  return publishableKey;
+}
