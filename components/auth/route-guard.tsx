@@ -16,12 +16,10 @@ export function RouteGuard({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   // Check if current path is a public route (including nested paths like /zodiac/aries)
-  const isPublicRoute = PUBLIC_ROUTES.some(
-    (route) => pathname === route || pathname.startsWith(`${route}/`)
-  );
+  const isPublicRoute = PUBLIC_ROUTES.some(route => pathname === route || pathname.startsWith(`${route}/`));
 
   // Check if current path is an auth-only route (login/signup)
-  const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route));
+  const isAuthRoute = AUTH_ROUTES.some(route => pathname.startsWith(route));
 
   const isAuthenticated = !!user;
 

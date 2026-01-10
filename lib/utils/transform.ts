@@ -22,24 +22,26 @@ type CamelToSnakeCase<S extends string> = S extends `${infer T}${infer U}`
 /**
  * Type helper to recursively convert object keys from snake_case to camelCase
  */
-export type CamelCaseKeys<T> = T extends Array<infer U>
-  ? Array<CamelCaseKeys<U>>
-  : T extends object
-    ? {
-        [K in keyof T as K extends string ? SnakeToCamelCase<K> : K]: CamelCaseKeys<T[K]>;
-      }
-    : T;
+export type CamelCaseKeys<T> =
+  T extends Array<infer U>
+    ? Array<CamelCaseKeys<U>>
+    : T extends object
+      ? {
+          [K in keyof T as K extends string ? SnakeToCamelCase<K> : K]: CamelCaseKeys<T[K]>;
+        }
+      : T;
 
 /**
  * Type helper to recursively convert object keys from camelCase to snake_case
  */
-export type SnakeCaseKeys<T> = T extends Array<infer U>
-  ? Array<SnakeCaseKeys<U>>
-  : T extends object
-    ? {
-        [K in keyof T as K extends string ? CamelToSnakeCase<K> : K]: SnakeCaseKeys<T[K]>;
-      }
-    : T;
+export type SnakeCaseKeys<T> =
+  T extends Array<infer U>
+    ? Array<SnakeCaseKeys<U>>
+    : T extends object
+      ? {
+          [K in keyof T as K extends string ? CamelToSnakeCase<K> : K]: SnakeCaseKeys<T[K]>;
+        }
+      : T;
 
 /**
  * Convert a snake_case string to camelCase
@@ -64,7 +66,7 @@ export function toCamelCase(str: string): string {
  * toSnakeCase("userFirstName") // "user_first_name"
  */
 export function toSnakeCase(str: string): string {
-  return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
+  return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
 }
 
 /**
@@ -90,12 +92,9 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
  * transformKeys({ user_name: "John" }, toCamelCase)
  * // { userName: "John" }
  */
-export function transformKeys<T>(
-  obj: T,
-  transformer: (key: string) => string
-): T {
+export function transformKeys<T>(obj: T, transformer: (key: string) => string): T {
   if (Array.isArray(obj)) {
-    return obj.map((item) => transformKeys(item, transformer)) as T;
+    return obj.map(item => transformKeys(item, transformer)) as T;
   }
 
   if (!isPlainObject(obj)) {

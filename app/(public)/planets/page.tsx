@@ -2,13 +2,24 @@ import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PlanetIcon, PlanetKey } from "@/components/icons";
-import { PLANETS, getPlanetsByType } from "@/data/planets";
+import { getPlanetsByType } from "@/data/planets";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Planets in Astrology - Complete Guide to Celestial Bodies | Aistrology",
-  description: "Learn about the planets in astrology and how they influence your birth chart. Discover the meaning of the Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto.",
-  keywords: ["planets astrology", "celestial bodies", "sun astrology", "moon astrology", "mercury retrograde", "venus love", "mars energy", "jupiter luck", "saturn lessons"],
+  description:
+    "Learn about the planets in astrology and how they influence your birth chart. Discover the meaning of the Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and Pluto.",
+  keywords: [
+    "planets astrology",
+    "celestial bodies",
+    "sun astrology",
+    "moon astrology",
+    "mercury retrograde",
+    "venus love",
+    "mars energy",
+    "jupiter luck",
+    "saturn lessons",
+  ],
 };
 
 const typeColors: Record<string, string> = {
@@ -26,9 +37,17 @@ export default function PlanetsPage() {
 
   const sections = [
     { title: "The Luminaries", description: "The Sun and Moon - the two lights of the chart", planets: luminaries },
-    { title: "Personal Planets", description: "Mercury, Venus, and Mars - your personal expression", planets: personal },
+    {
+      title: "Personal Planets",
+      description: "Mercury, Venus, and Mars - your personal expression",
+      planets: personal,
+    },
     { title: "Social Planets", description: "Jupiter and Saturn - connecting you to society", planets: social },
-    { title: "Generational Planets", description: "Uranus, Neptune, and Pluto - collective transformation", planets: generational },
+    {
+      title: "Generational Planets",
+      description: "Uranus, Neptune, and Pluto - collective transformation",
+      planets: generational,
+    },
   ];
 
   return (
@@ -38,8 +57,8 @@ export default function PlanetsPage() {
           The <span className="text-gradient-gold">Celestial Bodies</span>
         </h1>
         <p className="text-xl text-foreground/70">
-          In astrology, planets represent different aspects of your psyche and life experiences.
-          Each planet brings its own energy, influencing how you think, feel, love, act, and grow.
+          In astrology, planets represent different aspects of your psyche and life experiences. Each planet brings its
+          own energy, influencing how you think, feel, love, act, and grow.
         </p>
       </div>
 
@@ -54,15 +73,17 @@ export default function PlanetsPage() {
 
       {/* Planets by Category */}
       <div className="space-y-16 max-w-7xl mx-auto">
-        {sections.map((section) => (
+        {sections.map(section => (
           <section key={section.title}>
             <div className="text-center mb-8">
               <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">{section.title}</h2>
               <p className="text-foreground/70">{section.description}</p>
             </div>
 
-            <div className={`grid gap-6 ${section.planets.length <= 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : "md:grid-cols-3"}`}>
-              {section.planets.map((planet) => (
+            <div
+              className={`grid gap-6 ${section.planets.length <= 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : "md:grid-cols-3"}`}
+            >
+              {section.planets.map(planet => (
                 <Link key={planet.slug} href={`/planets/${planet.slug}`}>
                   <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
                     <CardHeader className="text-center">
@@ -73,22 +94,18 @@ export default function PlanetsPage() {
                         {planet.name}
                         <span className="text-foreground/70 text-lg">{planet.symbol}</span>
                       </CardTitle>
-                      <CardDescription>
-                        Rules {planet.rulership.join(" & ")}
-                      </CardDescription>
+                      <CardDescription>Rules {planet.rulership.join(" & ")}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <Badge className={typeColors[planet.type]}>{planet.type}</Badge>
                       <div className="flex flex-wrap gap-1">
-                        {planet.keywords.slice(0, 3).map((keyword) => (
+                        {planet.keywords.slice(0, 3).map(keyword => (
                           <Badge key={keyword} variant="secondary" className="text-xs">
                             {keyword}
                           </Badge>
                         ))}
                       </div>
-                      <p className="text-sm text-foreground/70 line-clamp-2">
-                        {planet.description.slice(0, 100)}...
-                      </p>
+                      <p className="text-sm text-foreground/70 line-clamp-2">{planet.description.slice(0, 100)}...</p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -108,13 +125,17 @@ export default function PlanetsPage() {
               <CardTitle className="font-display">Planet Positions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">
-                Each planet occupies a zodiac sign and house in your birth chart:
-              </p>
+              <p className="text-foreground/70">Each planet occupies a zodiac sign and house in your birth chart:</p>
               <ul className="space-y-2 text-sm">
-                <li><strong>Sign:</strong> How the planet expresses its energy</li>
-                <li><strong>House:</strong> Where in life the planet's energy manifests</li>
-                <li><strong>Aspects:</strong> How planets interact with each other</li>
+                <li>
+                  <strong>Sign:</strong> How the planet expresses its energy
+                </li>
+                <li>
+                  <strong>House:</strong> Where in life the planet&apos;s energy manifests
+                </li>
+                <li>
+                  <strong>Aspects:</strong> How planets interact with each other
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -124,14 +145,20 @@ export default function PlanetsPage() {
               <CardTitle className="font-display">Planetary Dignity</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">
-                Planets are stronger or weaker depending on their sign placement:
-              </p>
+              <p className="text-foreground/70">Planets are stronger or weaker depending on their sign placement:</p>
               <ul className="space-y-2 text-sm">
-                <li><strong>Domicile:</strong> Planet in its ruling sign (strongest)</li>
-                <li><strong>Exaltation:</strong> Planet in a sign that enhances it</li>
-                <li><strong>Detriment:</strong> Planet opposite its ruling sign</li>
-                <li><strong>Fall:</strong> Planet opposite its exaltation</li>
+                <li>
+                  <strong>Domicile:</strong> Planet in its ruling sign (strongest)
+                </li>
+                <li>
+                  <strong>Exaltation:</strong> Planet in a sign that enhances it
+                </li>
+                <li>
+                  <strong>Detriment:</strong> Planet opposite its ruling sign
+                </li>
+                <li>
+                  <strong>Fall:</strong> Planet opposite its exaltation
+                </li>
               </ul>
             </CardContent>
           </Card>

@@ -14,8 +14,6 @@ import {
   Stars,
   Loader2,
   LogOut,
-  Moon,
-  Sun,
   X,
   ChevronDown,
   Trash2,
@@ -191,7 +189,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
                       variant="ghost"
                       size="icon"
                       className="h-6 w-6 opacity-0 group-hover/conv:opacity-100 transition-opacity shrink-0 hover:bg-destructive/10"
-                      onClick={(e) => handleDeleteClick(e, conversation.id)}
+                      onClick={e => handleDeleteClick(e, conversation.id)}
                       aria-label={`Delete conversation ${conversation.title || "Untitled"}`}
                     >
                       <Trash2 className="h-3 w-3 text-destructive" />
@@ -370,7 +368,11 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {!isCollapsed && (
           <div className="lg:hidden border-b border-border/50 p-4">
             <CreateChartDialog>
-              <Button className="w-full gradient-gold text-primary-foreground" size="sm" aria-label="Create new birth chart">
+              <Button
+                className="w-full gradient-gold text-primary-foreground"
+                size="sm"
+                aria-label="Create new birth chart"
+              >
                 <Plus className="h-4 w-4 mr-2" />
                 New Natal Chart
               </Button>
@@ -416,7 +418,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                 </div>
               ) : (
                 <div className="space-y-1 py-3 px-3">
-                  {charts.map((chart) => (
+                  {charts.map(chart => (
                     <ChartItem
                       key={chart.id}
                       chart={chart}
@@ -436,13 +438,21 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         <div className={cn("hidden lg:block border-b border-border/50", isCollapsed ? "p-2" : "p-3 lg:p-4")}>
           {isCollapsed ? (
             <CreateChartDialog>
-              <Button className="w-full gradient-gold text-primary-foreground" size="icon" aria-label="Create new birth chart">
+              <Button
+                className="w-full gradient-gold text-primary-foreground"
+                size="icon"
+                aria-label="Create new birth chart"
+              >
                 <Plus className="h-4 w-4" />
               </Button>
             </CreateChartDialog>
           ) : (
             <CreateChartDialog>
-              <Button className="w-full gradient-gold text-primary-foreground" size="sm" aria-label="Create new birth chart">
+              <Button
+                className="w-full gradient-gold text-primary-foreground"
+                size="sm"
+                aria-label="Create new birth chart"
+              >
                 <Plus className="h-4 w-4 mr-2" />
                 New Natal Chart
               </Button>
@@ -500,7 +510,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               </div>
             ) : (
               <div className={cn("space-y-1 py-3", isCollapsed ? "px-2" : "px-3")}>
-                {charts.map((chart) => (
+                {charts.map(chart => (
                   <ChartItem
                     key={chart.id}
                     chart={chart}
@@ -564,7 +574,9 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                   </Avatar>
                   {!isCollapsed && (
                     <div className="flex-1 min-w-0 ml-3 text-left">
-                      <p className="text-sm font-medium truncate text-sidebar-foreground">{user.name || "Star Seeker"}</p>
+                      <p className="text-sm font-medium truncate text-sidebar-foreground">
+                        {user.name || "Star Seeker"}
+                      </p>
                       <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                     </div>
                   )}
@@ -591,7 +603,10 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                   <span>Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer hover:bg-destructive/10 text-destructive">
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="cursor-pointer hover:bg-destructive/10 text-destructive"
+                >
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Sign out</span>
                 </DropdownMenuItem>

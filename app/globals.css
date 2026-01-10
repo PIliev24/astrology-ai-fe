@@ -2,20 +2,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root, .dark {
+:root,
+.dark {
   /* Aistrology Dark Theme - Deep cosmic void */
   --background: oklch(0.08 0.025 280);
   --foreground: oklch(0.92 0.03 75);
   --card: oklch(0.12 0.03 280);
   --card-foreground: oklch(0.92 0.03 75);
-  --popover: oklch(0.10 0.028 280);
+  --popover: oklch(0.1 0.028 280);
   --popover-foreground: oklch(0.92 0.03 75);
   --primary: oklch(0.78 0.16 70);
   --primary-foreground: oklch(0.08 0.025 280);
   --secondary: oklch(0.22 0.04 280);
   --secondary-foreground: oklch(0.92 0.03 75);
   --muted: oklch(0.16 0.03 280);
-  --muted-foreground: oklch(0.70 0.03 75);
+  --muted-foreground: oklch(0.7 0.03 75);
   --accent: oklch(0.82 0.18 70);
   --accent-foreground: oklch(0.95 0.02 300);
   --destructive: oklch(0.55 0.22 25);
@@ -29,10 +30,10 @@
   --chart-2: oklch(0.62 0.18 200);
   --chart-3: oklch(0.68 0.15 50);
   --chart-4: oklch(0.62 0.24 300);
-  --chart-5: oklch(0.45 0.10 280);
+  --chart-5: oklch(0.45 0.1 280);
 
   /* Sidebar - deep indigo */
-  --sidebar: oklch(0.10 0.028 280);
+  --sidebar: oklch(0.1 0.028 280);
   --sidebar-foreground: oklch(0.92 0.03 75);
   --sidebar-primary: oklch(0.78 0.16 70);
   --sidebar-primary-foreground: oklch(0.08 0.025 280);
@@ -47,10 +48,10 @@
   --celestial-indigo: oklch(0.45 0.15 280);
   --celestial-violet: oklch(0.58 0.24 300);
   --celestial-teal: oklch(0.62 0.14 200);
-  --celestial-rose: oklch(0.70 0.18 350);
+  --celestial-rose: oklch(0.7 0.18 350);
   --star-glow: oklch(0.95 0.08 75);
-  --nebula-pink: oklch(0.55 0.20 350);
-  --nebula-purple: oklch(0.40 0.22 290);
+  --nebula-pink: oklch(0.55 0.2 350);
+  --nebula-purple: oklch(0.4 0.22 290);
   --nebula-blue: oklch(0.45 0.18 250);
 
   /* Font families */
@@ -71,6 +72,7 @@
   --shadow-lg: 0 0 40px oklch(0.78 0.16 70 / 0.2), 0 12px 24px oklch(0 0 0 / 0.5);
   --shadow-xl: 0 0 56px oklch(0.78 0.16 70 / 0.25), 0 20px 40px oklch(0 0 0 / 0.6);
   --shadow-2xl: 0 0 80px oklch(0.78 0.16 70 / 0.35);
+
 
   --tracking-normal: 0em;
   --spacing: 0.25rem;
@@ -140,125 +142,246 @@
 
 /* Basic transitions */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes slide-in-from-bottom {
-  from { transform: translateY(16px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-from-top {
-  from { transform: translateY(-16px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-from-left {
-  from { transform: translateX(-16px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-from-right {
-  from { transform: translateX(16px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes scale-in {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Celestial animations */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 @keyframes twinkle-soft {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.9; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-8px) rotate(1deg); }
-  75% { transform: translateY(4px) rotate(-1deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(4px) rotate(-1deg);
+  }
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  33% { transform: translateY(-12px) translateX(4px); }
-  66% { transform: translateY(6px) translateX(-4px); }
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-12px) translateX(4px);
+  }
+  66% {
+    transform: translateY(6px) translateX(-4px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px var(--celestial-gold), 0 0 40px oklch(0.78 0.16 70 / 0.3);
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px var(--celestial-gold),
+      0 0 40px oklch(0.78 0.16 70 / 0.3);
     filter: brightness(1);
   }
   50% {
-    box-shadow: 0 0 40px var(--celestial-gold), 0 0 80px oklch(0.78 0.16 70 / 0.5);
+    box-shadow:
+      0 0 40px var(--celestial-gold),
+      0 0 80px oklch(0.78 0.16 70 / 0.5);
     filter: brightness(1.1);
   }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes orbit {
-  from { transform: rotate(0deg) translateX(var(--orbit-radius, 100px)) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(var(--orbit-radius, 100px)) rotate(-360deg); }
+  from {
+    transform: rotate(0deg) translateX(var(--orbit-radius, 100px)) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(var(--orbit-radius, 100px)) rotate(-360deg);
+  }
 }
 
 @keyframes orbit-reverse {
-  from { transform: rotate(360deg) translateX(var(--orbit-radius, 80px)) rotate(-360deg); }
-  to { transform: rotate(0deg) translateX(var(--orbit-radius, 80px)) rotate(0deg); }
+  from {
+    transform: rotate(360deg) translateX(var(--orbit-radius, 80px)) rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg) translateX(var(--orbit-radius, 80px)) rotate(0deg);
+  }
 }
 
 @keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate-reverse {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes nebula-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  25% { transform: translate(20px, -10px) scale(1.05); opacity: 0.4; }
-  50% { transform: translate(-10px, 20px) scale(0.95); opacity: 0.35; }
-  75% { transform: translate(-20px, -5px) scale(1.02); opacity: 0.38; }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(20px, -10px) scale(1.05);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-10px, 20px) scale(0.95);
+    opacity: 0.35;
+  }
+  75% {
+    transform: translate(-20px, -5px) scale(1.02);
+    opacity: 0.38;
+  }
 }
 
 @keyframes star-field-move {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100%); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
 
 @keyframes comet {
-  0% { transform: translateX(-100%) translateY(100%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(100vw) translateY(-100vh); opacity: 0; }
+  0% {
+    transform: translateX(-100%) translateY(100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(-100vh);
+    opacity: 0;
+  }
 }
 
 @keyframes zodiac-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes aurora {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: translateX(-25%) skewX(-5deg);
   }
@@ -280,15 +403,29 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 8px currentColor); }
-  50% { filter: drop-shadow(0 0 20px currentColor); }
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px currentColor);
+  }
 }
 
 @keyframes morph-blob {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  50% { border-radius: 50% 60% 30% 60% / 30% 40% 70% 50%; }
-  75% { border-radius: 60% 40% 60% 30% / 70% 50% 40% 60%; }
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 50%;
+  }
+  75% {
+    border-radius: 60% 40% 60% 30% / 70% 50% 40% 60%;
+  }
 }
 
 /* ========================================
@@ -344,12 +481,7 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--celestial-gold) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, transparent 0%, var(--celestial-gold) 50%, transparent 100%);
   background-size: 200% 100%;
   animation: shimmer 2s linear infinite;
 }
@@ -404,22 +536,44 @@
 }
 
 /* Staggered animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
-.stagger-7 { animation-delay: 0.7s; }
-.stagger-8 { animation-delay: 0.8s; }
-.stagger-9 { animation-delay: 0.9s; }
-.stagger-10 { animation-delay: 1s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+.stagger-7 {
+  animation-delay: 0.7s;
+}
+.stagger-8 {
+  animation-delay: 0.8s;
+}
+.stagger-9 {
+  animation-delay: 0.9s;
+}
+.stagger-10 {
+  animation-delay: 1s;
+}
 
 /* Animation on scroll intersection */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .animate-on-scroll.is-visible {
@@ -455,7 +609,12 @@
 }
 
 .gradient-gold {
-  background: linear-gradient(135deg, var(--celestial-gold) 0%, var(--celestial-copper) 50%, var(--celestial-gold) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--celestial-gold) 0%,
+    var(--celestial-copper) 50%,
+    var(--celestial-gold) 100%
+  );
 }
 
 .gradient-gold-shimmer {
@@ -471,19 +630,11 @@
 }
 
 .gradient-cosmic {
-  background: linear-gradient(135deg,
-    oklch(0.12 0.04 290) 0%,
-    oklch(0.08 0.025 280) 50%,
-    oklch(0.10 0.035 260) 100%
-  );
+  background: linear-gradient(135deg, oklch(0.12 0.04 290) 0%, oklch(0.08 0.025 280) 50%, oklch(0.1 0.035 260) 100%);
 }
 
 .gradient-cosmic-radial {
-  background: radial-gradient(
-    ellipse at 50% 0%,
-    oklch(0.18 0.06 290) 0%,
-    oklch(0.08 0.025 280) 70%
-  );
+  background: radial-gradient(ellipse at 50% 0%, oklch(0.18 0.06 290) 0%, oklch(0.08 0.025 280) 70%);
 }
 
 .gradient-nebula {
@@ -500,35 +651,22 @@
 .gradient-aurora {
   background: linear-gradient(
     180deg,
-    oklch(0.50 0.18 180 / 0.2) 0%,
-    oklch(0.45 0.20 290 / 0.15) 50%,
+    oklch(0.5 0.18 180 / 0.2) 0%,
+    oklch(0.45 0.2 290 / 0.15) 50%,
     oklch(0.55 0.15 350 / 0.1) 100%
   );
 }
 
 .gradient-mystical {
-  background: linear-gradient(
-    180deg,
-    oklch(0.18 0.06 290) 0%,
-    oklch(0.12 0.04 280) 50%,
-    oklch(0.08 0.025 280) 100%
-  );
+  background: linear-gradient(180deg, oklch(0.18 0.06 290) 0%, oklch(0.12 0.04 280) 50%, oklch(0.08 0.025 280) 100%);
 }
 
 .gradient-card {
-  background: linear-gradient(
-    135deg,
-    var(--card) 0%,
-    oklch(from var(--card) calc(l - 0.02) c h) 100%
-  );
+  background: linear-gradient(135deg, var(--card) 0%, oklch(from var(--card) calc(l - 0.02) c h) 100%);
 }
 
 .gradient-card-hover {
-  background: linear-gradient(
-    135deg,
-    oklch(from var(--card) calc(l + 0.02) c h) 0%,
-    var(--card) 100%
-  );
+  background: linear-gradient(135deg, oklch(from var(--card) calc(l + 0.02) c h) 0%, var(--card) 100%);
 }
 
 /* Text gradients - using solid color for better compatibility */
@@ -549,8 +687,7 @@
    ======================================== */
 
 .constellation-bg {
-  background-image:
-    radial-gradient(circle at 15% 25%, var(--star-glow) 1px, transparent 1px),
+  background-image: radial-gradient(circle at 15% 25%, var(--star-glow) 1px, transparent 1px),
     radial-gradient(circle at 85% 15%, var(--star-glow) 0.8px, transparent 0.8px),
     radial-gradient(circle at 45% 75%, var(--celestial-gold) 1.2px, transparent 1.2px),
     radial-gradient(circle at 75% 55%, var(--star-glow) 0.6px, transparent 0.6px),
@@ -558,29 +695,44 @@
     radial-gradient(circle at 55% 35%, var(--star-glow) 0.7px, transparent 0.7px),
     radial-gradient(circle at 95% 85%, var(--celestial-gold) 1px, transparent 1px),
     radial-gradient(circle at 5% 55%, var(--star-glow) 0.5px, transparent 0.5px);
-  background-size: 200px 200px, 150px 180px, 180px 160px, 220px 200px, 160px 190px, 190px 170px, 170px 210px, 210px 150px;
+  background-size:
+    200px 200px,
+    150px 180px,
+    180px 160px,
+    220px 200px,
+    160px 190px,
+    190px 170px,
+    170px 210px,
+    210px 150px;
 }
 
 .star-field-dense {
-  background-image:
-    radial-gradient(circle, var(--star-glow) 1px, transparent 1px),
+  background-image: radial-gradient(circle, var(--star-glow) 1px, transparent 1px),
     radial-gradient(circle, var(--star-glow) 0.5px, transparent 0.5px),
     radial-gradient(circle, var(--celestial-gold) 0.8px, transparent 0.8px);
-  background-size: 100px 100px, 50px 50px, 150px 150px;
-  background-position: 0 0, 25px 25px, 75px 75px;
+  background-size:
+    100px 100px,
+    50px 50px,
+    150px 150px;
+  background-position:
+    0 0,
+    25px 25px,
+    75px 75px;
 }
 
 .star-field-subtle {
-  background-image:
-    radial-gradient(circle, oklch(1 0 0 / 0.4) 1px, transparent 1px),
+  background-image: radial-gradient(circle, oklch(1 0 0 / 0.4) 1px, transparent 1px),
     radial-gradient(circle, oklch(1 0 0 / 0.2) 0.5px, transparent 0.5px);
-  background-size: 120px 120px, 80px 80px;
-  background-position: 0 0, 40px 40px;
+  background-size:
+    120px 120px,
+    80px 80px;
+  background-position:
+    0 0,
+    40px 40px;
 }
 
 .nebula-overlay {
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 30%, var(--nebula-purple), transparent),
+  background: radial-gradient(ellipse 80% 50% at 20% 30%, var(--nebula-purple), transparent),
     radial-gradient(ellipse 60% 40% at 80% 70%, var(--nebula-pink), transparent),
     radial-gradient(ellipse 70% 60% at 50% 50%, var(--nebula-blue), transparent);
 }
@@ -676,7 +828,9 @@
    ======================================== */
 
 .hover-lift {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
@@ -684,7 +838,9 @@
 }
 
 .hover-glow {
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .hover-glow:hover {
@@ -792,18 +948,18 @@
   position: relative;
   background: conic-gradient(
     from 0deg,
-    oklch(0.55 0.20 25) 0deg 30deg,
+    oklch(0.55 0.2 25) 0deg 30deg,
     oklch(0.45 0.15 100) 30deg 60deg,
     oklch(0.55 0.15 60) 60deg 90deg,
-    oklch(0.50 0.20 220) 90deg 120deg,
-    oklch(0.60 0.18 50) 120deg 150deg,
+    oklch(0.5 0.2 220) 90deg 120deg,
+    oklch(0.6 0.18 50) 120deg 150deg,
     oklch(0.45 0.12 100) 150deg 180deg,
     oklch(0.55 0.15 350) 180deg 210deg,
-    oklch(0.50 0.22 300) 210deg 240deg,
-    oklch(0.55 0.20 25) 240deg 270deg,
-    oklch(0.40 0.12 100) 270deg 300deg,
-    oklch(0.50 0.18 260) 300deg 330deg,
-    oklch(0.50 0.20 220) 330deg 360deg
+    oklch(0.5 0.22 300) 210deg 240deg,
+    oklch(0.55 0.2 25) 240deg 270deg,
+    oklch(0.4 0.12 100) 270deg 300deg,
+    oklch(0.5 0.18 260) 300deg 330deg,
+    oklch(0.5 0.2 220) 330deg 360deg
   );
   box-shadow:
     0 0 60px oklch(from var(--celestial-gold) l c h / 0.3),
@@ -867,7 +1023,9 @@
   stroke: var(--celestial-gold);
   stroke-width: 1;
   opacity: 0.6;
-  transition: opacity 0.3s ease, stroke-width 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    stroke-width 0.3s ease;
 }
 
 .aspect-line:hover {
@@ -875,11 +1033,21 @@
   stroke-width: 2;
 }
 
-.aspect-line.conjunction { stroke: var(--celestial-gold); }
-.aspect-line.opposition { stroke: var(--celestial-rose); }
-.aspect-line.trine { stroke: var(--celestial-teal); }
-.aspect-line.square { stroke: var(--destructive); }
-.aspect-line.sextile { stroke: var(--celestial-violet); }
+.aspect-line.conjunction {
+  stroke: var(--celestial-gold);
+}
+.aspect-line.opposition {
+  stroke: var(--celestial-rose);
+}
+.aspect-line.trine {
+  stroke: var(--celestial-teal);
+}
+.aspect-line.square {
+  stroke: var(--destructive);
+}
+.aspect-line.sextile {
+  stroke: var(--celestial-violet);
+}
 
 /* ========================================
    RESPONSIVE UTILITIES
@@ -897,7 +1065,8 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  :root, .dark {
+  :root,
+  .dark {
     --border: oklch(0.6 0 0);
     --ring: oklch(0.8 0.2 70);
   }

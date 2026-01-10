@@ -6,8 +6,25 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Zodiac Signs - Complete Guide to All 12 Signs | Aistrology",
-  description: "Explore all 12 zodiac signs with detailed descriptions of their traits, elements, ruling planets, and compatibility. Discover the unique characteristics of each astrological sign.",
-  keywords: ["zodiac signs", "astrology signs", "horoscope signs", "aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"],
+  description:
+    "Explore all 12 zodiac signs with detailed descriptions of their traits, elements, ruling planets, and compatibility. Discover the unique characteristics of each astrological sign.",
+  keywords: [
+    "zodiac signs",
+    "astrology signs",
+    "horoscope signs",
+    "aries",
+    "taurus",
+    "gemini",
+    "cancer",
+    "leo",
+    "virgo",
+    "libra",
+    "scorpio",
+    "sagittarius",
+    "capricorn",
+    "aquarius",
+    "pisces",
+  ],
 };
 
 const elementColors: Record<string, string> = {
@@ -32,14 +49,14 @@ export default function ZodiacPage() {
           The Twelve Signs of the <span className="text-gradient-gold">Zodiac</span>
         </h1>
         <p className="text-xl text-foreground/70">
-          Each zodiac sign represents a unique expression of cosmic energy. Explore the characteristics,
-          strengths, and mysteries of all twelve signs to better understand yourself and others.
+          Each zodiac sign represents a unique expression of cosmic energy. Explore the characteristics, strengths, and
+          mysteries of all twelve signs to better understand yourself and others.
         </p>
       </div>
 
       {/* Elements Legend */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">
-        {["Fire", "Earth", "Air", "Water"].map((element) => (
+        {["Fire", "Earth", "Air", "Water"].map(element => (
           <div key={element} className={`flex items-center gap-2 px-4 py-2 rounded-full ${elementBg[element]}`}>
             <span className={`font-medium ${elementColors[element]}`}>{element}</span>
           </div>
@@ -48,7 +65,7 @@ export default function ZodiacPage() {
 
       {/* Zodiac Grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-        {ZODIAC_SIGNS.map((sign) => (
+        {ZODIAC_SIGNS.map(sign => (
           <Link key={sign.slug} href={`/zodiac/${sign.slug}`}>
             <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
               <CardHeader className="text-center">
@@ -60,19 +77,17 @@ export default function ZodiacPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-center gap-2">
-                  <span className={`text-xs px-2 py-1 rounded-full ${elementBg[sign.element]} ${elementColors[sign.element]}`}>
+                  <span
+                    className={`text-xs px-2 py-1 rounded-full ${elementBg[sign.element]} ${elementColors[sign.element]}`}
+                  >
                     {sign.element}
                   </span>
-                  <span className="text-xs px-2 py-1 rounded-full bg-muted text-foreground/70">
-                    {sign.quality}
-                  </span>
+                  <span className="text-xs px-2 py-1 rounded-full bg-muted text-foreground/70">{sign.quality}</span>
                 </div>
                 <p className="text-sm text-foreground/70 text-center line-clamp-2">
                   {sign.traits.slice(0, 3).join(" • ")}
                 </p>
-                <p className="text-xs text-center text-primary">
-                  Ruled by {sign.rulingPlanet}
-                </p>
+                <p className="text-xs text-center text-primary">Ruled by {sign.rulingPlanet}</p>
               </CardContent>
             </Card>
           </Link>
@@ -93,10 +108,21 @@ export default function ZodiacPage() {
                 Each zodiac sign belongs to one of four elements, which describes its fundamental nature:
               </p>
               <ul className="space-y-2 text-sm">
-                <li><strong className="text-orange-500">Fire:</strong> Passion, energy, enthusiasm (Aries, Leo, Sagittarius)</li>
-                <li><strong className="text-green-600">Earth:</strong> Stability, practicality, grounding (Taurus, Virgo, Capricorn)</li>
-                <li><strong className="text-sky-500">Air:</strong> Intellect, communication, ideas (Gemini, Libra, Aquarius)</li>
-                <li><strong className="text-blue-500">Water:</strong> Emotion, intuition, depth (Cancer, Scorpio, Pisces)</li>
+                <li>
+                  <strong className="text-orange-500">Fire:</strong> Passion, energy, enthusiasm (Aries, Leo,
+                  Sagittarius)
+                </li>
+                <li>
+                  <strong className="text-green-600">Earth:</strong> Stability, practicality, grounding (Taurus, Virgo,
+                  Capricorn)
+                </li>
+                <li>
+                  <strong className="text-sky-500">Air:</strong> Intellect, communication, ideas (Gemini, Libra,
+                  Aquarius)
+                </li>
+                <li>
+                  <strong className="text-blue-500">Water:</strong> Emotion, intuition, depth (Cancer, Scorpio, Pisces)
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -110,9 +136,15 @@ export default function ZodiacPage() {
                 Qualities (or modalities) describe how signs approach life and change:
               </p>
               <ul className="space-y-2 text-sm">
-                <li><strong>Cardinal:</strong> Initiators, leaders, start new cycles (Aries, Cancer, Libra, Capricorn)</li>
-                <li><strong>Fixed:</strong> Stabilizers, determined, maintain energy (Taurus, Leo, Scorpio, Aquarius)</li>
-                <li><strong>Mutable:</strong> Adapters, flexible, facilitate change (Gemini, Virgo, Sagittarius, Pisces)</li>
+                <li>
+                  <strong>Cardinal:</strong> Initiators, leaders, start new cycles (Aries, Cancer, Libra, Capricorn)
+                </li>
+                <li>
+                  <strong>Fixed:</strong> Stabilizers, determined, maintain energy (Taurus, Leo, Scorpio, Aquarius)
+                </li>
+                <li>
+                  <strong>Mutable:</strong> Adapters, flexible, facilitate change (Gemini, Virgo, Sagittarius, Pisces)
+                </li>
               </ul>
             </CardContent>
           </Card>

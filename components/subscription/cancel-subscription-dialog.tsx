@@ -74,11 +74,11 @@ export function CancelSubscriptionDialog({
           )}
 
           <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950">
-            <p className="text-sm font-medium text-amber-900 dark:text-amber-100">
-              What happens when you cancel:
-            </p>
+            <p className="text-sm font-medium text-amber-900 dark:text-amber-100">What happens when you cancel:</p>
             <ul className="mt-2 space-y-1 text-sm text-amber-800 dark:text-amber-200">
-              <li>• You&apos;ll keep access to all features until {periodEndDate || "the end of your billing period"}</li>
+              <li>
+                • You&apos;ll keep access to all features until {periodEndDate || "the end of your billing period"}
+              </li>
               <li>• After that, you&apos;ll be downgraded to the free plan</li>
               <li>• You&apos;ll lose access to premium features</li>
               <li>• Your chat history will be preserved</li>
@@ -87,25 +87,17 @@ export function CancelSubscriptionDialog({
 
           {subscription.currentPeriodEnd && (
             <p className="text-sm text-muted-foreground">
-              Your subscription will remain active until{" "}
-              <span className="font-medium">{periodEndDate}</span>. After that date, you&apos;ll be moved to the free plan.
+              Your subscription will remain active until <span className="font-medium">{periodEndDate}</span>. After
+              that date, you&apos;ll be moved to the free plan.
             </p>
           )}
         </div>
 
         <DialogFooter>
-          <Button
-            variant="outline"
-            onClick={() => onOpenChange(false)}
-            disabled={isLoading}
-          >
+          <Button variant="outline" onClick={() => onOpenChange(false)} disabled={isLoading}>
             Keep Subscription
           </Button>
-          <Button
-            variant="destructive"
-            onClick={handleConfirm}
-            disabled={isLoading}
-          >
+          <Button variant="destructive" onClick={handleConfirm} disabled={isLoading}>
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -120,4 +112,3 @@ export function CancelSubscriptionDialog({
     </Dialog>
   );
 }
-

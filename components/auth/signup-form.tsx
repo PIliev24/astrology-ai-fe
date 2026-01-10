@@ -31,13 +31,7 @@ const SignupForm = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center p-4 overflow-hidden">
       {/* Cosmic background */}
-      <CosmicBackground
-        variant="default"
-        showStars={true}
-        showNebula={true}
-        showAurora={true}
-        className="absolute inset-0"
-      />
+      <CosmicBackground variant="default" showStars={true} showAurora={true} className="absolute inset-0" />
 
       {/* Decorative elements */}
       <div className="absolute top-32 right-20 w-48 h-48 bg-[var(--celestial-violet)]/15 rounded-full blur-3xl animate-nebula-drift" />
@@ -64,9 +58,7 @@ const SignupForm = () => {
           </div>
 
           <div className="space-y-2">
-            <CardTitle className="font-display text-3xl text-gradient-gold">
-              Begin Your Journey
-            </CardTitle>
+            <CardTitle className="font-display text-3xl text-gradient-gold">Begin Your Journey</CardTitle>
             <CardDescription className="text-base">
               Create your account to unlock the secrets of the cosmos
             </CardDescription>
@@ -146,11 +138,7 @@ const SignupForm = () => {
                           onClick={() => setShowPassword(!showPassword)}
                           className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/70 hover:text-foreground transition-colors"
                         >
-                          {showPassword ? (
-                            <EyeOff className="h-5 w-5" />
-                          ) : (
-                            <Eye className="h-5 w-5" />
-                          )}
+                          {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                         </button>
                       </div>
                     </FormControl>
@@ -189,9 +177,7 @@ const SignupForm = () => {
                   <div className="w-full border-t border-border/50" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-foreground/70">
-                    Already a star seeker?
-                  </span>
+                  <span className="bg-card px-2 text-foreground/70">Already a star seeker?</span>
                 </div>
               </div>
 

@@ -49,7 +49,6 @@ export default function CheckoutSuccessPage() {
     // Poll subscription to wait for webhook processing
     if (user && sessionId && !isLoadingSubscription && !hasStartedPollingRef.current) {
       hasStartedPollingRef.current = true;
-      
       // Refresh subscription data immediately
       mutateSubscription();
       mutateUsage();
@@ -90,7 +89,7 @@ export default function CheckoutSuccessPage() {
   useEffect(() => {
     if (!isVerifying && !error) {
       const timer = setInterval(() => {
-        setRedirectCountdown((prev) => {
+        setRedirectCountdown(prev => {
           if (prev <= 1) {
             clearInterval(timer);
             router.push("/settings");
@@ -161,9 +160,7 @@ export default function CheckoutSuccessPage() {
           ) : !isVerifying ? (
             <>
               <div className="rounded-lg bg-muted p-4 text-center">
-                <p className="text-sm text-foreground/70">
-                  Redirecting to settings in {redirectCountdown} seconds...
-                </p>
+                <p className="text-sm text-foreground/70">Redirecting to settings in {redirectCountdown} seconds...</p>
               </div>
               <Button className="w-full" onClick={() => router.push("/settings")}>
                 Go to Settings Now
@@ -175,4 +172,3 @@ export default function CheckoutSuccessPage() {
     </div>
   );
 }
-

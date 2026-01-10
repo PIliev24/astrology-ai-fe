@@ -6,8 +6,15 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Birth Chart Guide - How to Read Your Natal Chart | Aistrology",
-  description: "Learn how to read and interpret your birth chart. This comprehensive guide covers the basics of natal chart interpretation including signs, houses, planets, and aspects.",
-  keywords: ["birth chart guide", "how to read birth chart", "natal chart interpretation", "astrology basics", "chart reading guide"],
+  description:
+    "Learn how to read and interpret your birth chart. This comprehensive guide covers the basics of natal chart interpretation including signs, houses, planets, and aspects.",
+  keywords: [
+    "birth chart guide",
+    "how to read birth chart",
+    "natal chart interpretation",
+    "astrology basics",
+    "chart reading guide",
+  ],
 };
 
 export default function GuidePage() {
@@ -20,9 +27,8 @@ export default function GuidePage() {
             Birth Chart <span className="text-gradient-gold">Interpretation Guide</span>
           </h1>
           <p className="text-xl text-foreground/70">
-            Your birth chart is a cosmic snapshot of the sky at the moment you were born.
-            This guide will help you understand the fundamental components of your chart
-            and what they reveal about your unique cosmic blueprint.
+            Your birth chart is a cosmic snapshot of the sky at the moment you were born. This guide will help you
+            understand the fundamental components of your chart and what they reveal about your unique cosmic blueprint.
           </p>
         </header>
 
@@ -32,20 +38,18 @@ export default function GuidePage() {
           <section>
             <Card className="bg-card/50">
               <CardHeader>
-                <CardTitle className="font-display text-2xl flex items-center gap-2">
-                  What is a Birth Chart?
-                </CardTitle>
+                <CardTitle className="font-display text-2xl flex items-center gap-2">What is a Birth Chart?</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-foreground/70">
                 <p>
-                  A birth chart (also called a natal chart) is a map of where all the planets were
-                  in their journey around the Sun at the exact moment you were born. It&apos;s calculated
-                  using your birth date, time, and location.
+                  A birth chart (also called a natal chart) is a map of where all the planets were in their journey
+                  around the Sun at the exact moment you were born. It&apos;s calculated using your birth date, time,
+                  and location.
                 </p>
                 <p>
-                  This celestial snapshot creates a unique cosmic fingerprint that astrologers use
-                  to understand your personality, potential, challenges, and life path. No two birth
-                  charts are exactly alike—even twins born minutes apart will have subtle differences.
+                  This celestial snapshot creates a unique cosmic fingerprint that astrologers use to understand your
+                  personality, potential, challenges, and life path. No two birth charts are exactly alike—even twins
+                  born minutes apart will have subtle differences.
                 </p>
               </CardContent>
             </Card>
@@ -53,9 +57,7 @@ export default function GuidePage() {
 
           {/* The Three Pillars */}
           <section>
-            <h2 className="font-display text-3xl font-bold mb-8 text-center">
-              The Three Pillars of Your Chart
-            </h2>
+            <h2 className="font-display text-3xl font-bold mb-8 text-center">The Three Pillars of Your Chart</h2>
             <p className="text-center text-foreground/70 mb-8">
               Understanding these three components is the foundation of chart interpretation.
             </p>
@@ -68,8 +70,8 @@ export default function GuidePage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-foreground/70 mb-4">
-                    The 12 signs describe <strong>how</strong> energy is expressed.
-                    Each sign has unique qualities, elements, and modes of operation.
+                    The 12 signs describe <strong>how</strong> energy is expressed. Each sign has unique qualities,
+                    elements, and modes of operation.
                   </p>
                   <Link href="/zodiac">
                     <Button variant="outline" size="sm">
@@ -86,8 +88,8 @@ export default function GuidePage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-foreground/70 mb-4">
-                    The 12 houses show <strong>where</strong> in life the energy manifests.
-                    Each house governs different life areas.
+                    The 12 houses show <strong>where</strong> in life the energy manifests. Each house governs different
+                    life areas.
                   </p>
                   <Link href="/houses">
                     <Button variant="outline" size="sm">
@@ -104,8 +106,8 @@ export default function GuidePage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-foreground/70 mb-4">
-                    The planets represent <strong>what</strong> energy is at play.
-                    Each planet governs different aspects of your psyche.
+                    The planets represent <strong>what</strong> energy is at play. Each planet governs different aspects
+                    of your psyche.
                   </p>
                   <Link href="/planets">
                     <Button variant="outline" size="sm">
@@ -119,9 +121,7 @@ export default function GuidePage() {
 
           {/* Key Placements */}
           <section>
-            <h2 className="font-display text-3xl font-bold mb-8 text-center">
-              Key Placements to Know
-            </h2>
+            <h2 className="font-display text-3xl font-bold mb-8 text-center">Key Placements to Know</h2>
 
             <div className="space-y-6">
               <Card className="bg-card/50">
@@ -133,22 +133,22 @@ export default function GuidePage() {
                     <div>
                       <h4 className="font-semibold text-primary mb-2">Sun Sign</h4>
                       <p className="text-sm text-foreground/70">
-                        Your core identity and ego. What you&apos;re here to become. This is the sign
-                        most people know—your &quot;zodiac sign&quot; based on your birthday.
+                        Your core identity and ego. What you&apos;re here to become. This is the sign most people
+                        know—your &quot;zodiac sign&quot; based on your birthday.
                       </p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-primary mb-2">Moon Sign</h4>
                       <p className="text-sm text-foreground/70">
-                        Your emotional nature and inner self. How you process feelings and what
-                        you need to feel secure and nurtured.
+                        Your emotional nature and inner self. How you process feelings and what you need to feel secure
+                        and nurtured.
                       </p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-primary mb-2">Rising Sign (Ascendant)</h4>
                       <p className="text-sm text-foreground/70">
-                        Your outer personality and first impressions. The mask you wear and how
-                        others perceive you when they first meet you.
+                        Your outer personality and first impressions. The mask you wear and how others perceive you when
+                        they first meet you.
                       </p>
                     </div>
                   </div>
@@ -164,15 +164,15 @@ export default function GuidePage() {
                     <div>
                       <h4 className="font-semibold text-primary mb-2">Midheaven (MC)</h4>
                       <p className="text-sm text-foreground/70">
-                        The highest point in your chart. Represents your career, public image,
-                        and what you&apos;re known for in the world.
+                        The highest point in your chart. Represents your career, public image, and what you&apos;re
+                        known for in the world.
                       </p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-primary mb-2">Lunar Nodes</h4>
                       <p className="text-sm text-foreground/70">
-                        The North Node shows your life purpose and growth direction. The South Node
-                        represents past life gifts and comfort zones to move beyond.
+                        The North Node shows your life purpose and growth direction. The South Node represents past life
+                        gifts and comfort zones to move beyond.
                       </p>
                     </div>
                   </div>
@@ -189,8 +189,8 @@ export default function GuidePage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-foreground/70">
-                  Aspects are the angular relationships between planets. They show how different
-                  parts of your personality interact with each other.
+                  Aspects are the angular relationships between planets. They show how different parts of your
+                  personality interact with each other.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-3">
@@ -259,12 +259,10 @@ export default function GuidePage() {
           <section>
             <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
               <CardContent className="text-center py-10">
-                <h3 className="font-display text-2xl font-bold mb-3">
-                  Ready to Explore Your Birth Chart?
-                </h3>
+                <h3 className="font-display text-2xl font-bold mb-3">Ready to Explore Your Birth Chart?</h3>
                 <p className="text-foreground/70 mb-6 max-w-lg mx-auto">
-                  Get a personalized AI-powered reading that interprets your unique celestial blueprint.
-                  Our AI astrologer will guide you through every aspect of your chart.
+                  Get a personalized AI-powered reading that interprets your unique celestial blueprint. Our AI
+                  astrologer will guide you through every aspect of your chart.
                 </p>
                 <Link href="/signup">
                   <Button size="lg" className="gradient-gold text-primary-foreground zodiac-glow">

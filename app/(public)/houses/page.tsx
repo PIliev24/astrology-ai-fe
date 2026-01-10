@@ -6,8 +6,17 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "The 12 Astrological Houses - Complete Guide | Aistrology",
-  description: "Learn about all 12 astrological houses and how they influence different areas of your life. Discover the meaning of each house in your birth chart.",
-  keywords: ["astrological houses", "12 houses astrology", "birth chart houses", "first house", "ascendant", "midheaven", "natal chart houses"],
+  description:
+    "Learn about all 12 astrological houses and how they influence different areas of your life. Discover the meaning of each house in your birth chart.",
+  keywords: [
+    "astrological houses",
+    "12 houses astrology",
+    "birth chart houses",
+    "first house",
+    "ascendant",
+    "midheaven",
+    "natal chart houses",
+  ],
 };
 
 export default function HousesPage() {
@@ -18,15 +27,15 @@ export default function HousesPage() {
           The Twelve <span className="text-gradient-gold">Astrological Houses</span>
         </h1>
         <p className="text-xl text-foreground/70">
-          The houses in your birth chart represent different areas of life. Each house governs specific
-          themes, from identity and values to career and spirituality. Understanding your houses
-          reveals where planetary energies manifest in your life.
+          The houses in your birth chart represent different areas of life. Each house governs specific themes, from
+          identity and values to career and spirituality. Understanding your houses reveals where planetary energies
+          manifest in your life.
         </p>
       </div>
 
       {/* Houses Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {HOUSES.map((house) => (
+        {HOUSES.map(house => (
           <Link key={house.slug} href={`/houses/${house.slug}`}>
             <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
               <CardHeader>
@@ -40,15 +49,13 @@ export default function HousesPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex flex-wrap gap-1">
-                  {house.keywords.slice(0, 3).map((keyword) => (
+                  {house.keywords.slice(0, 3).map(keyword => (
                     <Badge key={keyword} variant="secondary" className="text-xs">
                       {keyword}
                     </Badge>
                   ))}
                 </div>
-                <p className="text-sm text-foreground/70 line-clamp-2">
-                  {house.description.slice(0, 120)}...
-                </p>
+                <p className="text-sm text-foreground/70 line-clamp-2">{house.description.slice(0, 120)}...</p>
               </CardContent>
             </Card>
           </Link>
@@ -65,14 +72,20 @@ export default function HousesPage() {
               <CardTitle className="font-display">Angular Houses (1, 4, 7, 10)</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">
-                The most powerful houses, marking cardinal points in your chart:
-              </p>
+              <p className="text-foreground/70">The most powerful houses, marking cardinal points in your chart:</p>
               <ul className="space-y-2 text-sm">
-                <li><strong>1st House:</strong> Self, identity, appearance</li>
-                <li><strong>4th House:</strong> Home, family, roots</li>
-                <li><strong>7th House:</strong> Partnerships, marriage</li>
-                <li><strong>10th House:</strong> Career, public image</li>
+                <li>
+                  <strong>1st House:</strong> Self, identity, appearance
+                </li>
+                <li>
+                  <strong>4th House:</strong> Home, family, roots
+                </li>
+                <li>
+                  <strong>7th House:</strong> Partnerships, marriage
+                </li>
+                <li>
+                  <strong>10th House:</strong> Career, public image
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -82,14 +95,20 @@ export default function HousesPage() {
               <CardTitle className="font-display">Succedent Houses (2, 5, 8, 11)</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">
-                Houses of resources and values following the angular houses:
-              </p>
+              <p className="text-foreground/70">Houses of resources and values following the angular houses:</p>
               <ul className="space-y-2 text-sm">
-                <li><strong>2nd House:</strong> Money, possessions, values</li>
-                <li><strong>5th House:</strong> Creativity, romance, children</li>
-                <li><strong>8th House:</strong> Transformation, shared resources</li>
-                <li><strong>11th House:</strong> Friends, groups, hopes</li>
+                <li>
+                  <strong>2nd House:</strong> Money, possessions, values
+                </li>
+                <li>
+                  <strong>5th House:</strong> Creativity, romance, children
+                </li>
+                <li>
+                  <strong>8th House:</strong> Transformation, shared resources
+                </li>
+                <li>
+                  <strong>11th House:</strong> Friends, groups, hopes
+                </li>
               </ul>
             </CardContent>
           </Card>
@@ -99,17 +118,23 @@ export default function HousesPage() {
               <CardTitle className="font-display">Cadent Houses (3, 6, 9, 12)</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">
-                Houses of learning, adaptation, and mental processes:
-              </p>
+              <p className="text-foreground/70">Houses of learning, adaptation, and mental processes:</p>
               <div className="grid sm:grid-cols-2 gap-4 text-sm">
                 <ul className="space-y-2">
-                  <li><strong>3rd House:</strong> Communication, siblings, learning</li>
-                  <li><strong>6th House:</strong> Health, daily work, service</li>
+                  <li>
+                    <strong>3rd House:</strong> Communication, siblings, learning
+                  </li>
+                  <li>
+                    <strong>6th House:</strong> Health, daily work, service
+                  </li>
                 </ul>
                 <ul className="space-y-2">
-                  <li><strong>9th House:</strong> Philosophy, travel, higher learning</li>
-                  <li><strong>12th House:</strong> Spirituality, unconscious, karma</li>
+                  <li>
+                    <strong>9th House:</strong> Philosophy, travel, higher learning
+                  </li>
+                  <li>
+                    <strong>12th House:</strong> Spirituality, unconscious, karma
+                  </li>
                 </ul>
               </div>
             </CardContent>

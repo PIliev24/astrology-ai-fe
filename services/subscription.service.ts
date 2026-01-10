@@ -1,11 +1,5 @@
 import { api } from "./api-client";
-import {
-  SubscriptionResponse,
-  UsageResponse,
-  CheckoutRequest,
-  CheckoutResponse,
-  PlansListResponse,
-} from "@/types";
+import { SubscriptionResponse, UsageResponse, CheckoutRequest, CheckoutResponse, PlansListResponse } from "@/types";
 import { ENDPOINTS } from "@/constants";
 
 export async function getSubscription(): Promise<SubscriptionResponse> {
@@ -31,4 +25,3 @@ export async function reactivateSubscription(): Promise<SubscriptionResponse> {
 export async function getPlans(): Promise<PlansListResponse> {
   return api.get<PlansListResponse>(ENDPOINTS.SUBSCRIPTIONS.PLANS);
 }
-

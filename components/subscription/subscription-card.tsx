@@ -49,28 +49,28 @@ export function SubscriptionCard({
   isLoading = false,
 }: SubscriptionCardProps) {
   const plan = subscription.plan;
-  
+
   // Explicitly check isActive - default to true for free plan, false for paid plans if not set
   const isActive = subscription?.isActive ?? (plan === PlanType.FREE ? true : false);
-  
+
   // Determine subscription state based on isActive and current_period_end
-  const hasFuturePeriodEnd = subscription.currentPeriodEnd 
+  const hasFuturePeriodEnd = subscription.currentPeriodEnd
     ? new Date(subscription.currentPeriodEnd) > new Date()
     : false;
-  
+
   // Case 1: isActive = true, current_period_end = future date (cancelled but still active)
   const isCancelledButActive = isActive && hasFuturePeriodEnd;
-  
+
   // Case 2: isActive = true, current_period_end = null (fully active)
   const isFullyActive = isActive && !subscription.currentPeriodEnd;
-  
+
   // Case 3: isActive = false (inactive - show as free tier)
   const isInactive = !isActive;
-  
+
   // For inactive subscriptions, treat as FREE plan for UI purposes
   const displayPlan = isInactive ? PlanType.FREE : plan;
   const colorConfig = planColorMap[displayPlan];
-  
+
   // Determine which buttons to show
   const canCancel = plan !== PlanType.FREE && isFullyActive; // Only show cancel when fully active
   const canRestore = plan !== PlanType.FREE && isCancelledButActive; // Show restore when cancelled but active
@@ -137,9 +137,7 @@ export function SubscriptionCard({
                 {isCancelledButActive && (
                   <div className="mt-2 flex items-center justify-between text-xs">
                     <span className="text-muted-foreground">Subscription cancelled</span>
-                    <span className="text-amber-600 dark:text-amber-400">
-                      Expires on period end
-                    </span>
+                    <span className="text-amber-600 dark:text-amber-400">Expires on period end</span>
                   </div>
                 )}
                 {isInactive && (
@@ -157,9 +155,7 @@ export function SubscriptionCard({
 
         {/* Features List */}
         <div className="space-y-3 pt-2">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-            Features
-          </p>
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Features</p>
           <ul className="space-y-2.5">
             {planDetails.features.map((feature, index) => (
               <li key={index} className="flex items-center gap-3 text-sm">
@@ -228,9 +224,7 @@ export function SubscriptionCard({
               {isFullyActive && (
                 <div className="flex items-center justify-center gap-2 py-2 rounded-lg bg-linear-to-r from-purple-500/10 to-pink-500/10">
                   <Crown className="h-4 w-4 text-purple-500" />
-                  <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                    Premium Active
-                  </span>
+                  <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">Premium Active</span>
                 </div>
               )}
               {canUpgradeDowngrade && (
@@ -269,4 +263,3 @@ export function SubscriptionCard({
     </Card>
   );
 }
-

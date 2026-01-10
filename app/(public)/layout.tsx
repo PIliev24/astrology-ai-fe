@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Stars, Menu, Star } from "lucide-react";
+import { Stars, Menu, Star, LayoutDashboard } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/hooks";
 
 const navLinks = [
   { href: "/zodiac", label: "Zodiac Signs" },
@@ -11,23 +14,23 @@ const navLinks = [
 ];
 
 function PublicNav() {
+  const { user } = useAuth();
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-nav bg-background/60 border-b border-[var(--celestial-gold)]/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
           <div className="relative">
             <Stars className="h-6 w-6 text-(--celestial-gold) group-hover:animate-pulse-glow transition-all" />
             <div className="absolute inset-0 bg-[var(--celestial-gold)]/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
-          <span className="font-display text-xl font-semibold text-gradient-gold tracking-wide">
-            Aistrology
-          </span>
+          <span className="font-display text-xl font-semibold text-gradient-gold tracking-wide">Aistrology</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href}
@@ -41,16 +44,25 @@ function PublicNav() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/login">
-            <Button variant="ghost" className="hover:text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10">
-              Sign In
-            </Button>
-          </Link>
-          <Link href="/signup">
-            <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">
-              Get Started
-            </Button>
-          </Link>
+          {user ? (
+            <Link href="/dashboard">
+              <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">
+                <LayoutDashboard className="mr-2 h-4 w-4" />
+                Dashboard
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Link href="/login">
+                <Button variant="ghost" className="hover:text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">Get Started</Button>
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Navigation */}
@@ -68,14 +80,12 @@ function PublicNav() {
               {/* Mobile menu header */}
               <div className="flex items-center gap-2 pb-6 border-b border-border">
                 <Stars className="h-5 w-5 text-(--celestial-gold)" />
-                <span className="font-display text-lg font-semibold text-gradient-gold">
-                  Aistrology
-                </span>
+                <span className="font-display text-lg font-semibold text-gradient-gold">Aistrology</span>
               </div>
 
               {/* Mobile navigation links */}
               <div className="flex flex-col gap-2 mt-8">
-                {navLinks.map((link) => (
+                {navLinks.map(link => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -89,16 +99,25 @@ function PublicNav() {
 
               {/* Mobile auth buttons */}
               <div className="mt-8 pt-6 border-t border-border space-y-3">
-                <Link href="/login" className="block">
-                  <Button variant="outline" className="w-full zodiac-border">
-                    Sign In
-                  </Button>
-                </Link>
-                <Link href="/signup" className="block">
-                  <Button className="w-full gradient-gold text-primary-foreground">
-                    Get Started
-                  </Button>
-                </Link>
+                {user ? (
+                  <Link href="/dashboard" className="block">
+                    <Button className="w-full gradient-gold text-primary-foreground">
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                ) : (
+                  <>
+                    <Link href="/login" className="block">
+                      <Button variant="outline" className="w-full zodiac-border">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link href="/signup" className="block">
+                      <Button className="w-full gradient-gold text-primary-foreground">Get Started</Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </SheetContent>
           </Sheet>
@@ -119,13 +138,10 @@ function PublicFooter() {
           {/* Brand section */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <span className="font-display text-xl font-semibold text-gradient-gold">
-                Aistrology
-              </span>
+              <span className="font-display text-xl font-semibold text-gradient-gold">Aistrology</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Discover your cosmic destiny with AI-powered astrology readings. Unlock the secrets written
-              in the stars.
+              Discover your cosmic destiny with AI-powered astrology readings. Unlock the secrets written in the stars.
             </p>
           </div>
 
@@ -225,23 +241,15 @@ function PublicFooter() {
 
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p className="flex items-center gap-2">
-            &copy; {new Date().getFullYear()} Aistrology. All rights reserved.
-          </p>
-          <p className="text-xs">
-            Made with cosmic energy
-          </p>
+          <p className="flex items-center gap-2">&copy; {new Date().getFullYear()} Aistrology. All rights reserved.</p>
+          <p className="text-xs">Made with cosmic energy</p>
         </div>
       </div>
     </footer>
   );
 }
 
-export default function PublicLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <PublicNav />

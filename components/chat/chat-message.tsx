@@ -23,12 +23,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
   };
 
   return (
-    <div
-      className={cn(
-        "flex gap-3 md:gap-4 group animate-fade-in",
-        isUser ? "flex-row-reverse" : "flex-row"
-      )}
-    >
+    <div className={cn("flex gap-3 md:gap-4 group animate-fade-in", isUser ? "flex-row-reverse" : "flex-row")}>
       {/* Avatar */}
       <div
         className={cn(
@@ -46,19 +41,12 @@ export function ChatMessage({ message }: ChatMessageProps) {
       </div>
 
       {/* Message content */}
-      <div
-        className={cn(
-          "flex flex-col gap-2 max-w-[85%] md:max-w-[75%]",
-          isUser && "items-end"
-        )}
-      >
+      <div className={cn("flex flex-col gap-2 max-w-[85%] md:max-w-[75%]", isUser && "items-end")}>
         {/* Message bubble */}
         <div
           className={cn(
             "relative rounded-2xl px-4 md:px-5 py-3 md:py-4",
-            isUser
-              ? "chat-bubble-user text-primary-foreground"
-              : "chat-bubble-ai"
+            isUser ? "chat-bubble-user text-primary-foreground" : "chat-bubble-ai"
           )}
         >
           {/* AI message decoration */}
@@ -67,12 +55,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
           )}
 
           {/* Message text */}
-          <div
-            className={cn(
-              "prose max-w-none",
-              isUser ? "prose-invert" : "prose-slate dark:prose-invert"
-            )}
-          >
+          <div className={cn("prose max-w-none", isUser ? "prose-invert" : "prose-slate dark:prose-invert")}>
             <p
               className={cn(
                 "text-sm md:text-base leading-relaxed whitespace-pre-wrap m-0",

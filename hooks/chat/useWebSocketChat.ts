@@ -427,14 +427,14 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
   // This should only run once when options are first provided
   const optionsRef = useRef(options);
   const hasInitializedRef = useRef(false);
-  
+
   useEffect(() => {
     // Only initialize once on mount, not when options change
     // This prevents overwriting messages when user sends new messages
     if (!hasInitializedRef.current && options) {
       hasInitializedRef.current = true;
       optionsRef.current = options;
-      
+
       if (options?.initialMessages) {
         // Use setTimeout to defer state update
         setTimeout(() => setMessages(options.initialMessages || []), 0);

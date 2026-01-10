@@ -24,7 +24,7 @@ export default function SettingsPage() {
   const [error, setError] = useState<string | null>(null);
   const [showCancelDialog, setShowCancelDialog] = useState(false);
 
-  const currentPlanDetails = plans.find((plan) => plan.type === subscription?.plan);
+  const currentPlanDetails = plans.find(plan => plan.type === subscription?.plan);
 
   const getPlanIcon = (planType: PlanType) => {
     switch (planType) {
@@ -233,7 +233,7 @@ export default function SettingsPage() {
                 usage={usage}
                 plan={subscription.plan}
                 onUpgradeClick={() => {
-                  const currentIndex = plans.findIndex((p) => p.type === subscription.plan);
+                  const currentIndex = plans.findIndex(p => p.type === subscription.plan);
                   const nextPlan = plans[currentIndex + 1];
                   if (nextPlan) {
                     handleUpgrade(nextPlan.type);
@@ -289,7 +289,7 @@ export default function SettingsPage() {
               <h2 className="font-display text-xl font-semibold text-gradient-gold">Available Plans</h2>
             </div>
             <div className="space-y-4">
-              {plans.map((plan) => {
+              {plans.map(plan => {
                 const isCurrentPlan = plan.type === subscription.plan;
                 const isUpgrade =
                   (subscription.plan === PlanType.FREE && plan.type === PlanType.BASIC) ||

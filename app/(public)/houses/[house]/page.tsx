@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllHouseSlugs().map((house) => ({ house }));
+  return getAllHouseSlugs().map(house => ({ house }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: [
       house.name.toLowerCase(),
       `${house.number}${house.number === 1 ? "st" : house.number === 2 ? "nd" : house.number === 3 ? "rd" : "th"} house astrology`,
-      ...house.keywords.map((k) => k.toLowerCase()),
+      ...house.keywords.map(k => k.toLowerCase()),
       house.rulingSign.toLowerCase(),
     ],
   };
@@ -44,7 +44,7 @@ export default async function HousePage({ params }: Props) {
   }
 
   // Get prev/next houses for navigation
-  const currentIndex = HOUSES.findIndex((h) => h.slug === houseSlug);
+  const currentIndex = HOUSES.findIndex(h => h.slug === houseSlug);
   const prevHouse = currentIndex > 0 ? HOUSES[currentIndex - 1] : null;
   const nextHouse = currentIndex < HOUSES.length - 1 ? HOUSES[currentIndex + 1] : null;
 
@@ -52,7 +52,10 @@ export default async function HousePage({ params }: Props) {
     <div className="container mx-auto px-4 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8">
-        <Link href="/houses" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+        <Link
+          href="/houses"
+          className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+        >
           <ArrowLeft className="h-4 w-4" />
           Back to All Houses
         </Link>
@@ -63,21 +66,17 @@ export default async function HousePage({ params }: Props) {
         <div className="w-20 h-20 rounded-full gradient-gold text-primary-foreground flex items-center justify-center font-display font-bold text-4xl mb-6 mx-auto animate-float">
           {house.number}
         </div>
-        <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-          {house.name}
-        </h1>
+        <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">{house.name}</h1>
 
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Badge variant="outline" className="bg-primary/10 text-primary">
             Ruled by {house.rulingSign}
           </Badge>
-          <Badge variant="outline">
-            {house.rulingPlanet}
-          </Badge>
+          <Badge variant="outline">{house.rulingPlanet}</Badge>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2">
-          {house.keywords.map((keyword) => (
+          {house.keywords.map(keyword => (
             <Badge key={keyword} variant="secondary">
               {keyword}
             </Badge>
@@ -89,9 +88,7 @@ export default async function HousePage({ params }: Props) {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Description */}
         <section>
-          <p className="text-lg leading-relaxed text-foreground/70">
-            {house.description}
-          </p>
+          <p className="text-lg leading-relaxed text-foreground/70">{house.description}</p>
         </section>
 
         {/* Life Areas */}
@@ -104,7 +101,7 @@ export default async function HousePage({ params }: Props) {
           </CardHeader>
           <CardContent>
             <div className="grid sm:grid-cols-2 gap-3">
-              {house.lifeAreas.map((area) => (
+              {house.lifeAreas.map(area => (
                 <div key={area} className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-primary" />
                   <span>{area}</span>
@@ -124,7 +121,7 @@ export default async function HousePage({ params }: Props) {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              {house.questions.map((question) => (
+              {house.questions.map(question => (
                 <li key={question} className="flex items-start gap-3">
                   <span className="text-primary font-bold">?</span>
                   <span className="text-foreground/70">{question}</span>
@@ -139,9 +136,9 @@ export default async function HousePage({ params }: Props) {
           <CardContent className="py-6">
             <div className="text-center">
               <p className="text-foreground/70 mb-4">
-                The {house.name.split(" - ")[0]} is naturally ruled by <strong>{house.rulingSign}</strong> and
-                its planetary ruler <strong>{house.rulingPlanet}</strong>. This connection reveals the
-                natural energy of this house.
+                The {house.name.split(" - ")[0]} is naturally ruled by <strong>{house.rulingSign}</strong> and its
+                planetary ruler <strong>{house.rulingPlanet}</strong>. This connection reveals the natural energy of
+                this house.
               </p>
               <Link href={`/zodiac/${house.rulingSign.toLowerCase()}`}>
                 <Button variant="outline" className="zodiac-border">
@@ -155,9 +152,7 @@ export default async function HousePage({ params }: Props) {
         {/* CTA */}
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
           <CardContent className="text-center py-8">
-            <h3 className="font-display text-xl font-bold mb-3">
-              Discover Your {house.name.split(" - ")[0]}
-            </h3>
+            <h3 className="font-display text-xl font-bold mb-3">Discover Your {house.name.split(" - ")[0]}</h3>
             <p className="text-foreground/70 mb-6">
               See which planets and signs occupy this house in your birth chart.
             </p>

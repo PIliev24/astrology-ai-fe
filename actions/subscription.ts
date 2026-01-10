@@ -12,9 +12,7 @@ import {
 /**
  * Get current user's subscription
  */
-export async function getSubscriptionAction(): Promise<
-  ActionResponse<{ subscription: Subscription }>
-> {
+export async function getSubscriptionAction(): Promise<ActionResponse<{ subscription: Subscription }>> {
   try {
     const response = await getSubscription();
     const subscription: Subscription = {
@@ -136,9 +134,7 @@ export async function createCheckoutSessionAction(
  * Cancel current subscription
  * User will be downgraded to free plan at the end of current billing period
  */
-export async function cancelSubscriptionAction(): Promise<
-  ActionResponse<{ subscription: Subscription }>
-> {
+export async function cancelSubscriptionAction(): Promise<ActionResponse<{ subscription: Subscription }>> {
   try {
     const response = await cancelSubscription();
     const subscription: Subscription = {
@@ -177,9 +173,7 @@ export async function cancelSubscriptionAction(): Promise<
 /**
  * Reactivate a cancelled subscription
  */
-export async function reactivateSubscriptionAction(): Promise<
-  ActionResponse<{ subscription: Subscription }>
-> {
+export async function reactivateSubscriptionAction(): Promise<ActionResponse<{ subscription: Subscription }>> {
   try {
     const response = await reactivateSubscription();
     const subscription: Subscription = {
@@ -241,4 +235,3 @@ export async function getPlansAction(): Promise<ActionResponse<{ plans: PlanDeta
     };
   }
 }
-

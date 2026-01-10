@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks";
 import { logoutAction } from "@/actions";
 import { useRouter } from "next/navigation";
-import { LogOut, Menu } from "lucide-react";
+import Link from "next/link";
+import { LogOut, Menu, LayoutDashboard } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -66,13 +67,28 @@ export function Navbar({ onSidebarToggle }: NavbarProps) {
                 <Menu className="h-5 w-5" />
               </Button>
             )}
-            <h1 className="text-xl font-semibold tracking-tight text-gradient-gold">Aistrology</h1>
+            {user ? (
+              <Link href="/dashboard">
+                <h1 className="text-xl font-semibold tracking-tight text-gradient-gold cursor-pointer hover:opacity-80 transition-opacity">
+                  Aistrology
+                </h1>
+              </Link>
+            ) : (
+              <h1 className="text-xl font-semibold tracking-tight text-gradient-gold">Aistrology</h1>
+            )}
           </div>
 
           {/* Right side - User menu */}
           <div className="flex items-center gap-2">
             {user && (
-              <DropdownMenu>
+              <>
+                <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
+                  <Link href="/dashboard">
+                    <LayoutDashboard className="mr-2 h-4 w-4" />
+                    Dashboard
+                  </Link>
+                </Button>
+                <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-9 w-9 rounded-full">
                     <Avatar className="h-9 w-9 border-2 border-primary/20">
@@ -90,12 +106,19 @@ export function Navbar({ onSidebarToggle }: NavbarProps) {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild className="cursor-pointer sm:hidden">
+                    <Link href="/dashboard">
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      <span>Dashboard</span>
+                    </Link>
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+              </>
             )}
           </div>
         </div>

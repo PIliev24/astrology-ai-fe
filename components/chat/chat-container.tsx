@@ -75,9 +75,9 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[var(--celestial-violet)]/5 to-transparent pointer-events-none" />
 
       <ScrollArea className="flex-1 scrollbar-cosmic">
-        <div className="container max-w-4xl mx-auto px-4 py-8">
+        <div className="container max-w-4xl mx-auto px-4 py-4 md:py-8">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+            <div className="flex flex-col items-center justify-start pt-4 md:pt-0 md:justify-center min-h-[50vh] md:min-h-[60vh] text-center">
               {/* Welcome icon */}
               <div className="relative mb-8">
                 <div className="w-24 h-24 rounded-full gradient-gold flex items-center justify-center zodiac-glow animate-pulse-glow">
@@ -85,30 +85,32 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
                 </div>
                 <div className="absolute inset-0 bg-[var(--celestial-gold)]/20 rounded-full blur-2xl" />
                 {/* Orbiting elements */}
-                <div className="absolute inset-0 animate-orbit" style={{ "--orbit-radius": "60px" } as React.CSSProperties}>
+                <div
+                  className="absolute inset-0 animate-orbit"
+                  style={{ "--orbit-radius": "60px" } as React.CSSProperties}
+                >
                   <Moon className="h-5 w-5 text-[var(--celestial-violet)]" />
                 </div>
-                <div className="absolute inset-0 animate-orbit-reverse" style={{ "--orbit-radius": "50px" } as React.CSSProperties}>
+                <div
+                  className="absolute inset-0 animate-orbit-reverse"
+                  style={{ "--orbit-radius": "50px" } as React.CSSProperties}
+                >
                   <Sparkles className="h-4 w-4 text-(--celestial-gold)" />
                 </div>
               </div>
 
               {/* Welcome text */}
               <div className="space-y-3 mb-10 animate-fade-in">
-                <h3 className="font-display text-3xl md:text-4xl font-bold text-gradient-gold">
-                  Welcome, Star Seeker
-                </h3>
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-gradient-gold">Welcome, Star Seeker</h3>
                 <p className="text-lg text-muted-foreground max-w-md">
-                  Ask questions about your birth charts or explore the mysteries of astrology.
-                  Select a chart to receive personalized cosmic guidance.
+                  Ask questions about your birth charts or explore the mysteries of astrology. Select a chart to receive
+                  personalized cosmic guidance.
                 </p>
               </div>
 
               {/* Suggested prompts */}
               <div className="w-full max-w-2xl animate-slide-in-bottom">
-                <p className="text-sm text-muted-foreground mb-4 font-medium">
-                  ✦ Try asking ✦
-                </p>
+                <p className="text-sm text-muted-foreground mb-4 font-medium">✦ Try asking ✦</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {SUGGESTED_PROMPTS.slice(0, 6).map((prompt, idx) => (
                     <button
@@ -180,9 +182,7 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
                     <div className="oracle-glass rounded-2xl px-5 py-4 max-w-md">
                       <div className="flex items-center gap-3">
                         <Loader2 className="h-5 w-5 text-(--celestial-gold) animate-spin" />
-                        <span className="text-sm text-muted-foreground italic">
-                          Consulting the cosmos...
-                        </span>
+                        <span className="text-sm text-muted-foreground italic">Consulting the cosmos...</span>
                       </div>
                     </div>
                   </div>
@@ -208,7 +208,7 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
       </ScrollArea>
 
       {/* Input Area */}
-      <div className="relative border-t border-border/50 bg-background/90 backdrop-blur-nav">
+      <div className="relative shrink-0 border-t border-border/50 bg-background/90 backdrop-blur-nav pb-[env(safe-area-inset-bottom)]">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         <div className="container max-w-4xl mx-auto px-4 py-4 relative z-10">
           <ChatInput

@@ -13,7 +13,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllPlanetSlugs().map((planet) => ({ planet }));
+  return getAllPlanetSlugs().map(planet => ({ planet }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `${planet.name.toLowerCase()} sign`,
       `${planet.name.toLowerCase()} retrograde`,
       `${planet.name.toLowerCase()} transit`,
-      ...planet.keywords.map((k) => k.toLowerCase()),
+      ...planet.keywords.map(k => k.toLowerCase()),
     ],
   };
 }
@@ -46,7 +46,7 @@ export default async function PlanetPage({ params }: Props) {
   }
 
   // Get prev/next planets for navigation
-  const currentIndex = PLANETS.findIndex((p) => p.slug === planetSlug);
+  const currentIndex = PLANETS.findIndex(p => p.slug === planetSlug);
   const prevPlanet = currentIndex > 0 ? PLANETS[currentIndex - 1] : null;
   const nextPlanet = currentIndex < PLANETS.length - 1 ? PLANETS[currentIndex + 1] : null;
 
@@ -61,7 +61,10 @@ export default async function PlanetPage({ params }: Props) {
     <div className="container mx-auto px-4 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8">
-        <Link href="/planets" className="text-foreground/70 hover:text-foreground transition-colors flex items-center gap-2">
+        <Link
+          href="/planets"
+          className="text-foreground/70 hover:text-foreground transition-colors flex items-center gap-2"
+        >
           <ArrowLeft className="h-4 w-4" />
           Back to All Planets
         </Link>
@@ -72,14 +75,12 @@ export default async function PlanetPage({ params }: Props) {
         <div className="flex justify-center mb-6">
           <PlanetIcon planet={planet.slug as PlanetKey} size={96} className="text-primary animate-float" />
         </div>
-        <h1 className="font-display text-4xl md:text-6xl font-bold mb-2">
-          {planet.name}
-        </h1>
+        <h1 className="font-display text-4xl md:text-6xl font-bold mb-2">{planet.name}</h1>
         <p className="text-3xl text-foreground/70 mb-6">{planet.symbol}</p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Badge className={typeColors[planet.type]}>{planet.type} Planet</Badge>
-          {planet.rulership.map((sign) => (
+          {planet.rulership.map(sign => (
             <Badge key={sign} variant="outline" className="bg-primary/10 text-primary">
               Rules {sign}
             </Badge>
@@ -87,7 +88,7 @@ export default async function PlanetPage({ params }: Props) {
         </div>
 
         <div className="flex flex-wrap justify-center gap-2">
-          {planet.keywords.map((keyword) => (
+          {planet.keywords.map(keyword => (
             <Badge key={keyword} variant="secondary">
               {keyword}
             </Badge>
@@ -99,9 +100,7 @@ export default async function PlanetPage({ params }: Props) {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Description */}
         <section>
-          <p className="text-lg leading-relaxed text-foreground/70">
-            {planet.description}
-          </p>
+          <p className="text-lg leading-relaxed text-foreground/70">{planet.description}</p>
         </section>
 
         {/* In Signs */}
@@ -158,7 +157,7 @@ export default async function PlanetPage({ params }: Props) {
                 . This connection reveals how {planet.name}&apos;s energy is naturally expressed.
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
-                {planet.rulership.map((sign) => (
+                {planet.rulership.map(sign => (
                   <Link key={sign} href={`/zodiac/${sign.toLowerCase()}`}>
                     <Button variant="outline" className="zodiac-border">
                       Explore {sign}
@@ -173,9 +172,7 @@ export default async function PlanetPage({ params }: Props) {
         {/* CTA */}
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
           <CardContent className="text-center py-8">
-            <h3 className="font-display text-xl font-bold mb-3">
-              Discover Your {planet.name} Placement
-            </h3>
+            <h3 className="font-display text-xl font-bold mb-3">Discover Your {planet.name} Placement</h3>
             <p className="text-foreground/70 mb-6">
               See which sign and house {planet.name} occupies in your unique birth chart.
             </p>

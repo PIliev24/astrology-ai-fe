@@ -1,35 +1,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Sparkles,
-  Star,
-  Moon,
-  Sun,
-  ArrowRight,
-  Telescope,
-  BookOpen,
-  MessageCircle,
-  Orbit,
-  Stars,
-  Compass,
-} from "lucide-react";
+import { Sparkles, Star, ArrowRight, Telescope, BookOpen, MessageCircle, Orbit, Compass } from "lucide-react";
 import type { Metadata } from "next";
 import { CosmicBackground, ZodiacWheel } from "@/components/celestial";
+import { ZodiacIcon, ZodiacSignKey } from "@/components/icons/zodiac-icons";
 
 export const metadata: Metadata = {
   title: "Aistrology - AI-Powered Astrology | Discover Your Cosmic Blueprint",
   description:
     "Get personalized birth chart readings powered by AI. Discover your cosmic destiny through detailed zodiac analysis, house interpretations, and planetary insights. Start your celestial journey today.",
-  keywords: [
-    "astrology",
-    "birth chart",
-    "horoscope",
-    "zodiac",
-    "AI astrology",
-    "natal chart",
-    "personalized reading",
-  ],
+  keywords: ["astrology", "birth chart", "horoscope", "zodiac", "AI astrology", "natal chart", "personalized reading"],
   openGraph: {
     title: "Aistrology - AI-Powered Astrology",
     description: "Get personalized birth chart readings powered by AI. Discover your cosmic destiny.",
@@ -62,18 +43,18 @@ const features = [
 ];
 
 const zodiacSigns = [
-  { name: "Aries", symbol: "♈", element: "Fire", color: "bg-red-500/20 text-red-400 border-red-500/30" },
-  { name: "Taurus", symbol: "♉", element: "Earth", color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
-  { name: "Gemini", symbol: "♊", element: "Air", color: "bg-sky-500/20 text-sky-400 border-sky-500/30" },
-  { name: "Cancer", symbol: "♋", element: "Water", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
-  { name: "Leo", symbol: "♌", element: "Fire", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
-  { name: "Virgo", symbol: "♍", element: "Earth", color: "bg-lime-500/20 text-lime-400 border-lime-500/30" },
-  { name: "Libra", symbol: "♎", element: "Air", color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
-  { name: "Scorpio", symbol: "♏", element: "Water", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
-  { name: "Sagittarius", symbol: "♐", element: "Fire", color: "bg-red-500/20 text-red-400 border-red-500/30" },
-  { name: "Capricorn", symbol: "♑", element: "Earth", color: "bg-stone-500/20 text-stone-400 border-stone-500/30" },
-  { name: "Aquarius", symbol: "♒", element: "Air", color: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30" },
-  { name: "Pisces", symbol: "♓", element: "Water", color: "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" },
+  { name: "Aries", element: "Fire", color: "bg-red-500/20 text-red-400 border-red-500/30" },
+  { name: "Taurus", element: "Earth", color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
+  { name: "Gemini", element: "Air", color: "bg-sky-500/20 text-sky-400 border-sky-500/30" },
+  { name: "Cancer", element: "Water", color: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
+  { name: "Leo", element: "Fire", color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
+  { name: "Virgo", element: "Earth", color: "bg-lime-500/20 text-lime-400 border-lime-500/30" },
+  { name: "Libra", element: "Air", color: "bg-pink-500/20 text-pink-400 border-pink-500/30" },
+  { name: "Scorpio", element: "Water", color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+  { name: "Sagittarius", element: "Fire", color: "bg-red-500/20 text-red-400 border-red-500/30" },
+  { name: "Capricorn", element: "Earth", color: "bg-stone-500/20 text-stone-400 border-stone-500/30" },
+  { name: "Aquarius", element: "Air", color: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30" },
+  { name: "Pisces", element: "Water", color: "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" },
 ];
 
 const knowledgeCards = [
@@ -105,7 +86,6 @@ export default function LandingPage() {
         <CosmicBackground
           variant="hero"
           showStars={true}
-          showNebula={true}
           showAurora={true}
           interactive={true}
           className="absolute inset-0"
@@ -113,12 +93,9 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-8">
-
             {/* Main heading */}
             <div className="space-y-4 animate-fade-in">
-              <p className="text-mystical text-sm tracking-[0.3em] text-(--celestial-gold) opacity-80">
-                Welcome to
-              </p>
+              <p className="text-mystical text-sm tracking-[0.3em] text-(--celestial-gold) opacity-80">Welcome to</p>
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
                 <span className="text-gradient-gold">Celestial</span>
                 <br />
@@ -162,10 +139,7 @@ export default function LandingPage() {
             </div>
 
             {/* Trust indicator */}
-            <p
-              className="text-sm text-muted-foreground pt-4 animate-fade-in"
-              style={{ animationDelay: "0.6s" }}
-            >
+            <p className="text-sm text-muted-foreground pt-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
               <Sparkles className="inline-block h-4 w-4 mr-1 text-(--celestial-gold)" />
               Join thousands of seekers discovering their cosmic path
             </p>
@@ -212,12 +186,12 @@ export default function LandingPage() {
                         ${sign.color}
                       `}
                     >
-                      <span className="text-2xl group-hover:scale-110 transition-transform">
-                        {sign.symbol}
-                      </span>
-                      <span className="text-[10px] font-medium opacity-80 hidden sm:block">
-                        {sign.name}
-                      </span>
+                      <ZodiacIcon
+                        sign={sign.name.toLowerCase() as ZodiacSignKey}
+                        size={24}
+                        className="group-hover:scale-110 transition-transform"
+                      />
+                      <span className="text-[10px] font-medium opacity-80 hidden sm:block">{sign.name}</span>
                     </div>
                   </Link>
                 ))}
@@ -242,15 +216,13 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 space-y-4">
-            <p className="text-mystical text-xs tracking-[0.3em] text-(--celestial-gold)">
-              What We Offer
-            </p>
+            <p className="text-mystical text-xs tracking-[0.3em] text-(--celestial-gold)">What We Offer</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold">
               Why Choose <span className="text-gradient-gold">Aistrology</span>?
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-              Our AI-powered platform combines ancient astrological wisdom with modern technology to deliver
-              insights that truly resonate with your soul.
+              Our AI-powered platform combines ancient astrological wisdom with modern technology to deliver insights
+              that truly resonate with your soul.
             </p>
           </div>
 
@@ -345,24 +317,17 @@ export default function LandingPage() {
 
       {/* Final CTA Section */}
       <section className="relative py-32 overflow-hidden">
-        <CosmicBackground
-          variant="intense"
-          showStars={true}
-          showNebula={true}
-          className="absolute inset-0"
-        />
+        <CosmicBackground variant="intense" showStars={true} className="absolute inset-0" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-          
             <h2 className="font-display text-4xl md:text-6xl font-bold">
-              Ready to Unlock Your{" "}
-              <span className="text-gradient-gold">Celestial Secrets</span>?
+              Ready to Unlock Your <span className="text-gradient-gold">Celestial Secrets</span>?
             </h2>
 
             <p className="text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed">
-              Your cosmic journey begins with a single step. Discover the wisdom written in the stars
-              and transform your understanding of yourself and your destiny.
+              Your cosmic journey begins with a single step. Discover the wisdom written in the stars and transform your
+              understanding of yourself and your destiny.
             </p>
 
             <div className="pt-4">

@@ -13,7 +13,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return getAllZodiacSlugs().map((sign) => ({ sign }));
+  return getAllZodiacSlugs().map(sign => ({ sign }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -53,7 +53,7 @@ export default async function ZodiacSignPage({ params }: Props) {
   }
 
   // Get prev/next signs for navigation
-  const currentIndex = ZODIAC_SIGNS.findIndex((s) => s.slug === signSlug);
+  const currentIndex = ZODIAC_SIGNS.findIndex(s => s.slug === signSlug);
   const prevSign = ZODIAC_SIGNS[(currentIndex - 1 + 12) % 12];
   const nextSign = ZODIAC_SIGNS[(currentIndex + 1) % 12];
 
@@ -68,7 +68,10 @@ export default async function ZodiacSignPage({ params }: Props) {
     <div className="container mx-auto px-4 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8">
-        <Link href="/zodiac" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+        <Link
+          href="/zodiac"
+          className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2"
+        >
           <ArrowLeft className="h-4 w-4" />
           Back to All Signs
         </Link>
@@ -79,9 +82,7 @@ export default async function ZodiacSignPage({ params }: Props) {
         <div className="flex justify-center mb-6">
           <ZodiacIcon sign={sign.slug as ZodiacSignKey} size={96} className="text-primary animate-float" />
         </div>
-        <h1 className="font-display text-4xl md:text-6xl font-bold mb-4">
-          {sign.name}
-        </h1>
+        <h1 className="font-display text-4xl md:text-6xl font-bold mb-4">{sign.name}</h1>
         <p className="text-xl text-foreground/70 mb-6">{sign.dateRange}</p>
 
         <div className="flex flex-wrap justify-center gap-3">
@@ -99,9 +100,7 @@ export default async function ZodiacSignPage({ params }: Props) {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Description */}
         <section>
-          <p className="text-lg leading-relaxed text-foreground/70">
-            {sign.description}
-          </p>
+          <p className="text-lg leading-relaxed text-foreground/70">{sign.description}</p>
         </section>
 
         {/* Key Traits */}
@@ -111,7 +110,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             Key Personality Traits
           </h2>
           <div className="flex flex-wrap gap-2">
-            {sign.traits.map((trait) => (
+            {sign.traits.map(trait => (
               <Badge key={trait} variant="secondary" className="text-sm py-1 px-3">
                 {trait}
               </Badge>
@@ -130,7 +129,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {sign.strengths.map((strength) => (
+                {sign.strengths.map(strength => (
                   <li key={strength} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                     {strength}
@@ -149,7 +148,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {sign.weaknesses.map((weakness) => (
+                {sign.weaknesses.map(weakness => (
                   <li key={weakness} className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                     {weakness}
@@ -170,10 +169,8 @@ export default async function ZodiacSignPage({ params }: Props) {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-3">
-              {sign.compatibility.map((compatSign) => {
-                const compatData = ZODIAC_SIGNS.find(
-                  (s) => s.name === compatSign
-                );
+              {sign.compatibility.map(compatSign => {
+                const compatData = ZODIAC_SIGNS.find(s => s.name === compatSign);
                 return (
                   <Link key={compatSign} href={`/zodiac/${compatSign.toLowerCase()}`}>
                     <Badge
@@ -198,7 +195,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             </CardHeader>
             <CardContent>
               <div className="flex gap-3">
-                {sign.luckyNumbers.map((num) => (
+                {sign.luckyNumbers.map(num => (
                   <span
                     key={num}
                     className="w-10 h-10 rounded-full gradient-gold text-primary-foreground flex items-center justify-center font-bold"
@@ -216,7 +213,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-                {sign.luckyColors.map((color) => (
+                {sign.luckyColors.map(color => (
                   <Badge key={color} variant="secondary">
                     {color}
                   </Badge>
@@ -229,9 +226,7 @@ export default async function ZodiacSignPage({ params }: Props) {
         {/* CTA */}
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
           <CardContent className="text-center py-8">
-            <h3 className="font-display text-xl font-bold mb-3">
-              Want a personalized {sign.name} reading?
-            </h3>
+            <h3 className="font-display text-xl font-bold mb-3">Want a personalized {sign.name} reading?</h3>
             <p className="text-foreground/70 mb-6">
               Discover how your unique birth chart reveals your cosmic potential.
             </p>

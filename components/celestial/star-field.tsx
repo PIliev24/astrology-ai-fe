@@ -88,7 +88,7 @@ export function StarField({
 
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      starsRef.current.forEach((star) => {
+      starsRef.current.forEach(star => {
         const x = star.x * rect.width;
         const y = star.y * rect.height;
 
@@ -106,23 +106,12 @@ export function StarField({
         // Calculate twinkle effect
         let opacity = star.opacity;
         if (animated) {
-          opacity =
-            star.opacity *
-            (0.5 +
-              0.5 *
-                Math.sin(elapsed * star.twinkleSpeed + star.twinkleOffset));
+          opacity = star.opacity * (0.5 + 0.5 * Math.sin(elapsed * star.twinkleSpeed + star.twinkleOffset));
         }
         opacity = Math.min(1, opacity + interactiveBoost);
 
         // Draw star glow
-        const gradient = ctx.createRadialGradient(
-          x,
-          y,
-          0,
-          x,
-          y,
-          star.size * (2 + interactiveBoost * 3)
-        );
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, star.size * (2 + interactiveBoost * 3));
         gradient.addColorStop(0, star.color.replace("1)", `${opacity})`));
         gradient.addColorStop(0.5, star.color.replace("1)", `${opacity * 0.3})`));
         gradient.addColorStop(1, "transparent");

@@ -222,9 +222,7 @@ export function ChatInput({
           size="icon"
           className={cn(
             "absolute bottom-2.5 right-2.5 h-9 w-9 rounded-lg",
-            canSend
-              ? "gradient-gold text-primary-foreground hover-glow"
-              : "bg-muted text-muted-foreground",
+            canSend ? "gradient-gold text-primary-foreground hover-glow" : "bg-muted text-muted-foreground",
             "transition-all duration-200",
             canSend && "hover:scale-105 active:scale-95"
           )}

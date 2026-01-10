@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { ZodiacIcon, ZodiacSignKey } from "@/components/icons/zodiac-icons";
 
 interface ZodiacWheelProps {
   className?: string;
@@ -11,25 +12,25 @@ interface ZodiacWheelProps {
 }
 
 const ZODIAC_SIGNS = [
-  { name: "Aries", symbol: "♈", element: "fire", degrees: 0 },
-  { name: "Taurus", symbol: "♉", element: "earth", degrees: 30 },
-  { name: "Gemini", symbol: "♊", element: "air", degrees: 60 },
-  { name: "Cancer", symbol: "♋", element: "water", degrees: 90 },
-  { name: "Leo", symbol: "♌", element: "fire", degrees: 120 },
-  { name: "Virgo", symbol: "♍", element: "earth", degrees: 150 },
-  { name: "Libra", symbol: "♎", element: "air", degrees: 180 },
-  { name: "Scorpio", symbol: "♏", element: "water", degrees: 210 },
-  { name: "Sagittarius", symbol: "♐", element: "fire", degrees: 240 },
-  { name: "Capricorn", symbol: "♑", element: "earth", degrees: 270 },
-  { name: "Aquarius", symbol: "♒", element: "air", degrees: 300 },
-  { name: "Pisces", symbol: "♓", element: "water", degrees: 330 },
+  { name: "Aries", element: "fire", degrees: 0 },
+  { name: "Taurus", element: "earth", degrees: 30 },
+  { name: "Gemini", element: "air", degrees: 60 },
+  { name: "Cancer", element: "water", degrees: 90 },
+  { name: "Leo", element: "fire", degrees: 120 },
+  { name: "Virgo", element: "earth", degrees: 150 },
+  { name: "Libra", element: "air", degrees: 180 },
+  { name: "Scorpio", element: "water", degrees: 210 },
+  { name: "Sagittarius", element: "fire", degrees: 240 },
+  { name: "Capricorn", element: "earth", degrees: 270 },
+  { name: "Aquarius", element: "air", degrees: 300 },
+  { name: "Pisces", element: "water", degrees: 330 },
 ];
 
 const ELEMENT_COLORS = {
-  fire: "from-orange-500 to-red-600",
-  earth: "from-emerald-600 to-amber-700",
-  air: "from-sky-400 to-indigo-500",
-  water: "from-blue-500 to-purple-600",
+  fire: "#ef4444", // Red - Aries, Leo, Sagittarius
+  earth: "#10b981", // Emerald - Taurus, Virgo, Capricorn
+  air: "#06b6d4", // Cyan - Gemini, Libra, Aquarius
+  water: "#3b82f6", // Blue - Cancer, Scorpio, Pisces
 };
 
 const sizeClasses = {
@@ -54,14 +55,7 @@ export function ZodiacWheel({
   highlightSign,
 }: ZodiacWheelProps) {
   return (
-    <div
-      className={cn(
-        "relative rounded-full",
-        sizeClasses[size],
-        animated && "animate-rotate-slow",
-        className
-      )}
-    >
+    <div className={cn("relative rounded-full", sizeClasses[size], animated && "animate-rotate-slow", className)}>
       {/* Outer glow ring */}
       <div
         className={cn(
@@ -84,18 +78,18 @@ export function ZodiacWheel({
           style={{
             background: `conic-gradient(
               from 0deg,
-              #ef4444 0deg 30deg,
-              #10b981 30deg 60deg,
-              #06b6d4 60deg 90deg,
-              #3b82f6 90deg 120deg,
-              #f97316 120deg 150deg,
-              #84cc16 150deg 180deg,
-              #f472b6 180deg 210deg,
-              #8b5cf6 210deg 240deg,
-              #dc2626 240deg 270deg,
-              #a3a3a3 270deg 300deg,
-              #0ea5e9 300deg 330deg,
-              #6366f1 330deg 360deg
+              ${ELEMENT_COLORS.fire} 0deg 30deg,
+              ${ELEMENT_COLORS.earth} 30deg 60deg,
+              ${ELEMENT_COLORS.air} 60deg 90deg,
+              ${ELEMENT_COLORS.water} 90deg 120deg,
+              ${ELEMENT_COLORS.fire} 120deg 150deg,
+              ${ELEMENT_COLORS.earth} 150deg 180deg,
+              ${ELEMENT_COLORS.air} 180deg 210deg,
+              ${ELEMENT_COLORS.water} 210deg 240deg,
+              ${ELEMENT_COLORS.fire} 240deg 270deg,
+              ${ELEMENT_COLORS.earth} 270deg 300deg,
+              ${ELEMENT_COLORS.air} 300deg 330deg,
+              ${ELEMENT_COLORS.water} 330deg 360deg
             )`,
           }}
         />
@@ -141,7 +135,7 @@ export function ZodiacWheel({
 
       {/* Zodiac symbols */}
       {showSymbols &&
-        ZODIAC_SIGNS.map((sign, i) => {
+        ZODIAC_SIGNS.map(sign => {
           const angle = (sign.degrees - 90 + 15) * (Math.PI / 180);
           const radius = size === "sm" ? 38 : size === "md" ? 56 : size === "lg" ? 75 : 88;
 
@@ -170,7 +164,10 @@ export function ZodiacWheel({
               }}
               title={sign.name}
             >
-              {sign.symbol}
+              <ZodiacIcon
+                sign={sign.name.toLowerCase() as ZodiacSignKey}
+                size={size === "sm" ? 12 : size === "md" ? 16 : size === "lg" ? 20 : 24}
+              />
             </div>
           );
         })}

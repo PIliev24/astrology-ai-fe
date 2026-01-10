@@ -8,7 +8,6 @@ interface CosmicBackgroundProps {
   className?: string;
   children?: React.ReactNode;
   showStars?: boolean;
-  showNebula?: boolean;
   showAurora?: boolean;
   interactive?: boolean;
 }
@@ -18,7 +17,6 @@ export function CosmicBackground({
   className,
   children,
   showStars = true,
-  showNebula = true,
   showAurora = false,
   interactive = false,
 }: CosmicBackgroundProps) {
@@ -84,12 +82,7 @@ export function CosmicBackground({
 
       {/* Star field layer */}
       {showStars && (
-        <StarField
-          starCount={starCounts[variant]}
-          animated={true}
-          interactive={interactive}
-          className="z-10"
-        />
+        <StarField starCount={starCounts[variant]} animated={true} interactive={interactive} className="z-10" />
       )}
 
       {/* Noise texture overlay */}

@@ -31,7 +31,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Mars",
     dateRange: "March 21 - April 19",
     traits: ["Courageous", "Determined", "Confident", "Enthusiastic", "Optimistic"],
-    description: "Aries, the first sign of the zodiac, is known for its bold and ambitious nature. As a fire sign ruled by Mars, Aries individuals are natural-born leaders who thrive on challenge and competition. They possess an infectious energy that inspires others to action.",
+    description:
+      "Aries, the first sign of the zodiac, is known for its bold and ambitious nature. As a fire sign ruled by Mars, Aries individuals are natural-born leaders who thrive on challenge and competition. They possess an infectious energy that inspires others to action.",
     strengths: ["Leadership", "Initiative", "Bravery", "Honesty", "Passion"],
     weaknesses: ["Impatience", "Impulsiveness", "Short-tempered", "Competitive"],
     compatibility: ["Leo", "Sagittarius", "Gemini", "Aquarius"],
@@ -48,7 +49,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Venus",
     dateRange: "April 20 - May 20",
     traits: ["Reliable", "Patient", "Practical", "Devoted", "Responsible"],
-    description: "Taurus is an earth sign represented by the bull. Like their celestial spirit animal, Taureans enjoy relaxing in serene environments surrounded by soft sounds, soothing aromas, and succulent flavors. Venus rules Taurus, so these bulls are attracted to beauty and luxury.",
+    description:
+      "Taurus is an earth sign represented by the bull. Like their celestial spirit animal, Taureans enjoy relaxing in serene environments surrounded by soft sounds, soothing aromas, and succulent flavors. Venus rules Taurus, so these bulls are attracted to beauty and luxury.",
     strengths: ["Dependable", "Persistent", "Loyal", "Sensual", "Creative"],
     weaknesses: ["Stubborn", "Possessive", "Uncompromising", "Materialistic"],
     compatibility: ["Virgo", "Capricorn", "Cancer", "Pisces"],
@@ -65,7 +67,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Mercury",
     dateRange: "May 21 - June 20",
     traits: ["Gentle", "Affectionate", "Curious", "Adaptable", "Quick learner"],
-    description: "Gemini is an air sign represented by the twins. This sign is known for its dual nature and ability to see both sides of any situation. Ruled by Mercury, Geminis are excellent communicators with quick wit and endless curiosity about the world around them.",
+    description:
+      "Gemini is an air sign represented by the twins. This sign is known for its dual nature and ability to see both sides of any situation. Ruled by Mercury, Geminis are excellent communicators with quick wit and endless curiosity about the world around them.",
     strengths: ["Versatile", "Expressive", "Quick-witted", "Sociable", "Intellectual"],
     weaknesses: ["Nervous", "Inconsistent", "Indecisive", "Superficial"],
     compatibility: ["Libra", "Aquarius", "Aries", "Leo"],
@@ -82,7 +85,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Moon",
     dateRange: "June 21 - July 22",
     traits: ["Tenacious", "Loyal", "Emotional", "Sympathetic", "Persuasive"],
-    description: "Cancer is a water sign represented by the crab. Cancers are deeply intuitive and sentimental. They are very protective of their loved ones and create nurturing environments wherever they go. Ruled by the Moon, they are in tune with emotions and cycles of life.",
+    description:
+      "Cancer is a water sign represented by the crab. Cancers are deeply intuitive and sentimental. They are very protective of their loved ones and create nurturing environments wherever they go. Ruled by the Moon, they are in tune with emotions and cycles of life.",
     strengths: ["Nurturing", "Protective", "Intuitive", "Compassionate", "Creative"],
     weaknesses: ["Moody", "Pessimistic", "Suspicious", "Manipulative"],
     compatibility: ["Scorpio", "Pisces", "Taurus", "Virgo"],
@@ -99,7 +103,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Sun",
     dateRange: "July 23 - August 22",
     traits: ["Creative", "Passionate", "Generous", "Warm-hearted", "Cheerful"],
-    description: "Leo is a fire sign represented by the lion. Leos are natural-born leaders with a flair for drama and creativity. Ruled by the Sun, they radiate warmth and charisma, drawing others into their orbit. They are generous, loyal, and love to be in the spotlight.",
+    description:
+      "Leo is a fire sign represented by the lion. Leos are natural-born leaders with a flair for drama and creativity. Ruled by the Sun, they radiate warmth and charisma, drawing others into their orbit. They are generous, loyal, and love to be in the spotlight.",
     strengths: ["Confident", "Ambitious", "Generous", "Loyal", "Encouraging"],
     weaknesses: ["Arrogant", "Stubborn", "Self-centered", "Inflexible"],
     compatibility: ["Aries", "Sagittarius", "Gemini", "Libra"],
@@ -116,7 +121,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Mercury",
     dateRange: "August 23 - September 22",
     traits: ["Loyal", "Analytical", "Kind", "Hardworking", "Practical"],
-    description: "Virgo is an earth sign represented by the maiden. Virgos are known for their attention to detail, analytical minds, and desire to serve others. Ruled by Mercury, they excel at communication and problem-solving, always striving for perfection in everything they do.",
+    description:
+      "Virgo is an earth sign represented by the maiden. Virgos are known for their attention to detail, analytical minds, and desire to serve others. Ruled by Mercury, they excel at communication and problem-solving, always striving for perfection in everything they do.",
     strengths: ["Methodical", "Reliable", "Patient", "Humble", "Helpful"],
     weaknesses: ["Overly critical", "Worry-prone", "Shy", "Perfectionist"],
     compatibility: ["Taurus", "Capricorn", "Cancer", "Scorpio"],
@@ -133,7 +139,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Venus",
     dateRange: "September 23 - October 22",
     traits: ["Cooperative", "Diplomatic", "Gracious", "Fair-minded", "Social"],
-    description: "Libra is an air sign represented by the scales. Libras are obsessed with balance and harmony, seeking equilibrium in all aspects of life. Ruled by Venus, they have a refined aesthetic sense and are drawn to beauty, art, and partnership.",
+    description:
+      "Libra is an air sign represented by the scales. Libras are obsessed with balance and harmony, seeking equilibrium in all aspects of life. Ruled by Venus, they have a refined aesthetic sense and are drawn to beauty, art, and partnership.",
     strengths: ["Diplomatic", "Graceful", "Idealistic", "Romantic", "Peaceful"],
     weaknesses: ["Indecisive", "Avoids confrontations", "Self-pitying", "Unreliable"],
     compatibility: ["Gemini", "Aquarius", "Leo", "Sagittarius"],
@@ -150,7 +157,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Pluto",
     dateRange: "October 23 - November 21",
     traits: ["Resourceful", "Brave", "Passionate", "Stubborn", "Strategic"],
-    description: "Scorpio is a water sign represented by the scorpion. Scorpios are known for their intensity, passion, and powerful presence. Ruled by Pluto, they are drawn to life's mysteries and possess incredible emotional depth and transformative energy.",
+    description:
+      "Scorpio is a water sign represented by the scorpion. Scorpios are known for their intensity, passion, and powerful presence. Ruled by Pluto, they are drawn to life's mysteries and possess incredible emotional depth and transformative energy.",
     strengths: ["Determined", "Brave", "Loyal", "Honest", "Ambitious"],
     weaknesses: ["Jealous", "Secretive", "Resentful", "Controlling"],
     compatibility: ["Cancer", "Pisces", "Virgo", "Capricorn"],
@@ -167,7 +175,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Jupiter",
     dateRange: "November 22 - December 21",
     traits: ["Generous", "Idealistic", "Great humor", "Adventurous", "Philosophical"],
-    description: "Sagittarius is a fire sign represented by the archer. Sagittarians are eternal optimists with an insatiable thirst for knowledge and adventure. Ruled by Jupiter, they are philosophical seekers who love to explore both the physical world and the realm of ideas.",
+    description:
+      "Sagittarius is a fire sign represented by the archer. Sagittarians are eternal optimists with an insatiable thirst for knowledge and adventure. Ruled by Jupiter, they are philosophical seekers who love to explore both the physical world and the realm of ideas.",
     strengths: ["Optimistic", "Freedom-loving", "Honest", "Intellectual", "Adventurous"],
     weaknesses: ["Impatient", "Tactless", "Restless", "Irresponsible"],
     compatibility: ["Aries", "Leo", "Libra", "Aquarius"],
@@ -184,7 +193,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Saturn",
     dateRange: "December 22 - January 19",
     traits: ["Responsible", "Disciplined", "Self-control", "Ambitious", "Practical"],
-    description: "Capricorn is an earth sign represented by the sea-goat. Capricorns are masters of self-discipline and have an unwavering determination to reach their goals. Ruled by Saturn, they understand the value of patience, hard work, and long-term planning.",
+    description:
+      "Capricorn is an earth sign represented by the sea-goat. Capricorns are masters of self-discipline and have an unwavering determination to reach their goals. Ruled by Saturn, they understand the value of patience, hard work, and long-term planning.",
     strengths: ["Responsible", "Disciplined", "Family-oriented", "Persistent", "Practical"],
     weaknesses: ["Know-it-all", "Unforgiving", "Condescending", "Pessimistic"],
     compatibility: ["Taurus", "Virgo", "Scorpio", "Pisces"],
@@ -201,7 +211,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Uranus",
     dateRange: "January 20 - February 18",
     traits: ["Progressive", "Original", "Independent", "Humanitarian", "Intellectual"],
-    description: "Aquarius is an air sign represented by the water bearer. Aquarians are forward-thinking visionaries who value innovation and social progress. Ruled by Uranus, they are unconventional thinkers who challenge the status quo and champion humanitarian causes.",
+    description:
+      "Aquarius is an air sign represented by the water bearer. Aquarians are forward-thinking visionaries who value innovation and social progress. Ruled by Uranus, they are unconventional thinkers who challenge the status quo and champion humanitarian causes.",
     strengths: ["Progressive", "Original", "Independent", "Humanitarian", "Inventive"],
     weaknesses: ["Temperamental", "Uncompromising", "Aloof", "Unpredictable"],
     compatibility: ["Gemini", "Libra", "Aries", "Sagittarius"],
@@ -218,7 +229,8 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
     rulingPlanet: "Neptune",
     dateRange: "February 19 - March 20",
     traits: ["Compassionate", "Artistic", "Intuitive", "Gentle", "Wise"],
-    description: "Pisces is a water sign represented by two fish swimming in opposite directions. Pisceans are the dreamers of the zodiac, with deep emotional intelligence and artistic sensibility. Ruled by Neptune, they have a mystical quality and strong connection to the spiritual realm.",
+    description:
+      "Pisces is a water sign represented by two fish swimming in opposite directions. Pisceans are the dreamers of the zodiac, with deep emotional intelligence and artistic sensibility. Ruled by Neptune, they have a mystical quality and strong connection to the spiritual realm.",
     strengths: ["Compassionate", "Artistic", "Intuitive", "Gentle", "Musical"],
     weaknesses: ["Fearful", "Overly trusting", "Escapist", "Victim mentality"],
     compatibility: ["Cancer", "Scorpio", "Taurus", "Capricorn"],
@@ -228,9 +240,9 @@ export const ZODIAC_SIGNS: ZodiacSign[] = [
 ];
 
 export function getZodiacBySlug(slug: string): ZodiacSign | undefined {
-  return ZODIAC_SIGNS.find((sign) => sign.slug === slug);
+  return ZODIAC_SIGNS.find(sign => sign.slug === slug);
 }
 
 export function getAllZodiacSlugs(): string[] {
-  return ZODIAC_SIGNS.map((sign) => sign.slug);
+  return ZODIAC_SIGNS.map(sign => sign.slug);
 }

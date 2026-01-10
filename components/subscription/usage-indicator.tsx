@@ -22,7 +22,7 @@ const planLimits = {
 export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorProps) {
   // Use API limit if provided, otherwise fall back to plan defaults
   // null from API means unlimited
-  const limit = usage.message_limit === null ? Infinity : usage.message_limit ?? planLimits[plan];
+  const limit = usage.message_limit === null ? Infinity : (usage.message_limit ?? planLimits[plan]);
   const remaining = usage.messages_remaining ?? 0;
   const resetAt = usage.reset_at ? new Date(usage.reset_at) : null;
 
@@ -73,8 +73,8 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
                 isLimitReached
                   ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                   : isWarning
-                  ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-                  : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                    ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                    : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
               )}
             >
               {remaining} left
@@ -105,8 +105,8 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
                 isLimitReached
                   ? "bg-linear-to-r from-red-500 to-red-600"
                   : isWarning
-                  ? "bg-linear-to-r from-yellow-500 to-orange-500"
-                  : "bg-linear-to-r from-blue-500 to-cyan-500"
+                    ? "bg-linear-to-r from-yellow-500 to-orange-500"
+                    : "bg-linear-to-r from-blue-500 to-cyan-500"
               )}
             />
           </div>

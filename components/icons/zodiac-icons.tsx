@@ -4,10 +4,6 @@ export interface ZodiacIconProps extends SVGProps<SVGSVGElement> {
   size?: number | string;
 }
 
-const defaultProps: ZodiacIconProps = {
-  size: 24,
-};
-
 export function AriesIcon({ size = 24, ...props }: ZodiacIconProps) {
   return (
     <svg

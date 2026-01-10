@@ -44,7 +44,7 @@ export function ChartSelector({ charts, selectedChartIds, onToggleChart }: Chart
                 onClick={() => onToggleChart(chart.id)}
                 className={cn(
                   "flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-all",
-                  "hover:bg-accent border",
+                  "hover:bg-accent/20 border",
                   isSelected ? "bg-primary/5 border-primary/20" : "bg-background border-border"
                 )}
               >
