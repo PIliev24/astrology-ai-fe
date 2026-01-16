@@ -6,6 +6,7 @@ import { ChatMessage as ChatMessageComponent } from "./chat-message";
 import { ChatInput } from "./chat-input";
 import { BirthChartResponse } from "@/types";
 import { Loader2, Stars, Sparkles, Moon } from "lucide-react";
+import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -72,31 +73,14 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
     <div className="flex flex-col h-full min-h-0 bg-background relative">
       {/* Subtle background decoration */}
       <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[var(--celestial-violet)]/5 to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-(--celestial-violet)/5 to-transparent pointer-events-none" />
 
       <ScrollArea className="flex-1 scrollbar-cosmic">
         <div className="container max-w-4xl mx-auto px-4 py-4 md:py-8">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-start pt-4 md:pt-0 md:justify-center min-h-[50vh] md:min-h-[60vh] text-center">
-              {/* Welcome icon */}
-              <div className="relative mb-8">
-                <div className="w-24 h-24 rounded-full gradient-gold flex items-center justify-center zodiac-glow animate-pulse-glow">
-                  <Stars className="h-12 w-12 text-primary-foreground" />
-                </div>
-                <div className="absolute inset-0 bg-[var(--celestial-gold)]/20 rounded-full blur-2xl" />
-                {/* Orbiting elements */}
-                <div
-                  className="absolute inset-0 animate-orbit"
-                  style={{ "--orbit-radius": "60px" } as React.CSSProperties}
-                >
-                  <Moon className="h-5 w-5 text-[var(--celestial-violet)]" />
-                </div>
-                <div
-                  className="absolute inset-0 animate-orbit-reverse"
-                  style={{ "--orbit-radius": "50px" } as React.CSSProperties}
-                >
-                  <Sparkles className="h-4 w-4 text-(--celestial-gold)" />
-                </div>
+              <div className="relative mb-8 animate-pulse-glow">
+                 <Logo size="xl" showText />
               </div>
 
               {/* Welcome text */}

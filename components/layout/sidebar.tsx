@@ -11,7 +11,6 @@ import {
   ChevronLeft,
   MessageSquare,
   Plus,
-  Stars,
   Loader2,
   LogOut,
   X,
@@ -20,6 +19,7 @@ import {
   Settings,
   Sparkles,
 } from "lucide-react";
+import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -293,7 +293,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "fixed inset-y-0 left-0 z-40 border-r border-[var(--celestial-gold)]/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out",
+        "fixed inset-y-0 left-0 z-40 border-r border-(--celestial-gold)/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out",
         "shadow-xl lg:shadow-none",
         isCollapsed ? "w-0 lg:w-16" : "w-full lg:w-72",
         isCollapsed ? "-translate-x-full lg:translate-x-0" : "translate-x-0",
@@ -309,7 +309,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {!isCollapsed && (
           <div className="lg:hidden pt-6 pb-4 px-4 border-b border-border/50 relative">
             <div className="flex flex-col items-center gap-3">
-              <Avatar className="h-20 w-20 border-2 border-[var(--celestial-gold)]/30 zodiac-glow">
+              <Avatar className="h-20 w-20 border-2 border-(--celestial-gold)/30 zodiac-glow">
                 <AvatarFallback className="gradient-gold text-primary-foreground font-semibold text-lg">
                   {getInitials(user?.name, user?.email)}
                 </AvatarFallback>
@@ -323,7 +323,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={onToggleCollapse}
-              className="absolute top-4 right-4 h-8 w-8 hover:bg-[var(--celestial-gold)]/10"
+              className="absolute top-4 right-4 h-8 w-8 hover:bg-(--celestial-gold)/10"
               aria-label="Close sidebar"
             >
               <X className="h-5 w-5" />
@@ -334,19 +334,14 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {/* Desktop Header */}
         <div className="hidden lg:flex h-16 items-center justify-between px-4 border-b border-border/50">
           {!isCollapsed && (
-            <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center zodiac-glow">
-                <Stars className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <h2 className="font-display text-lg font-semibold text-gradient-gold truncate">Aistrology</h2>
-            </div>
+            <Logo size="sm" />
           )}
           {!isCollapsed ? (
             <Button
               variant="ghost"
               size="icon"
               onClick={onToggleCollapse}
-              className="h-8 w-8 shrink-0 hover:bg-[var(--celestial-gold)]/10"
+              className="h-8 w-8 shrink-0 hover:bg-(--celestial-gold)/10"
               aria-label="Collapse sidebar"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -356,7 +351,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={onToggleCollapse}
-              className="h-8 w-8 shrink-0 mx-auto hover:bg-[var(--celestial-gold)]/10"
+              className="h-8 w-8 shrink-0 mx-auto hover:bg-(--celestial-gold)/10"
               aria-label="Expand sidebar"
             >
               <ChevronLeft className="h-4 w-4 rotate-180" />

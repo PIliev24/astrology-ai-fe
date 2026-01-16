@@ -170,7 +170,7 @@ export default function LandingPage() {
               </p>
 
               {/* Zodiac grid */}
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-3 pt-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3 pt-4">
                 {zodiacSigns.map((sign, index) => (
                   <Link
                     key={sign.name}
@@ -199,11 +199,19 @@ export default function LandingPage() {
             </div>
 
             {/* Zodiac Wheel */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
+            <div className="flex justify-center lg:justify-end overflow-hidden">
+              <div className="relative w-fit">
                 {/* Glow effect */}
-                <div className="absolute inset-0 bg-[var(--celestial-gold)]/20 rounded-full blur-3xl scale-110" />
-                <ZodiacWheel size="xl" animated={true} showSymbols={true} />
+                <div className="absolute inset-0 rounded-full" />
+                <div className="block md:hidden">
+                  <ZodiacWheel size="md" animated={true} showSymbols={true} />
+                </div>
+                <div className="hidden md:block lg:hidden">
+                  <ZodiacWheel size="lg" animated={true} showSymbols={true} />
+                </div>
+                <div className="hidden lg:block">
+                  <ZodiacWheel size="xl" animated={true} showSymbols={true} />
+                </div>
               </div>
             </div>
           </div>

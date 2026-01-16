@@ -60,7 +60,6 @@ export function ZodiacWheel({
       <div
         className={cn(
           "absolute inset-0 rounded-full",
-          "bg-gradient-to-r from-[var(--celestial-gold)] via-[var(--celestial-violet)] to-[var(--celestial-gold)]",
           "opacity-30 blur-xl"
         )}
       />

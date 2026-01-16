@@ -2,30 +2,28 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Stars, Menu, Star, LayoutDashboard } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, Star, LayoutDashboard } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks";
+import { Logo } from "@/components/ui/logo";
 
 const navLinks = [
   { href: "/zodiac", label: "Zodiac Signs" },
   { href: "/houses", label: "Houses" },
   { href: "/planets", label: "Planets" },
   { href: "/guide", label: "Guide" },
+  { href: "/contact", label: "Contact" },
 ];
 
 function PublicNav() {
   const { user } = useAuth();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-nav bg-background/60 border-b border-[var(--celestial-gold)]/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-nav bg-background/95 md:bg-background/60 border-b border-[var(--celestial-gold)]/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
-          <div className="relative">
-            <Stars className="h-6 w-6 text-(--celestial-gold) group-hover:animate-pulse-glow transition-all" />
-            <div className="absolute inset-0 bg-[var(--celestial-gold)]/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-          </div>
-          <span className="font-display text-xl font-semibold text-gradient-gold tracking-wide">Aistrology</span>
+        <Link href={user ? "/dashboard" : "/"} className="group">
+          <Logo size="md" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -75,12 +73,12 @@ function PublicNav() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-80 bg-background/95 backdrop-blur-cosmic border-l border-[var(--celestial-gold)]/20"
+              className="w-[85vw] max-w-80 bg-background/95 backdrop-blur-cosmic border-l border-[var(--celestial-gold)]/20"
             >
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               {/* Mobile menu header */}
-              <div className="flex items-center gap-2 pb-6 border-b border-border">
-                <Stars className="h-5 w-5 text-(--celestial-gold)" />
-                <span className="font-display text-lg font-semibold text-gradient-gold">Aistrology</span>
+              <div className="flex items-center gap-2 p-4 border-b border-border">
+                <Logo size="sm" />
               </div>
 
               {/* Mobile navigation links */}
@@ -98,7 +96,7 @@ function PublicNav() {
               </div>
 
               {/* Mobile auth buttons */}
-              <div className="mt-8 pt-6 border-t border-border space-y-3">
+              <div className="p-6 border-t border-border space-y-3">
                 {user ? (
                   <Link href="/dashboard" className="block">
                     <Button className="w-full gradient-gold text-primary-foreground">
@@ -137,9 +135,7 @@ function PublicFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand section */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-display text-xl font-semibold text-gradient-gold">Aistrology</span>
-            </div>
+            <Logo size="md" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Discover your cosmic destiny with AI-powered astrology readings. Unlock the secrets written in the stars.
             </p>
@@ -208,6 +204,15 @@ function PublicFooter() {
                 >
                   <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
                   Get Started
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
+                >
+                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Contact Us
                 </Link>
               </li>
             </ul>

@@ -32,3 +32,14 @@ export function getStripePublishableKey(): string {
 
   return publishableKey;
 }
+
+export function getWeb3FormsKey(): string {
+  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+  if (!web3FormsKey) {
+    console.warn("NEXT_PUBLIC_WEB3FORMS_KEY environment variable is not set");
+    return "";
+  }
+
+  return web3FormsKey;
+}

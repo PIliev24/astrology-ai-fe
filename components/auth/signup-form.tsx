@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader2, Sparkles, Eye, EyeOff, User, Mail, Lock } from "lucide-react";
+import { Logo } from "@/components/ui/logo";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -49,12 +50,7 @@ const SignupForm = () => {
         <CardHeader className="space-y-4 text-center pb-2">
           {/* Logo */}
           <div className="flex justify-center">
-            <div className="relative">
-              <div className="w-16 h-16 rounded-full gradient-gold flex items-center justify-center zodiac-glow">
-                <Sparkles className="h-8 w-8 text-primary-foreground" />
-              </div>
-              <div className="absolute inset-0 bg-[var(--celestial-gold)]/30 rounded-full blur-xl" />
-            </div>
+            <Logo size="xl" showText={false} />
           </div>
 
           <div className="space-y-2">

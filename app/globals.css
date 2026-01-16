@@ -476,10 +476,6 @@
   animation: float-slow 10s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
 .animate-shimmer {
   background: linear-gradient(90deg, transparent 0%, var(--celestial-gold) 50%, transparent 100%);
   background-size: 200% 100%;

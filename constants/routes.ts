@@ -7,6 +7,9 @@ export const ROUTES = {
   HOUSES: "/houses",
   PLANETS: "/planets",
   GUIDE: "/guide",
+  CONTACT_US: "/contact",
+  TERMS: "/terms",
+  PRIVACY: "/privacy",
 
   // Auth routes
   HOME: "/",
@@ -22,4 +25,7 @@ export const PUBLIC_ROUTES = [
   ROUTES.HOUSES,
   ROUTES.PLANETS,
   ROUTES.GUIDE,
+  ROUTES.CONTACT_US,
+  ROUTES.PRIVACY,
+  ROUTES.TERMS
 ] as const;

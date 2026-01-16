@@ -27,6 +27,13 @@ export const metadata: Metadata = {
   description: "Discover your cosmic destiny with AI-powered astrology. Get personalized birth chart readings, daily horoscopes, and celestial guidance.",
   keywords: ["astrology", "birth chart", "horoscope", "zodiac", "AI astrology", "natal chart", "aistrology"],
   authors: [{ name: "Aistrology" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: "/logo.svg",
+  },
   openGraph: {
     title: "Aistrology - AI-Powered Astrology",
     description: "Discover your cosmic destiny with AI-powered astrology readings",
