@@ -182,7 +182,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-full bg-background relative">
+    <div className="min-h-full bg-background relative star-field-subtle">
       <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[var(--celestial-violet)]/5 to-transparent pointer-events-none" />
 

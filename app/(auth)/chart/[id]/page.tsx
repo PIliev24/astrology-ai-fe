@@ -28,7 +28,7 @@ export default function ChartDetailPage() {
           <p className="text-destructive">Failed to load chart</p>
           <Button variant="outline" onClick={() => router.push("/dashboard")} className="mt-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Dashboard
+            Back to Chat
           </Button>
         </div>
       </div>
@@ -39,9 +39,10 @@ export default function ChartDetailPage() {
 
   return (
     <div className="container max-w-7xl mx-auto px-4 py-8 flex-1">
+      <div className="absolute inset-0 star-field-subtle pointer-events-none" />
       <Button variant="ghost" onClick={() => router.push("/dashboard")} className="mb-6 hover:bg-accent">
         <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Dashboard
+        Back to Chat
       </Button>
 
       <div className="mb-8">

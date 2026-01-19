@@ -5,10 +5,11 @@ import { useWebSocketChat, ChatMessage } from "@/hooks/chat/useWebSocketChat";
 import { ChatMessage as ChatMessageComponent } from "./chat-message";
 import { ChatInput } from "./chat-input";
 import { BirthChartResponse } from "@/types";
-import { Loader2, Stars, Sparkles, Moon } from "lucide-react";
+import { Loader2, Stars } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRouter } from "next/navigation";
 
 interface ChatContainerProps {
   charts: BirthChartResponse[];
@@ -32,6 +33,8 @@ const SUGGESTED_PROMPTS = [
 ];
 
 export function ChatContainer({ charts, initialMessages, conversationId }: ChatContainerProps) {
+  const router = useRouter();
+
   const {
     messages,
     status,
@@ -72,15 +75,15 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
   return (
     <div className="flex flex-col h-full min-h-0 bg-background relative">
       {/* Subtle background decoration */}
-      <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 star-field-subtle pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-(--celestial-violet)/5 to-transparent pointer-events-none" />
 
       <ScrollArea className="flex-1 scrollbar-cosmic">
         <div className="container max-w-4xl mx-auto px-4 py-4 md:py-8">
           {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-start pt-4 md:pt-0 md:justify-center min-h-[50vh] md:min-h-[60vh] text-center">
-              <div className="relative mb-8 animate-pulse-glow">
-                 <Logo size="xl" showText />
+            <div className="flex flex-col items-center justify-start md:justify-center min-h-[50vh] md:min-h-[60vh] text-center">
+              <div className="relative mb-8 cursor-pointer" onClick={() => router.push("/")}>
+                <Logo size="xl" showText />
               </div>
 
               {/* Welcome text */}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useBirthCharts, useAuth, useConversationsByChart, useDeleteConversation, useDeleteBirthChart } from "@/hooks";
@@ -140,7 +141,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
               </div>
               <div
                 className="flex-1 min-w-0"
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation();
                   router.push(`/chart/${chart.id}`);
                 }}
@@ -161,44 +162,46 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
           </Button>
         </div>
         {isExpanded && (
-          <div className="ml-8 space-y-0.5 border-l border-[var(--celestial-gold)]/20 pl-3">
-            {isLoadingConversations ? (
-              <div className="flex items-center justify-center py-3">
-                <Loader2 className="h-4 w-4 animate-spin text-(--celestial-gold)" />
-              </div>
-            ) : conversations.length === 0 ? (
-              <div className="py-2 px-2 text-xs text-muted-foreground italic">No conversations yet</div>
-            ) : (
-              conversations.map((conversation) => {
-                const relativeTime = formatDistanceToNow(new Date(conversation.updated_at), { addSuffix: true });
-                return (
-                  <div
-                    key={conversation.id}
-                    className="group/conv flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-[var(--celestial-gold)]/10 transition-colors cursor-pointer"
-                  >
-                    <button
-                      className="flex-1 min-w-0 text-left"
-                      onClick={() => handleConversationClick(conversation.id)}
+          <>
+            <div className="ml-8 space-y-0.5 border-l border-[var(--celestial-gold)]/20 pl-3">
+              {isLoadingConversations ? (
+                <div className="flex items-center justify-center py-3">
+                  <Loader2 className="h-4 w-4 animate-spin text-(--celestial-gold)" />
+                </div>
+              ) : conversations.length === 0 ? (
+                <div className="py-2 px-2 text-xs text-muted-foreground italic">No conversations yet</div>
+              ) : (
+                conversations.map(conversation => {
+                  const relativeTime = formatDistanceToNow(new Date(conversation.updated_at), { addSuffix: true });
+                  return (
+                    <div
+                      key={conversation.id}
+                      className="group/conv flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-[var(--celestial-gold)]/10 transition-colors cursor-pointer"
                     >
-                      <p className="text-xs font-medium truncate text-sidebar-foreground">
-                        {conversation.title || "Untitled Reading"}
-                      </p>
-                      <p className="text-[10px] text-muted-foreground truncate">{relativeTime}</p>
-                    </button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6 opacity-0 group-hover/conv:opacity-100 transition-opacity shrink-0 hover:bg-destructive/10"
-                      onClick={e => handleDeleteClick(e, conversation.id)}
-                      aria-label={`Delete conversation ${conversation.title || "Untitled"}`}
-                    >
-                      <Trash2 className="h-3 w-3 text-destructive" />
-                    </Button>
-                  </div>
-                );
-              })
-            )}
-          </div>
+                      <button
+                        className="flex-1 min-w-0 text-left"
+                        onClick={() => handleConversationClick(conversation.id)}
+                      >
+                        <p className="text-xs font-medium truncate text-sidebar-foreground">
+                          {conversation.title || "Untitled Reading"}
+                        </p>
+                        <p className="text-[10px] text-muted-foreground truncate">{relativeTime}</p>
+                      </button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6 opacity-0 group-hover/conv:opacity-100 transition-opacity shrink-0 hover:bg-destructive/10"
+                        onClick={e => handleDeleteClick(e, conversation.id)}
+                        aria-label={`Delete conversation ${conversation.title || "Untitled"}`}
+                      >
+                        <Trash2 className="h-3 w-3 text-destructive" />
+                      </Button>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </>
         )}
       </div>
 
@@ -253,7 +256,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   const [expandedCharts, setExpandedCharts] = useState<Set<string>>(new Set());
 
   const toggleChartExpansion = (chartId: string) => {
-    setExpandedCharts((prev) => {
+    setExpandedCharts(prev => {
       const newSet = new Set(prev);
       if (newSet.has(chartId)) {
         newSet.delete(chartId);
@@ -279,7 +282,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     if (name) {
       return name
         .split(" ")
-        .map((n) => n[0])
+        .map(n => n[0])
         .join("")
         .toUpperCase()
         .slice(0, 2);
@@ -334,7 +337,9 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {/* Desktop Header */}
         <div className="hidden lg:flex h-16 items-center justify-between px-4 border-b border-border/50">
           {!isCollapsed && (
-            <Logo size="sm" />
+            <Link href="/" className="hover:opacity-80 transition-opacity">
+              <Logo size="lg" />
+            </Link>
           )}
           {!isCollapsed ? (
             <Button
@@ -399,6 +404,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           <div className="lg:hidden flex flex-1 flex-col min-h-0">
             <div className="px-4 py-3 border-b border-border/50">
               <h3 className="text-xs font-medium text-(--celestial-gold) uppercase tracking-wider">Your Charts</h3>
+              <span className="text-xs text-muted-foreground">(Previous chats)</span>
             </div>
             <ScrollArea className="flex-1 scrollbar-cosmic">
               {isLoading ? (
@@ -486,6 +492,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           {!isCollapsed && (
             <div className="px-4 lg:px-5 py-3 border-b border-border/50">
               <h3 className="text-xs font-medium text-(--celestial-gold) uppercase tracking-wider">Your Charts</h3>
+              <span className="text-xs text-muted-foreground">(Previous chats)</span>
             </div>
           )}
           <ScrollArea className="flex-1 scrollbar-cosmic">

@@ -57,12 +57,7 @@ export function ZodiacWheel({
   return (
     <div className={cn("relative rounded-full", sizeClasses[size], animated && "animate-rotate-slow", className)}>
       {/* Outer glow ring */}
-      <div
-        className={cn(
-          "absolute inset-0 rounded-full",
-          "opacity-30 blur-xl"
-        )}
-      />
+      <div className={cn("absolute inset-0 rounded-full", "opacity-30 blur-xl")} />
 
       {/* Main wheel */}
       <div

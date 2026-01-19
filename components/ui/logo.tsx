@@ -10,10 +10,10 @@ interface LogoProps {
 }
 
 const sizeMap: Record<LogoSize, { icon: number; text: string }> = {
-  sm: { icon: 24, text: "text-base" },
-  md: { icon: 32, text: "text-lg" },
-  lg: { icon: 48, text: "text-xl" },
-  xl: { icon: 64, text: "text-2xl" },
+  sm: { icon: 28, text: "text-lg" },
+  md: { icon: 40, text: "text-xl" },
+  lg: { icon: 52, text: "text-2xl" },
+  xl: { icon: 64, text: "text-3xl" },
 };
 
 export function Logo({ size = "md", className, showText = true }: LogoProps) {
@@ -21,11 +21,7 @@ export function Logo({ size = "md", className, showText = true }: LogoProps) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <Image src="/logo.svg" alt="Aistrology" width={icon} height={icon} priority />
-      {showText && (
-        <span className={cn("font-display font-semibold text-gradient-gold", text)}>
-          Aistrology
-        </span>
-      )}
+      {showText && <span className={cn("font-display font-semibold text-gradient-gold", text)}>Aistrology</span>}
     </div>
   );
 }

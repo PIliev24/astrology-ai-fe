@@ -13,6 +13,7 @@ export const ROUTES = {
 
   // Auth routes
   HOME: "/",
+  DASHBOARD: "/dashboard",
   CHART: (id: string) => `/chart/${id}`,
 } as const;
 
@@ -27,5 +28,5 @@ export const PUBLIC_ROUTES = [
   ROUTES.GUIDE,
   ROUTES.CONTACT_US,
   ROUTES.PRIVACY,
-  ROUTES.TERMS
+  ROUTES.TERMS,
 ] as const;

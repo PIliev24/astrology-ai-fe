@@ -42,7 +42,10 @@ export default function ContactPage() {
 
           {/* Contact Info */}
           <div className="order-1 md:order-2 space-y-8">
-            <div className="oracle-glass rounded-2xl p-6 space-y-6 animate-slide-in-bottom" style={{ animationDelay: "0.1s" }}>
+            <div
+              className="oracle-glass rounded-2xl p-6 space-y-6 animate-slide-in-bottom"
+              style={{ animationDelay: "0.1s" }}
+            >
               <h2 className="font-display text-xl text-gradient-gold">Other Ways to Connect</h2>
 
               <div className="space-y-4">
@@ -84,7 +87,8 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-medium text-foreground text-sm">How accurate are the readings?</h3>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Our AI combines traditional astrological wisdom with modern technology to provide personalized insights based on your birth chart.
+                    Our AI combines traditional astrological wisdom with modern technology to provide personalized
+                    insights based on your birth chart.
                   </p>
                 </div>
                 <div>

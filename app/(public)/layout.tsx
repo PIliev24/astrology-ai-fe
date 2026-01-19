@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, Star, LayoutDashboard } from "lucide-react";
+import { Menu, Star, MessageSquare } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks";
 import { Logo } from "@/components/ui/logo";
@@ -45,8 +45,8 @@ function PublicNav() {
           {user ? (
             <Link href="/dashboard">
               <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">
-                <LayoutDashboard className="mr-2 h-4 w-4" />
-                Dashboard
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Chat
               </Button>
             </Link>
           ) : (
@@ -57,7 +57,9 @@ function PublicNav() {
                 </Button>
               </Link>
               <Link href="/signup">
-                <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">Get Started</Button>
+                <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">
+                  Get Started
+                </Button>
               </Link>
             </>
           )}
@@ -100,8 +102,8 @@ function PublicNav() {
                 {user ? (
                   <Link href="/dashboard" className="block">
                     <Button className="w-full gradient-gold text-primary-foreground">
-                      <LayoutDashboard className="mr-2 h-4 w-4" />
-                      Dashboard
+                      <MessageSquare className="mr-2 h-4 w-4" />
+                      Chat
                     </Button>
                   </Link>
                 ) : (
@@ -258,7 +260,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <PublicNav />
-      <main className="flex-1 pt-16">{children}</main>
+      <main className="flex-1 pt-16 star-field-subtle">{children}</main>
       <PublicFooter />
     </div>
   );

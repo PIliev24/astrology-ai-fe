@@ -41,7 +41,7 @@ export default function CheckoutCancelPage() {
             </Button>
             <Button variant="outline" className="w-full" onClick={() => router.push("/dashboard")}>
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Dashboard
+              Back to Chat
             </Button>
           </div>
         </CardContent>

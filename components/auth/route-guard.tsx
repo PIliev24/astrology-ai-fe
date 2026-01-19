@@ -30,6 +30,8 @@ export function RouteGuard({ children }: { children: React.ReactNode }) {
   }, [setMounted]);
 
   useEffect(() => {
+    // Skip auth logic for public routes that aren't auth routes
+    if (isPublicRoute && !isAuthRoute) return;
     if (!mounted || isLoading) return;
 
     // Redirect unauthenticated users from protected routes to login
@@ -38,13 +40,19 @@ export function RouteGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Redirect authenticated users from login/signup to home
+    // Redirect authenticated users from login/signup to dashboard
     // But allow them to access other public routes like zodiac, houses, etc.
     if (isAuthenticated && isAuthRoute) {
-      router.push(ROUTES.HOME);
+      router.push(ROUTES.DASHBOARD);
       return;
     }
   }, [user, isLoading, pathname, router, isAuthenticated, isPublicRoute, isAuthRoute, mounted]);
+
+  // For public routes (except auth routes), render immediately without loading state
+  // This prevents unnecessary re-renders and improves scroll performance on landing page
+  if (isPublicRoute && !isAuthRoute) {
+    return <>{children}</>;
+  }
 
   // Show loading spinner while checking auth for protected routes only
   if (!mounted || (isLoading && !isPublicRoute)) {

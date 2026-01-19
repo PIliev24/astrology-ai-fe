@@ -5,14 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useContact } from "@/hooks/contact";
 
 export function ContactForm() {
@@ -33,11 +26,7 @@ export function ContactForm() {
               Thank you for reaching out. We&apos;ll get back to you as soon as possible.
             </p>
           </div>
-          <Button
-            onClick={resetForm}
-            variant="outline"
-            className="zodiac-border hover:bg-[var(--celestial-gold)]/10"
-          >
+          <Button onClick={resetForm} variant="outline" className="zodiac-border hover:bg-[var(--celestial-gold)]/10">
             Send Another Message
           </Button>
         </CardContent>

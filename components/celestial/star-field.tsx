@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/purity */
 "use client";
 
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface Star {
@@ -41,10 +41,26 @@ export function StarField({
   const starsRef = useRef<Star[]>([]);
   const animationRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device for performance optimization
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Reduce star count on mobile for better performance
+  const effectiveStarCount = isMobile ? Math.min(starCount, 50) : starCount;
+  // Disable animation on mobile for better scroll performance
+  const effectiveAnimated = isMobile ? false : animated;
 
   const stars = useMemo(() => {
     const result: Star[] = [];
-    for (let i = 0; i < starCount; i++) {
+    for (let i = 0; i < effectiveStarCount; i++) {
       result.push({
         x: Math.random(),
         y: Math.random(),
@@ -56,7 +72,7 @@ export function StarField({
       });
     }
     return result;
-  }, [starCount, colors]);
+  }, [effectiveStarCount, colors]);
 
   useEffect(() => {
     starsRef.current = stars;
@@ -105,7 +121,7 @@ export function StarField({
 
         // Calculate twinkle effect
         let opacity = star.opacity;
-        if (animated) {
+        if (effectiveAnimated) {
           opacity = star.opacity * (0.5 + 0.5 * Math.sin(elapsed * star.twinkleSpeed + star.twinkleOffset));
         }
         opacity = Math.min(1, opacity + interactiveBoost);
@@ -139,7 +155,7 @@ export function StarField({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [animated, interactive]);
+  }, [effectiveAnimated, interactive]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (!interactive) return;

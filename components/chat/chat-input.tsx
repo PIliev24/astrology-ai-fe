@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { useSubscription, useUsage } from "@/hooks";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { createCheckoutSessionAction } from "@/actions";
+import { UpgradePlanDialog } from "@/components/subscription/upgrade-plan-dialog";
 
 interface ChatInputProps {
   onSendMessage: (content: string) => void;
@@ -38,6 +39,7 @@ export function ChatInput({
 }: ChatInputProps) {
   const [input, setInput] = useState("");
   const [isUpgrading, setIsUpgrading] = useState(false);
+  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { subscription, isLoading: isLoadingSubscription } = useSubscription();
   const { usage, isLoading: isLoadingUsage } = useUsage();
@@ -60,11 +62,14 @@ export function ChatInput({
 
   const hoursUntilReset = usage?.reset_at ? Math.ceil((new Date(usage.reset_at).getTime() - Date.now()) / 3600000) : 0;
 
-  const handleUpgrade = async () => {
+  const handleUpgrade = () => {
+    setShowUpgradeDialog(true);
+  };
+
+  const handlePlanSelected = async (selectedPlan: PlanType) => {
     setIsUpgrading(true);
     try {
-      const nextPlan = plan === PlanType.FREE ? PlanType.BASIC : PlanType.PRO;
-      const result = await createCheckoutSessionAction(nextPlan);
+      const result = await createCheckoutSessionAction(selectedPlan);
       if (result.success && result.data) {
         window.location.href = result.data.checkoutUrl;
       }
@@ -188,7 +193,7 @@ export function ChatInput({
         <Textarea
           ref={textareaRef}
           value={input}
-          onChange={(e) => {
+          onChange={e => {
             if (e.target.value.length <= MAX_LENGTH) {
               setInput(e.target.value);
             }
@@ -248,6 +253,15 @@ export function ChatInput({
           {input.length} / {MAX_LENGTH}
         </span>
       </div>
+
+      {/* Upgrade Plan Dialog */}
+      <UpgradePlanDialog
+        open={showUpgradeDialog}
+        onOpenChange={setShowUpgradeDialog}
+        currentPlan={plan}
+        onSelectPlan={handlePlanSelected}
+        isLoading={isUpgrading}
+      />
     </div>
   );
 }

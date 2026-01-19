@@ -4,8 +4,8 @@
 
 :root,
 .dark {
-  /* Aistrology Dark Theme - Deep cosmic void */
-  --background: oklch(0.08 0.025 280);
+  /* Aistrology Dark Theme - Deep cosmic indigo */
+  --background: oklch(0.1 0.04 280);
   --foreground: oklch(0.92 0.03 75);
   --card: oklch(0.12 0.03 280);
   --card-foreground: oklch(0.92 0.03 75);
@@ -72,7 +72,6 @@
   --shadow-lg: 0 0 40px oklch(0.78 0.16 70 / 0.2), 0 12px 24px oklch(0 0 0 / 0.5);
   --shadow-xl: 0 0 56px oklch(0.78 0.16 70 / 0.25), 0 20px 40px oklch(0 0 0 / 0.6);
   --shadow-2xl: 0 0 80px oklch(0.78 0.16 70 / 0.35);
-
 
   --tracking-normal: 0em;
   --spacing: 0.25rem;
