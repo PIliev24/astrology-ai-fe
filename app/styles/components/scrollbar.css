@@ -1,6 +1,6 @@
 .scrollbar-cosmic {
   scrollbar-width: thin;
-  scrollbar-color: var(--celestial-gold) var(--muted);
+  scrollbar-color: hsl(var(--celestial-gold)) hsl(var(--muted));
 }
 
 .scrollbar-cosmic::-webkit-scrollbar {
@@ -9,17 +9,17 @@
 }
 
 .scrollbar-cosmic::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: hsl(var(--muted));
   border-radius: 4px;
 }
 
 .scrollbar-cosmic::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--celestial-gold), var(--celestial-copper));
+  background: linear-gradient(180deg, hsl(var(--celestial-gold)), hsl(var(--celestial-copper)));
   border-radius: 4px;
 }
 
 .scrollbar-cosmic::-webkit-scrollbar-thumb:hover {
-  background: var(--celestial-gold);
+  background: hsl(var(--celestial-gold));
 }
 
 .scrollbar-hidden {

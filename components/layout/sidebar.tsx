@@ -21,6 +21,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
+import { ThemeToggle } from "@/components/theme";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -109,7 +110,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
     return (
       <Button
         variant="ghost"
-        className="w-full justify-center h-10 px-2 hover:bg-[var(--celestial-gold)]/15"
+        className="w-full justify-center h-10 px-2 hover:bg-celestial-gold/15"
         onClick={() => router.push(`/chart/${chart.id}`)}
         aria-label={`View ${chart.name}`}
         title={`${chart.name} - ${birthDate}`}
@@ -125,7 +126,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
         <div className="group relative">
           <Button
             variant="ghost"
-            className="w-full hover:bg-[var(--celestial-gold)]/15 transition-colors justify-start text-left h-auto py-2.5 px-3 rounded-lg"
+            className="w-full hover:bg-celestial-gold/15 transition-colors justify-start text-left h-auto py-2.5 px-3 rounded-lg"
             onClick={onToggle}
             aria-label={`Toggle ${chart.name} conversations`}
           >
@@ -163,10 +164,10 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
         </div>
         {isExpanded && (
           <>
-            <div className="ml-8 space-y-0.5 border-l border-[var(--celestial-gold)]/20 pl-3">
+            <div className="ml-8 space-y-0.5 border-l border-celestial-gold/20 pl-3">
               {isLoadingConversations ? (
                 <div className="flex items-center justify-center py-3">
-                  <Loader2 className="h-4 w-4 animate-spin text-(--celestial-gold)" />
+                  <Loader2 className="h-4 w-4 animate-spin text-celestial-gold" />
                 </div>
               ) : conversations.length === 0 ? (
                 <div className="py-2 px-2 text-xs text-muted-foreground italic">No conversations yet</div>
@@ -176,7 +177,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
                   return (
                     <div
                       key={conversation.id}
-                      className="group/conv flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-[var(--celestial-gold)]/15 transition-colors cursor-pointer"
+                      className="group/conv flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-celestial-gold/15 transition-colors cursor-pointer"
                     >
                       <button
                         className="flex-1 min-w-0 text-left"
@@ -296,7 +297,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "fixed inset-y-0 left-0 z-40 border-r border-(--celestial-gold)/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out",
+        "fixed inset-y-0 left-0 z-40 border-r border-celestial-gold/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out",
         "shadow-xl lg:shadow-none",
         isCollapsed ? "w-0 lg:w-16" : "w-full lg:w-72",
         isCollapsed ? "-translate-x-full lg:translate-x-0" : "translate-x-0",
@@ -312,7 +313,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {!isCollapsed && (
           <div className="lg:hidden pt-6 pb-4 px-4 border-b border-border/70 relative">
             <div className="flex flex-col items-center gap-3">
-              <Avatar className="h-20 w-20 border-2 border-(--celestial-gold)/30 zodiac-glow">
+              <Avatar className="h-20 w-20 border-2 border-celestial-gold/30 zodiac-glow">
                 <AvatarFallback className="gradient-gold text-primary-foreground font-semibold text-lg">
                   {getInitials(user?.name, user?.email)}
                 </AvatarFallback>
@@ -326,7 +327,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={onToggleCollapse}
-              className="absolute top-4 right-4 h-8 w-8 hover:bg-(--celestial-gold)/10"
+              className="absolute top-4 right-4 h-8 w-8 hover:bg-celestial-gold/10"
               aria-label="Close sidebar"
             >
               <X className="h-5 w-5" />
@@ -346,7 +347,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={onToggleCollapse}
-              className="h-8 w-8 shrink-0 hover:bg-(--celestial-gold)/10"
+              className="h-8 w-8 shrink-0 hover:bg-celestial-gold/10"
               aria-label="Collapse sidebar"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -356,7 +357,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
               variant="ghost"
               size="icon"
               onClick={onToggleCollapse}
-              className="h-8 w-8 shrink-0 mx-auto hover:bg-(--celestial-gold)/10"
+              className="h-8 w-8 shrink-0 mx-auto hover:bg-celestial-gold/10"
               aria-label="Expand sidebar"
             >
               <ChevronLeft className="h-4 w-4 rotate-180" />
@@ -403,17 +404,17 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {!isCollapsed && (
           <div className="lg:hidden flex flex-1 flex-col min-h-0">
             <div className="px-4 py-3 border-b border-border/70">
-              <h3 className="text-xs font-medium text-(--celestial-gold) uppercase tracking-wider">Your Charts</h3>
+              <h3 className="text-xs font-medium text-celestial-gold uppercase tracking-wider">Your Charts</h3>
               <span className="text-xs text-muted-foreground">(Previous chats)</span>
             </div>
             <ScrollArea className="flex-1 scrollbar-cosmic">
               {isLoading ? (
                 <div className="flex items-center justify-center py-8">
-                  <Loader2 className="h-5 w-5 animate-spin text-(--celestial-gold)" />
+                  <Loader2 className="h-5 w-5 animate-spin text-celestial-gold" />
                 </div>
               ) : charts.length === 0 ? (
                 <div className="py-8 text-center px-3">
-                  <Sparkles className="h-8 w-8 mx-auto text-(--celestial-gold)/40 mb-2" />
+                  <Sparkles className="h-8 w-8 mx-auto text-celestial-gold/40 mb-2" />
                   <p className="text-sm text-muted-foreground">No charts yet</p>
                   <p className="text-xs text-muted-foreground mt-1">Create your first natal chart</p>
                 </div>
@@ -491,20 +492,20 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         <div className="hidden lg:flex flex-1 flex-col min-h-0">
           {!isCollapsed && (
             <div className="px-4 lg:px-5 py-3 border-b border-border/70">
-              <h3 className="text-xs font-medium text-(--celestial-gold) uppercase tracking-wider">Your Charts</h3>
+              <h3 className="text-xs font-medium text-celestial-gold uppercase tracking-wider">Your Charts</h3>
               <span className="text-xs text-muted-foreground">(Previous chats)</span>
             </div>
           )}
           <ScrollArea className="flex-1 scrollbar-cosmic">
             {isLoading ? (
               <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-5 w-5 animate-spin text-(--celestial-gold)" />
+                <Loader2 className="h-5 w-5 animate-spin text-celestial-gold" />
               </div>
             ) : charts.length === 0 ? (
               <div className={cn("py-8 text-center", isCollapsed ? "px-2" : "px-3")}>
                 {!isCollapsed && (
                   <>
-                    <Sparkles className="h-8 w-8 mx-auto text-(--celestial-gold)/40 mb-2" />
+                    <Sparkles className="h-8 w-8 mx-auto text-celestial-gold/40 mb-2" />
                     <p className="text-sm text-muted-foreground">No charts yet</p>
                     <p className="text-xs text-muted-foreground mt-1">Create your first natal chart</p>
                   </>
@@ -529,9 +530,13 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
         {/* Mobile: Settings and Sign Out Buttons */}
         {!isCollapsed && (
           <div className="lg:hidden border-t border-border/70 p-4 space-y-2">
+            <div className="flex items-center gap-2 px-1 pb-2">
+              <ThemeToggle />
+              <span className="text-sm text-muted-foreground">Theme</span>
+            </div>
             <Button
               variant="outline"
-              className="w-full h-12 rounded-lg zodiac-border hover:bg-[var(--celestial-gold)]/15"
+              className="w-full h-12 rounded-lg zodiac-border hover:bg-celestial-gold/15"
               onClick={() => {
                 router.push("/settings");
                 onToggleCollapse();
@@ -553,6 +558,11 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
 
         {/* Desktop: User Menu */}
         <div className="hidden lg:block border-t border-border/70 p-3 space-y-3">
+          {/* Theme Toggle */}
+          <div className={cn("flex items-center", isCollapsed ? "justify-center" : "gap-2 px-1")}>
+            <ThemeToggle />
+            {!isCollapsed && <span className="text-xs text-muted-foreground">Theme</span>}
+          </div>
           {/* User Menu */}
           {user && (
             <DropdownMenu>
@@ -560,15 +570,12 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                 <Button
                   variant="ghost"
                   className={cn(
-                    "w-full justify-start h-auto py-2.5 hover:bg-[var(--celestial-gold)]/15",
+                    "w-full justify-start h-auto py-2.5 hover:bg-celestial-gold/15",
                     isCollapsed && "justify-center px-2"
                   )}
                 >
                   <Avatar
-                    className={cn(
-                      "border-2 border-[var(--celestial-gold)]/30 shrink-0",
-                      isCollapsed ? "h-8 w-8" : "h-10 w-10"
-                    )}
+                    className={cn("border-2 border-celestial-gold/30 shrink-0", isCollapsed ? "h-8 w-8" : "h-10 w-10")}
                   >
                     <AvatarFallback className="gradient-gold text-primary-foreground font-medium">
                       {getInitials(user.name, user.email)}
@@ -599,7 +606,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                     router.push("/settings");
                     onToggleCollapse();
                   }}
-                  className="cursor-pointer hover:bg-[var(--celestial-gold)]/15"
+                  className="cursor-pointer hover:bg-celestial-gold/15"
                 >
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>

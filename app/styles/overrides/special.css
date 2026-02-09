@@ -6,22 +6,22 @@
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: var(--muted);
-  border: 1px solid var(--border);
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
   font-family: var(--font-display);
   font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 .planet-symbol:hover {
-  background: var(--celestial-gold);
-  color: var(--primary-foreground);
-  box-shadow: 0 0 20px oklch(from var(--celestial-gold) l c h / 0.4);
+  background: hsl(var(--celestial-gold));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 0 20px hsl(var(--celestial-gold) / 0.4);
 }
 
 /* Aspect lines */
 .aspect-line {
-  stroke: var(--celestial-gold);
+  stroke: hsl(var(--celestial-gold));
   stroke-width: 1;
   opacity: 0.6;
   transition:
@@ -35,17 +35,17 @@
 }
 
 .aspect-line.conjunction {
-  stroke: var(--celestial-gold);
+  stroke: hsl(var(--celestial-gold));
 }
 .aspect-line.opposition {
-  stroke: var(--celestial-rose);
+  stroke: hsl(var(--celestial-rose));
 }
 .aspect-line.trine {
-  stroke: var(--celestial-teal);
+  stroke: hsl(var(--celestial-teal));
 }
 .aspect-line.square {
-  stroke: var(--destructive);
+  stroke: hsl(var(--destructive));
 }
 .aspect-line.sextile {
-  stroke: var(--celestial-violet);
+  stroke: hsl(var(--celestial-violet));
 }

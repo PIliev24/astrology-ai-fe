@@ -31,10 +31,10 @@ const planColors = {
     hover: "hover:border-blue-500/50 hover:bg-blue-500/5",
   },
   [PlanType.BASIC]: {
-    bg: "bg-[var(--celestial-gold)]/10",
-    border: "border-[var(--celestial-gold)]/30",
-    text: "text-[var(--celestial-gold)]",
-    hover: "hover:border-[var(--celestial-gold)]/50 hover:bg-[var(--celestial-gold)]/5",
+    bg: "bg-celestial-gold/10",
+    border: "border-celestial-gold/30",
+    text: "text-celestial-gold",
+    hover: "hover:border-celestial-gold/50 hover:bg-celestial-gold/5",
   },
   [PlanType.PRO]: {
     bg: "bg-purple-500/10",
@@ -79,7 +79,7 @@ export function UpgradePlanDialog({
       <DialogContent className="oracle-glass sm:max-w-lg">
         <DialogHeader>
           <div className="flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-[var(--celestial-gold)]" />
+            <Sparkles className="h-5 w-5 text-celestial-gold" />
             <DialogTitle className="font-display text-gradient-gold">Choose Your Plan</DialogTitle>
           </div>
           <DialogDescription>Unlock more cosmic insights with an upgraded plan</DialogDescription>
@@ -87,7 +87,7 @@ export function UpgradePlanDialog({
 
         {isLoadingPlans ? (
           <div className="flex items-center justify-center py-8">
-            <Loader2 className="h-6 w-6 animate-spin text-[var(--celestial-gold)]" />
+            <Loader2 className="h-6 w-6 animate-spin text-celestial-gold" />
           </div>
         ) : (
           <div className="grid gap-4 py-4">
@@ -103,7 +103,7 @@ export function UpgradePlanDialog({
                     "relative rounded-xl border-2 p-4 transition-all cursor-pointer",
                     colors.border,
                     colors.hover,
-                    isSelected && "ring-2 ring-[var(--celestial-gold)]/50"
+                    isSelected && "ring-2 ring-celestial-gold/50"
                   )}
                   onClick={() => !isLoading && handleSelectPlan(plan.type)}
                 >

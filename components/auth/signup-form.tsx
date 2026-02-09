@@ -22,18 +22,18 @@ const SignupForm = () => {
       <CosmicBackground variant="default" showStars={true} showAurora={true} className="absolute inset-0" />
 
       {/* Decorative elements */}
-      <div className="absolute top-32 right-20 w-48 h-48 bg-[var(--celestial-violet)]/15 rounded-full blur-3xl animate-nebula-drift" />
+      <div className="absolute top-32 right-20 w-48 h-48 bg-celestial-violet/15 rounded-full blur-3xl animate-nebula-drift" />
       <div
-        className="absolute bottom-32 left-20 w-36 h-36 bg-[var(--celestial-gold)]/20 rounded-full blur-3xl animate-nebula-drift"
+        className="absolute bottom-32 left-20 w-36 h-36 bg-celestial-gold/20 rounded-full blur-3xl animate-nebula-drift"
         style={{ animationDelay: "-7s" }}
       />
       <div
-        className="absolute top-1/4 left-1/4 w-24 h-24 bg-[var(--celestial-teal)]/10 rounded-full blur-2xl animate-nebula-drift"
+        className="absolute top-1/4 left-1/4 w-24 h-24 bg-celestial-teal/10 rounded-full blur-2xl animate-nebula-drift"
         style={{ animationDelay: "-14s" }}
       />
 
       {/* Signup card */}
-      <Card className="relative z-10 w-full max-w-md oracle-glass animate-scale-in">
+      <Card className="relative z-10 w-full max-w-md oracle-glass">
         <CardHeader className="space-y-4 text-center pb-2">
           {/* Logo */}
           <div className="flex justify-center">
@@ -65,7 +65,7 @@ const SignupForm = () => {
                           placeholder="Your name"
                           autoComplete="name"
                           disabled={isSubmitting}
-                          className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                          className="h-12 pl-10 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all"
                           {...field}
                         />
                       </div>
@@ -89,7 +89,7 @@ const SignupForm = () => {
                           placeholder="you@example.com"
                           autoComplete="email"
                           disabled={isSubmitting}
-                          className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                          className="h-12 pl-10 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all"
                           {...field}
                         />
                       </div>
@@ -113,7 +113,7 @@ const SignupForm = () => {
                           placeholder="Create a strong password"
                           autoComplete="new-password"
                           disabled={isSubmitting}
-                          className="h-12 pl-10 pr-12 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                          className="h-12 pl-10 pr-12 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all"
                           {...field}
                         />
                         <button
@@ -131,7 +131,7 @@ const SignupForm = () => {
               />
 
               {error && (
-                <div className="rounded-lg bg-destructive/10 border border-destructive/30 p-4 text-sm text-destructive animate-fade-in">
+                <div className="rounded-lg bg-destructive/10 border border-destructive/30 p-4 text-sm text-destructive ">
                   <p className="font-medium">{error}</p>
                 </div>
               )}
@@ -167,7 +167,7 @@ const SignupForm = () => {
               <div className="text-center">
                 <Link
                   href="/login"
-                  className="inline-flex items-center gap-2 text-(--celestial-gold) hover:text-(--celestial-gold)/80 font-medium transition-colors group"
+                  className="inline-flex items-center gap-2 text-celestial-gold hover:text-celestial-gold/80 font-medium transition-colors group"
                 >
                   <span className="group-hover:-translate-x-0.5 transition-transform">←</span>
                   Sign in to your account

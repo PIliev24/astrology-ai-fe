@@ -1,54 +1,53 @@
-:root,
-.dark {
-  /* Aistrology Dark Theme - Deep cosmic indigo */
-  --background: oklch(0.12 0.035 280);
-  --foreground: oklch(0.92 0.03 75);
-  --card: oklch(0.15 0.03 280);
-  --card-foreground: oklch(0.92 0.03 75);
-  --popover: oklch(0.14 0.028 280);
-  --popover-foreground: oklch(0.92 0.03 75);
-  --primary: oklch(0.78 0.16 70);
-  --primary-foreground: oklch(0.08 0.025 280);
-  --secondary: oklch(0.24 0.04 280);
-  --secondary-foreground: oklch(0.92 0.03 75);
-  --muted: oklch(0.19 0.03 280);
-  --muted-foreground: oklch(0.78 0.025 75);
-  --accent: oklch(0.82 0.18 70);
-  --accent-foreground: oklch(0.95 0.02 300);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.95 0.01 85);
-  --border: oklch(0.28 0.04 280);
-  --input: oklch(0.20 0.03 280);
-  --ring: oklch(0.78 0.16 70);
+:root {
+  /* Aistrology Light Theme - Celestial Map / Warm Parchment */
+  --background: 45 33% 96%;
+  --foreground: 210 55% 20%;
+  --card: 42 35% 93%;
+  --card-foreground: 210 55% 20%;
+  --popover: 44 30% 94%;
+  --popover-foreground: 210 55% 20%;
+  --primary: 178 50% 35%;
+  --primary-foreground: 45 30% 96%;
+  --secondary: 40 45% 88%;
+  --secondary-foreground: 210 45% 25%;
+  --muted: 42 25% 90%;
+  --muted-foreground: 210 20% 46%;
+  --accent: 40 55% 62%;
+  --accent-foreground: 210 55% 15%;
+  --destructive: 0 65% 48%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 40 25% 82%;
+  --input: 42 20% 86%;
+  --ring: 178 50% 35%;
 
   /* Celestial chart colors */
-  --chart-1: oklch(0.78 0.16 70);
-  --chart-2: oklch(0.62 0.18 200);
-  --chart-3: oklch(0.68 0.15 50);
-  --chart-4: oklch(0.62 0.24 300);
-  --chart-5: oklch(0.45 0.1 280);
+  --chart-1: 178 50% 35%;
+  --chart-2: 40 55% 55%;
+  --chart-3: 210 40% 45%;
+  --chart-4: 280 35% 50%;
+  --chart-5: 350 40% 50%;
 
-  /* Sidebar - deep indigo */
-  --sidebar: oklch(0.11 0.028 280);
-  --sidebar-foreground: oklch(0.92 0.03 75);
-  --sidebar-primary: oklch(0.78 0.16 70);
-  --sidebar-primary-foreground: oklch(0.08 0.025 280);
-  --sidebar-accent: oklch(0.58 0.22 300);
-  --sidebar-accent-foreground: oklch(0.95 0.02 300);
-  --sidebar-border: oklch(0.28 0.04 280);
-  --sidebar-ring: oklch(0.78 0.16 70);
+  /* Sidebar - warm cream */
+  --sidebar: 44 30% 94%;
+  --sidebar-foreground: 210 55% 20%;
+  --sidebar-primary: 178 50% 35%;
+  --sidebar-primary-foreground: 45 30% 96%;
+  --sidebar-accent: 40 55% 62%;
+  --sidebar-accent-foreground: 210 55% 15%;
+  --sidebar-border: 40 25% 82%;
+  --sidebar-ring: 178 50% 35%;
 
-  /* Celestial special colors */
-  --celestial-gold: oklch(0.82 0.18 70);
-  --celestial-copper: oklch(0.70 0.15 55);
-  --celestial-indigo: oklch(0.48 0.15 280);
-  --celestial-violet: oklch(0.62 0.22 300);
-  --celestial-teal: oklch(0.65 0.14 200);
-  --celestial-rose: oklch(0.72 0.18 350);
-  --star-glow: oklch(0.95 0.08 75);
-  --nebula-pink: oklch(0.50 0.18 350);
-  --nebula-purple: oklch(0.35 0.18 290);
-  --nebula-blue: oklch(0.40 0.15 250);
+  /* Celestial special colors — light mode */
+  --celestial-gold: 40 55% 62%;
+  --celestial-copper: 30 50% 50%;
+  --celestial-indigo: 210 40% 45%;
+  --celestial-violet: 280 35% 55%;
+  --celestial-teal: 178 45% 40%;
+  --celestial-rose: 350 40% 55%;
+  --star-glow: 40 55% 62%;
+  --nebula-pink: 350 30% 65%;
+  --nebula-purple: 280 25% 55%;
+  --nebula-blue: 210 35% 55%;
 
   /* Font families */
   --font-sans: "Lora", Georgia, serif;
@@ -59,53 +58,126 @@
   /* Border radius */
   --radius: 0.75rem;
 
-  /* Shadows - cosmic glows */
-  --shadow-2xs: 0 0 8px oklch(0.78 0.16 70 / 0.08), 0 1px 2px oklch(0 0 0 / 0.3);
-  --shadow-xs: 0 0 12px oklch(0.78 0.16 70 / 0.1), 0 1px 3px oklch(0 0 0 / 0.3);
-  --shadow-sm: 0 0 16px oklch(0.78 0.16 70 / 0.12), 0 2px 4px oklch(0 0 0 / 0.4);
-  --shadow: 0 0 20px oklch(0.78 0.16 70 / 0.15), 0 4px 6px oklch(0 0 0 / 0.4);
-  --shadow-md: 0 0 28px oklch(0.78 0.16 70 / 0.18), 0 6px 12px oklch(0 0 0 / 0.5);
-  --shadow-lg: 0 0 40px oklch(0.78 0.16 70 / 0.2), 0 12px 24px oklch(0 0 0 / 0.5);
-  --shadow-xl: 0 0 56px oklch(0.78 0.16 70 / 0.25), 0 20px 40px oklch(0 0 0 / 0.6);
-  --shadow-2xl: 0 0 80px oklch(0.78 0.16 70 / 0.35);
+  /* Shadows — light warm shadows */
+  --shadow-2xs: 0 1px 2px hsl(40 20% 70% / 0.15);
+  --shadow-xs: 0 1px 3px hsl(40 20% 70% / 0.2);
+  --shadow-sm: 0 2px 4px hsl(40 20% 70% / 0.2);
+  --shadow: 0 4px 6px hsl(40 20% 70% / 0.2);
+  --shadow-md: 0 6px 12px hsl(40 20% 70% / 0.2);
+  --shadow-lg: 0 12px 24px hsl(40 20% 70% / 0.2);
+  --shadow-xl: 0 20px 40px hsl(40 20% 70% / 0.25);
+  --shadow-2xl: 0 25px 50px hsl(40 20% 70% / 0.3);
 
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
+.dark {
+  /* Aistrology Dark Theme - Deep Night Navy */
+  --background: 215 45% 10%;
+  --foreground: 45 30% 90%;
+  --card: 215 40% 13%;
+  --card-foreground: 45 30% 90%;
+  --popover: 215 42% 12%;
+  --popover-foreground: 45 30% 90%;
+  --primary: 178 55% 45%;
+  --primary-foreground: 215 45% 8%;
+  --secondary: 215 30% 18%;
+  --secondary-foreground: 45 30% 90%;
+  --muted: 215 25% 16%;
+  --muted-foreground: 45 15% 65%;
+  --accent: 40 65% 55%;
+  --accent-foreground: 215 45% 8%;
+  --destructive: 0 60% 50%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 215 25% 22%;
+  --input: 215 30% 18%;
+  --ring: 178 55% 45%;
+
+  /* Celestial chart colors */
+  --chart-1: 178 55% 45%;
+  --chart-2: 40 65% 55%;
+  --chart-3: 30 55% 45%;
+  --chart-4: 280 50% 55%;
+  --chart-5: 215 25% 22%;
+
+  /* Sidebar - deep navy */
+  --sidebar: 215 42% 9%;
+  --sidebar-foreground: 45 30% 90%;
+  --sidebar-primary: 178 55% 45%;
+  --sidebar-primary-foreground: 215 45% 8%;
+  --sidebar-accent: 280 50% 55%;
+  --sidebar-accent-foreground: 45 30% 95%;
+  --sidebar-border: 215 25% 22%;
+  --sidebar-ring: 178 55% 45%;
+
+  /* Celestial special colors — dark mode */
+  --celestial-gold: 40 65% 55%;
+  --celestial-copper: 30 55% 45%;
+  --celestial-indigo: 240 35% 40%;
+  --celestial-violet: 280 50% 55%;
+  --celestial-teal: 175 50% 50%;
+  --celestial-rose: 350 45% 60%;
+  --star-glow: 45 50% 85%;
+  --nebula-pink: 350 40% 45%;
+  --nebula-purple: 280 40% 35%;
+  --nebula-blue: 210 35% 40%;
+
+  /* Shadows — cosmic glows */
+  --shadow-2xs: 0 0 8px hsl(175 50% 50% / 0.08), 0 1px 2px hsl(0 0% 0% / 0.3);
+  --shadow-xs: 0 0 12px hsl(175 50% 50% / 0.1), 0 1px 3px hsl(0 0% 0% / 0.3);
+  --shadow-sm: 0 0 16px hsl(175 50% 50% / 0.12), 0 2px 4px hsl(0 0% 0% / 0.4);
+  --shadow: 0 0 20px hsl(175 50% 50% / 0.15), 0 4px 6px hsl(0 0% 0% / 0.4);
+  --shadow-md: 0 0 28px hsl(175 50% 50% / 0.18), 0 6px 12px hsl(0 0% 0% / 0.5);
+  --shadow-lg: 0 0 40px hsl(175 50% 50% / 0.2), 0 12px 24px hsl(0 0% 0% / 0.5);
+  --shadow-xl: 0 0 56px hsl(175 50% 50% / 0.25), 0 20px 40px hsl(0 0% 0% / 0.6);
+  --shadow-2xl: 0 0 80px hsl(175 50% 50% / 0.35);
+}
+
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --color-celestial-gold: hsl(var(--celestial-gold));
+  --color-celestial-copper: hsl(var(--celestial-copper));
+  --color-celestial-indigo: hsl(var(--celestial-indigo));
+  --color-celestial-violet: hsl(var(--celestial-violet));
+  --color-celestial-teal: hsl(var(--celestial-teal));
+  --color-celestial-rose: hsl(var(--celestial-rose));
+  --color-star-glow: hsl(var(--star-glow));
+  --color-nebula-pink: hsl(var(--nebula-pink));
+  --color-nebula-purple: hsl(var(--nebula-purple));
+  --color-nebula-blue: hsl(var(--nebula-blue));
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

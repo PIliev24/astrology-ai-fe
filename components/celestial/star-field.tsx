@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useMemo, useState } from "react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 interface Star {
@@ -22,7 +23,7 @@ interface StarFieldProps {
   colors?: string[];
 }
 
-const DEFAULT_COLORS = [
+const DARK_COLORS = [
   "rgba(255, 248, 230, 1)", // Warm white
   "rgba(255, 223, 150, 1)", // Gold
   "rgba(200, 180, 255, 1)", // Soft violet
@@ -30,18 +31,21 @@ const DEFAULT_COLORS = [
   "rgba(255, 200, 200, 1)", // Soft rose
 ];
 
-export function StarField({
-  starCount = 80,
-  className,
-  animated = true,
-  interactive = false,
-  colors = DEFAULT_COLORS,
-}: StarFieldProps) {
+const LIGHT_COLORS = [
+  "rgba(180, 155, 100, 1)", // Warm gold
+  "rgba(120, 170, 160, 1)", // Muted teal
+  "rgba(160, 140, 100, 1)", // Parchment gold
+  "rgba(140, 160, 180, 1)", // Muted blue
+  "rgba(170, 130, 130, 1)", // Muted rose
+];
+
+export function StarField({ starCount = 80, className, animated = true, interactive = false, colors }: StarFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const starsRef = useRef<Star[]>([]);
   const animationRef = useRef<number | null>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const [isMobile, setIsMobile] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   // Detect mobile device for performance optimization
   useEffect(() => {
@@ -58,6 +62,9 @@ export function StarField({
   // Disable animation on mobile for better scroll performance
   const effectiveAnimated = isMobile ? false : animated;
 
+  // Use theme-aware colors
+  const effectiveColors = colors ?? (resolvedTheme === "dark" ? DARK_COLORS : LIGHT_COLORS);
+
   const stars = useMemo(() => {
     const result: Star[] = [];
     for (let i = 0; i < effectiveStarCount; i++) {
@@ -68,11 +75,11 @@ export function StarField({
         opacity: Math.random() * 0.3 + 0.2,
         twinkleSpeed: Math.random() * 2 + 1,
         twinkleOffset: Math.random() * Math.PI * 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        color: effectiveColors[Math.floor(Math.random() * effectiveColors.length)],
       });
     }
     return result;
-  }, [effectiveStarCount, colors]);
+  }, [effectiveStarCount, effectiveColors]);
 
   useEffect(() => {
     starsRef.current = stars;

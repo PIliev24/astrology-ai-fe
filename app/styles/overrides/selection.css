@@ -1,4 +1,4 @@
 ::selection {
-  background: oklch(from var(--celestial-gold) l c h / 0.4);
-  color: var(--foreground);
+  background: hsl(var(--celestial-gold) / 0.4);
+  color: hsl(var(--foreground));
 }

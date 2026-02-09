@@ -13,7 +13,7 @@ export function ContactForm() {
 
   if (isSuccess) {
     return (
-      <Card className="oracle-glass animate-scale-in">
+      <Card className="oracle-glass">
         <CardContent className="pt-12 pb-12 text-center space-y-6">
           <div className="flex justify-center">
             <div className="w-20 h-20 rounded-full gradient-gold flex items-center justify-center zodiac-glow">
@@ -26,7 +26,7 @@ export function ContactForm() {
               Thank you for reaching out. We&apos;ll get back to you as soon as possible.
             </p>
           </div>
-          <Button onClick={resetForm} variant="outline" className="zodiac-border hover:bg-[var(--celestial-gold)]/15">
+          <Button onClick={resetForm} variant="outline" className="zodiac-border hover:bg-celestial-gold/15">
             Send Another Message
           </Button>
         </CardContent>
@@ -35,7 +35,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="oracle-glass animate-scale-in">
+    <Card className="oracle-glass">
       <CardHeader className="space-y-2 text-center pb-2">
         <CardTitle className="font-display text-2xl text-gradient-gold">Get in Touch</CardTitle>
         <CardDescription className="text-base">
@@ -58,7 +58,7 @@ export function ContactForm() {
                       <Input
                         placeholder="Your name"
                         disabled={isSubmitting}
-                        className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 pl-10 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all"
                         {...field}
                       />
                     </div>
@@ -81,7 +81,7 @@ export function ContactForm() {
                         type="email"
                         placeholder="you@example.com"
                         disabled={isSubmitting}
-                        className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 pl-10 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all"
                         {...field}
                       />
                     </div>
@@ -103,7 +103,7 @@ export function ContactForm() {
                       <Input
                         placeholder="What's this about?"
                         disabled={isSubmitting}
-                        className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 pl-10 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all"
                         {...field}
                       />
                     </div>
@@ -126,7 +126,7 @@ export function ContactForm() {
                         placeholder="Tell us what's on your mind..."
                         disabled={isSubmitting}
                         rows={5}
-                        className="pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all resize-none"
+                        className="pl-10 bg-card border-border focus:border-celestial-gold focus:ring-celestial-gold/20 transition-all resize-none"
                         {...field}
                       />
                     </div>
@@ -137,7 +137,7 @@ export function ContactForm() {
             />
 
             {error && (
-              <div className="rounded-lg bg-destructive/10 border border-destructive/30 p-4 text-sm text-destructive animate-fade-in">
+              <div className="rounded-lg bg-destructive/10 border border-destructive/30 p-4 text-sm text-destructive ">
                 <p className="font-medium">{error}</p>
               </div>
             )}

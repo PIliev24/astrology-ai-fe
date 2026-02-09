@@ -27,10 +27,10 @@ const ZODIAC_SIGNS = [
 ];
 
 const ELEMENT_COLORS = {
-  fire: "#ef4444", // Red - Aries, Leo, Sagittarius
-  earth: "#10b981", // Emerald - Taurus, Virgo, Capricorn
-  air: "#06b6d4", // Cyan - Gemini, Libra, Aquarius
-  water: "#3b82f6", // Blue - Cancer, Scorpio, Pisces
+  fire: "hsl(var(--celestial-rose))",   // Warm dusty rose
+  earth: "hsl(var(--celestial-copper))", // Rich copper / bronze
+  air: "hsl(var(--celestial-violet))",   // Ethereal violet
+  water: "hsl(var(--celestial-teal))",   // Cool flowing teal
 };
 
 const sizeClasses = {
@@ -63,7 +63,6 @@ export function ZodiacWheel({
       <div
         className={cn(
           "absolute inset-2 rounded-full overflow-hidden",
-          "shadow-[0_0_60px_rgba(var(--celestial-gold),0.3),inset_0_0_60px_rgba(0,0,0,0.5)]"
         )}
       >
         {/* Conic gradient for zodiac sections */}
@@ -88,11 +87,20 @@ export function ZodiacWheel({
           }}
         />
 
+        {/* Antiqued vellum overlay — softens colors into a celestial-map look */}
+        <div
+          className="absolute inset-0 rounded-full mix-blend-soft-light"
+          style={{
+            background:
+              "radial-gradient(circle at 40% 35%, rgba(255,245,220,0.45) 0%, transparent 65%), radial-gradient(circle at 65% 70%, rgba(255,245,220,0.3) 0%, transparent 55%)",
+          }}
+        />
+
         {/* Inner dark circle */}
         <div
           className={cn(
             "absolute rounded-full bg-background",
-            "shadow-[inset_0_0_30px_rgba(var(--celestial-gold),0.2)]",
+            "shadow-[inset_0_0_30px_hsl(var(--celestial-gold)/0.2)]",
             size === "sm" && "inset-[25%]",
             size === "md" && "inset-[22%]",
             size === "lg" && "inset-[20%]",
@@ -103,8 +111,8 @@ export function ZodiacWheel({
           <div className="absolute inset-0 flex items-center justify-center">
             <div
               className={cn(
-                "rounded-full bg-gradient-to-br from-[var(--celestial-gold)] to-[var(--celestial-copper)]",
-                "shadow-[0_0_20px_var(--celestial-gold)]",
+                "rounded-full bg-gradient-to-br from-celestial-gold to-celestial-copper",
+                "shadow-[0_0_20px_hsl(var(--celestial-gold))]",
                 size === "sm" && "w-6 h-6",
                 size === "md" && "w-8 h-8",
                 size === "lg" && "w-10 h-10",
@@ -118,7 +126,7 @@ export function ZodiacWheel({
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className="absolute top-1/2 left-1/2 h-[1px] origin-left bg-gradient-to-r from-transparent via-[var(--celestial-gold)] to-transparent opacity-40"
+            className="absolute top-1/2 left-1/2 h-[1px] origin-left bg-gradient-to-r from-transparent via-celestial-gold/80 to-transparent opacity-60"
             style={{
               width: "50%",
               transform: `rotate(${i * 30}deg) translateY(-50%)`,
@@ -145,8 +153,8 @@ export function ZodiacWheel({
                 "absolute font-display transition-all duration-300",
                 symbolSizes[size],
                 isHighlighted
-                  ? "text-(--celestial-gold) scale-125 drop-shadow-[0_0_8px_var(--celestial-gold)]"
-                  : "text-foreground/80 hover:text-(--celestial-gold) hover:scale-110",
+                  ? "text-celestial-gold scale-125 drop-shadow-[0_0_8px_hsl(var(--celestial-gold))]"
+                  : "text-foreground/80 hover:text-celestial-gold hover:scale-110",
                 animated && "animate-none" // Counter-rotate to keep symbols upright
               )}
               style={{
@@ -169,8 +177,8 @@ export function ZodiacWheel({
       {/* Outer ring decoration */}
       <div
         className={cn(
-          "absolute inset-0 rounded-full border border-[var(--celestial-gold)]/20",
-          "shadow-[0_0_20px_var(--celestial-gold)/10]"
+          "absolute inset-0 rounded-full border border-celestial-gold/20",
+          "shadow-[0_0_20px_hsl(var(--celestial-gold))/10]"
         )}
       />
     </div>

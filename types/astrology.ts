@@ -181,6 +181,19 @@ export interface ChatMessageResponse {
   chart_references?: string[];
 }
 
+export interface StreamDeltaResponse {
+  type: "stream_delta";
+  content: string;
+  conversation_id?: string;
+}
+
+export interface StreamEndResponse {
+  type: "stream_end";
+  conversation_id?: string;
+  tool_calls?: ToolCallMetadata[];
+  chart_references?: string[];
+}
+
 export interface ConnectionResponse {
   type: "connected";
   message: string;

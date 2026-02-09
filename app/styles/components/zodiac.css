@@ -1,27 +1,27 @@
 .zodiac-glow {
   box-shadow:
-    0 0 20px oklch(from var(--celestial-gold) l c h / 0.3),
-    0 0 40px oklch(from var(--celestial-violet) l c h / 0.15),
-    inset 0 0 20px oklch(from var(--celestial-gold) l c h / 0.05);
+    0 0 20px hsl(var(--celestial-gold) / 0.3),
+    0 0 40px hsl(var(--celestial-violet) / 0.15),
+    inset 0 0 20px hsl(var(--celestial-gold) / 0.05);
 }
 
 .zodiac-glow-intense {
   box-shadow:
-    0 0 30px oklch(from var(--celestial-gold) l c h / 0.5),
-    0 0 60px oklch(from var(--celestial-violet) l c h / 0.25),
-    0 0 100px oklch(from var(--celestial-gold) l c h / 0.15);
+    0 0 30px hsl(var(--celestial-gold) / 0.5),
+    0 0 60px hsl(var(--celestial-violet) / 0.25),
+    0 0 100px hsl(var(--celestial-gold) / 0.15);
 }
 
 .zodiac-border {
-  border: 1px solid oklch(from var(--celestial-gold) l c h / 0.5);
-  box-shadow: inset 0 0 20px oklch(from var(--celestial-gold) l c h / 0.05);
+  border: 1px solid hsl(var(--celestial-gold) / 0.5);
+  box-shadow: inset 0 0 20px hsl(var(--celestial-gold) / 0.05);
 }
 
 .zodiac-border-glow {
-  border: 1px solid oklch(from var(--celestial-gold) l c h / 0.5);
+  border: 1px solid hsl(var(--celestial-gold) / 0.5);
   box-shadow:
-    0 0 15px oklch(from var(--celestial-gold) l c h / 0.2),
-    inset 0 0 15px oklch(from var(--celestial-gold) l c h / 0.1);
+    0 0 15px hsl(var(--celestial-gold) / 0.2),
+    inset 0 0 15px hsl(var(--celestial-gold) / 0.1);
 }
 
 /* Zodiac wheel styling */
@@ -33,29 +33,29 @@
   position: relative;
   background: conic-gradient(
     from 0deg,
-    oklch(0.55 0.2 25) 0deg 30deg,
-    oklch(0.45 0.15 100) 30deg 60deg,
-    oklch(0.55 0.15 60) 60deg 90deg,
-    oklch(0.5 0.2 220) 90deg 120deg,
-    oklch(0.6 0.18 50) 120deg 150deg,
-    oklch(0.45 0.12 100) 150deg 180deg,
-    oklch(0.55 0.15 350) 180deg 210deg,
-    oklch(0.5 0.22 300) 210deg 240deg,
-    oklch(0.55 0.2 25) 240deg 270deg,
-    oklch(0.4 0.12 100) 270deg 300deg,
-    oklch(0.5 0.18 260) 300deg 330deg,
-    oklch(0.5 0.2 220) 330deg 360deg
+    hsl(0 65% 50%) 0deg 30deg,
+    hsl(120 30% 40%) 30deg 60deg,
+    hsl(50 50% 50%) 60deg 90deg,
+    hsl(200 55% 45%) 90deg 120deg,
+    hsl(40 60% 50%) 120deg 150deg,
+    hsl(100 25% 40%) 150deg 180deg,
+    hsl(340 40% 50%) 180deg 210deg,
+    hsl(290 50% 45%) 210deg 240deg,
+    hsl(10 55% 50%) 240deg 270deg,
+    hsl(100 20% 35%) 270deg 300deg,
+    hsl(250 40% 45%) 300deg 330deg,
+    hsl(200 55% 45%) 330deg 360deg
   );
   box-shadow:
-    0 0 60px oklch(from var(--celestial-gold) l c h / 0.3),
-    inset 0 0 60px oklch(0 0 0 / 0.5);
+    0 0 60px hsl(var(--celestial-gold) / 0.3),
+    inset 0 0 60px hsl(0 0% 0% / 0.5);
 }
 
 .zodiac-wheel::before {
   content: "";
   position: absolute;
   inset: 15%;
-  background: var(--background);
+  background: hsl(var(--background));
   border-radius: 50%;
-  box-shadow: inset 0 0 30px oklch(from var(--celestial-gold) l c h / 0.2);
+  box-shadow: inset 0 0 30px hsl(var(--celestial-gold) / 0.2);
 }

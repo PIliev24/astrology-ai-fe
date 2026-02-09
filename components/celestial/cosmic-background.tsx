@@ -46,21 +46,21 @@ export function CosmicBackground({
           <div
             className={cn(
               "absolute inset-0 opacity-20 animate-nebula-drift",
-              "bg-[radial-gradient(ellipse_80%_50%_at_20%_30%,var(--nebula-purple),transparent)]"
+              "bg-[radial-gradient(ellipse_80%_50%_at_20%_30%,hsl(var(--nebula-purple)),transparent)]"
             )}
             style={{ animationDelay: "0s" }}
           />
           <div
             className={cn(
               "absolute inset-0 opacity-15 animate-nebula-drift",
-              "bg-[radial-gradient(ellipse_60%_40%_at_80%_70%,var(--nebula-pink),transparent)]"
+              "bg-[radial-gradient(ellipse_60%_40%_at_80%_70%,hsl(var(--nebula-pink)),transparent)]"
             )}
             style={{ animationDelay: "-7s" }}
           />
           <div
             className={cn(
               "absolute inset-0 opacity-10 animate-nebula-drift",
-              "bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,var(--nebula-blue),transparent)]"
+              "bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,hsl(var(--nebula-blue)),transparent)]"
             )}
             style={{ animationDelay: "-14s" }}
           />
@@ -73,7 +73,7 @@ export function CosmicBackground({
           <div
             className={cn(
               "absolute -inset-x-1/2 top-0 h-1/2 opacity-15 animate-aurora",
-              "bg-linear-to-b from-(--celestial-teal) via-(--celestial-violet) to-transparent",
+              "bg-linear-to-b from-celestial-teal via-celestial-violet to-transparent",
               "blur-3xl"
             )}
           />

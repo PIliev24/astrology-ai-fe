@@ -82,7 +82,7 @@ export function SubscriptionCard({
         "relative overflow-hidden transition-all duration-300",
         "hover:shadow-lg border-2",
         colorConfig.borderColor,
-        "animate-fade-in"
+        ""
       )}
     >
       {/* Background gradient accent */}

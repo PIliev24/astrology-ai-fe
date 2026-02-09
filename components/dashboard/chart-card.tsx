@@ -42,7 +42,7 @@ export function ChartCard({ chart }: ChartCardProps) {
     <>
       <Card
         className={cn(
-          "group hover:shadow-lg transition-all duration-300 animate-fade-in",
+          "group hover:shadow-lg transition-all duration-300 ",
           "hover:border-primary/20 hover:-translate-y-1",
           "cursor-pointer"
         )}

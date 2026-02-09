@@ -125,6 +125,48 @@ export function useWebSocketChat(options?: UseWebSocketChatOptions) {
           return;
         }
 
+        // Handle streaming delta
+        if (data.type === "stream_delta") {
+          setMessages(prev => {
+            const last = prev[prev.length - 1];
+            if (last?.role === "assistant" && last.id.startsWith("streaming-")) {
+              return [...prev.slice(0, -1), { ...last, content: last.content + data.content }];
+            }
+            return [
+              ...prev,
+              {
+                id: `streaming-${Date.now()}`,
+                role: "assistant" as const,
+                content: data.content,
+                timestamp: new Date(),
+              },
+            ];
+          });
+          return;
+        }
+
+        // Handle stream end
+        if (data.type === "stream_end") {
+          setMessages(prev => {
+            const last = prev[prev.length - 1];
+            if (last?.id.startsWith("streaming-")) {
+              return [
+                ...prev.slice(0, -1),
+                {
+                  ...last,
+                  id: `${Date.now()}-${Math.random()}`,
+                  tool_calls: data.tool_calls,
+                  chart_references: data.chart_references,
+                },
+              ];
+            }
+            return prev;
+          });
+          setIsLoading(false);
+          if (data.conversation_id) setConversationId(data.conversation_id);
+          return;
+        }
+
         // Handle chat messages
         if (data.type === "message") {
           const chatMessage = data as ChatMessageResponse;
