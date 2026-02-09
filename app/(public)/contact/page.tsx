@@ -29,7 +29,7 @@ export default function ContactPage() {
           <h1 className="font-display text-4xl md:text-5xl font-bold">
             Contact <span className="text-gradient-gold">Us</span>
           </h1>
-          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/85 max-w-2xl mx-auto">
             Have questions about your astrological journey? We&apos;re here to guide you through the stars.
           </p>
         </div>

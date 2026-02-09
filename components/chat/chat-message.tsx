@@ -78,7 +78,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             <Button
               variant="ghost"
               size="sm"
-              className="h-7 px-2.5 text-xs text-muted-foreground hover:text-foreground hover:bg-[var(--celestial-gold)]/10 rounded-lg"
+              className="h-7 px-2.5 text-xs text-muted-foreground hover:text-foreground hover:bg-[var(--celestial-gold)]/15 rounded-lg"
               onClick={handleCopy}
             >
               {copied ? (
@@ -95,7 +95,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             </Button>
 
             {/* Optional: Add more actions */}
-            <div className="flex items-center gap-1 text-xs text-muted-foreground/60">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <Sparkles className="h-3 w-3" />
               <span>AI Response</span>
             </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, Geist_Mono } from "next/font/google";
+import { Cinzel, Lora, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { RouteGuard } from "@/components/auth/route-guard";
 import { Toaster } from "@/components/ui/sonner";
@@ -11,10 +11,10 @@ const cinzel = Cinzel({
   weight: ["400", "500", "600", "700"],
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const lora = Lora({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -49,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${cinzel.variable} ${cormorantGaramond.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${cinzel.variable} ${lora.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
           <RouteGuard>{children}</RouteGuard>
           <Toaster />

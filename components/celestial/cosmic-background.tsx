@@ -21,10 +21,10 @@ export function CosmicBackground({
   interactive = false,
 }: CosmicBackgroundProps) {
   const starCounts = {
-    default: 100,
-    hero: 200,
-    subtle: 50,
-    intense: 300,
+    default: 50,
+    hero: 100,
+    subtle: 30,
+    intense: 150,
   };
 
   return (
@@ -72,7 +72,7 @@ export function CosmicBackground({
         <div className="absolute inset-0 overflow-hidden">
           <div
             className={cn(
-              "absolute -inset-x-1/2 top-0 h-1/2 opacity-30 animate-aurora",
+              "absolute -inset-x-1/2 top-0 h-1/2 opacity-15 animate-aurora",
               "bg-linear-to-b from-(--celestial-teal) via-(--celestial-violet) to-transparent",
               "blur-3xl"
             )}
@@ -86,7 +86,7 @@ export function CosmicBackground({
       )}
 
       {/* Noise texture overlay */}
-      <div className="absolute inset-0 noise-overlay pointer-events-none z-20" />
+      <div className="absolute inset-0 noise-overlay opacity-[0.02] pointer-events-none z-20" />
 
       {/* Content */}
       {children && <div className="relative z-30">{children}</div>}

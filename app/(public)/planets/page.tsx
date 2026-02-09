@@ -56,7 +56,7 @@ export default function PlanetsPage() {
         <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
           The <span className="text-gradient-gold">Celestial Bodies</span>
         </h1>
-        <p className="text-xl text-foreground/70">
+        <p className="text-xl text-foreground/85">
           In astrology, planets represent different aspects of your psyche and life experiences. Each planet brings its
           own energy, influencing how you think, feel, love, act, and grow.
         </p>
@@ -77,7 +77,7 @@ export default function PlanetsPage() {
           <section key={section.title}>
             <div className="text-center mb-8">
               <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">{section.title}</h2>
-              <p className="text-foreground/70">{section.description}</p>
+              <p className="text-foreground/85">{section.description}</p>
             </div>
 
             <div
@@ -85,14 +85,14 @@ export default function PlanetsPage() {
             >
               {section.planets.map(planet => (
                 <Link key={planet.slug} href={`/planets/${planet.slug}`}>
-                  <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
+                  <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card backdrop-blur">
                     <CardHeader className="text-center">
                       <div className="flex justify-center mb-2">
                         <PlanetIcon planet={planet.slug as PlanetKey} size={48} className="text-primary" />
                       </div>
                       <CardTitle className="font-display text-2xl flex items-center justify-center gap-2">
                         {planet.name}
-                        <span className="text-foreground/70 text-lg">{planet.symbol}</span>
+                        <span className="text-foreground/85 text-lg">{planet.symbol}</span>
                       </CardTitle>
                       <CardDescription>Rules {planet.rulership.join(" & ")}</CardDescription>
                     </CardHeader>
@@ -105,7 +105,7 @@ export default function PlanetsPage() {
                           </Badge>
                         ))}
                       </div>
-                      <p className="text-sm text-foreground/70 line-clamp-2">{planet.description.slice(0, 100)}...</p>
+                      <p className="text-sm text-foreground/85 line-clamp-2">{planet.description.slice(0, 100)}...</p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -120,12 +120,12 @@ export default function PlanetsPage() {
         <h2 className="font-display text-3xl font-bold mb-8 text-center">How Planets Work in Your Chart</h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display">Planet Positions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">Each planet occupies a zodiac sign and house in your birth chart:</p>
+              <p className="text-foreground/85">Each planet occupies a zodiac sign and house in your birth chart:</p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <strong>Sign:</strong> How the planet expresses its energy
@@ -140,12 +140,12 @@ export default function PlanetsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display">Planetary Dignity</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-foreground/70">Planets are stronger or weaker depending on their sign placement:</p>
+              <p className="text-foreground/85">Planets are stronger or weaker depending on their sign placement:</p>
               <ul className="space-y-2 text-sm">
                 <li>
                   <strong>Domicile:</strong> Planet in its ruling sign (strongest)

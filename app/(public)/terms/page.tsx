@@ -17,18 +17,18 @@ export default function TermsPage() {
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
             Terms of <span className="text-gradient-gold">Service</span>
           </h1>
-          <p className="text-xl text-foreground/70">Please read these terms carefully before using our service.</p>
+          <p className="text-xl text-foreground/85">Please read these terms carefully before using our service.</p>
           <p className="text-sm text-muted-foreground mt-4">Last updated: January 10, 2026</p>
         </header>
 
         {/* Content */}
         <div className="space-y-8">
           {/* Acceptance of Terms */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Acceptance of Terms</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>
                 By accessing or using Aistrology (&quot;the Service&quot;), you agree to be bound by these Terms of
                 Service. If you do not agree to these terms, please do not use our Service.
@@ -42,11 +42,11 @@ export default function TermsPage() {
           </Card>
 
           {/* Service Description */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Service Description</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>Aistrology provides the following services:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -67,13 +67,13 @@ export default function TermsPage() {
           </Card>
 
           {/* Entertainment Purposes Disclaimer */}
-          <Card className="bg-card/50 border-primary/30">
+          <Card className="bg-card border-primary/30">
             <CardHeader>
               <CardTitle className="font-display text-2xl text-primary">
                 Important: Entertainment Purposes Disclaimer
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p className="font-semibold text-foreground">
                 All astrological readings and AI-generated content provided by Aistrology are for entertainment and
                 informational purposes only.
@@ -103,11 +103,11 @@ export default function TermsPage() {
           </Card>
 
           {/* Subscription and Payments */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Subscription and Payments</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>Our Service offers free and paid subscription tiers:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -137,11 +137,11 @@ export default function TermsPage() {
           </Card>
 
           {/* User Conduct */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">User Conduct</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>When using our Service, you agree not to:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -174,11 +174,11 @@ export default function TermsPage() {
           </Card>
 
           {/* Intellectual Property */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Intellectual Property</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <ul className="space-y-3 list-disc list-inside">
                 <li>
                   <strong className="text-foreground">Our Content:</strong> All content, features, and functionality of
@@ -200,11 +200,11 @@ export default function TermsPage() {
           </Card>
 
           {/* Limitation of Liability */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Limitation of Liability</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>To the maximum extent permitted by law:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -230,11 +230,11 @@ export default function TermsPage() {
           </Card>
 
           {/* Changes to Terms */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Changes to Terms</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>We may modify these Terms of Service at any time. When we make changes:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>We will update the &quot;Last updated&quot; date at the top of this page.</li>
@@ -251,11 +251,11 @@ export default function TermsPage() {
           </Card>
 
           {/* Contact */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Contact Us</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>If you have any questions about these Terms of Service, please contact us at:</p>
               <p className="text-foreground font-medium">
                 <a href="mailto:support@aistrology.com" className="text-primary hover:underline">

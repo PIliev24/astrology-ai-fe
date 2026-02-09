@@ -1,0 +1,144 @@
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-from-bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-top {
+  animation: slide-in-from-top 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-from-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-from-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-soft {
+  animation: twinkle-soft 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, var(--celestial-gold) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+.animate-orbit {
+  animation: orbit 20s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse 25s linear infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 120s linear infinite;
+}
+
+.animate-rotate-reverse {
+  animation: rotate-reverse 45s linear infinite;
+}
+
+.animate-nebula-drift {
+  animation: nebula-drift 20s ease-in-out infinite;
+}
+
+.animate-star-field {
+  animation: star-field-move 100s linear infinite;
+}
+
+.animate-comet {
+  animation: comet 8s ease-in-out;
+}
+
+.animate-zodiac-spin {
+  animation: zodiac-spin 200s linear infinite;
+}
+
+.animate-aurora {
+  animation: aurora 15s ease-in-out infinite;
+}
+
+.animate-constellation-draw {
+  stroke-dasharray: 1000;
+  animation: constellation-draw 3s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-morph-blob {
+  animation: morph-blob 12s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+.stagger-6 {
+  animation-delay: 0.6s;
+}
+.stagger-7 {
+  animation-delay: 0.7s;
+}
+.stagger-8 {
+  animation-delay: 0.8s;
+}
+.stagger-9 {
+  animation-delay: 0.9s;
+}
+.stagger-10 {
+  animation-delay: 1s;
+}
+
+/* Animation on scroll intersection */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -209,10 +209,10 @@ export function ChatInput({
           disabled={!isConnected || isLoading || isLimitReached}
           className={cn(
             "min-h-[60px] w-full resize-none rounded-xl px-4 py-3.5 pr-14",
-            "bg-card/50 backdrop-blur-soft border-2 border-border/50",
+            "bg-card/80 backdrop-blur-soft border-2 border-border",
             "focus-visible:ring-2 focus-visible:ring-[var(--celestial-gold)]/30 focus-visible:ring-offset-0",
             "focus-visible:border-[var(--celestial-gold)]/50",
-            "placeholder:text-muted-foreground/60",
+            "placeholder:text-muted-foreground/80",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             isLimitReached && "border-destructive/30",
             "transition-all duration-200"
@@ -243,10 +243,10 @@ export function ChatInput({
       {/* Helper text */}
       <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
         <span className="flex items-center gap-1.5">
-          <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono">Enter</kbd>
+          <kbd className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">Enter</kbd>
           <span>to send</span>
           <span className="text-border">|</span>
-          <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono">Shift+Enter</kbd>
+          <kbd className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">Shift+Enter</kbd>
           <span>for new line</span>
         </span>
         <span className={cn(input.length > MAX_LENGTH * 0.9 && "text-(--celestial-gold)")}>

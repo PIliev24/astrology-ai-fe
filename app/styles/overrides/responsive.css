@@ -1,0 +1,23 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root,
+  .dark {
+    --foreground: oklch(0.97 0.02 75);
+    --card-foreground: oklch(0.97 0.02 75);
+    --muted-foreground: oklch(0.88 0.02 75);
+    --border: oklch(0.6 0 0);
+    --input: oklch(0.25 0.03 280);
+    --ring: oklch(0.8 0.2 70);
+    --sidebar-border: oklch(0.6 0 0);
+  }
+}

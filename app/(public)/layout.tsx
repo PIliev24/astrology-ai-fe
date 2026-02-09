@@ -52,7 +52,7 @@ function PublicNav() {
           ) : (
             <>
               <Link href="/login">
-                <Button variant="ghost" className="hover:text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10">
+                <Button variant="ghost" className="hover:text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/15">
                   Sign In
                 </Button>
               </Link>
@@ -69,7 +69,7 @@ function PublicNav() {
         <div className="flex md:hidden items-center gap-2">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-[var(--celestial-gold)]/10">
+              <Button variant="ghost" size="icon" className="hover:bg-[var(--celestial-gold)]/15">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
@@ -89,7 +89,7 @@ function PublicNav() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-[var(--celestial-gold)]/10 group"
+                    className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-[var(--celestial-gold)]/15 group"
                   >
                     <Star className="h-4 w-4 text-(--celestial-gold) opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
@@ -247,7 +247,7 @@ function PublicFooter() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-border/70 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p className="flex items-center gap-2">&copy; {new Date().getFullYear()} Aistrology. All rights reserved.</p>
           <p className="text-xs">Made with cosmic energy</p>
         </div>
@@ -260,7 +260,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <PublicNav />
-      <main className="flex-1 pt-16 star-field-subtle">{children}</main>
+      <main className="flex-1 pt-16">{children}</main>
       <PublicFooter />
     </div>
   );

@@ -88,11 +88,11 @@ export default async function HousePage({ params }: Props) {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Description */}
         <section>
-          <p className="text-lg leading-relaxed text-foreground/70">{house.description}</p>
+          <p className="text-lg leading-relaxed text-foreground/85">{house.description}</p>
         </section>
 
         {/* Life Areas */}
-        <Card className="bg-card/50">
+        <Card className="bg-card">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
               <Home className="h-5 w-5 text-primary" />
@@ -112,7 +112,7 @@ export default async function HousePage({ params }: Props) {
         </Card>
 
         {/* Questions */}
-        <Card className="bg-card/50">
+        <Card className="bg-card">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
               <HelpCircle className="h-5 w-5 text-accent" />
@@ -124,7 +124,7 @@ export default async function HousePage({ params }: Props) {
               {house.questions.map(question => (
                 <li key={question} className="flex items-start gap-3">
                   <span className="text-primary font-bold">?</span>
-                  <span className="text-foreground/70">{question}</span>
+                  <span className="text-foreground/85">{question}</span>
                 </li>
               ))}
             </ul>
@@ -135,7 +135,7 @@ export default async function HousePage({ params }: Props) {
         <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
           <CardContent className="py-6">
             <div className="text-center">
-              <p className="text-foreground/70 mb-4">
+              <p className="text-foreground/85 mb-4">
                 The {house.name.split(" - ")[0]} is naturally ruled by <strong>{house.rulingSign}</strong> and its
                 planetary ruler <strong>{house.rulingPlanet}</strong>. This connection reveals the natural energy of
                 this house.
@@ -153,7 +153,7 @@ export default async function HousePage({ params }: Props) {
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
           <CardContent className="text-center py-8">
             <h3 className="font-display text-xl font-bold mb-3">Discover Your {house.name.split(" - ")[0]}</h3>
-            <p className="text-foreground/70 mb-6">
+            <p className="text-foreground/85 mb-6">
               See which planets and signs occupy this house in your birth chart.
             </p>
             <Link href="/signup">

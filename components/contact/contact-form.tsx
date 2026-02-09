@@ -26,7 +26,7 @@ export function ContactForm() {
               Thank you for reaching out. We&apos;ll get back to you as soon as possible.
             </p>
           </div>
-          <Button onClick={resetForm} variant="outline" className="zodiac-border hover:bg-[var(--celestial-gold)]/10">
+          <Button onClick={resetForm} variant="outline" className="zodiac-border hover:bg-[var(--celestial-gold)]/15">
             Send Another Message
           </Button>
         </CardContent>
@@ -54,11 +54,11 @@ export function ContactForm() {
                   <FormLabel className="text-foreground/80">Name</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/50" />
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/70" />
                       <Input
                         placeholder="Your name"
                         disabled={isSubmitting}
-                        className="h-12 pl-10 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                         {...field}
                       />
                     </div>
@@ -76,12 +76,12 @@ export function ContactForm() {
                   <FormLabel className="text-foreground/80">Email</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/50" />
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/70" />
                       <Input
                         type="email"
                         placeholder="you@example.com"
                         disabled={isSubmitting}
-                        className="h-12 pl-10 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                         {...field}
                       />
                     </div>
@@ -99,11 +99,11 @@ export function ContactForm() {
                   <FormLabel className="text-foreground/80">Subject</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <FileText className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/50" />
+                      <FileText className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-foreground/70" />
                       <Input
                         placeholder="What's this about?"
                         disabled={isSubmitting}
-                        className="h-12 pl-10 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                         {...field}
                       />
                     </div>
@@ -121,12 +121,12 @@ export function ContactForm() {
                   <FormLabel className="text-foreground/80">Message</FormLabel>
                   <FormControl>
                     <div className="relative">
-                      <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-foreground/50" />
+                      <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-foreground/70" />
                       <Textarea
                         placeholder="Tell us what's on your mind..."
                         disabled={isSubmitting}
                         rows={5}
-                        className="pl-10 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all resize-none"
+                        className="pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all resize-none"
                         {...field}
                       />
                     </div>

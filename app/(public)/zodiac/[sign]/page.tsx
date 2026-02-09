@@ -83,7 +83,7 @@ export default async function ZodiacSignPage({ params }: Props) {
           <ZodiacIcon sign={sign.slug as ZodiacSignKey} size={96} className="text-primary animate-float" />
         </div>
         <h1 className="font-display text-4xl md:text-6xl font-bold mb-4">{sign.name}</h1>
-        <p className="text-xl text-foreground/70 mb-6">{sign.dateRange}</p>
+        <p className="text-xl text-foreground/85 mb-6">{sign.dateRange}</p>
 
         <div className="flex flex-wrap justify-center gap-3">
           <Badge variant="outline" className={elementColors[sign.element]}>
@@ -100,7 +100,7 @@ export default async function ZodiacSignPage({ params }: Props) {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Description */}
         <section>
-          <p className="text-lg leading-relaxed text-foreground/70">{sign.description}</p>
+          <p className="text-lg leading-relaxed text-foreground/85">{sign.description}</p>
         </section>
 
         {/* Key Traits */}
@@ -120,7 +120,7 @@ export default async function ZodiacSignPage({ params }: Props) {
 
         {/* Strengths & Weaknesses */}
         <div className="grid md:grid-cols-2 gap-6">
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display flex items-center gap-2 text-green-600 dark:text-green-400">
                 <Zap className="h-5 w-5" />
@@ -139,7 +139,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display flex items-center gap-2 text-amber-600 dark:text-amber-400">
                 <AlertTriangle className="h-5 w-5" />
@@ -160,7 +160,7 @@ export default async function ZodiacSignPage({ params }: Props) {
         </div>
 
         {/* Compatibility */}
-        <Card className="bg-card/50">
+        <Card className="bg-card">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
               <Heart className="h-5 w-5 text-pink-500" />
@@ -189,7 +189,7 @@ export default async function ZodiacSignPage({ params }: Props) {
 
         {/* Lucky Info */}
         <div className="grid sm:grid-cols-2 gap-6">
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-lg">Lucky Numbers</CardTitle>
             </CardHeader>
@@ -207,7 +207,7 @@ export default async function ZodiacSignPage({ params }: Props) {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-lg">Lucky Colors</CardTitle>
             </CardHeader>
@@ -227,7 +227,7 @@ export default async function ZodiacSignPage({ params }: Props) {
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
           <CardContent className="text-center py-8">
             <h3 className="font-display text-xl font-bold mb-3">Want a personalized {sign.name} reading?</h3>
-            <p className="text-foreground/70 mb-6">
+            <p className="text-foreground/85 mb-6">
               Discover how your unique birth chart reveals your cosmic potential.
             </p>
             <Link href="/signup">

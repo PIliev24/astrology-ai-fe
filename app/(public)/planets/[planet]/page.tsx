@@ -63,7 +63,7 @@ export default async function PlanetPage({ params }: Props) {
       <nav className="mb-8">
         <Link
           href="/planets"
-          className="text-foreground/70 hover:text-foreground transition-colors flex items-center gap-2"
+          className="text-foreground/85 hover:text-foreground transition-colors flex items-center gap-2"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to All Planets
@@ -76,7 +76,7 @@ export default async function PlanetPage({ params }: Props) {
           <PlanetIcon planet={planet.slug as PlanetKey} size={96} className="text-primary animate-float" />
         </div>
         <h1 className="font-display text-4xl md:text-6xl font-bold mb-2">{planet.name}</h1>
-        <p className="text-3xl text-foreground/70 mb-6">{planet.symbol}</p>
+        <p className="text-3xl text-foreground/85 mb-6">{planet.symbol}</p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-6">
           <Badge className={typeColors[planet.type]}>{planet.type} Planet</Badge>
@@ -100,11 +100,11 @@ export default async function PlanetPage({ params }: Props) {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Description */}
         <section>
-          <p className="text-lg leading-relaxed text-foreground/70">{planet.description}</p>
+          <p className="text-lg leading-relaxed text-foreground/85">{planet.description}</p>
         </section>
 
         {/* In Signs */}
-        <Card className="bg-card/50">
+        <Card className="bg-card">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
               <Orbit className="h-5 w-5 text-primary" />
@@ -112,12 +112,12 @@ export default async function PlanetPage({ params }: Props) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-foreground/70">{planet.inSigns}</p>
+            <p className="text-foreground/85">{planet.inSigns}</p>
           </CardContent>
         </Card>
 
         {/* Retrograde */}
-        <Card className="bg-card/50">
+        <Card className="bg-card">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
               <Repeat className="h-5 w-5 text-accent" />
@@ -125,12 +125,12 @@ export default async function PlanetPage({ params }: Props) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-foreground/70">{planet.retrograde}</p>
+            <p className="text-foreground/85">{planet.retrograde}</p>
           </CardContent>
         </Card>
 
         {/* Transits */}
-        <Card className="bg-card/50">
+        <Card className="bg-card">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2">
               <Clock className="h-5 w-5 text-primary" />
@@ -138,7 +138,7 @@ export default async function PlanetPage({ params }: Props) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-foreground/70">{planet.transitMeaning}</p>
+            <p className="text-foreground/85">{planet.transitMeaning}</p>
           </CardContent>
         </Card>
 
@@ -146,7 +146,7 @@ export default async function PlanetPage({ params }: Props) {
         <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
           <CardContent className="py-6">
             <div className="text-center">
-              <p className="text-foreground/70 mb-4">
+              <p className="text-foreground/85 mb-4">
                 {planet.name} is the planetary ruler of{" "}
                 {planet.rulership.map((sign, i) => (
                   <span key={sign}>
@@ -173,7 +173,7 @@ export default async function PlanetPage({ params }: Props) {
         <Card className="bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
           <CardContent className="text-center py-8">
             <h3 className="font-display text-xl font-bold mb-3">Discover Your {planet.name} Placement</h3>
-            <p className="text-foreground/70 mb-6">
+            <p className="text-foreground/85 mb-6">
               See which sign and house {planet.name} occupies in your unique birth chart.
             </p>
             <Link href="/signup">

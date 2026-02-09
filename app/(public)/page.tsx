@@ -164,7 +164,7 @@ export default function LandingPage() {
                   The Twelve Signs of the <span className="text-gradient-gold">Zodiac</span>
                 </h2>
               </div>
-              <p className="text-lg text-foreground/70 leading-relaxed">
+              <p className="text-lg text-foreground/85 leading-relaxed">
                 Each zodiac sign carries unique energy and characteristics that influence your personality,
                 relationships, and life path. Discover what the stars reveal about your true nature.
               </p>
@@ -191,7 +191,7 @@ export default function LandingPage() {
                         size={24}
                         className="group-hover:scale-110 transition-transform"
                       />
-                      <span className="text-[10px] font-medium opacity-80 hidden sm:block">{sign.name}</span>
+                      <span className="text-xs font-medium opacity-80 hidden sm:block">{sign.name}</span>
                     </div>
                   </Link>
                 ))}
@@ -228,7 +228,7 @@ export default function LandingPage() {
             <h2 className="font-display text-4xl md:text-5xl font-bold">
               Why Choose <span className="text-gradient-gold">Aistrology</span>?
             </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-foreground/85 max-w-2xl mx-auto leading-relaxed">
               Our AI-powered platform combines ancient astrological wisdom with modern technology to deliver insights
               that truly resonate with your soul.
             </p>
@@ -255,7 +255,7 @@ export default function LandingPage() {
                   <CardTitle className="font-display text-xl">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base leading-relaxed text-card-foreground/75">
+                  <CardDescription className="text-base leading-relaxed text-card-foreground/85">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -285,7 +285,7 @@ export default function LandingPage() {
             <h2 className="font-display text-4xl md:text-5xl font-bold">
               Dive Deep Into <span className="text-gradient-cosmic">Astrology</span>
             </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-foreground/85 max-w-2xl mx-auto leading-relaxed">
               Explore the fundamentals of astrology with our comprehensive guides.
             </p>
           </div>
@@ -308,7 +308,7 @@ export default function LandingPage() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base text-card-foreground/70">{card.description}</CardDescription>
+                    <CardDescription className="text-base text-card-foreground/85">{card.description}</CardDescription>
                   </CardContent>
                   {/* Arrow indicator */}
                   <div className="px-6 pb-6">

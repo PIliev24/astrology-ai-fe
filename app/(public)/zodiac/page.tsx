@@ -48,7 +48,7 @@ export default function ZodiacPage() {
         <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
           The Twelve Signs of the <span className="text-gradient-gold">Zodiac</span>
         </h1>
-        <p className="text-xl text-foreground/70">
+        <p className="text-xl text-foreground/85">
           Each zodiac sign represents a unique expression of cosmic energy. Explore the characteristics, strengths, and
           mysteries of all twelve signs to better understand yourself and others.
         </p>
@@ -67,7 +67,7 @@ export default function ZodiacPage() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {ZODIAC_SIGNS.map(sign => (
           <Link key={sign.slug} href={`/zodiac/${sign.slug}`}>
-            <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card/50 backdrop-blur">
+            <Card className="h-full hover:zodiac-glow transition-all duration-300 hover:scale-[1.02] bg-card backdrop-blur">
               <CardHeader className="text-center">
                 <div className="flex justify-center mb-2">
                   <ZodiacIcon sign={sign.slug as ZodiacSignKey} size={48} className="text-primary" />
@@ -82,9 +82,9 @@ export default function ZodiacPage() {
                   >
                     {sign.element}
                   </span>
-                  <span className="text-xs px-2 py-1 rounded-full bg-muted text-foreground/70">{sign.quality}</span>
+                  <span className="text-xs px-2 py-1 rounded-full bg-muted text-foreground/85">{sign.quality}</span>
                 </div>
-                <p className="text-sm text-foreground/70 text-center line-clamp-2">
+                <p className="text-sm text-foreground/85 text-center line-clamp-2">
                   {sign.traits.slice(0, 3).join(" • ")}
                 </p>
                 <p className="text-xs text-center text-primary">Ruled by {sign.rulingPlanet}</p>
@@ -99,12 +99,12 @@ export default function ZodiacPage() {
         <h2 className="font-display text-3xl font-bold mb-8 text-center">Understanding the Zodiac</h2>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display">The Four Elements</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-foreground/70">
+              <p className="text-foreground/85">
                 Each zodiac sign belongs to one of four elements, which describes its fundamental nature:
               </p>
               <ul className="space-y-2 text-sm">
@@ -127,12 +127,12 @@ export default function ZodiacPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display">The Three Qualities</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-foreground/70">
+              <p className="text-foreground/85">
                 Qualities (or modalities) describe how signs approach life and change:
               </p>
               <ul className="space-y-2 text-sm">

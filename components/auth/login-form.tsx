@@ -59,7 +59,7 @@ const LoginForm = () => {
                         placeholder="you@example.com"
                         autoComplete="email"
                         disabled={isSubmitting}
-                        className="h-12 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                        className="h-12 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                         {...field}
                       />
                     </FormControl>
@@ -81,7 +81,7 @@ const LoginForm = () => {
                           placeholder="Enter your password"
                           autoComplete="current-password"
                           disabled={isSubmitting}
-                          className="h-12 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 pr-12 transition-all"
+                          className="h-12 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 pr-12 transition-all"
                           {...field}
                         />
                         <button
@@ -122,7 +122,7 @@ const LoginForm = () => {
               {/* Divider */}
               <div className="relative py-4">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-border/50" />
+                  <div className="w-full border-t border-border" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
                   <span className="bg-card px-2 text-foreground/70">New to Aistrology?</span>
@@ -144,7 +144,7 @@ const LoginForm = () => {
       </Card>
 
       {/* Bottom decorative text */}
-      <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-foreground/50">
+      <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-foreground/70">
         ✦ Your cosmic journey continues ✦
       </p>
     </div>

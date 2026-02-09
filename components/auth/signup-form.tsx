@@ -65,7 +65,7 @@ const SignupForm = () => {
                           placeholder="Your name"
                           autoComplete="name"
                           disabled={isSubmitting}
-                          className="h-12 pl-10 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                          className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                           {...field}
                         />
                       </div>
@@ -89,7 +89,7 @@ const SignupForm = () => {
                           placeholder="you@example.com"
                           autoComplete="email"
                           disabled={isSubmitting}
-                          className="h-12 pl-10 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                          className="h-12 pl-10 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                           {...field}
                         />
                       </div>
@@ -113,7 +113,7 @@ const SignupForm = () => {
                           placeholder="Create a strong password"
                           autoComplete="new-password"
                           disabled={isSubmitting}
-                          className="h-12 pl-10 pr-12 bg-background/50 border-border/50 focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
+                          className="h-12 pl-10 pr-12 bg-card border-border focus:border-[var(--celestial-gold)] focus:ring-[var(--celestial-gold)]/20 transition-all"
                           {...field}
                         />
                         <button
@@ -157,7 +157,7 @@ const SignupForm = () => {
               {/* Divider */}
               <div className="relative py-4">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-border/50" />
+                  <div className="w-full border-t border-border" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
                   <span className="bg-card px-2 text-foreground/70">Already a star seeker?</span>
@@ -179,7 +179,7 @@ const SignupForm = () => {
       </Card>
 
       {/* Bottom decorative text */}
-      <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-foreground/50">
+      <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-foreground/70">
         ✦ The stars await your discovery ✦
       </p>
     </div>

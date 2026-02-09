@@ -31,7 +31,7 @@ const DEFAULT_COLORS = [
 ];
 
 export function StarField({
-  starCount = 150,
+  starCount = 80,
   className,
   animated = true,
   interactive = false,
@@ -65,7 +65,7 @@ export function StarField({
         x: Math.random(),
         y: Math.random(),
         size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.5 + 0.3,
+        opacity: Math.random() * 0.3 + 0.2,
         twinkleSpeed: Math.random() * 2 + 1,
         twinkleOffset: Math.random() * Math.PI * 2,
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -122,19 +122,19 @@ export function StarField({
         // Calculate twinkle effect
         let opacity = star.opacity;
         if (effectiveAnimated) {
-          opacity = star.opacity * (0.5 + 0.5 * Math.sin(elapsed * star.twinkleSpeed + star.twinkleOffset));
+          opacity = star.opacity * (0.6 + 0.3 * Math.sin(elapsed * star.twinkleSpeed + star.twinkleOffset));
         }
         opacity = Math.min(1, opacity + interactiveBoost);
 
         // Draw star glow
-        const gradient = ctx.createRadialGradient(x, y, 0, x, y, star.size * (2 + interactiveBoost * 3));
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, star.size * (1.5 + interactiveBoost * 3));
         gradient.addColorStop(0, star.color.replace("1)", `${opacity})`));
         gradient.addColorStop(0.5, star.color.replace("1)", `${opacity * 0.3})`));
         gradient.addColorStop(1, "transparent");
 
         ctx.beginPath();
         ctx.fillStyle = gradient;
-        ctx.arc(x, y, star.size * (2 + interactiveBoost * 3), 0, Math.PI * 2);
+        ctx.arc(x, y, star.size * (1.5 + interactiveBoost * 3), 0, Math.PI * 2);
         ctx.fill();
 
         // Draw star core

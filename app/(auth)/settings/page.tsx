@@ -150,7 +150,6 @@ export default function SettingsPage() {
   if (isLoadingSubscription || isLoadingUsage || isLoadingPlans) {
     return (
       <div className="min-h-full bg-background relative">
-        <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="flex flex-col items-center gap-4">
             <div className="w-16 h-16 rounded-full gradient-gold flex items-center justify-center zodiac-glow animate-pulse">
@@ -166,7 +165,6 @@ export default function SettingsPage() {
   if (!subscription || !usage || !currentPlanDetails) {
     return (
       <div className="min-h-full bg-background relative">
-        <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           <Alert variant="destructive" className="celestial-card border-destructive/30">
             <AlertCircle className="h-4 w-4" />
@@ -182,8 +180,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-full bg-background relative star-field-subtle">
-      <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
+    <div className="min-h-full bg-background relative">
       <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[var(--celestial-violet)]/5 to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-4 py-8 max-w-6xl space-y-8 relative z-10">

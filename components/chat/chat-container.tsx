@@ -75,7 +75,6 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
   return (
     <div className="flex flex-col h-full min-h-0 bg-background relative">
       {/* Subtle background decoration */}
-      <div className="absolute inset-0 star-field-subtle pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-(--celestial-violet)/5 to-transparent pointer-events-none" />
 
       <ScrollArea className="flex-1 scrollbar-cosmic">
@@ -195,7 +194,7 @@ export function ChatContainer({ charts, initialMessages, conversationId }: ChatC
       </ScrollArea>
 
       {/* Input Area */}
-      <div className="relative shrink-0 border-t border-border/50 bg-background/90 backdrop-blur-nav pb-[env(safe-area-inset-bottom)]">
+      <div className="relative shrink-0 border-t border-border/70 bg-background/90 backdrop-blur-nav pb-[env(safe-area-inset-bottom)]">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
         <div className="container max-w-4xl mx-auto px-4 py-4 relative z-10">
           <ChatInput
