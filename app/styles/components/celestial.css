@@ -1,0 +1,54 @@
+.constellation-bg {
+  background-image:
+    radial-gradient(circle at 15% 25%, hsl(var(--star-glow)) 1px, transparent 1px),
+    radial-gradient(circle at 85% 15%, hsl(var(--star-glow)) 0.8px, transparent 0.8px),
+    radial-gradient(circle at 45% 75%, hsl(var(--celestial-gold)) 1.2px, transparent 1.2px),
+    radial-gradient(circle at 75% 55%, hsl(var(--star-glow)) 0.6px, transparent 0.6px),
+    radial-gradient(circle at 25% 85%, hsl(var(--celestial-violet)) 0.9px, transparent 0.9px),
+    radial-gradient(circle at 55% 35%, hsl(var(--star-glow)) 0.7px, transparent 0.7px),
+    radial-gradient(circle at 95% 85%, hsl(var(--celestial-gold)) 1px, transparent 1px),
+    radial-gradient(circle at 5% 55%, hsl(var(--star-glow)) 0.5px, transparent 0.5px);
+  background-size:
+    200px 200px,
+    150px 180px,
+    180px 160px,
+    220px 200px,
+    160px 190px,
+    190px 170px,
+    170px 210px,
+    210px 150px;
+}
+
+.star-field-dense {
+  background-image:
+    radial-gradient(circle, hsl(var(--star-glow)) 1px, transparent 1px),
+    radial-gradient(circle, hsl(var(--star-glow)) 0.5px, transparent 0.5px),
+    radial-gradient(circle, hsl(var(--celestial-gold)) 0.8px, transparent 0.8px);
+  background-size:
+    100px 100px,
+    50px 50px,
+    150px 150px;
+  background-position:
+    0 0,
+    25px 25px,
+    75px 75px;
+}
+
+.star-field-subtle {
+  background-image:
+    radial-gradient(circle, hsl(var(--star-glow) / 0.4) 1px, transparent 1px),
+    radial-gradient(circle, hsl(var(--star-glow) / 0.2) 0.5px, transparent 0.5px);
+  background-size:
+    120px 120px,
+    80px 80px;
+  background-position:
+    0 0,
+    40px 40px;
+}
+
+.nebula-overlay {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 30%, hsl(var(--nebula-purple)), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 70%, hsl(var(--nebula-pink)), transparent),
+    radial-gradient(ellipse 70% 60% at 50% 50%, hsl(var(--nebula-blue)), transparent);
+}

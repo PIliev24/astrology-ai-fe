@@ -48,7 +48,7 @@ export function UsageIndicator({ usage, plan, onUpgradeClick }: UsageIndicatorPr
   };
 
   return (
-    <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg animate-fade-in">
+    <Card className="relative overflow-hidden transition-all duration-300 hover:shadow-lg ">
       {/* Background accent */}
       <div className="absolute inset-0 opacity-5 pointer-events-none bg-linear-to-br from-blue-500 to-cyan-500" />
 

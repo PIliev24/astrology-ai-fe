@@ -1,0 +1,32 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --foreground: 210 70% 10%;
+    --card-foreground: 210 70% 10%;
+    --muted-foreground: 210 40% 30%;
+    --border: 40 30% 60%;
+    --input: 42 20% 80%;
+    --ring: 178 60% 30%;
+    --sidebar-border: 40 30% 60%;
+  }
+
+  .dark {
+    --foreground: 45 40% 95%;
+    --card-foreground: 45 40% 95%;
+    --muted-foreground: 45 20% 75%;
+    --border: 0 0% 50%;
+    --input: 215 30% 22%;
+    --ring: 178 65% 50%;
+    --sidebar-border: 0 0% 50%;
+  }
+}

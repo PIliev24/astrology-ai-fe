@@ -1,0 +1,4 @@
+::selection {
+  background: hsl(var(--celestial-gold) / 0.4);
+  color: hsl(var(--foreground));
+}

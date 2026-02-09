@@ -6,6 +6,7 @@ import { Menu, Star, MessageSquare } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { useAuth } from "@/hooks";
 import { Logo } from "@/components/ui/logo";
+import { ThemeToggle } from "@/components/theme";
 
 const navLinks = [
   { href: "/zodiac", label: "Zodiac Signs" },
@@ -19,7 +20,7 @@ function PublicNav() {
   const { user } = useAuth();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-nav bg-background/95 md:bg-background/60 border-b border-[var(--celestial-gold)]/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-nav bg-background/95 md:bg-background/60 border-b border-celestial-gold/10">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href={user ? "/dashboard" : "/"} className="group">
@@ -35,13 +36,14 @@ function PublicNav() {
               className="relative text-muted-foreground hover:text-foreground transition-colors group py-1"
             >
               <span className="relative z-10">{link.label}</span>
-              <span className="absolute inset-x-0 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-[var(--celestial-gold)] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform" />
+              <span className="absolute inset-x-0 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-celestial-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform" />
             </Link>
           ))}
         </div>
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           {user ? (
             <Link href="/dashboard">
               <Button className="gradient-gold text-primary-foreground rounded-lg px-5 hover-glow">
@@ -52,7 +54,7 @@ function PublicNav() {
           ) : (
             <>
               <Link href="/login">
-                <Button variant="ghost" className="hover:text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10">
+                <Button variant="ghost" className="hover:text-celestial-gold hover:bg-celestial-gold/15">
                   Sign In
                 </Button>
               </Link>
@@ -69,13 +71,13 @@ function PublicNav() {
         <div className="flex md:hidden items-center gap-2">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-[var(--celestial-gold)]/10">
+              <Button variant="ghost" size="icon" className="hover:bg-celestial-gold/15">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-[85vw] max-w-80 bg-background/95 backdrop-blur-cosmic border-l border-[var(--celestial-gold)]/20"
+              className="w-[85vw] max-w-80 bg-background/95 backdrop-blur-cosmic border-l border-celestial-gold/20"
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               {/* Mobile menu header */}
@@ -89,12 +91,18 @@ function PublicNav() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-[var(--celestial-gold)]/10 group"
+                    className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-celestial-gold/15 group"
                   >
-                    <Star className="h-4 w-4 text-(--celestial-gold) opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Star className="h-4 w-4 text-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
                   </Link>
                 ))}
+              </div>
+
+              {/* Mobile theme toggle */}
+              <div className="px-4 pt-4 flex items-center gap-2">
+                <ThemeToggle />
+                <span className="text-sm text-muted-foreground">Theme</span>
               </div>
 
               {/* Mobile auth buttons */}
@@ -129,7 +137,7 @@ function PublicNav() {
 
 function PublicFooter() {
   return (
-    <footer className="relative border-t border-[var(--celestial-gold)]/10 bg-background/80 backdrop-blur-soft">
+    <footer className="relative border-t border-celestial-gold/10 bg-background/80 backdrop-blur-soft">
       {/* Subtle star background */}
       <div className="absolute inset-0 star-field-subtle opacity-20 pointer-events-none" />
 
@@ -145,14 +153,14 @@ function PublicFooter() {
 
           {/* Learn section */}
           <div>
-            <h4 className="font-display font-semibold mb-5 text-(--celestial-gold)">Learn</h4>
+            <h4 className="font-display font-semibold mb-5 text-celestial-gold">Learn</h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   href="/zodiac"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Zodiac Signs
                 </Link>
               </li>
@@ -161,7 +169,7 @@ function PublicFooter() {
                   href="/houses"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Astrological Houses
                 </Link>
               </li>
@@ -170,7 +178,7 @@ function PublicFooter() {
                   href="/planets"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Planets
                 </Link>
               </li>
@@ -179,7 +187,7 @@ function PublicFooter() {
                   href="/guide"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Birth Chart Guide
                 </Link>
               </li>
@@ -188,14 +196,14 @@ function PublicFooter() {
 
           {/* Product section */}
           <div>
-            <h4 className="font-display font-semibold mb-5 text-(--celestial-gold)">Product</h4>
+            <h4 className="font-display font-semibold mb-5 text-celestial-gold">Product</h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   href="/login"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Sign In
                 </Link>
               </li>
@@ -204,7 +212,7 @@ function PublicFooter() {
                   href="/signup"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Get Started
                 </Link>
               </li>
@@ -213,7 +221,7 @@ function PublicFooter() {
                   href="/contact"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Contact Us
                 </Link>
               </li>
@@ -222,14 +230,14 @@ function PublicFooter() {
 
           {/* Legal section */}
           <div>
-            <h4 className="font-display font-semibold mb-5 text-(--celestial-gold)">Legal</h4>
+            <h4 className="font-display font-semibold mb-5 text-celestial-gold">Legal</h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <Link
                   href="/privacy"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Privacy Policy
                 </Link>
               </li>
@@ -238,7 +246,7 @@ function PublicFooter() {
                   href="/terms"
                   className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
                 >
-                  <span className="w-1 h-1 rounded-full bg-[var(--celestial-gold)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="w-1 h-1 rounded-full bg-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
                   Terms of Service
                 </Link>
               </li>
@@ -247,7 +255,7 @@ function PublicFooter() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="mt-12 pt-8 border-t border-border/70 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p className="flex items-center gap-2">&copy; {new Date().getFullYear()} Aistrology. All rights reserved.</p>
           <p className="text-xs">Made with cosmic energy</p>
         </div>
@@ -260,7 +268,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <PublicNav />
-      <main className="flex-1 pt-16 star-field-subtle">{children}</main>
+      <main className="flex-1 pt-16">{children}</main>
       <PublicFooter />
     </div>
   );

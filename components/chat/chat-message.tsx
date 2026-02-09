@@ -23,18 +23,16 @@ export function ChatMessage({ message }: ChatMessageProps) {
   };
 
   return (
-    <div className={cn("flex gap-3 md:gap-4 group animate-fade-in", isUser ? "flex-row-reverse" : "flex-row")}>
+    <div className={cn("flex gap-3 md:gap-4 group ", isUser ? "flex-row-reverse" : "flex-row")}>
       {/* Avatar */}
       <div
         className={cn(
           "shrink-0 w-10 h-10 rounded-full flex items-center justify-center",
-          isUser
-            ? "bg-[var(--celestial-violet)]/20 border border-[var(--celestial-violet)]/30"
-            : "gradient-gold zodiac-glow"
+          isUser ? "bg-celestial-violet/20 border border-celestial-violet/30" : "gradient-gold zodiac-glow"
         )}
       >
         {isUser ? (
-          <User className="h-5 w-5 text-[var(--celestial-violet)]" />
+          <User className="h-5 w-5 text-celestial-violet" />
         ) : (
           <Stars className="h-5 w-5 text-primary-foreground" />
         )}
@@ -50,9 +48,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
           )}
         >
           {/* AI message decoration */}
-          {!isUser && (
-            <div className="absolute -left-1 top-4 w-2 h-2 rounded-full bg-[var(--celestial-gold)] opacity-60" />
-          )}
+          {!isUser && <div className="absolute -left-1 top-4 w-2 h-2 rounded-full bg-celestial-gold opacity-60" />}
 
           {/* Message text */}
           <div className={cn("prose max-w-none", isUser ? "prose-invert" : "prose-slate dark:prose-invert")}>
@@ -78,7 +74,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             <Button
               variant="ghost"
               size="sm"
-              className="h-7 px-2.5 text-xs text-muted-foreground hover:text-foreground hover:bg-[var(--celestial-gold)]/10 rounded-lg"
+              className="h-7 px-2.5 text-xs text-muted-foreground hover:text-foreground hover:bg-celestial-gold/15 rounded-lg"
               onClick={handleCopy}
             >
               {copied ? (
@@ -95,7 +91,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             </Button>
 
             {/* Optional: Add more actions */}
-            <div className="flex items-center gap-1 text-xs text-muted-foreground/60">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <Sparkles className="h-3 w-3" />
               <span>AI Response</span>
             </div>

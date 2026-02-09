@@ -149,10 +149,10 @@ export function ChatInput({
 
       {/* Warning alert (low remaining) */}
       {isWarning && !isLimitReached && (
-        <Alert className="border-[var(--celestial-gold)]/30 bg-[var(--celestial-gold)]/5">
-          <Sparkles className="h-4 w-4 text-(--celestial-gold)" />
+        <Alert className="border-celestial-gold/30 bg-celestial-gold/5">
+          <Sparkles className="h-4 w-4 text-celestial-gold" />
           <AlertDescription className="flex items-center justify-between gap-4">
-            <span className="text-(--celestial-gold)">
+            <span className="text-celestial-gold">
               {remaining} message{remaining !== 1 ? "s" : ""} remaining today.
             </span>
             <Button
@@ -160,7 +160,7 @@ export function ChatInput({
               variant="outline"
               onClick={handleUpgrade}
               disabled={isUpgrading}
-              className="shrink-0 border-[var(--celestial-gold)]/30 text-(--celestial-gold) hover:bg-[var(--celestial-gold)]/10"
+              className="shrink-0 border-celestial-gold/30 text-celestial-gold hover:bg-celestial-gold/10"
             >
               {isUpgrading ? "Processing..." : "Upgrade"}
             </Button>
@@ -177,10 +177,7 @@ export function ChatInput({
           <div className="flex items-center gap-2">
             <div className="w-24 h-1.5 bg-muted rounded-full overflow-hidden">
               <div
-                className={cn(
-                  "h-full rounded-full transition-all",
-                  isWarning ? "bg-[var(--celestial-gold)]" : "gradient-gold"
-                )}
+                className={cn("h-full rounded-full transition-all", isWarning ? "bg-celestial-gold" : "gradient-gold")}
                 style={{ width: `${Math.max(0, Math.min(100, (remaining / limit) * 100))}%` }}
               />
             </div>
@@ -209,10 +206,10 @@ export function ChatInput({
           disabled={!isConnected || isLoading || isLimitReached}
           className={cn(
             "min-h-[60px] w-full resize-none rounded-xl px-4 py-3.5 pr-14",
-            "bg-card/50 backdrop-blur-soft border-2 border-border/50",
-            "focus-visible:ring-2 focus-visible:ring-[var(--celestial-gold)]/30 focus-visible:ring-offset-0",
-            "focus-visible:border-[var(--celestial-gold)]/50",
-            "placeholder:text-muted-foreground/60",
+            "bg-card/80 backdrop-blur-soft border-2 border-border",
+            "focus-visible:ring-2 focus-visible:ring-celestial-gold/30 focus-visible:ring-offset-0",
+            "focus-visible:border-celestial-gold/50",
+            "placeholder:text-muted-foreground/80",
             "disabled:opacity-50 disabled:cursor-not-allowed",
             isLimitReached && "border-destructive/30",
             "transition-all duration-200"
@@ -237,19 +234,19 @@ export function ChatInput({
         </Button>
 
         {/* Input glow effect when focused */}
-        <div className="absolute inset-0 rounded-xl bg-[var(--celestial-gold)]/5 opacity-0 pointer-events-none peer-focus:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 rounded-xl bg-celestial-gold/5 opacity-0 pointer-events-none peer-focus:opacity-100 transition-opacity" />
       </div>
 
       {/* Helper text */}
       <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
         <span className="flex items-center gap-1.5">
-          <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono">Enter</kbd>
+          <kbd className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">Enter</kbd>
           <span>to send</span>
           <span className="text-border">|</span>
-          <kbd className="px-1.5 py-0.5 rounded bg-muted text-[10px] font-mono">Shift+Enter</kbd>
+          <kbd className="px-1.5 py-0.5 rounded bg-muted text-xs font-mono">Shift+Enter</kbd>
           <span>for new line</span>
         </span>
-        <span className={cn(input.length > MAX_LENGTH * 0.9 && "text-(--celestial-gold)")}>
+        <span className={cn(input.length > MAX_LENGTH * 0.9 && "text-celestial-gold")}>
           {input.length} / {MAX_LENGTH}
         </span>
       </div>

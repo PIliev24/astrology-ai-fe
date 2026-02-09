@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-6">
             Privacy <span className="text-gradient-gold">Policy</span>
           </h1>
-          <p className="text-xl text-foreground/70">
+          <p className="text-xl text-foreground/85">
             Your privacy is important to us. This policy explains how we collect, use, and protect your information.
           </p>
           <p className="text-sm text-muted-foreground mt-4">Last updated: January 10, 2026</p>
@@ -26,11 +26,11 @@ export default function PrivacyPage() {
         {/* Content */}
         <div className="space-y-8">
           {/* Information We Collect */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Information We Collect</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>We collect the following types of information to provide and improve our services:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -54,11 +54,11 @@ export default function PrivacyPage() {
           </Card>
 
           {/* How We Use Information */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">How We Use Your Information</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>We use your information for the following purposes:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -86,11 +86,11 @@ export default function PrivacyPage() {
           </Card>
 
           {/* Data Storage and Security */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Data Storage and Security</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>We take the security of your data seriously:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -115,11 +115,11 @@ export default function PrivacyPage() {
           </Card>
 
           {/* AI-Generated Content */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">AI-Generated Content</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>Our service uses artificial intelligence to provide astrological readings:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -140,11 +140,11 @@ export default function PrivacyPage() {
           </Card>
 
           {/* Your Rights */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Your Rights</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>You have the following rights regarding your personal data:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -172,11 +172,11 @@ export default function PrivacyPage() {
           </Card>
 
           {/* Cookies and Tracking */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Cookies and Tracking</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>We use cookies and similar technologies to enhance your experience:</p>
               <ul className="space-y-3 list-disc list-inside">
                 <li>
@@ -200,11 +200,11 @@ export default function PrivacyPage() {
           </Card>
 
           {/* Contact */}
-          <Card className="bg-card/50">
+          <Card className="bg-card">
             <CardHeader>
               <CardTitle className="font-display text-2xl">Contact Us</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-foreground/70">
+            <CardContent className="space-y-4 text-foreground/85">
               <p>If you have any questions about this Privacy Policy or our data practices, please contact us at:</p>
               <p className="text-foreground font-medium">
                 <a href="mailto:privacy@aistrology.com" className="text-primary hover:underline">

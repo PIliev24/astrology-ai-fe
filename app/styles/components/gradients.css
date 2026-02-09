@@ -1,0 +1,77 @@
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--celestial-copper)) 100%);
+}
+
+.gradient-gold {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--celestial-gold)) 0%,
+    hsl(var(--celestial-copper)) 50%,
+    hsl(var(--celestial-gold)) 100%
+  );
+}
+
+.gradient-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--celestial-copper)) 0%,
+    hsl(var(--celestial-gold)) 25%,
+    hsl(40 70% 72%) 50%,
+    hsl(var(--celestial-gold)) 75%,
+    hsl(var(--celestial-copper)) 100%
+  );
+  background-size: 200% auto;
+}
+
+.gradient-cosmic {
+  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 50%, hsl(var(--muted)) 100%);
+}
+
+.gradient-cosmic-radial {
+  background: radial-gradient(ellipse at 50% 0%, hsl(var(--card)) 0%, hsl(var(--background)) 70%);
+}
+
+.gradient-nebula {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--nebula-purple)) 0%,
+    hsl(var(--background)) 30%,
+    hsl(var(--nebula-blue)) 60%,
+    hsl(var(--nebula-pink)) 100%
+  );
+  opacity: 0.3;
+}
+
+.gradient-aurora {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--celestial-teal) / 0.2) 0%,
+    hsl(var(--celestial-violet) / 0.15) 50%,
+    hsl(var(--celestial-rose) / 0.1) 100%
+  );
+}
+
+.gradient-mystical {
+  background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--background)) 50%, hsl(var(--muted)) 100%);
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card) / 0.9) 100%);
+}
+
+.gradient-card-hover {
+  background: linear-gradient(135deg, hsl(var(--card) / 0.95) 0%, hsl(var(--card)) 100%);
+}
+
+/* Text gradients - using solid color for better compatibility */
+.text-gradient-gold {
+  color: hsl(var(--celestial-gold));
+}
+
+.text-gradient-cosmic {
+  color: hsl(var(--celestial-violet));
+}
+
+.text-gradient-aurora {
+  color: hsl(var(--celestial-teal));
+}

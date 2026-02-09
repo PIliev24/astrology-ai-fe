@@ -24,21 +24,21 @@ const features = [
     title: "AI-Powered Readings",
     description:
       "Our advanced AI interprets your birth chart with remarkable depth and accuracy, providing personalized insights tailored to your unique celestial blueprint.",
-    gradient: "from-[var(--celestial-gold)] to-[var(--celestial-copper)]",
+    gradient: "from-celestial-gold to-celestial-copper",
   },
   {
     icon: BookOpen,
     title: "Comprehensive Analysis",
     description:
       "Explore all 12 houses, planetary positions, and aspects in your chart. Understand how cosmic forces shape your personality, relationships, and life path.",
-    gradient: "from-[var(--celestial-violet)] to-[var(--celestial-teal)]",
+    gradient: "from-celestial-violet to-celestial-teal",
   },
   {
     icon: MessageCircle,
     title: "Interactive Consultations",
     description:
       "Ask questions and receive instant, personalized guidance from our AI astrologer. Dive deeper into any aspect of your chart that intrigues you.",
-    gradient: "from-[var(--celestial-rose)] to-[var(--celestial-violet)]",
+    gradient: "from-celestial-rose to-celestial-violet",
   },
 ];
 
@@ -94,8 +94,8 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center space-y-8">
             {/* Main heading */}
-            <div className="space-y-4 animate-fade-in">
-              <p className="text-mystical text-sm tracking-[0.3em] text-(--celestial-gold) opacity-80">Welcome to</p>
+            <div className="space-y-4 ">
+              <p className="text-mystical text-sm tracking-[0.3em] text-celestial-gold opacity-80">Welcome to</p>
               <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
                 <span className="text-gradient-gold">Celestial</span>
                 <br />
@@ -105,7 +105,7 @@ export default function LandingPage() {
 
             {/* Tagline */}
             <p
-              className="text-xl md:text-2xl lg:text-3xl text-foreground/80 max-w-3xl mx-auto font-serif italic leading-relaxed animate-slide-in-bottom"
+              className="text-xl md:text-2xl lg:text-3xl text-foreground/80 max-w-3xl mx-auto font-serif italic leading-relaxed"
               style={{ animationDelay: "0.2s" }}
             >
               Unlock the secrets of the cosmos with AI-powered birth chart readings.
@@ -114,10 +114,7 @@ export default function LandingPage() {
             </p>
 
             {/* CTA Buttons */}
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-slide-in-bottom"
-              style={{ animationDelay: "0.4s" }}
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6" style={{ animationDelay: "0.4s" }}>
               <Link href="/signup">
                 <Button
                   size="lg"
@@ -139,8 +136,8 @@ export default function LandingPage() {
             </div>
 
             {/* Trust indicator */}
-            <p className="text-sm text-muted-foreground pt-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <Sparkles className="inline-block h-4 w-4 mr-1 text-(--celestial-gold)" />
+            <p className="text-sm text-muted-foreground pt-4">
+              <Sparkles className="inline-block h-4 w-4 mr-1 text-celestial-gold" />
               Join thousands of seekers discovering their cosmic path
             </p>
           </div>
@@ -157,14 +154,14 @@ export default function LandingPage() {
             {/* Text Content */}
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-mystical text-xs tracking-[0.3em] text-(--celestial-violet)">
+                <p className="text-mystical text-xs tracking-[0.3em] text-celestial-violet">
                   Ancient Wisdom, Modern Technology
                 </p>
                 <h2 className="font-display text-4xl md:text-5xl font-bold">
                   The Twelve Signs of the <span className="text-gradient-gold">Zodiac</span>
                 </h2>
               </div>
-              <p className="text-lg text-foreground/70 leading-relaxed">
+              <p className="text-lg text-foreground/85 leading-relaxed">
                 Each zodiac sign carries unique energy and characteristics that influence your personality,
                 relationships, and life path. Discover what the stars reveal about your true nature.
               </p>
@@ -191,7 +188,7 @@ export default function LandingPage() {
                         size={24}
                         className="group-hover:scale-110 transition-transform"
                       />
-                      <span className="text-[10px] font-medium opacity-80 hidden sm:block">{sign.name}</span>
+                      <span className="text-xs font-medium opacity-80 hidden sm:block">{sign.name}</span>
                     </div>
                   </Link>
                 ))}
@@ -224,11 +221,11 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 space-y-4">
-            <p className="text-mystical text-xs tracking-[0.3em] text-(--celestial-gold)">What We Offer</p>
+            <p className="text-mystical text-xs tracking-[0.3em] text-celestial-gold">What We Offer</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold">
               Why Choose <span className="text-gradient-gold">Aistrology</span>?
             </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-foreground/85 max-w-2xl mx-auto leading-relaxed">
               Our AI-powered platform combines ancient astrological wisdom with modern technology to deliver insights
               that truly resonate with your soul.
             </p>
@@ -255,7 +252,7 @@ export default function LandingPage() {
                   <CardTitle className="font-display text-xl">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base leading-relaxed text-card-foreground/75">
+                  <CardDescription className="text-base leading-relaxed text-card-foreground/85">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -279,13 +276,11 @@ export default function LandingPage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 space-y-4">
-            <p className="text-mystical text-xs tracking-[0.3em] text-[var(--celestial-violet)]">
-              Expand Your Knowledge
-            </p>
+            <p className="text-mystical text-xs tracking-[0.3em] text-celestial-violet">Expand Your Knowledge</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold">
               Dive Deep Into <span className="text-gradient-cosmic">Astrology</span>
             </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-foreground/85 max-w-2xl mx-auto leading-relaxed">
               Explore the fundamentals of astrology with our comprehensive guides.
             </p>
           </div>
@@ -299,20 +294,20 @@ export default function LandingPage() {
                 >
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-[var(--celestial-gold)]/10 group-hover:bg-[var(--celestial-gold)]/20 transition-colors">
-                        <card.icon className="h-5 w-5 text-(--celestial-gold)" />
+                      <div className="p-2 rounded-lg bg-celestial-gold/10 group-hover:bg-celestial-gold/20 transition-colors">
+                        <card.icon className="h-5 w-5 text-celestial-gold" />
                       </div>
-                      <CardTitle className="font-display text-lg group-hover:text-(--celestial-gold) transition-colors">
+                      <CardTitle className="font-display text-lg group-hover:text-celestial-gold transition-colors">
                         {card.title}
                       </CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base text-card-foreground/70">{card.description}</CardDescription>
+                    <CardDescription className="text-base text-card-foreground/85">{card.description}</CardDescription>
                   </CardContent>
                   {/* Arrow indicator */}
                   <div className="px-6 pb-6">
-                    <span className="text-sm text-(--celestial-gold) opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                    <span className="text-sm text-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                       Learn more <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>

@@ -1,0 +1,21 @@
+/* Chat bubble styles */
+.chat-bubble-user {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--celestial-copper)) 100%);
+  border-radius: 1.25rem 1.25rem 0.25rem 1.25rem;
+}
+
+.chat-bubble-ai {
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1.25rem 1.25rem 1.25rem 0.25rem;
+  position: relative;
+}
+
+.chat-bubble-ai::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(var(--celestial-violet) / 0.05) 0%, transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
