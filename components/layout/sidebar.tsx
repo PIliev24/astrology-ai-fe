@@ -145,6 +145,7 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
                 onClick={e => {
                   e.stopPropagation();
                   router.push(`/chart/${chart.id}`);
+                  onCloseSidebar?.();
                 }}
               >
                 <p className="text-sm font-medium truncate text-sidebar-foreground">{chart.name}</p>
@@ -298,10 +299,9 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
     <aside
       className={cn(
         "fixed inset-y-0 left-0 z-40 border-r border-celestial-gold/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out",
-        "shadow-xl lg:shadow-none",
-        isCollapsed ? "w-0 lg:w-16" : "w-full lg:w-72",
-        isCollapsed ? "-translate-x-full lg:translate-x-0" : "translate-x-0",
-        isCollapsed && "lg:pointer-events-auto pointer-events-none"
+        "shadow-xl lg:shadow-none overflow-hidden",
+        isCollapsed ? "w-[85vw] max-w-sm lg:w-16" : "w-[85vw] max-w-sm lg:w-72",
+        isCollapsed ? "-translate-x-full lg:translate-x-0" : "translate-x-0"
       )}
       aria-label="Sidebar navigation"
     >
