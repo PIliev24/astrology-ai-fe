@@ -5,19 +5,15 @@ import { getBirthChartById } from "@/services";
 import { HOOK_KEYS } from "@/constants";
 import { BirthChartResponse } from "@/types";
 
-async function fetchBirthChart(_key: string, id: string): Promise<BirthChartResponse> {
-  return await getBirthChartById(id);
-}
-
-export function useBirthChart(id: string | null) {
+export function useBirthChart(id: string | null, theme?: string) {
   const {
     data: chart,
     error,
     isLoading,
     mutate,
   } = useSWR(
-    id ? [HOOK_KEYS.BIRTH_CHART, id] : null,
-    ([, chartId]: [string, string]) => fetchBirthChart(HOOK_KEYS.BIRTH_CHART, chartId),
+    id && theme ? [HOOK_KEYS.BIRTH_CHART, id, theme] : null,
+    ([, chartId, t]: [string, string, string | undefined]) => getBirthChartById(chartId, t),
     {
       revalidateOnFocus: true,
       revalidateOnReconnect: true,
