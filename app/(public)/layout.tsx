@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, Star, MessageSquare } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Menu, Star, MessageSquare, Sun, Moon, Monitor } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet";
+import { useTheme } from "next-themes";
 import { useAuth } from "@/hooks";
 import { Logo } from "@/components/ui/logo";
 import { ThemeToggle } from "@/components/theme";
@@ -15,6 +16,32 @@ const navLinks = [
   { href: "/guide", label: "Guide" },
   { href: "/contact", label: "Contact" },
 ];
+
+const themeOrder = ["light", "dark", "system"] as const;
+const themeIcons = { light: Sun, dark: Moon, system: Monitor };
+const themeLabels = { light: "Light", dark: "Dark", system: "System" };
+
+function MobileThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const current = (theme ?? "system") as (typeof themeOrder)[number];
+  const Icon = themeIcons[current];
+
+  const cycleTheme = () => {
+    const idx = themeOrder.indexOf(current);
+    setTheme(themeOrder[(idx + 1) % themeOrder.length]);
+  };
+
+  return (
+    <button
+      onClick={cycleTheme}
+      className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 mx-4 mt-4 rounded-lg hover:bg-celestial-gold/15"
+    >
+      <Icon className="h-4 w-4 text-celestial-gold" />
+      <span>Theme</span>
+      <span className="ml-auto text-sm text-muted-foreground">{themeLabels[current]}</span>
+    </button>
+  );
+}
 
 function PublicNav() {
   const { user } = useAuth();
@@ -88,42 +115,46 @@ function PublicNav() {
               {/* Mobile navigation links */}
               <div className="flex flex-col gap-2 mt-8">
                 {navLinks.map(link => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-celestial-gold/15 group"
-                  >
-                    <Star className="h-4 w-4 text-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {link.label}
-                  </Link>
+                  <SheetClose key={link.href} asChild>
+                    <Link
+                      href={link.href}
+                      className="flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors py-3 px-4 rounded-lg hover:bg-celestial-gold/15 group"
+                    >
+                      <Star className="h-4 w-4 text-celestial-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {link.label}
+                    </Link>
+                  </SheetClose>
                 ))}
               </div>
 
               {/* Mobile theme toggle */}
-              <div className="px-4 pt-4 flex items-center gap-2">
-                <ThemeToggle />
-                <span className="text-sm text-muted-foreground">Theme</span>
-              </div>
+              <MobileThemeToggle />
 
               {/* Mobile auth buttons */}
               <div className="p-6 border-t border-border space-y-3">
                 {user ? (
-                  <Link href="/dashboard" className="block">
-                    <Button className="w-full gradient-gold text-primary-foreground">
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      Chat
-                    </Button>
-                  </Link>
-                ) : (
-                  <>
-                    <Link href="/login" className="block">
-                      <Button variant="outline" className="w-full zodiac-border">
-                        Sign In
+                  <SheetClose asChild>
+                    <Link href="/dashboard" className="block">
+                      <Button className="w-full gradient-gold text-primary-foreground">
+                        <MessageSquare className="mr-2 h-4 w-4" />
+                        Chat
                       </Button>
                     </Link>
-                    <Link href="/signup" className="block">
-                      <Button className="w-full gradient-gold text-primary-foreground">Get Started</Button>
-                    </Link>
+                  </SheetClose>
+                ) : (
+                  <>
+                    <SheetClose asChild>
+                      <Link href="/login" className="block">
+                        <Button variant="outline" className="w-full zodiac-border">
+                          Sign In
+                        </Button>
+                      </Link>
+                    </SheetClose>
+                    <SheetClose asChild>
+                      <Link href="/signup" className="block">
+                        <Button className="w-full gradient-gold text-primary-foreground">Get Started</Button>
+                      </Link>
+                    </SheetClose>
                   </>
                 )}
               </div>
