@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import { ChartDetails } from "@/components/chart/chart-details";
 import { useBirthChart } from "@/hooks";
 import { Button } from "@/components/ui/button";
@@ -10,8 +11,10 @@ import { ArrowLeft, Loader2 } from "lucide-react";
 export default function ChartDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const { resolvedTheme } = useTheme();
   const chartId = params.id as string;
-  const { chart, isLoading, error } = useBirthChart(chartId);
+  const theme = resolvedTheme ? (resolvedTheme === "dark" ? "dark" : "classic") : undefined;
+  const { chart, isLoading, error } = useBirthChart(chartId, theme);
 
   if (isLoading) {
     return (

@@ -14,7 +14,6 @@ import {
   Plus,
   Loader2,
   LogOut,
-  X,
   ChevronDown,
   Trash2,
   Settings,
@@ -53,10 +52,9 @@ interface ChartItemProps {
   isExpanded: boolean;
   onToggle: () => void;
   isCollapsed: boolean;
-  onCloseSidebar?: () => void;
 }
 
-function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }: ChartItemProps) {
+function ChartItem({ chart, isExpanded, onToggle, isCollapsed }: ChartItemProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { conversations, isLoading: isLoadingConversations } = useConversationsByChart(chart.id);
@@ -89,7 +87,6 @@ function ChartItem({ chart, isExpanded, onToggle, isCollapsed, onCloseSidebar }:
 
   const handleConversationClick = (conversationId: string) => {
     router.push(`/conversations/${conversationId}`);
-    onCloseSidebar?.();
   };
 
   const handleChartDeleteClick = (e: React.MouseEvent) => {
@@ -297,11 +294,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "fixed inset-y-0 left-0 z-40 border-r border-celestial-gold/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out",
-        "shadow-xl lg:shadow-none",
-        isCollapsed ? "w-0 lg:w-16" : "w-full lg:w-72",
-        isCollapsed ? "-translate-x-full lg:translate-x-0" : "translate-x-0",
-        isCollapsed && "lg:pointer-events-auto pointer-events-none"
+        "hidden lg:block fixed inset-y-0 left-0 z-40 border-r border-celestial-gold/10 bg-sidebar/95 backdrop-blur-cosmic transition-all duration-300 ease-in-out overflow-hidden",
+        isCollapsed ? "w-16" : "w-72"
       )}
       aria-label="Sidebar navigation"
     >
@@ -309,34 +303,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
       <div className="absolute inset-0 star-field-subtle opacity-10 pointer-events-none" />
 
       <div className="flex h-full flex-col relative z-10">
-        {/* Mobile: Profile Section at Top */}
-        {!isCollapsed && (
-          <div className="lg:hidden pt-6 pb-4 px-4 border-b border-border/70 relative">
-            <div className="flex flex-col items-center gap-3">
-              <Avatar className="h-20 w-20 border-2 border-celestial-gold/30 zodiac-glow">
-                <AvatarFallback className="gradient-gold text-primary-foreground font-semibold text-lg">
-                  {getInitials(user?.name, user?.email)}
-                </AvatarFallback>
-              </Avatar>
-              <div className="text-center">
-                <p className="font-display text-sm text-gradient-gold">{user?.name || "Star Seeker"}</p>
-                <p className="text-xs text-muted-foreground mt-1">{user?.email}</p>
-              </div>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onToggleCollapse}
-              className="absolute top-4 right-4 h-8 w-8 hover:bg-celestial-gold/10"
-              aria-label="Close sidebar"
-            >
-              <X className="h-5 w-5" />
-            </Button>
-          </div>
-        )}
-
-        {/* Desktop Header */}
-        <div className="hidden lg:flex h-16 items-center justify-between px-4 border-b border-border/70">
+        {/* Header */}
+        <div className="flex h-16 items-center justify-between px-4 border-b border-border/70">
           {!isCollapsed && (
             <Link href="/" className="hover:opacity-80 transition-opacity">
               <Logo size="lg" />
@@ -365,79 +333,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           )}
         </div>
 
-        {/* Mobile: New Reading Button */}
-        {!isCollapsed && (
-          <div className="lg:hidden border-b border-border/70 p-4">
-            <CreateChartDialog>
-              <Button
-                className="w-full gradient-gold text-primary-foreground"
-                size="sm"
-                aria-label="Create new birth chart"
-              >
-                <Plus className="h-4 w-4 mr-2" />
-                New Natal Chart
-              </Button>
-            </CreateChartDialog>
-          </div>
-        )}
-
-        {/* Mobile: New Chat Button */}
-        {!isCollapsed && (
-          <div className="lg:hidden border-b border-border/70 p-4">
-            <Button
-              className="w-full zodiac-border"
-              variant="outline"
-              size="sm"
-              aria-label="New chat"
-              onClick={() => {
-                handleNewChat();
-                onToggleCollapse();
-              }}
-            >
-              <MessageSquare className="h-4 w-4 mr-2" />
-              New Reading
-            </Button>
-          </div>
-        )}
-
-        {/* Mobile: Chart History */}
-        {!isCollapsed && (
-          <div className="lg:hidden flex flex-1 flex-col min-h-0">
-            <div className="px-4 py-3 border-b border-border/70">
-              <h3 className="text-xs font-medium text-celestial-gold uppercase tracking-wider">Your Charts</h3>
-              <span className="text-xs text-muted-foreground">(Previous chats)</span>
-            </div>
-            <ScrollArea className="flex-1 scrollbar-cosmic">
-              {isLoading ? (
-                <div className="flex items-center justify-center py-8">
-                  <Loader2 className="h-5 w-5 animate-spin text-celestial-gold" />
-                </div>
-              ) : charts.length === 0 ? (
-                <div className="py-8 text-center px-3">
-                  <Sparkles className="h-8 w-8 mx-auto text-celestial-gold/40 mb-2" />
-                  <p className="text-sm text-muted-foreground">No charts yet</p>
-                  <p className="text-xs text-muted-foreground mt-1">Create your first natal chart</p>
-                </div>
-              ) : (
-                <div className="space-y-1 py-3 px-3">
-                  {charts.map(chart => (
-                    <ChartItem
-                      key={chart.id}
-                      chart={chart}
-                      isExpanded={expandedCharts.has(chart.id)}
-                      onToggle={() => toggleChartExpansion(chart.id)}
-                      isCollapsed={false}
-                      onCloseSidebar={onToggleCollapse}
-                    />
-                  ))}
-                </div>
-              )}
-            </ScrollArea>
-          </div>
-        )}
-
-        {/* Desktop: New Reading Button */}
-        <div className={cn("hidden lg:block border-b border-border/70", isCollapsed ? "p-2" : "p-3 lg:p-4")}>
+        {/* New Reading Button */}
+        <div className={cn("border-b border-border/70", isCollapsed ? "p-2" : "p-3 lg:p-4")}>
           {isCollapsed ? (
             <CreateChartDialog>
               <Button
@@ -462,8 +359,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           )}
         </div>
 
-        {/* Desktop: New Chat Button */}
-        <div className={cn("hidden lg:block border-b border-border/70", isCollapsed ? "p-2" : "p-3 lg:p-4")}>
+        {/* New Chat Button */}
+        <div className={cn("border-b border-border/70", isCollapsed ? "p-2" : "p-3 lg:p-4")}>
           {isCollapsed ? (
             <Button
               className="w-full zodiac-border"
@@ -488,8 +385,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           )}
         </div>
 
-        {/* Desktop: Chart History */}
-        <div className="hidden lg:flex flex-1 flex-col min-h-0">
+        {/* Chart History */}
+        <div className="flex flex-1 flex-col min-h-0">
           {!isCollapsed && (
             <div className="px-4 lg:px-5 py-3 border-b border-border/70">
               <h3 className="text-xs font-medium text-celestial-gold uppercase tracking-wider">Your Charts</h3>
@@ -527,37 +424,8 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
           </ScrollArea>
         </div>
 
-        {/* Mobile: Settings and Sign Out Buttons */}
-        {!isCollapsed && (
-          <div className="lg:hidden border-t border-border/70 p-4 space-y-2">
-            <div className="flex items-center gap-2 px-1 pb-2">
-              <ThemeToggle />
-              <span className="text-sm text-muted-foreground">Theme</span>
-            </div>
-            <Button
-              variant="outline"
-              className="w-full h-12 rounded-lg zodiac-border hover:bg-celestial-gold/15"
-              onClick={() => {
-                router.push("/settings");
-                onToggleCollapse();
-              }}
-            >
-              <Settings className="h-4 w-4 mr-2" />
-              <span className="text-base font-medium">Settings</span>
-            </Button>
-            <Button
-              variant="outline"
-              className="w-full h-12 rounded-lg border-destructive/30 hover:bg-destructive/10 text-destructive"
-              onClick={handleLogout}
-            >
-              <LogOut className="h-4 w-4 mr-2" />
-              <span className="text-base font-medium">Sign out</span>
-            </Button>
-          </div>
-        )}
-
-        {/* Desktop: User Menu */}
-        <div className="hidden lg:block border-t border-border/70 p-3 space-y-3">
+        {/* User Menu */}
+        <div className="border-t border-border/70 p-3 space-y-3">
           {/* Theme Toggle */}
           <div className={cn("flex items-center", isCollapsed ? "justify-center" : "gap-2 px-1")}>
             <ThemeToggle />
@@ -602,10 +470,7 @@ export function Sidebar({ isCollapsed, onToggleCollapse }: SidebarProps) {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  onClick={() => {
-                    router.push("/settings");
-                    onToggleCollapse();
-                  }}
+                  onClick={() => router.push("/settings")}
                   className="cursor-pointer hover:bg-celestial-gold/15"
                 >
                   <Settings className="mr-2 h-4 w-4" />
