@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Sidebar } from "@/components/layout/sidebar";
 import { MobileSidebarContent } from "@/components/layout/mobile-sidebar-content";
@@ -21,7 +21,7 @@ function AuthLayoutContent({ children }: { children: React.ReactNode }) {
 
   // Auto-close mobile sheet on route change
   useEffect(() => {
-    setMobileSheetOpen(false);
+    setTimeout(() => setMobileSheetOpen(false), 100)
   }, [pathname]);
 
   if (isLoading || !user) {
